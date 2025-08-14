@@ -1,0 +1,45 @@
+{
+  "name": "framework-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for analyzing vendor responses against CIS Controls Framework using 4 GRC attributes (Governance, Facilitates, Coverage, Validates)",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "prepare": "npm run build"
+  },
+  "bin": {
+    "framework-mcp": "./dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "cis-controls",
+    "grc",
+    "governance",
+    "risk",
+    "compliance",
+    "vendor-analysis",
+    "cybersecurity",
+    "framework"
+  ],
+  "author": "Matt Lee <cybermattlee@gmail.com> (https://github.com/therealcybermattlee)",
+  "license": "CC-BY-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/therealcybermattlee/FrameworkMCP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/therealcybermattlee/FrameworkMCP/issues"
+  },
+  "homepage": "https://github.com/therealcybermattlee/FrameworkMCP#readme",
+  "copyright": "Copyright (c) 2025 Cyber RISE, Inc"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "SecureIAM Corp",
+    "safeguard_id": "5.1",
+    "response": "Our platform provides comprehensive identity and access management with automated account lifecycle management. We maintain detailed inventories including usernames, full names, department assignments, and start/stop dates. Quarterly validation processes ensure all accounts are authorized and compliant with enterprise policies."
+  },
+  {
+    "name": "ComplianceBot",
+    "safeguard_id": "5.1", 
+    "response": "Basic user directory service with manual account tracking. Limited reporting capabilities for account status and basic user information."
+  },
+  {
+    "name": "MFA Solutions Inc",
+    "safeguard_id": "6.3",
+    "response": "Enterprise-grade multi-factor authentication for all externally-exposed applications. Supports SAML, OAuth, and directory service integration. Comprehensive reporting and policy enforcement across all access points."
+  }
+]
