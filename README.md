@@ -1,10 +1,10 @@
-# GRC Vendor Analyzer MCP Server
+# Vendor Framework Analyzer MCP Server
 
 [![npm version](https://badge.fury.io/js/framework-mcp.svg)](https://badge.fury.io/js/framework-mcp)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub](https://img.shields.io/github/stars/therealcybermattlee/FrameworkMCP?style=social)](https://github.com/therealcybermattlee/FrameworkMCP)
 
-A Model Context Protocol (MCP) server that analyzes vendor responses against the **CIS Controls Framework** using a 4-attribute GRC (Governance, Risk, and Compliance) methodology. This tool helps security professionals evaluate vendor capabilities against specific CIS Control safeguards with detailed sub-taxonomical analysis.
+A Model Context Protocol (MCP) server that analyzes vendor responses against the **CIS Controls Framework** using a 4-attribute methodology. This tool helps security professionals evaluate vendor capabilities against specific CIS Control safeguards with detailed sub-taxonomical analysis.
 
 ## 🎯 Purpose
 
@@ -14,13 +14,13 @@ This MCP server enables security teams to:
 - **Categorize vendor capabilities** across 4 key attributes: Governance, Facilitates, Coverage, and Validates
 - **Generate detailed reports** showing sub-element coverage and compliance gaps
 
-## 🔧 The 4 GRC Attributes
+## 🔧 The 4 Analysis Attributes
 
 | Attribute | Description | Example |
 |-----------|-------------|---------|
 | **Governance** | GRC platform capabilities for policy/process management | Policy management, documented processes, compliance workflows |
-| **Facilitates** | Enhancement capabilities that make safeguards better/faster/stronger | Automation, optimization, streamlined implementation |
-| **Coverage** | Scope of safeguard elements addressed (Full/Partial) | Percentage of sub-taxonomical elements covered |
+| **Facilitates** | Enhancement capabilities that enable others to implement safeguards better/faster/stronger (does not perform safeguard directly) | Automation tools, optimization platforms, streamlined workflows |
+| **Coverage** | Scope of safeguard elements directly addressed by tools that perform the safeguard (Full/Partial) | Percentage of sub-taxonomical elements actually implemented |
 | **Validates** | Verification capabilities providing evidence and reporting | Audit logs, compliance reports, evidence collection |
 
 ## 🎨 CIS Controls Framework Integration
