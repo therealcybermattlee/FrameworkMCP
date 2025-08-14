@@ -287,11 +287,6 @@ class GRCAnalysisServer {
       {
         name: 'framework-mcp',
         version: '1.0.0',
-      },
-      {
-        capabilities: {
-          tools: {},
-        },
       }
     );
 
