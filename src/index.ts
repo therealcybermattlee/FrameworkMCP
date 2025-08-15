@@ -276,6 +276,2065 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["1.1", "1.3"],
     keywords: ["unauthorized", "assets", "weekly", "remove", "deny", "quarantine", "process"]
+  },
+  "1.3": {
+    id: "1.3",
+    title: "Utilize an Active Discovery Tool",
+    description: "Use an active discovery tool to identify assets connected to the enterprise's network",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "use active discovery tool",
+      "identify assets requirement",
+      "network discovery policy",
+      "discovery tool management"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "active discovery tool",
+      "identify assets connected to network",
+      "enterprise network coverage",
+      "asset discovery capability"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "network scanning",
+      "asset identification",
+      "network mapping",
+      "device fingerprinting",
+      "service discovery",
+      "port scanning",
+      "protocol analysis",
+      "network topology discovery"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network discovery scanners",
+      "SNMP-based discovery",
+      "ping sweeps",
+      "ARP table analysis",
+      "network monitoring tools",
+      "automated discovery systems"
+    ],
+    relatedSafeguards: ["1.1", "1.2", "1.4", "1.5"],
+    keywords: ["active", "discovery", "tool", "identify", "assets", "network", "scanning", "mapping"]
+  },
+  "1.4": {
+    id: "1.4", 
+    title: "Use Dynamic Host Configuration Protocol (DHCP) Logging to Update Asset Inventory",
+    description: "Use DHCP logging functionality to update the enterprise asset inventory",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "use DHCP logging",
+      "update asset inventory requirement",
+      "DHCP log management policy",
+      "inventory integration process"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "DHCP logging functionality",
+      "update enterprise asset inventory",
+      "network device tracking",
+      "IP address assignment logging"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "DHCP lease information",
+      "IP address assignments",
+      "MAC address mapping",
+      "device hostnames",
+      "lease duration tracking",
+      "DHCP server logs",
+      "network join events",
+      "device identification data"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "DHCP server log analysis",
+      "automated parsing tools",
+      "inventory integration scripts",
+      "SIEM integration",
+      "log aggregation systems",
+      "real-time monitoring"
+    ],
+    relatedSafeguards: ["1.1", "1.2", "1.3", "1.5"],
+    keywords: ["DHCP", "logging", "update", "asset", "inventory", "IP", "address", "network", "tracking"]
+  },
+  "1.5": {
+    id: "1.5",
+    title: "Use a Passive Asset Discovery Tool",
+    description: "Use a passive discovery tool to identify assets connected to the enterprise's network",
+    implementationGroup: "IG3",
+    assetType: ["network"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "use passive discovery tool",
+      "identify assets requirement",
+      "passive monitoring policy",
+      "discovery tool governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "passive discovery tool",
+      "identify assets connected to network",
+      "non-intrusive asset identification",
+      "network traffic analysis"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "network traffic monitoring",
+      "passive packet analysis",
+      "protocol identification",
+      "device behavior analysis",
+      "communication pattern analysis",
+      "network flow analysis",
+      "asset fingerprinting",
+      "service identification"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network tap monitoring",
+      "span port analysis",
+      "flow analysis tools", 
+      "packet capture systems",
+      "network behavior analysis",
+      "passive scanning tools"
+    ],
+    relatedSafeguards: ["1.1", "1.2", "1.3", "1.4"],
+    keywords: ["passive", "discovery", "tool", "identify", "assets", "network", "traffic", "monitoring", "non-intrusive"]
+  },
+  "2.1": {
+    id: "2.1",
+    title: "Establish and Maintain a Software Inventory",
+    description: "Establish and maintain a detailed inventory of all licensed software installed on enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["applications"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "establish inventory process",
+      "maintain inventory process",
+      "detailed software inventory requirement",
+      "licensed software tracking",
+      "enterprise asset coverage"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "detailed inventory",
+      "all licensed software",
+      "installed on enterprise assets",
+      "software asset management",
+      "comprehensive coverage"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "software name",
+      "version",
+      "publisher",
+      "install date",
+      "business purpose",
+      "supported vs. unsupported software",
+      "authorized vs. unauthorized software",
+      "licensing information",
+      "installation location"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "software asset management tools",
+      "automated discovery agents",
+      "network-based scanning",
+      "endpoint detection tools",
+      "software metering solutions"
+    ],
+    relatedSafeguards: ["1.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7"],
+    keywords: ["software", "inventory", "licensed", "detailed", "enterprise", "assets", "applications"]
+  },
+  "2.2": {
+    id: "2.2",
+    title: "Ensure That Only Currently Supported Software Is Designated as Authorized",
+    description: "Ensure that only currently supported software is designated as authorized in the software inventory",
+    implementationGroup: "IG1",
+    assetType: ["applications"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "ensure only supported software authorized",
+      "authorization designation process",
+      "supported software verification",
+      "software lifecycle management"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "currently supported software only",
+      "designated as authorized",
+      "software inventory integration",
+      "support status verification"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "software support status",
+      "end-of-life identification",
+      "vendor support agreements",
+      "patch availability",
+      "security update availability",
+      "authorization workflows",
+      "approval processes"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "vendor support databases",
+      "automated support checking",
+      "software lifecycle tracking",
+      "end-of-life notifications",
+      "authorization workflow tools"
+    ],
+    relatedSafeguards: ["2.1", "2.3", "2.4", "2.5", "2.6", "2.7"],
+    keywords: ["supported", "software", "authorized", "designated", "inventory", "lifecycle", "end-of-life"]
+  },
+  "2.3": {
+    id: "2.3",
+    title: "Address Unauthorized Software",
+    description: "Ensure that unauthorized software is either removed from use on enterprise assets or approved for use",
+    implementationGroup: "IG1",
+    assetType: ["applications"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "ensure unauthorized software addressed",
+      "removal or approval requirement",
+      "unauthorized software handling policy"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "unauthorized software identification",
+      "removed from use",
+      "approved for use",
+      "enterprise assets coverage"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "unauthorized software detection",
+      "software classification",
+      "approval workflows",
+      "removal procedures",
+      "business justification",
+      "exception processes",
+      "documentation requirements"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "automated removal tools",
+      "application control systems",
+      "software whitelisting",
+      "policy enforcement tools",
+      "approval workflow systems"
+    ],
+    relatedSafeguards: ["2.1", "2.2", "2.4", "2.5", "2.6", "2.7"],
+    keywords: ["unauthorized", "software", "removed", "approved", "enterprise", "assets", "address"]
+  },
+  "2.4": {
+    id: "2.4",
+    title: "Utilize Automated Software Inventory Tools",
+    description: "Utilize automated software inventory tools, where possible, throughout the enterprise",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "utilize automated tools",
+      "where possible requirement",
+      "throughout enterprise coverage",
+      "automated inventory management"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automated software inventory tools",
+      "enterprise-wide deployment",
+      "comprehensive coverage",
+      "automated discovery capability"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "automated discovery agents",
+      "network-based scanning",
+      "agent-based collection",
+      "real-time inventory updates",
+      "centralized reporting",
+      "integration capabilities",
+      "deployment strategies"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "endpoint agents",
+      "network scanners",
+      "SCCM integration",
+      "vulnerability scanners",
+      "asset management platforms"
+    ],
+    relatedSafeguards: ["2.1", "2.2", "2.3", "2.5", "2.6", "2.7"],
+    keywords: ["automated", "software", "inventory", "tools", "enterprise", "deployment", "discovery"]
+  },
+  "2.5": {
+    id: "2.5",
+    title: "Allowlist Authorized Software",
+    description: "Use technical controls, such as application allowlisting, to ensure that only authorized software can execute",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use technical controls",
+      "ensure only authorized execution",
+      "allowlisting implementation requirement"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "technical controls",
+      "application allowlisting",
+      "only authorized software execution",
+      "execution prevention"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "allowlist management",
+      "signature-based controls",
+      "hash-based controls",
+      "path-based controls",
+      "certificate-based controls",
+      "execution monitoring",
+      "policy enforcement"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "application control software",
+      "Windows AppLocker",
+      "endpoint protection platforms",
+      "code signing enforcement",
+      "execution prevention tools"
+    ],
+    relatedSafeguards: ["2.1", "2.2", "2.3", "2.4", "2.6", "2.7"],
+    keywords: ["allowlist", "authorized", "software", "technical", "controls", "application", "execution"]
+  },
+  "2.6": {
+    id: "2.6",
+    title: "Allowlist Authorized Libraries",
+    description: "Use technical controls to ensure that only authorized software libraries, such as specific .dll, .ocx, .so files, can load into a system process",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use technical controls",
+      "ensure only authorized libraries",
+      "system process protection requirement"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "technical controls",
+      "only authorized software libraries",
+      "dll ocx so files",
+      "system process loading"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "library allowlisting",
+      "dynamic link library control",
+      "shared object control",
+      "process injection prevention",
+      "library loading monitoring",
+      "signature verification",
+      "integrity checking"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "library control tools",
+      "process monitoring solutions",
+      "endpoint detection platforms",
+      "kernel-level controls",
+      "signature enforcement"
+    ],
+    relatedSafeguards: ["2.1", "2.2", "2.3", "2.4", "2.5", "2.7"],
+    keywords: ["allowlist", "authorized", "libraries", "dll", "ocx", "so", "system", "process", "technical"]
+  },
+  "2.7": {
+    id: "2.7",
+    title: "Allowlist Authorized Scripts",
+    description: "Use technical controls, such as digital signatures and version control systems, to ensure that only authorized scripts can execute",
+    implementationGroup: "IG3",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use technical controls",
+      "ensure only authorized script execution",
+      "script authorization requirement"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "technical controls",
+      "digital signatures",
+      "version control systems",
+      "only authorized scripts execution"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "script allowlisting",
+      "digital signature verification",
+      "version control integration",
+      "script integrity checking",
+      "execution policy enforcement",
+      "script source validation",
+      "runtime monitoring"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "PowerShell execution policies",
+      "script signing infrastructure",
+      "version control systems",
+      "script execution monitors",
+      "code signing certificates"
+    ],
+    relatedSafeguards: ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6"],
+    keywords: ["allowlist", "authorized", "scripts", "digital", "signatures", "version", "control", "execution"]
+  },
+  "3.1": {
+    id: "3.1",
+    title: "Establish and Maintain a Data Management Process",
+    description: "Establish and maintain a data management process",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish data management process",
+      "maintain data management process",
+      "documented data governance",
+      "data management policy"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data management process",
+      "data governance framework",
+      "data handling procedures",
+      "data lifecycle management"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "data classification scheme",
+      "data inventory procedures",
+      "data retention policies",
+      "data disposal procedures",
+      "data handling standards",
+      "data access controls",
+      "data sharing agreements"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data governance platforms",
+      "data discovery tools",
+      "data classification tools",
+      "policy management systems",
+      "data lineage tracking"
+    ],
+    relatedSafeguards: ["3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"],
+    keywords: ["data", "management", "process", "establish", "maintain", "governance", "lifecycle"]
+  },
+  "3.2": {
+    id: "3.2",
+    title: "Establish and Maintain a Data Inventory",
+    description: "Establish and maintain a data inventory, based on the enterprise's data management process",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "establish data inventory",
+      "maintain data inventory",
+      "based on data management process",
+      "inventory management requirements"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data inventory",
+      "enterprise data coverage",
+      "data asset identification",
+      "data location tracking"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "data types",
+      "data locations",
+      "data owners",
+      "data classifications",
+      "data sensitivity levels",
+      "data volumes",
+      "data formats",
+      "data repositories"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data discovery scanners",
+      "database inventory tools",
+      "file system crawlers",
+      "cloud data discovery",
+      "automated data cataloging"
+    ],
+    relatedSafeguards: ["1.1", "3.1", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"],
+    keywords: ["data", "inventory", "enterprise", "management", "process", "identification", "tracking"]
+  },
+  "3.3": {
+    id: "3.3",
+    title: "Configure Data Access Control Lists",
+    description: "Configure data access control lists based on a user's need to know",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "configure access control lists",
+      "based on need to know",
+      "data access governance",
+      "access control policy"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data access control lists",
+      "user need to know basis",
+      "access restriction enforcement",
+      "granular access controls"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "user access requirements",
+      "role-based permissions",
+      "data sensitivity matching",
+      "access review processes",
+      "permission inheritance",
+      "group-based access",
+      "individual permissions"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "file system ACLs",
+      "database permissions",
+      "application-level controls",
+      "identity management systems",
+      "access governance tools"
+    ],
+    relatedSafeguards: ["3.1", "3.2", "3.4", "3.5", "3.6", "5.1", "6.1", "6.2"],
+    keywords: ["data", "access", "control", "lists", "need", "know", "user", "permissions"]
+  },
+  "3.4": {
+    id: "3.4",
+    title: "Enforce Data Retention",
+    description: "Retain data according to the enterprise's data management process",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "retain data according to process",
+      "enterprise data management process",
+      "data retention governance",
+      "retention policy enforcement"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data retention enforcement",
+      "retention schedule compliance",
+      "data lifecycle management",
+      "retention period adherence"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "retention schedules",
+      "legal requirements",
+      "business requirements",
+      "retention categories",
+      "disposal timelines",
+      "archive procedures",
+      "retention monitoring"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "automated retention tools",
+      "data lifecycle management",
+      "archival systems",
+      "retention scheduling tools",
+      "compliance monitoring"
+    ],
+    relatedSafeguards: ["3.1", "3.2", "3.5", "3.6", "3.10"],
+    keywords: ["data", "retention", "enterprise", "management", "process", "lifecycle", "schedule"]
+  },
+  "3.5": {
+    id: "3.5",
+    title: "Securely Dispose of Data",
+    description: "Securely dispose of data as outlined in the enterprise's data management process",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "securely dispose data",
+      "outlined in management process",
+      "data disposal governance",
+      "secure disposal policy"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure data disposal",
+      "data management process alignment",
+      "disposal method security",
+      "data destruction assurance"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "disposal methods",
+      "data sanitization",
+      "media destruction",
+      "digital shredding",
+      "disposal verification",
+      "disposal documentation",
+      "certificate of destruction"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data wiping tools",
+      "media destruction services",
+      "cryptographic erasure",
+      "physical destruction",
+      "disposal tracking systems"
+    ],
+    relatedSafeguards: ["3.1", "3.2", "3.4", "3.6", "3.10"],
+    keywords: ["securely", "dispose", "data", "enterprise", "management", "process", "destruction"]
+  },
+  "3.6": {
+    id: "3.6",
+    title: "Encrypt Data on End-User Devices",
+    description: "Encrypt data on end-user devices containing sensitive data",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "encrypt data requirement",
+      "end-user devices coverage",
+      "sensitive data identification",
+      "encryption policy enforcement"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data encryption",
+      "end-user devices",
+      "sensitive data protection",
+      "encryption implementation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "full disk encryption",
+      "file-level encryption",
+      "encryption algorithms",
+      "key management",
+      "device types coverage",
+      "mobile device encryption",
+      "laptop encryption"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "BitLocker encryption",
+      "FileVault encryption",
+      "third-party encryption tools",
+      "mobile device management",
+      "encryption key management"
+    ],
+    relatedSafeguards: ["1.1", "3.1", "3.2", "3.7", "3.8", "3.9", "3.11"],
+    keywords: ["encrypt", "data", "end-user", "devices", "sensitive", "protection", "encryption"]
+  },
+  "3.7": {
+    id: "3.7",
+    title: "Establish and Maintain a Data Classification Scheme",
+    description: "Establish and maintain a data classification scheme based on the sensitivity of data",
+    implementationGroup: "IG2",
+    assetType: ["data"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "establish classification scheme",
+      "maintain classification scheme",
+      "based on data sensitivity",
+      "classification governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data classification scheme",
+      "sensitivity-based classification",
+      "classification standards",
+      "data labeling system"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "classification levels",
+      "sensitivity criteria",
+      "classification labels",
+      "handling requirements",
+      "protection levels",
+      "access requirements",
+      "classification workflows"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data classification tools",
+      "automated labeling",
+      "classification policies",
+      "sensitivity scanners",
+      "classification workflows"
+    ],
+    relatedSafeguards: ["3.1", "3.2", "3.3", "3.8", "3.9", "3.10", "3.11", "3.12"],
+    keywords: ["establish", "maintain", "data", "classification", "scheme", "sensitivity", "labeling"]
+  },
+  "3.8": {
+    id: "3.8",
+    title: "Document Data Flows",
+    description: "Document data flows for sensitive data",
+    implementationGroup: "IG2",
+    assetType: ["data"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "document data flows",
+      "sensitive data coverage",
+      "data flow documentation requirement",
+      "flow mapping governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data flow documentation",
+      "sensitive data flows",
+      "data movement tracking",
+      "flow visualization"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "data sources",
+      "data destinations",
+      "processing locations",
+      "data transformations",
+      "data transit paths",
+      "integration points",
+      "data boundaries"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data lineage tools",
+      "flow mapping software",
+      "data discovery tools",
+      "process documentation",
+      "network flow analysis"
+    ],
+    relatedSafeguards: ["3.1", "3.2", "3.7", "3.9", "3.10", "3.11"],
+    keywords: ["document", "data", "flows", "sensitive", "mapping", "tracking", "lineage"]
+  },
+  "3.9": {
+    id: "3.9",
+    title: "Encrypt Data on Removable Media",
+    description: "Encrypt data on removable media",
+    implementationGroup: "IG2",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "encrypt data requirement",
+      "removable media coverage",
+      "encryption policy enforcement",
+      "removable media governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data encryption",
+      "removable media",
+      "portable storage protection",
+      "encryption implementation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "USB drives",
+      "external hard drives",
+      "optical media",
+      "memory cards",
+      "encryption methods",
+      "key management",
+      "access controls"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "encrypted USB drives",
+      "device encryption tools",
+      "removable media controls",
+      "encryption management",
+      "key escrow systems"
+    ],
+    relatedSafeguards: ["3.1", "3.6", "3.7", "3.10", "3.11"],
+    keywords: ["encrypt", "data", "removable", "media", "portable", "storage", "USB"]
+  },
+  "3.10": {
+    id: "3.10",
+    title: "Encrypt Sensitive Data in Transit",
+    description: "Encrypt sensitive data in transit",
+    implementationGroup: "IG2",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "encrypt sensitive data",
+      "in transit requirement",
+      "transmission encryption policy",
+      "transit encryption governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "sensitive data encryption",
+      "data in transit",
+      "transmission protection",
+      "communication security"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "network protocols",
+      "encryption protocols",
+      "TLS/SSL implementation",
+      "VPN tunneling",
+      "secure communication channels",
+      "certificate management",
+      "key exchange"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "TLS encryption",
+      "VPN solutions",
+      "secure email gateways",
+      "encrypted file transfer",
+      "secure messaging systems"
+    ],
+    relatedSafeguards: ["3.1", "3.7", "3.8", "3.11", "13.1", "13.2"],
+    keywords: ["encrypt", "sensitive", "data", "transit", "transmission", "TLS", "communication"]
+  },
+  "3.11": {
+    id: "3.11",
+    title: "Encrypt Sensitive Data at Rest",
+    description: "Encrypt sensitive data at rest",
+    implementationGroup: "IG2",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "encrypt sensitive data",
+      "at rest requirement",
+      "storage encryption policy",
+      "rest encryption governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "sensitive data encryption",
+      "data at rest",
+      "storage protection",
+      "persistent data security"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "database encryption",
+      "file system encryption",
+      "application-level encryption",
+      "cloud storage encryption",
+      "backup encryption",
+      "key management systems",
+      "encryption algorithms"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "transparent data encryption",
+      "column-level encryption",
+      "file-level encryption",
+      "key management services",
+      "hardware security modules"
+    ],
+    relatedSafeguards: ["3.1", "3.6", "3.7", "3.9", "3.10", "11.1"],
+    keywords: ["encrypt", "sensitive", "data", "rest", "storage", "database", "persistent"]
+  },
+  "3.12": {
+    id: "3.12",
+    title: "Segment Data Processing and Storage Based on Classification",
+    description: "Segment data processing and storage based on the classification of the data",
+    implementationGroup: "IG3",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "segment data processing",
+      "segment data storage",
+      "based on classification",
+      "segmentation governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data segmentation",
+      "processing segregation",
+      "storage segregation",
+      "classification-based separation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "network segmentation",
+      "logical separation",
+      "physical separation",
+      "processing environments",
+      "storage zones",
+      "access boundaries",
+      "isolation controls"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network segmentation tools",
+      "virtualization platforms",
+      "container isolation",
+      "zone-based architecture",
+      "micro-segmentation"
+    ],
+    relatedSafeguards: ["3.1", "3.7", "12.1", "12.2", "12.3"],
+    keywords: ["segment", "data", "processing", "storage", "classification", "separation", "isolation"]
+  },
+  "3.13": {
+    id: "3.13",
+    title: "Deploy a Data Loss Prevention Solution",
+    description: "Deploy a data loss prevention solution on assets containing sensitive data",
+    implementationGroup: "IG3",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy DLP solution",
+      "assets containing sensitive data",
+      "data loss prevention requirement",
+      "DLP governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data loss prevention solution",
+      "sensitive data assets",
+      "data leakage prevention",
+      "data exfiltration controls"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "endpoint DLP",
+      "network DLP",
+      "email DLP",
+      "web DLP",
+      "cloud DLP",
+      "content inspection",
+      "policy enforcement"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "DLP platforms",
+      "content analysis engines",
+      "policy management systems",
+      "incident response integration",
+      "monitoring and alerting"
+    ],
+    relatedSafeguards: ["3.1", "3.7", "3.8", "3.10", "3.11"],
+    keywords: ["deploy", "data", "loss", "prevention", "solution", "sensitive", "DLP"]
+  },
+  "3.14": {
+    id: "3.14",
+    title: "Log Sensitive Data Access",
+    description: "Log sensitive data access, including modification and disposal",
+    implementationGroup: "IG3",
+    assetType: ["data"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "log sensitive data access",
+      "including modification disposal",
+      "data access logging requirement",
+      "access monitoring governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "sensitive data access logging",
+      "modification logging",
+      "disposal logging",
+      "comprehensive access tracking"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "access events",
+      "user identification",
+      "timestamp recording",
+      "operation type logging",
+      "data identification",
+      "source system logging",
+      "audit trail maintenance"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "database audit logs",
+      "file access monitoring",
+      "SIEM integration",
+      "log management platforms",
+      "activity monitoring tools"
+    ],
+    relatedSafeguards: ["3.1", "3.7", "3.8", "8.1", "8.2"],
+    keywords: ["log", "sensitive", "data", "access", "modification", "disposal", "audit"]
+  },
+  "4.1": {
+    id: "4.1",
+    title: "Establish and Maintain a Secure Configuration Process",
+    description: "Establish and maintain a secure configuration process for enterprise assets and software",
+    implementationGroup: "IG1",
+    assetType: ["devices", "applications"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish secure configuration process",
+      "maintain secure configuration process",
+      "enterprise assets and software coverage",
+      "configuration management governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure configuration process",
+      "configuration management framework",
+      "standardized configuration procedures",
+      "configuration lifecycle management"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "configuration standards",
+      "baseline configurations",
+      "configuration templates",
+      "hardening procedures",
+      "configuration validation",
+      "change management integration",
+      "compliance checking"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "configuration management tools",
+      "policy management platforms",
+      "automated configuration systems",
+      "compliance scanning tools",
+      "baseline management systems"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "4.2", "4.3", "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "4.10", "4.11", "4.12"],
+    keywords: ["establish", "maintain", "secure", "configuration", "process", "enterprise", "assets", "software"]
+  },
+  "4.2": {
+    id: "4.2",
+    title: "Establish and Maintain a Secure Configuration Process for Network Infrastructure",
+    description: "Establish and maintain a secure configuration process for network infrastructure",
+    implementationGroup: "IG1",
+    assetType: ["network"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish network configuration process",
+      "maintain network configuration process",
+      "network infrastructure coverage",
+      "network security governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure network configuration process",
+      "network infrastructure management",
+      "network security standards",
+      "network configuration lifecycle"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "network device configurations",
+      "routing configurations",
+      "switching configurations",
+      "firewall configurations",
+      "wireless configurations",
+      "network segmentation",
+      "access control configurations"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network configuration tools",
+      "network automation platforms",
+      "configuration templates",
+      "network compliance scanners",
+      "infrastructure as code"
+    ],
+    relatedSafeguards: ["1.1", "4.1", "4.3", "4.4", "4.5", "12.1", "12.2"],
+    keywords: ["establish", "maintain", "secure", "configuration", "network", "infrastructure", "process"]
+  },
+  "4.3": {
+    id: "4.3",
+    title: "Configure Automatic Session Locking on Enterprise Assets",
+    description: "Configure automatic session locking on enterprise assets after a defined period of inactivity",
+    implementationGroup: "IG1",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "configure automatic session locking",
+      "enterprise assets coverage",
+      "defined period requirement",
+      "session security policy"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automatic session locking",
+      "defined inactivity period",
+      "session timeout enforcement",
+      "unauthorized access prevention"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "timeout configurations",
+      "screen saver activation",
+      "workstation locking",
+      "mobile device locking",
+      "server console locking",
+      "application session timeouts",
+      "idle session detection"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "group policy settings",
+      "mobile device management",
+      "screen saver configurations",
+      "application timeout settings",
+      "automated locking mechanisms"
+    ],
+    relatedSafeguards: ["1.1", "4.1", "4.2", "5.1", "6.1"],
+    keywords: ["configure", "automatic", "session", "locking", "enterprise", "assets", "inactivity", "timeout"]
+  },
+  "4.4": {
+    id: "4.4",
+    title: "Implement and Manage a Firewall on Servers",
+    description: "Implement and manage a firewall on servers",
+    implementationGroup: "IG1",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "implement firewall on servers",
+      "manage firewall on servers",
+      "server protection requirement",
+      "firewall management governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "firewall implementation",
+      "firewall management",
+      "server protection",
+      "network traffic filtering"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "firewall rules configuration",
+      "port access control",
+      "protocol filtering",
+      "traffic monitoring",
+      "rule optimization",
+      "logging configuration",
+      "exception management"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "host-based firewalls",
+      "operating system firewalls",
+      "third-party firewall software",
+      "firewall management tools",
+      "centralized rule management"
+    ],
+    relatedSafeguards: ["1.1", "4.1", "4.2", "4.5", "12.1", "13.1"],
+    keywords: ["implement", "manage", "firewall", "servers", "protection", "filtering", "rules"]
+  },
+  "4.5": {
+    id: "4.5",
+    title: "Implement and Manage a Firewall on End-User Devices",
+    description: "Implement and manage a firewall on end-user devices",
+    implementationGroup: "IG1",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "implement firewall on end-user devices",
+      "manage firewall on end-user devices",
+      "end-user device protection",
+      "firewall policy enforcement"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "firewall implementation",
+      "firewall management",
+      "end-user device protection",
+      "personal firewall deployment"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "desktop firewall configuration",
+      "laptop firewall configuration",
+      "mobile device firewall",
+      "application-based rules",
+      "network profile management",
+      "exception handling",
+      "centralized management"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Windows Defender Firewall",
+      "macOS firewall",
+      "third-party endpoint firewalls",
+      "mobile device management",
+      "centralized firewall management"
+    ],
+    relatedSafeguards: ["1.1", "4.1", "4.2", "4.4", "5.1"],
+    keywords: ["implement", "manage", "firewall", "end-user", "devices", "personal", "protection"]
+  },
+  "4.6": {
+    id: "4.6",
+    title: "Securely Manage Enterprise Assets and Software",
+    description: "Securely manage enterprise assets and software",
+    implementationGroup: "IG2",
+    assetType: ["devices", "applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "securely manage enterprise assets",
+      "securely manage software",
+      "secure management practices",
+      "asset and software governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure asset management",
+      "secure software management",
+      "management security controls",
+      "administrative access protection"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "administrative access controls",
+      "privileged account management",
+      "secure remote management",
+      "management interface protection",
+      "configuration change controls",
+      "management tool security",
+      "secure maintenance procedures"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "privileged access management",
+      "secure remote access tools",
+      "configuration management systems",
+      "change management platforms",
+      "secure administration protocols"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "4.1", "4.7", "5.1", "5.4"],
+    keywords: ["securely", "manage", "enterprise", "assets", "software", "administrative", "privileged"]
+  },
+  "4.7": {
+    id: "4.7",
+    title: "Manage Default Accounts on Enterprise Assets and Software",
+    description: "Manage default accounts on enterprise assets and software",
+    implementationGroup: "IG2",
+    assetType: ["devices", "applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "manage default accounts",
+      "enterprise assets coverage",
+      "software coverage",
+      "default account governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "default account management",
+      "account security controls",
+      "default credential elimination",
+      "account hardening"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "default password changes",
+      "default account disabling",
+      "vendor default credentials",
+      "system account management",
+      "service account management",
+      "account enumeration prevention",
+      "credential strength requirements"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "credential management tools",
+      "account discovery scanners",
+      "password management systems",
+      "automated account hardening",
+      "vulnerability scanners"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "4.1", "4.6", "5.1", "5.2", "5.3"],
+    keywords: ["manage", "default", "accounts", "enterprise", "assets", "software", "credentials", "passwords"]
+  },
+  "4.8": {
+    id: "4.8",
+    title: "Uninstall or Disable Unnecessary Services on Enterprise Assets and Software",
+    description: "Uninstall or disable unnecessary services on enterprise assets and software",
+    implementationGroup: "IG2",
+    assetType: ["devices", "applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "uninstall unnecessary services",
+      "disable unnecessary services",
+      "enterprise assets coverage",
+      "service minimization governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "unnecessary service removal",
+      "service disabling",
+      "attack surface reduction",
+      "minimal service deployment"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "service inventory",
+      "service necessity assessment",
+      "running services analysis",
+      "port closure requirements",
+      "daemon management",
+      "startup service control",
+      "service hardening"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "service management tools",
+      "port scanning tools",
+      "configuration baselines",
+      "system hardening guides",
+      "automated service management"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "4.1", "4.9", "4.10"],
+    keywords: ["uninstall", "disable", "unnecessary", "services", "enterprise", "assets", "minimization", "hardening"]
+  },
+  "4.9": {
+    id: "4.9",
+    title: "Configure Trusted DNS Servers on Enterprise Assets",
+    description: "Configure trusted DNS servers on enterprise assets",
+    implementationGroup: "IG2",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "configure trusted DNS servers",
+      "enterprise assets coverage",
+      "DNS security requirement",
+      "trusted DNS governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "trusted DNS server configuration",
+      "DNS security controls",
+      "secure name resolution",
+      "DNS poisoning prevention"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "DNS server selection",
+      "DNS filtering implementation",
+      "malicious domain blocking",
+      "DNS over HTTPS configuration",
+      "DNS over TLS configuration",
+      "internal DNS management",
+      "DNS monitoring"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure DNS services",
+      "DNS filtering solutions",
+      "internal DNS servers",
+      "DNS security tools",
+      "network-level DNS controls"
+    ],
+    relatedSafeguards: ["1.1", "4.1", "4.2", "4.8", "13.1"],
+    keywords: ["configure", "trusted", "DNS", "servers", "enterprise", "assets", "secure", "resolution"]
+  },
+  "4.10": {
+    id: "4.10",
+    title: "Enforce Automatic Device Lockout on Portable End-User Devices",
+    description: "Enforce automatic device lockout on portable end-user devices",
+    implementationGroup: "IG2",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "enforce automatic device lockout",
+      "portable end-user devices",
+      "lockout policy enforcement",
+      "device security governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automatic device lockout",
+      "portable device protection",
+      "unauthorized access prevention",
+      "device lock enforcement"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "mobile device lockout",
+      "laptop lockout policies",
+      "tablet lockout configuration",
+      "biometric lockout options",
+      "PIN/password lockout",
+      "failed attempt thresholds",
+      "lockout duration settings"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "mobile device management",
+      "device policy enforcement",
+      "biometric authentication",
+      "automated lockout systems",
+      "device compliance tools"
+    ],
+    relatedSafeguards: ["1.1", "4.3", "4.5", "5.1", "6.1"],
+    keywords: ["enforce", "automatic", "device", "lockout", "portable", "end-user", "devices", "mobile"]
+  },
+  "4.11": {
+    id: "4.11",
+    title: "Enforce Remote Wipe Capability on Portable End-User Devices",
+    description: "Enforce remote wipe capability on portable end-user devices",
+    implementationGroup: "IG2",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "enforce remote wipe capability",
+      "portable end-user devices",
+      "remote wipe governance",
+      "device data protection policy"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "remote wipe capability",
+      "portable device data protection",
+      "emergency data removal",
+      "lost device security"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "mobile device wipe",
+      "laptop remote wipe",
+      "tablet data removal",
+      "selective wipe capabilities",
+      "full device wipe options",
+      "wipe trigger mechanisms",
+      "wipe verification"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "mobile device management",
+      "remote wipe solutions",
+      "cloud-based device management",
+      "enterprise mobility management",
+      "device tracking systems"
+    ],
+    relatedSafeguards: ["1.1", "3.5", "4.10", "5.1"],
+    keywords: ["enforce", "remote", "wipe", "capability", "portable", "end-user", "devices", "data", "removal"]
+  },
+  "4.12": {
+    id: "4.12",
+    title: "Separate Enterprise Workloads from Untrusted Networks",
+    description: "Separate enterprise workloads from untrusted networks",
+    implementationGroup: "IG3",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "separate enterprise workloads",
+      "from untrusted networks",
+      "network separation requirement",
+      "workload isolation governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "enterprise workload separation",
+      "untrusted network isolation",
+      "network boundary controls",
+      "secure network architecture"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "network segmentation",
+      "VLAN separation",
+      "subnet isolation",
+      "firewall boundaries",
+      "DMZ implementation",
+      "air gap controls",
+      "network access controls"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network segmentation tools",
+      "VLAN management systems",
+      "next-generation firewalls",
+      "network access control systems",
+      "micro-segmentation platforms"
+    ],
+    relatedSafeguards: ["4.1", "4.2", "4.4", "12.1", "12.2", "12.3"],
+    keywords: ["separate", "enterprise", "workloads", "untrusted", "networks", "isolation", "segmentation"]
+  },
+  "5.2": {
+    id: "5.2",
+    title: "Use Unique Passwords",
+    description: "Use unique passwords for all enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use unique passwords",
+      "all enterprise assets",
+      "password uniqueness requirement",
+      "password governance policy"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "unique passwords",
+      "password uniqueness enforcement",
+      "no password reuse",
+      "distinct credentials"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "password complexity requirements",
+      "password history tracking",
+      "password reuse prevention",
+      "account-specific passwords",
+      "service account passwords",
+      "system account passwords",
+      "password strength validation"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "password management systems",
+      "password policy enforcement",
+      "active directory policies",
+      "password generators",
+      "credential vaults"
+    ],
+    relatedSafeguards: ["5.1", "5.3", "5.4", "5.5", "5.6"],
+    keywords: ["unique", "passwords", "enterprise", "assets", "password", "reuse", "complexity"]
+  },
+  "5.3": {
+    id: "5.3",
+    title: "Disable Dormant Accounts",
+    description: "Delete or disable any dormant accounts after a period of 45 days of inactivity",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "delete or disable dormant accounts",
+      "45 days inactivity period",
+      "dormant account management",
+      "account lifecycle governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "dormant account identification",
+      "account deletion or disabling",
+      "inactivity period monitoring",
+      "automated account management"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "account activity monitoring",
+      "login tracking",
+      "last access timestamps",
+      "account status management",
+      "deactivation procedures",
+      "account archival processes",
+      "reactivation workflows"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "identity management systems",
+      "automated account lifecycle tools",
+      "activity monitoring solutions",
+      "account governance platforms",
+      "directory service automation"
+    ],
+    relatedSafeguards: ["5.1", "5.2", "5.4", "5.5", "5.6"],
+    keywords: ["disable", "dormant", "accounts", "45", "days", "inactivity", "delete", "lifecycle"]
+  },
+  "5.4": {
+    id: "5.4",
+    title: "Restrict Administrator Privileges to Dedicated Administrator Accounts",
+    description: "Restrict administrator privileges to dedicated administrator accounts on enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "restrict administrator privileges",
+      "dedicated administrator accounts",
+      "enterprise assets coverage",
+      "privilege separation governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "administrator privilege restriction",
+      "dedicated admin accounts",
+      "privilege separation",
+      "role-based access control"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "privileged account identification",
+      "admin account separation",
+      "regular user accounts",
+      "privilege escalation controls",
+      "admin account monitoring",
+      "privileged access workflows",
+      "least privilege enforcement"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "privileged access management",
+      "role-based access control systems",
+      "admin account management tools",
+      "privilege escalation monitoring",
+      "just-in-time access"
+    ],
+    relatedSafeguards: ["4.6", "5.1", "5.2", "5.3", "5.5", "5.6", "6.1", "6.2"],
+    keywords: ["restrict", "administrator", "privileges", "dedicated", "accounts", "enterprise", "assets", "privileged"]
+  },
+  "5.5": {
+    id: "5.5",
+    title: "Establish and Maintain an Inventory of Service Accounts",
+    description: "Establish and maintain an inventory of service accounts",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "establish service account inventory",
+      "maintain service account inventory",
+      "service account governance",
+      "inventory management requirements"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "service account inventory",
+      "service account identification",
+      "account classification",
+      "service account tracking"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "service account names",
+      "associated services",
+      "account purposes",
+      "account owners",
+      "privilege levels",
+      "account dependencies",
+      "credential management"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "service account discovery tools",
+      "identity management platforms",
+      "account inventory systems",
+      "automated discovery agents",
+      "credential scanning tools"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "5.1", "5.2", "5.3", "5.4", "5.6"],
+    keywords: ["establish", "maintain", "inventory", "service", "accounts", "identification", "tracking"]
+  },
+  "5.6": {
+    id: "5.6",
+    title: "Centralize Account Management",
+    description: "Centralize account management through a directory service or identity provider",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "centralize account management",
+      "directory service or identity provider",
+      "centralized management requirement",
+      "identity governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "centralized account management",
+      "directory service integration",
+      "identity provider deployment",
+      "unified account control"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "directory service implementation",
+      "identity provider integration",
+      "single sign-on capabilities",
+      "federated identity management",
+      "account provisioning automation",
+      "centralized authentication",
+      "identity synchronization"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Active Directory services",
+      "LDAP directories",
+      "cloud identity providers",
+      "identity management platforms",
+      "federation services"
+    ],
+    relatedSafeguards: ["5.1", "5.2", "5.3", "5.4", "5.5", "6.1", "6.2", "6.3"],
+    keywords: ["centralize", "account", "management", "directory", "service", "identity", "provider"]
+  },
+  "6.1": {
+    id: "6.1",
+    title: "Establish an Access Granting Process",
+    description: "Establish and follow a process for granting access to enterprise assets upon new hire, promotion, or role change",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "establish access granting process",
+      "follow access granting process",
+      "new hire promotion role change coverage",
+      "access governance framework"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "access granting process",
+      "new hire access provisioning",
+      "promotion access updates",
+      "role change access management"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "access request workflows",
+      "manager approval processes",
+      "role-based access assignment",
+      "access provisioning procedures",
+      "onboarding access checklists",
+      "access documentation requirements",
+      "approval audit trails"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "identity governance platforms",
+      "access request systems",
+      "workflow automation tools",
+      "role-based provisioning systems",
+      "approval workflow tools"
+    ],
+    relatedSafeguards: ["5.1", "5.4", "5.6", "6.2", "6.3", "6.4", "6.5", "6.6", "6.7", "6.8"],
+    keywords: ["establish", "access", "granting", "process", "new", "hire", "promotion", "role", "change"]
+  },
+  "6.2": {
+    id: "6.2",
+    title: "Establish an Access Revoking Process",
+    description: "Establish and follow a process for revoking access to enterprise assets upon termination, demotion, or role change",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "establish access revoking process",
+      "follow access revoking process",
+      "termination demotion role change coverage",
+      "access revocation governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "access revoking process",
+      "termination access removal",
+      "demotion access reduction",
+      "role change access adjustment"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "termination procedures",
+      "access revocation checklists",
+      "account deactivation processes",
+      "credential recovery procedures",
+      "system access removal",
+      "physical access revocation",
+      "asset return procedures"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "identity governance platforms",
+      "automated deprovisioning",
+      "HR system integration",
+      "access revocation workflows",
+      "termination checklist systems"
+    ],
+    relatedSafeguards: ["5.1", "5.3", "5.4", "5.6", "6.1", "6.3", "6.4", "6.5", "6.6", "6.7", "6.8"],
+    keywords: ["establish", "access", "revoking", "process", "termination", "demotion", "role", "change"]
+  },
+  "6.4": {
+    id: "6.4",
+    title: "Require MFA for Remote Network Access",
+    description: "Require MFA for remote network access",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "require MFA for remote access",
+      "remote network access coverage",
+      "MFA enforcement policy",
+      "remote access governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "multi-factor authentication",
+      "remote network access",
+      "MFA enforcement",
+      "remote access security"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "VPN access controls",
+      "remote desktop authentication",
+      "cloud service access",
+      "mobile device access",
+      "authentication factors",
+      "MFA token management",
+      "backup authentication methods"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "VPN with MFA integration",
+      "remote access gateways",
+      "cloud identity providers",
+      "MFA token systems",
+      "biometric authentication"
+    ],
+    relatedSafeguards: ["5.6", "6.1", "6.2", "6.3", "6.5", "6.6"],
+    keywords: ["require", "MFA", "remote", "network", "access", "multi-factor", "authentication", "VPN"]
+  },
+  "6.5": {
+    id: "6.5",
+    title: "Require MFA for Administrative Access",
+    description: "Require MFA for administrative access to enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "require MFA for administrative access",
+      "enterprise assets coverage",
+      "administrative access governance",
+      "MFA policy enforcement"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "multi-factor authentication",
+      "administrative access",
+      "privileged account protection",
+      "MFA enforcement"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "administrator account protection",
+      "privileged access controls",
+      "system administration access",
+      "database administration access",
+      "network administration access",
+      "security administration access",
+      "emergency access procedures"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "privileged access management",
+      "administrative MFA systems",
+      "just-in-time access",
+      "privileged session management",
+      "administrative workstations"
+    ],
+    relatedSafeguards: ["5.4", "5.6", "6.1", "6.2", "6.3", "6.4", "6.6"],
+    keywords: ["require", "MFA", "administrative", "access", "enterprise", "assets", "privileged", "protection"]
+  },
+  "6.6": {
+    id: "6.6",
+    title: "Establish and Maintain an Inventory of Authentication and Authorization Systems",
+    description: "Establish and maintain an inventory of authentication and authorization systems",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "establish auth system inventory",
+      "maintain auth system inventory",
+      "authentication authorization coverage",
+      "auth system governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "authentication system inventory",
+      "authorization system inventory",
+      "identity system tracking",
+      "access control system management"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "identity providers",
+      "authentication servers",
+      "authorization systems",
+      "single sign-on systems",
+      "directory services",
+      "access control lists",
+      "federation services"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "identity system discovery tools",
+      "authentication inventory platforms",
+      "system catalog management",
+      "integration mapping tools",
+      "identity architecture documentation"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "5.1", "5.6", "6.1", "6.2", "6.3", "6.4", "6.5", "6.7", "6.8"],
+    keywords: ["establish", "maintain", "inventory", "authentication", "authorization", "systems", "identity"]
+  },
+  "6.7": {
+    id: "6.7",
+    title: "Centralize Access Control",
+    description: "Centralize access control for all enterprise assets through a directory service or SSO provider",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "centralize access control",
+      "all enterprise assets",
+      "directory service or SSO provider",
+      "centralized control governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "centralized access control",
+      "directory service integration",
+      "SSO provider deployment",
+      "unified access management"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "single sign-on implementation",
+      "directory service integration",
+      "federated authentication",
+      "centralized authorization",
+      "access policy management",
+      "identity federation",
+      "cross-platform integration"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Active Directory integration",
+      "SAML-based SSO",
+      "OAuth implementations",
+      "identity federation platforms",
+      "centralized access gateways"
+    ],
+    relatedSafeguards: ["5.6", "6.1", "6.2", "6.3", "6.4", "6.5", "6.6", "6.8"],
+    keywords: ["centralize", "access", "control", "enterprise", "assets", "directory", "service", "SSO"]
+  },
+  "6.8": {
+    id: "6.8",
+    title: "Define and Maintain Role-Based Access Control",
+    description: "Define and maintain role-based access control, through determining and documenting the access rights necessary for each role within the enterprise",
+    implementationGroup: "IG3",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "define role-based access control",
+      "maintain role-based access control",
+      "determine access rights for each role",
+      "document access rights"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "role-based access control",
+      "access rights determination",
+      "role documentation",
+      "RBAC implementation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "role definitions",
+      "permission matrices",
+      "access entitlements",
+      "role hierarchies",
+      "job function mapping",
+      "segregation of duties",
+      "role certification processes"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "RBAC management systems",
+      "role mining tools",
+      "access certification platforms",
+      "permission analysis tools",
+      "role governance systems"
+    ],
+    relatedSafeguards: ["5.1", "5.4", "6.1", "6.2", "6.6", "6.7"],
+    keywords: ["define", "maintain", "role-based", "access", "control", "RBAC", "roles", "permissions"]
+  },
+  "7.2": {
+    id: "7.2",
+    title: "Establish and Maintain a Remediation Process",
+    description: "Establish and maintain a remediation process and SLA for security vulnerabilities",
+    implementationGroup: "IG1",
+    assetType: ["applications"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "establish remediation process",
+      "maintain remediation process",
+      "SLA for security vulnerabilities",
+      "vulnerability remediation governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "remediation process",
+      "service level agreement",
+      "security vulnerability handling",
+      "remediation timeline management"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "vulnerability prioritization",
+      "remediation timelines",
+      "escalation procedures",
+      "patch management integration",
+      "risk-based remediation",
+      "remediation tracking",
+      "verification procedures"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "vulnerability management platforms",
+      "patch management systems",
+      "remediation workflow tools",
+      "SLA tracking systems",
+      "risk scoring frameworks"
+    ],
+    relatedSafeguards: ["7.1", "7.3", "7.4", "7.5", "7.6", "7.7"],
+    keywords: ["establish", "maintain", "remediation", "process", "SLA", "security", "vulnerabilities"]
+  },
+  "7.3": {
+    id: "7.3",
+    title: "Perform Automated Operating System Patch Management",
+    description: "Perform automated operating system patch management on enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform automated OS patch management",
+      "enterprise assets coverage",
+      "automated patching requirement",
+      "patch management governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automated operating system patching",
+      "enterprise asset coverage",
+      "patch deployment automation",
+      "OS security updates"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "patch deployment scheduling",
+      "patch testing procedures",
+      "rollback capabilities",
+      "patch compliance monitoring",
+      "emergency patching procedures",
+      "patch approval workflows",
+      "system restart management"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Windows Update Services",
+      "patch management platforms",
+      "configuration management tools",
+      "automated patching solutions",
+      "system center tools"
+    ],
+    relatedSafeguards: ["1.1", "4.1", "7.1", "7.2", "7.4", "7.5"],
+    keywords: ["perform", "automated", "operating", "system", "patch", "management", "enterprise", "assets"]
+  },
+  "7.4": {
+    id: "7.4",
+    title: "Perform Automated Application Patch Management",
+    description: "Perform automated application patch management on enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform automated application patching",
+      "enterprise assets coverage",
+      "automated application updates",
+      "application patch governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automated application patching",
+      "enterprise asset coverage",
+      "application security updates",
+      "patch deployment automation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "application update management",
+      "third-party software updates",
+      "browser plugin updates",
+      "security patch prioritization",
+      "application compatibility testing",
+      "update rollback procedures",
+      "vendor patch notifications"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "application update managers",
+      "third-party patch solutions",
+      "automated deployment tools",
+      "software inventory integration",
+      "patch compliance scanners"
+    ],
+    relatedSafeguards: ["2.1", "2.2", "7.1", "7.2", "7.3", "7.5"],
+    keywords: ["perform", "automated", "application", "patch", "management", "enterprise", "assets", "updates"]
+  },
+  "7.5": {
+    id: "7.5",
+    title: "Perform Automated Vulnerability Scans of Internal Enterprise Assets",
+    description: "Perform automated vulnerability scans of internal enterprise assets on a quarterly or more frequent basis",
+    implementationGroup: "IG2",
+    assetType: ["devices", "applications"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform automated vulnerability scans",
+      "internal enterprise assets",
+      "quarterly or more frequent basis",
+      "vulnerability scanning governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automated vulnerability scanning",
+      "internal asset coverage",
+      "quarterly scan frequency",
+      "vulnerability detection"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "network vulnerability scanning",
+      "host-based vulnerability scanning",
+      "application vulnerability scanning",
+      "database vulnerability scanning",
+      "scan scheduling",
+      "scan result analysis",
+      "false positive management"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "vulnerability scanners",
+      "network security scanners",
+      "application security scanners",
+      "automated scanning platforms",
+      "vulnerability management systems"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "7.1", "7.2", "7.3", "7.4", "7.6", "7.7"],
+    keywords: ["perform", "automated", "vulnerability", "scans", "internal", "enterprise", "assets", "quarterly"]
+  },
+  "7.6": {
+    id: "7.6",
+    title: "Perform Automated Vulnerability Scans of Externally-Exposed Enterprise Assets",
+    description: "Perform automated vulnerability scans of externally-exposed enterprise assets using either an internal or external vulnerability scanning service",
+    implementationGroup: "IG2",
+    assetType: ["devices", "applications"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform automated vulnerability scans",
+      "externally-exposed enterprise assets",
+      "internal or external scanning service",
+      "external asset scanning governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automated vulnerability scanning",
+      "externally-exposed assets",
+      "external vulnerability detection",
+      "internet-facing asset scanning"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "external network scanning",
+      "web application scanning",
+      "exposed service scanning",
+      "cloud asset scanning",
+      "external IP monitoring",
+      "internet exposure assessment",
+      "attack surface analysis"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "external vulnerability scanners",
+      "cloud security scanning",
+      "web application scanners",
+      "internet asset discovery",
+      "third-party scanning services"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "7.1", "7.2", "7.5", "7.7"],
+    keywords: ["perform", "automated", "vulnerability", "scans", "externally-exposed", "enterprise", "assets"]
+  },
+  "7.7": {
+    id: "7.7",
+    title: "Remediate Detected Vulnerabilities",
+    description: "Remediate detected vulnerabilities in software through processes and tooling on a monthly, or more frequent, basis",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "remediate detected vulnerabilities",
+      "software vulnerability remediation",
+      "monthly or more frequent basis",
+      "vulnerability remediation governance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "vulnerability remediation",
+      "detected vulnerability handling",
+      "monthly remediation cycles",
+      "software security updates"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "vulnerability assessment",
+      "risk-based prioritization",
+      "patch deployment",
+      "compensating controls",
+      "remediation verification",
+      "remediation tracking",
+      "exception management"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "vulnerability management platforms",
+      "automated remediation tools",
+      "patch management integration",
+      "remediation workflow systems",
+      "risk assessment tools"
+    ],
+    relatedSafeguards: ["7.1", "7.2", "7.3", "7.4", "7.5", "7.6"],
+    keywords: ["remediate", "detected", "vulnerabilities", "software", "monthly", "processes", "tooling"]
   }
 };
 
