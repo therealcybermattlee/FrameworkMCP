@@ -179,13 +179,13 @@ git push origin main
 - ✅ **Control 9: Email and Web Browser Protections** (7 safeguards: 9.1-9.7)
 - ✅ **Control 12: Network Infrastructure Management** (8 safeguards: 12.1-12.8)
 - ✅ **Control 13: Network Monitoring and Defense** (11 safeguards: 13.1-13.11)
+- ✅ **Control 14: Security Awareness and Skills Training** (9 safeguards: 14.1-14.9)
 
 ### In Progress
-- [ ] **Current Target**: Control 14 (Security Awareness and Skills Training)
+- [ ] **Current Target**: Control 15 (Service Provider Management)
 - [ ] **Session Status**: Ready to begin
 
 ### Remaining Controls
-- [ ] Control 14: Security Awareness and Skills Training
 - [ ] Control 15: Service Provider Management
 - [ ] Control 16: Application Software Security
 - [ ] Control 17: Incident Response Management

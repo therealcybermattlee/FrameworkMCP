@@ -3988,6 +3988,326 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["4.1", "10.1"],
     keywords: ["deploy", "maintain", "email", "server", "anti-malware", "protections", "attachment", "scanning", "sandboxing"]
+  },
+
+  // Control 14: Security Awareness and Skills Training
+  "14.1": {
+    id: "14.1",
+    title: "Establish and Maintain a Security Awareness Program",
+    description: "Establish and maintain a security awareness program. The purpose of a security awareness program is to educate the enterprise's workforce on how to interact with enterprise assets and data in a secure manner. Conduct training at hire and, at a minimum, annually. Review and update content annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain a security awareness program",
+      "conduct training at hire and at a minimum annually",
+      "review and update content annually or when significant enterprise changes occur"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "security awareness program establishment",
+      "workforce education on secure interaction",
+      "enterprise assets and data security training",
+      "training frequency requirements"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "establish security awareness program",
+      "maintain security awareness program",
+      "educate enterprise workforce",
+      "how to interact with enterprise assets",
+      "how to interact with data in secure manner",
+      "conduct training at hire",
+      "conduct training minimum annually",
+      "review and update content annually",
+      "when significant enterprise changes occur"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "security training and awareness policy/process",
+      "training documentation systems",
+      "learning management systems"
+    ],
+    relatedSafeguards: ["14.2", "14.3", "14.4", "14.5", "14.6", "14.7", "14.8", "14.9"],
+    keywords: ["establish", "maintain", "security", "awareness", "program", "educate", "workforce", "training", "annually"]
+  },
+  "14.2": {
+    id: "14.2",
+    title: "Train Workforce Members to Recognize Social Engineering Attacks",
+    description: "Train workforce members to recognize social engineering attacks, such as phishing, business email compromise (BEC), pretexting, and tailgating",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "train workforce members to recognize social engineering attacks",
+      "such as phishing, business email compromise, pretexting, and tailgating"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "workforce training on social engineering recognition",
+      "phishing attack awareness",
+      "business email compromise awareness",
+      "pretexting attack awareness",
+      "tailgating attack awareness"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "train workforce members",
+      "to recognize social engineering attacks",
+      "such as phishing",
+      "such as business email compromise (BEC)",
+      "such as pretexting",
+      "such as tailgating"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "phishing simulation platforms",
+      "social engineering awareness training",
+      "security awareness modules"
+    ],
+    relatedSafeguards: ["14.1"],
+    keywords: ["train", "workforce", "recognize", "social", "engineering", "attacks", "phishing", "BEC", "pretexting", "tailgating"]
+  },
+  "14.3": {
+    id: "14.3",
+    title: "Train Workforce Members on Authentication Best Practices",
+    description: "Train workforce members on authentication best practices. Example topics include MFA, password composition, and credential management",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "train workforce members on authentication best practices",
+      "example topics include MFA, password composition, and credential management"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "authentication best practices training",
+      "MFA training",
+      "password composition training",
+      "credential management training"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "train workforce members",
+      "on authentication best practices",
+      "example topics include MFA",
+      "example topics include password composition",
+      "example topics include credential management"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "authentication training modules",
+      "password security training",
+      "MFA awareness programs"
+    ],
+    relatedSafeguards: ["14.1", "6.2", "6.3"],
+    keywords: ["train", "workforce", "authentication", "best", "practices", "MFA", "password", "composition", "credential", "management"]
+  },
+  "14.4": {
+    id: "14.4",
+    title: "Train Workforce on Data Handling Best Practices",
+    description: "Train workforce members on how to identify and properly store, transfer, archive, and destroy sensitive data. This also includes training workforce members on clear screen and desk best practices, such as locking their screen when they step away from their enterprise asset, erasing physical and virtual whiteboards at the end of meetings, and storing data and assets securely",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "train workforce members on how to identify and properly store, transfer, archive, and destroy sensitive data",
+      "training on clear screen and desk best practices",
+      "such as locking screen when stepping away, erasing whiteboards, storing data securely"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "data handling best practices training",
+      "sensitive data identification training",
+      "secure data storage, transfer, archive, destroy procedures",
+      "clear screen and desk policies"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "train workforce members on how to",
+      "identify sensitive data",
+      "properly store sensitive data",
+      "properly transfer sensitive data",
+      "properly archive sensitive data",
+      "properly destroy sensitive data",
+      "clear screen best practices",
+      "clear desk best practices",
+      "locking screen when stepping away",
+      "erasing physical whiteboards at end of meetings",
+      "erasing virtual whiteboards at end of meetings",
+      "storing data and assets securely"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "data handling training modules",
+      "clean desk policy training",
+      "data classification training"
+    ],
+    relatedSafeguards: ["14.1", "3.1", "3.2"],
+    keywords: ["train", "workforce", "data", "handling", "best", "practices", "store", "transfer", "archive", "destroy", "sensitive", "clear", "screen", "desk"]
+  },
+  "14.5": {
+    id: "14.5",
+    title: "Train Workforce Members on Causes of Unintentional Data Exposure",
+    description: "Train workforce members to be aware of causes for unintentional data exposure. Example topics include mis-delivery of sensitive data, losing a portable end-user device, or publishing data to unintended audiences",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "train workforce members to be aware of causes for unintentional data exposure",
+      "example topics include mis-delivery, losing portable devices, publishing to unintended audiences"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "unintentional data exposure awareness training",
+      "mis-delivery prevention training",
+      "portable device security awareness",
+      "data publication controls training"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "train workforce members",
+      "to be aware of causes for unintentional data exposure",
+      "example topics include mis-delivery of sensitive data",
+      "example topics include losing a portable end-user device",
+      "example topics include publishing data to unintended audiences"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "data loss prevention training",
+      "device security awareness training",
+      "data sharing awareness programs"
+    ],
+    relatedSafeguards: ["14.1", "3.3"],
+    keywords: ["train", "workforce", "unintentional", "data", "exposure", "mis-delivery", "losing", "portable", "device", "publishing", "unintended", "audiences"]
+  },
+  "14.6": {
+    id: "14.6",
+    title: "Train Workforce Members on Recognizing and Reporting Security Incidents",
+    description: "Train workforce members to be able to recognize a potential incident and be able to report such an incident",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "train workforce members to be able to recognize a potential incident",
+      "train workforce members to be able to report such an incident"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "security incident recognition training",
+      "incident reporting training",
+      "potential incident identification",
+      "incident reporting procedures"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "train workforce members",
+      "to be able to recognize a potential incident",
+      "to be able to report such an incident"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "incident response training",
+      "security incident awareness programs",
+      "incident reporting tools"
+    ],
+    relatedSafeguards: ["14.1", "17.3"],
+    keywords: ["train", "workforce", "recognizing", "reporting", "security", "incidents", "potential", "incident"]
+  },
+  "14.7": {
+    id: "14.7",
+    title: "Train Workforce on How to Identify and Report if Their Enterprise Assets are Missing Security Updates",
+    description: "Train workforce to understand how to verify and report out-of-date software patches or any failures in automated processes and tools. Part of this training should include notifying IT personnel of any failures in automated processes and tools",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "train workforce to understand how to verify and report out-of-date software patches",
+      "train on reporting failures in automated processes and tools",
+      "include notifying IT personnel of any failures in automated processes and tools"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "security update verification training",
+      "out-of-date software patch identification",
+      "automated process failure reporting",
+      "IT personnel notification procedures"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "train workforce to understand how to",
+      "verify out-of-date software patches",
+      "report out-of-date software patches",
+      "report any failures in automated processes",
+      "report any failures in automated tools",
+      "training should include notifying IT personnel",
+      "of any failures in automated processes",
+      "of any failures in automated tools"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "patch management awareness training",
+      "IT support reporting procedures",
+      "automated system monitoring training"
+    ],
+    relatedSafeguards: ["14.1", "7.3", "7.4"],
+    keywords: ["train", "workforce", "identify", "report", "enterprise", "assets", "missing", "security", "updates", "patches", "automated", "processes"]
+  },
+  "14.8": {
+    id: "14.8",
+    title: "Train Workforce on the Dangers of Connecting to and Transmitting Enterprise Data Over Insecure Networks",
+    description: "Train workforce members on the dangers of connecting to, and transmitting data over, insecure networks for enterprise activities. If the enterprise has remote workers, training must include guidance to ensure that all users securely configure their home network infrastructure",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "train workforce members on dangers of connecting to and transmitting data over insecure networks",
+      "if enterprise has remote workers, training must include guidance for secure home network configuration"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "insecure network dangers training",
+      "secure connection practices",
+      "enterprise data transmission security",
+      "remote worker home network security"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "train workforce members on the dangers of",
+      "connecting to insecure networks",
+      "transmitting data over insecure networks",
+      "for enterprise activities",
+      "if enterprise has remote workers",
+      "training must include guidance",
+      "to ensure all users securely configure",
+      "their home network infrastructure"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "network security awareness training",
+      "remote work security training",
+      "home network configuration guides"
+    ],
+    relatedSafeguards: ["14.1", "12.1"],
+    keywords: ["train", "workforce", "dangers", "connecting", "transmitting", "enterprise", "data", "insecure", "networks", "remote", "workers", "home", "network"]
+  },
+  "14.9": {
+    id: "14.9",
+    title: "Conduct Role-Specific Security Awareness and Skills Training",
+    description: "Conduct role-specific security awareness and skills training. Example implementations include secure system administration courses for IT professionals, OWASP Top 10 vulnerability awareness and prevention training for web application developers, and advanced social engineering awareness training for high-profile roles",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "conduct role-specific security awareness and skills training",
+      "example implementations include secure system administration courses, OWASP Top 10 training, and advanced social engineering training"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "role-specific security awareness training",
+      "role-specific skills training",
+      "IT professional system administration courses",
+      "developer OWASP Top 10 training",
+      "high-profile role advanced social engineering training"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "conduct role-specific security awareness training",
+      "conduct role-specific skills training",
+      "secure system administration courses for IT professionals",
+      "OWASP Top 10 vulnerability awareness and prevention training for web application developers",
+      "advanced social engineering awareness training for high-profile roles"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "role-based training programs",
+      "specialized security courses",
+      "professional development programs"
+    ],
+    relatedSafeguards: ["14.1", "16.9"],
+    keywords: ["conduct", "role-specific", "security", "awareness", "skills", "training", "IT", "professionals", "OWASP", "developers", "high-profile", "roles"]
   }
 };
 
