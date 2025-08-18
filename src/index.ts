@@ -4308,6 +4308,265 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["14.1", "16.9"],
     keywords: ["conduct", "role-specific", "security", "awareness", "skills", "training", "IT", "professionals", "OWASP", "developers", "high-profile", "roles"]
+  },
+
+  // Control 15: Service Provider Management
+  "15.1": {
+    id: "15.1",
+    title: "Establish and Maintain an Inventory of Service Providers",
+    description: "Establish and maintain an inventory of service providers. The inventory is to list all known service providers, include classification(s), and designate an enterprise contact for each service provider. Review and update the inventory annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain an inventory of service providers",
+      "list all known service providers, include classifications, designate enterprise contact",
+      "review and update inventory annually or when significant enterprise changes occur"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "service provider inventory establishment",
+      "comprehensive service provider listing",
+      "classification system implementation",
+      "enterprise contact designation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "establish inventory of service providers",
+      "maintain inventory of service providers",
+      "list all known service providers",
+      "include classifications",
+      "designate an enterprise contact for each service provider",
+      "review and update the inventory annually",
+      "when significant enterprise changes occur that could impact this safeguard"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "third-party risk management tools",
+      "service provider management platforms",
+      "vendor inventory systems",
+      "supplier relationship management tools"
+    ],
+    relatedSafeguards: ["2.1", "8.12", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7"],
+    keywords: ["establish", "maintain", "inventory", "service", "providers", "classification", "enterprise", "contact", "review", "annually"]
+  },
+  "15.2": {
+    id: "15.2",
+    title: "Establish and Maintain a Service Provider Management Policy",
+    description: "Establish and maintain a service provider management policy. Ensure the policy addresses the classification, inventory, assessment, monitoring, and decommissioning of service providers. Review and update the policy annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain a service provider management policy",
+      "ensure policy addresses classification, inventory, assessment, monitoring, and decommissioning",
+      "review and update policy annually or when significant enterprise changes occur"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "service provider management policy establishment",
+      "comprehensive policy coverage",
+      "classification processes",
+      "inventory management processes",
+      "assessment processes",
+      "monitoring processes",
+      "decommissioning processes"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "establish service provider management policy",
+      "maintain service provider management policy",
+      "ensure policy addresses classification",
+      "ensure policy addresses inventory", 
+      "ensure policy addresses assessment",
+      "ensure policy addresses monitoring",
+      "ensure policy addresses decommissioning of service providers",
+      "review and update policy annually",
+      "when significant enterprise changes occur that could impact this safeguard"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "service provider management policy documentation",
+      "third-party risk management frameworks",
+      "vendor management policy templates",
+      "supplier governance documentation"
+    ],
+    relatedSafeguards: ["15.1", "15.3", "15.4", "15.5", "15.6", "15.7"],
+    keywords: ["establish", "maintain", "service", "provider", "management", "policy", "classification", "inventory", "assessment", "monitoring", "decommissioning"]
+  },
+  "15.3": {
+    id: "15.3",
+    title: "Classify Service Providers",
+    description: "Classify service providers. Classification consideration may include one or more characteristics, such as data sensitivity, data volume, availability requirements, applicable regulations, inherent risk, and mitigated risk. Update and review classifications annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "classify service providers",
+      "classification may include data sensitivity, data volume, availability requirements, applicable regulations, inherent risk, mitigated risk",
+      "update and review classifications annually or when significant enterprise changes occur"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "service provider classification system",
+      "risk-based classification criteria",
+      "data sensitivity classification",
+      "regulatory compliance classification"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "classify service providers",
+      "classification consideration may include one or more characteristics",
+      "such as data sensitivity",
+      "such as data volume",
+      "such as availability requirements",
+      "such as applicable regulations",
+      "such as inherent risk",
+      "such as mitigated risk",
+      "update and review classifications annually",
+      "when significant enterprise changes occur that could impact this safeguard"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "service provider management policy",
+      "risk classification frameworks",
+      "data sensitivity classification schemes",
+      "regulatory compliance matrices"
+    ],
+    relatedSafeguards: ["15.1", "15.2"],
+    keywords: ["classify", "service", "providers", "data", "sensitivity", "volume", "availability", "regulations", "risk", "classifications"]
+  },
+  "15.4": {
+    id: "15.4",
+    title: "Ensure Service Provider Contracts Include Security Requirements",
+    description: "Ensure service provider contracts include security requirements. Example requirements may include minimum security program requirements, security incident and/or data breach notification and response, data encryption requirements, and data disposal commitments. These security requirements must be consistent with the enterprise's service provider management policy. Review service provider contracts annually to ensure contracts are not missing security requirements",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "ensure service provider contracts include security requirements",
+      "security requirements must be consistent with enterprise's service provider management policy",
+      "review service provider contracts annually to ensure contracts are not missing security requirements"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "contract security requirements inclusion",
+      "minimum security program requirements",
+      "security incident and data breach notification requirements",
+      "data encryption requirements",
+      "data disposal commitments"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "ensure service provider contracts include security requirements",
+      "example requirements may include minimum security program requirements",
+      "security incident and/or data breach notification and response",
+      "data encryption requirements",
+      "data disposal commitments",
+      "security requirements must be consistent with enterprise's service provider management policy",
+      "review service provider contracts annually",
+      "to ensure contracts are not missing security requirements"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "contract management systems",
+      "service provider management policy",
+      "legal contract templates",
+      "security requirement checklists"
+    ],
+    relatedSafeguards: ["15.1", "15.2"],
+    keywords: ["ensure", "service", "provider", "contracts", "include", "security", "requirements", "incident", "breach", "notification", "encryption", "disposal"]
+  },
+  "15.5": {
+    id: "15.5",
+    title: "Assess Service Providers",
+    description: "Assess service providers consistent with the enterprise's service provider management policy. Assessment scope may vary based on classification(s), and may include review of standardized assessment reports, such as Service Organization Control 2 (SOC 2) and Payment Card Industry (PCI) Attestation of Compliance (AoC), customized questionnaires, or other appropriately rigorous processes. Reassess service providers annually, at a minimum, or with new and renewed contracts",
+    implementationGroup: "IG3",
+    assetType: ["users"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "assess service providers consistent with enterprise's service provider management policy",
+      "assessment scope may vary based on classifications and may include SOC 2, PCI AoC, customized questionnaires, or other rigorous processes",
+      "reassess service providers annually at minimum or with new and renewed contracts"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "service provider assessment processes",
+      "standardized assessment report reviews",
+      "customized questionnaire assessments",
+      "rigorous assessment methodologies"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "assess service providers consistent with enterprise's service provider management policy",
+      "assessment scope may vary based on classifications",
+      "may include review of standardized assessment reports",
+      "such as Service Organization Control 2 (SOC 2)",
+      "Payment Card Industry (PCI) Attestation of Compliance (AoC)",
+      "customized questionnaires",
+      "other appropriately rigorous processes",
+      "reassess service providers annually at a minimum",
+      "or with new and renewed contracts"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "third-party risk management tools",
+      "service provider management policy",
+      "assessment questionnaire platforms",
+      "compliance monitoring systems"
+    ],
+    relatedSafeguards: ["15.1", "15.2"],
+    keywords: ["assess", "service", "providers", "SOC", "PCI", "questionnaires", "rigorous", "processes", "reassess", "annually", "contracts"]
+  },
+  "15.6": {
+    id: "15.6",
+    title: "Monitor Service Providers",
+    description: "Monitor service providers consistent with the enterprise's service provider management policy. Monitoring may include periodic reassessment of service provider compliance, monitoring service provider release notes, and dark web monitoring",
+    implementationGroup: "IG3",
+    assetType: ["data"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "monitor service providers consistent with enterprise's service provider management policy",
+      "monitoring may include periodic reassessment, release notes monitoring, and dark web monitoring"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "service provider monitoring processes",
+      "periodic compliance reassessment",
+      "service provider release notes monitoring",
+      "dark web monitoring"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "monitor service providers",
+      "consistent with enterprise's service provider management policy",
+      "monitoring may include periodic reassessment of service provider compliance",
+      "monitoring service provider release notes",
+      "dark web monitoring"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "third-party risk management tools",
+      "service provider management policy",
+      "dark web monitoring services",
+      "compliance monitoring platforms"
+    ],
+    relatedSafeguards: ["15.1", "15.2"],
+    keywords: ["monitor", "service", "providers", "periodic", "reassessment", "compliance", "release", "notes", "dark", "web", "monitoring"]
+  },
+  "15.7": {
+    id: "15.7",
+    title: "Securely Decommission Service Providers",
+    description: "Securely decommission service providers. Example considerations include user and service account deactivation, termination of data flows, and secure disposal of enterprise data within service provider systems",
+    implementationGroup: "IG3",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "securely decommission service providers",
+      "example considerations include user and service account deactivation, termination of data flows, secure disposal of enterprise data"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure service provider decommissioning",
+      "user and service account deactivation",
+      "data flow termination",
+      "secure enterprise data disposal"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "securely decommission service providers",
+      "example considerations include user and service account deactivation",
+      "termination of data flows",
+      "secure disposal of enterprise data within service provider systems"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "service provider management policy",
+      "data destruction procedures",
+      "account deactivation processes",
+      "secure decommissioning checklists"
+    ],
+    relatedSafeguards: ["15.1", "15.2"],
+    keywords: ["securely", "decommission", "service", "providers", "account", "deactivation", "data", "flows", "disposal", "enterprise", "data"]
   }
 };
 
