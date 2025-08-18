@@ -2672,6 +2672,245 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["8.1", "8.11", "15.1"],
     keywords: ["service provider logs", "authentication", "authorization", "data creation", "disposal", "user management"]
+  },
+  "10.1": {
+    id: "10.1",
+    title: "Deploy and Maintain Anti-Malware Software",
+    description: "Deploy and maintain anti-malware software on all enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["devices"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy anti-malware software",
+      "maintain anti-malware software",
+      "all enterprise assets coverage",
+      "anti-malware software management"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "anti-malware software deployment",
+      "anti-malware software maintenance",
+      "enterprise assets protection",
+      "malware detection capabilities"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "deploy",
+      "maintain", 
+      "anti-malware software",
+      "all enterprise assets"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "endpoint protection platforms",
+      "anti-virus solutions",
+      "endpoint detection and response",
+      "malware protection tools",
+      "security software management"
+    ],
+    relatedSafeguards: ["4.1", "10.2", "10.4", "10.6", "10.7", "13.5"],
+    keywords: ["deploy", "maintain", "anti-malware", "software", "enterprise", "assets", "endpoint", "protection"]
+  },
+  "10.2": {
+    id: "10.2",
+    title: "Configure Automatic Anti-Malware Signature Updates",
+    description: "Configure automatic updates for anti-malware signature files on all enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "configure automatic updates",
+      "anti-malware signature files",
+      "all enterprise assets coverage",
+      "signature update management"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automatic updates configuration",
+      "anti-malware signature files",
+      "enterprise assets coverage",
+      "signature currency maintenance"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "configure",
+      "automatic updates",
+      "anti-malware signature files",
+      "all enterprise assets"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "automatic update systems",
+      "signature distribution mechanisms",
+      "centralized update management",
+      "update scheduling tools"
+    ],
+    relatedSafeguards: ["10.1"],
+    keywords: ["configure", "automatic", "updates", "signature", "files", "anti-malware", "enterprise", "assets"]
+  },
+  "10.3": {
+    id: "10.3", 
+    title: "Disable Autorun and Autoplay for Removable Media",
+    description: "Disable autorun and autoplay auto-execute functionality for removable media",
+    implementationGroup: "IG1",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "disable autorun functionality",
+      "disable autoplay functionality", 
+      "auto-execute prevention",
+      "removable media security"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "autorun disabling",
+      "autoplay disabling", 
+      "auto-execute prevention",
+      "removable media protection"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "disable",
+      "autorun",
+      "autoplay",
+      "auto-execute functionality",
+      "removable media"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "group policy settings",
+      "registry modifications",
+      "configuration management tools",
+      "secure configuration policy/process"
+    ],
+    relatedSafeguards: ["4.1"],
+    keywords: ["disable", "autorun", "autoplay", "auto-execute", "removable", "media", "configuration"]
+  },
+  "10.4": {
+    id: "10.4",
+    title: "Configure Automatic Anti-Malware Scanning of Removable Media", 
+    description: "Configure anti-malware software to automatically scan removable media",
+    implementationGroup: "IG2",
+    assetType: ["devices"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "configure anti-malware software",
+      "automatic scanning configuration",
+      "removable media scanning",
+      "scanning policy management"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "anti-malware software configuration",
+      "automatic scanning",
+      "removable media protection",
+      "malware detection on media"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "configure",
+      "anti-malware software",
+      "automatically scan",
+      "removable media"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "anti-malware software configuration policy/process",
+      "endpoint scanning policies",
+      "media scanning tools",
+      "automated threat detection"
+    ],
+    relatedSafeguards: ["10.1"],
+    keywords: ["configure", "anti-malware", "software", "automatically", "scan", "removable", "media"]
+  },
+  "10.5": {
+    id: "10.5",
+    title: "Enable Anti-Exploitation Features",
+    description: "Enable anti-exploitation features on enterprise assets and software, where possible, such as Microsoft® Data Execution Prevention (DEP), Windows® Defender Exploit Guard (WDEG), or Apple® System Integrity Protection (SIP) and Gatekeeper™",
+    implementationGroup: "IG2", 
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "enable anti-exploitation features",
+      "enterprise assets coverage", 
+      "software protection",
+      "where possible implementation"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "anti-exploitation features",
+      "enterprise assets protection",
+      "software security",
+      "exploit prevention"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "enable",
+      "anti-exploitation features",
+      "enterprise assets",
+      "software", 
+      "where possible"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Microsoft® Data Execution Prevention (DEP)",
+      "Windows® Defender Exploit Guard (WDEG)", 
+      "Apple® System Integrity Protection (SIP)",
+      "Gatekeeper™",
+      "configuration management tool"
+    ],
+    relatedSafeguards: ["4.1"],
+    keywords: ["enable", "anti-exploitation", "features", "enterprise", "assets", "software", "DEP", "WDEG", "SIP", "gatekeeper"]
+  },
+  "10.6": {
+    id: "10.6",
+    title: "Centrally Manage Anti-Malware Software", 
+    description: "Centrally manage anti-malware software",
+    implementationGroup: "IG2",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "centrally manage anti-malware",
+      "centralized management process",
+      "anti-malware software governance", 
+      "management infrastructure"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "centralized management",
+      "anti-malware software",
+      "management capabilities",
+      "centralized control"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "centrally manage",
+      "anti-malware software"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "anti-malware software configuration policy/process",
+      "centralized management platforms",
+      "security management consoles",
+      "enterprise security tools"
+    ],
+    relatedSafeguards: ["10.1"],
+    keywords: ["centrally", "manage", "anti-malware", "software", "centralized", "management"]
+  },
+  "10.7": {
+    id: "10.7",
+    title: "Use Behavior-Based Anti-Malware Software",
+    description: "Use behavior-based anti-malware software", 
+    implementationGroup: "IG2",
+    assetType: ["devices"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "use behavior-based anti-malware",
+      "behavioral analysis implementation",
+      "advanced threat detection",
+      "behavior-based protection"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "behavior-based anti-malware software",
+      "behavioral analysis",
+      "advanced malware detection",
+      "dynamic threat identification"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "use",
+      "behavior-based",
+      "anti-malware software"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "anti-malware software configuration policy/process", 
+      "behavioral analysis tools",
+      "advanced endpoint detection",
+      "machine learning security"
+    ],
+    relatedSafeguards: ["10.1"],
+    keywords: ["use", "behavior-based", "anti-malware", "software", "behavioral", "analysis", "advanced", "detection"]
   }
 };
 
