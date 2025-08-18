@@ -176,15 +176,15 @@ git push origin main
 - ✅ **Control 8: Audit Log Management** (12 safeguards: 8.1-8.12)
 - ✅ **Control 10: Malware Defenses** (7 safeguards: 10.1-10.7)
 - ✅ **Control 11: Data Recovery** (5 safeguards: 11.1-11.5)
+- ✅ **Control 9: Email and Web Browser Protections** (7 safeguards: 9.1-9.7)
 - ✅ **Control 12: Network Infrastructure Management** (8 safeguards: 12.1-12.8)
 - ✅ **Control 13: Network Monitoring and Defense** (11 safeguards: 13.1-13.11)
 
 ### In Progress
-- [ ] **Current Target**: Control 9 (Email and Web Browser Protections)
+- [ ] **Current Target**: Control 14 (Security Awareness and Skills Training)
 - [ ] **Session Status**: Ready to begin
 
 ### Remaining Controls
-- [ ] Control 9: Email and Web Browser Protections
 - [ ] Control 14: Security Awareness and Skills Training
 - [ ] Control 15: Service Provider Management
 - [ ] Control 16: Application Software Security

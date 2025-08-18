@@ -3744,6 +3744,250 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["13.1", "8.11"],
     keywords: ["tune", "security", "event", "alerting", "thresholds", "monthly", "frequently"]
+  },
+
+  // Control 9: Email and Web Browser Protections
+  "9.1": {
+    id: "9.1",
+    title: "Ensure Use of Only Fully Supported Browsers and Email Clients",
+    description: "Ensure only fully supported browsers and email clients are allowed to execute in the enterprise, only using the latest version of browsers and email clients provided through the vendor",
+    implementationGroup: "IG1",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "ensure only fully supported browsers and email clients are allowed to execute",
+      "only using the latest version provided through the vendor"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "fully supported browsers only",
+      "fully supported email clients only", 
+      "latest vendor versions only",
+      "execution restriction enforcement"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "ensure only fully supported",
+      "browsers and email clients",
+      "are allowed to execute",
+      "in the enterprise",
+      "only using the latest version",
+      "provided through the vendor"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "enterprise and software asset management tools",
+      "application allowlisting",
+      "software inventory systems",
+      "automated patch management"
+    ],
+    relatedSafeguards: ["2.1", "4.1", "7.4"],
+    keywords: ["ensure", "fully", "supported", "browsers", "email", "clients", "latest", "version", "vendor"]
+  },
+  "9.2": {
+    id: "9.2",
+    title: "Use DNS Filtering Services",
+    description: "Use DNS filtering services on all end-user devices, including remote and on-premise assets, to block access to known malicious domains",
+    implementationGroup: "IG1",
+    assetType: ["devices", "network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use DNS filtering services on all end-user devices",
+      "including remote and on-premise assets",
+      "to block access to known malicious domains"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "DNS filtering services deployment",
+      "all end-user device coverage",
+      "malicious domain blocking",
+      "remote and on-premise asset inclusion"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "use DNS filtering services",
+      "on all end-user devices", 
+      "including remote assets",
+      "including on-premise assets",
+      "to block access",
+      "to known malicious domains"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "DNS filtering services",
+      "secure DNS servers",
+      "DNS security platforms",
+      "cloud-based DNS filtering"
+    ],
+    relatedSafeguards: ["4.1", "4.9"],
+    keywords: ["use", "DNS", "filtering", "services", "end-user", "devices", "block", "malicious", "domains"]
+  },
+  "9.3": {
+    id: "9.3",
+    title: "Maintain and Enforce Network-Based URL Filters",
+    description: "Enforce and update network-based URL filters to limit an enterprise asset from connecting to potentially malicious or unapproved websites. Example implementations include category-based filtering, reputation-based filtering, or through the use of block lists. Enforce filters for all enterprise assets",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "enforce and update network-based URL filters",
+      "to limit enterprise asset from connecting to potentially malicious or unapproved websites",
+      "enforce filters for all enterprise assets"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "network-based URL filters",
+      "enterprise asset connection limiting",
+      "malicious website blocking",
+      "unapproved website blocking"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "enforce network-based URL filters",
+      "update network-based URL filters",
+      "limit enterprise asset from connecting",
+      "to potentially malicious websites",
+      "to unapproved websites",
+      "enforce filters for all enterprise assets"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "URL filtering tools",
+      "category-based filtering",
+      "reputation-based filtering", 
+      "block lists",
+      "web content filtering"
+    ],
+    relatedSafeguards: ["4.1"],
+    keywords: ["maintain", "enforce", "network-based", "URL", "filters", "limit", "malicious", "unapproved", "websites"]
+  },
+  "9.4": {
+    id: "9.4",
+    title: "Restrict Unnecessary or Unauthorized Browser and Email Client Extensions",
+    description: "Restrict, either through uninstalling or disabling, any unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "restrict unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
+      "either through uninstalling or disabling"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "browser plugin restrictions",
+      "email client plugin restrictions",
+      "browser extension restrictions",
+      "add-on application restrictions"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "restrict through uninstalling or disabling",
+      "unauthorized browser plugins",
+      "unnecessary browser plugins",
+      "unauthorized email client plugins",
+      "unnecessary email client plugins",
+      "unauthorized browser extensions",
+      "unnecessary browser extensions",
+      "unauthorized add-on applications",
+      "unnecessary add-on applications"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "configuration management tools",
+      "browser management systems",
+      "application control policies",
+      "extension management platforms"
+    ],
+    relatedSafeguards: ["4.1"],
+    keywords: ["restrict", "unauthorized", "unnecessary", "browser", "email", "plugins", "extensions", "add-on"]
+  },
+  "9.5": {
+    id: "9.5",
+    title: "Implement DMARC",
+    description: "To lower the chance of spoofed or modified emails from valid domains, implement DMARC policy and verification, starting with implementing the Sender Policy Framework (SPF) and the DomainKeys Identified Mail (DKIM) standards",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "implement DMARC policy and verification",
+      "to lower the chance of spoofed or modified emails from valid domains",
+      "starting with implementing SPF and DKIM standards"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "DMARC policy implementation",
+      "DMARC verification implementation",
+      "SPF standard implementation",
+      "DKIM standard implementation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "implement DMARC policy",
+      "implement DMARC verification",
+      "to lower the chance of spoofed emails",
+      "to lower the chance of modified emails",
+      "from valid domains",
+      "starting with implementing SPF",
+      "starting with implementing DKIM",
+      "Sender Policy Framework standards",
+      "DomainKeys Identified Mail standards"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "DMARC management tools",
+      "email authentication services",
+      "SPF record management",
+      "DKIM signature management"
+    ],
+    relatedSafeguards: ["4.1"],
+    keywords: ["implement", "DMARC", "policy", "verification", "SPF", "DKIM", "spoofed", "modified", "emails"]
+  },
+  "9.6": {
+    id: "9.6",
+    title: "Block Unnecessary File Types",
+    description: "Block unnecessary file types attempting to enter the enterprise's email gateway",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "block unnecessary file types attempting to enter the enterprise's email gateway"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "unnecessary file type blocking",
+      "email gateway protection",
+      "file type filtering"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "block unnecessary file types",
+      "attempting to enter",
+      "the enterprise's email gateway"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "email security tools",
+      "email gateway filtering",
+      "file type blocking systems",
+      "email content filtering"
+    ],
+    relatedSafeguards: ["4.1"],
+    keywords: ["block", "unnecessary", "file", "types", "email", "gateway", "enterprise"]
+  },
+  "9.7": {
+    id: "9.7",
+    title: "Deploy and Maintain Email Server Anti-Malware Protections",
+    description: "Deploy and maintain email server anti-malware protections, such as attachment scanning and/or sandboxing",
+    implementationGroup: "IG1",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy and maintain email server anti-malware protections",
+      "such as attachment scanning and/or sandboxing"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "email server anti-malware protections",
+      "attachment scanning capabilities",
+      "sandboxing capabilities",
+      "deployment and maintenance"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "deploy email server anti-malware protections",
+      "maintain email server anti-malware protections",
+      "such as attachment scanning",
+      "such as sandboxing",
+      "attachment scanning and/or sandboxing"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "email security tools",
+      "anti-malware platforms",
+      "attachment scanning systems",
+      "email sandboxing solutions"
+    ],
+    relatedSafeguards: ["4.1", "10.1"],
+    keywords: ["deploy", "maintain", "email", "server", "anti-malware", "protections", "attachment", "scanning", "sandboxing"]
   }
 };
 
