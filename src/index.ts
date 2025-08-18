@@ -2346,6 +2346,332 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["7.1", "7.2", "7.3", "7.4", "7.5", "7.6"],
     keywords: ["remediate", "detected", "vulnerabilities", "software", "monthly", "processes", "tooling"]
+  },
+  "8.1": {
+    id: "8.1",
+    title: "Establish and Maintain an Audit Log Management Process",
+    description: "Establish and maintain a documented audit log management process that defines the enterprise's logging requirements. At a minimum, address the collection, review, and retention of audit logs for enterprise assets. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.",
+    implementationGroup: "IG1",
+    assetType: ["enterprise assets", "data"],
+    securityFunction: ["Govern"],
+    governanceElements: [
+      "establish and maintain",
+      "documented audit log management process", 
+      "review and update documentation annually",
+      "when significant enterprise changes occur that could impact this Safeguard"
+    ],
+    coreRequirements: [
+      "enterprise's logging requirements",
+      "collection, review, and retention of audit logs",
+      "enterprise assets"
+    ],
+    subTaxonomicalElements: [
+      "collection",
+      "review", 
+      "retention",
+      "annually",
+      "minimum"
+    ],
+    implementationSuggestions: [
+      "log management policy/process",
+      "documentation"
+    ],
+    relatedSafeguards: ["8.2", "8.3", "8.5", "8.6", "8.7", "8.8", "8.9", "8.10", "8.11", "8.12"],
+    keywords: ["audit log management", "logging requirements", "collection", "review", "retention", "process", "documented"]
+  },
+  "8.2": {
+    id: "8.2", 
+    title: "Collect Audit Logs",
+    description: "Collect audit logs. Ensure that logging, per the enterprise's audit log management process, has been enabled across enterprise assets.",
+    implementationGroup: "IG1",
+    assetType: ["enterprise assets", "data"],
+    securityFunction: ["Detect"],
+    governanceElements: [
+      "per the enterprise's audit log management process"
+    ],
+    coreRequirements: [
+      "collect audit logs",
+      "logging enabled", 
+      "enterprise assets"
+    ],
+    subTaxonomicalElements: [
+      "enabled"
+    ],
+    implementationSuggestions: [
+      "log management tool",
+      "OS dependent"
+    ],
+    relatedSafeguards: ["8.1"],
+    keywords: ["collect", "audit logs", "logging", "enabled", "enterprise assets"]
+  },
+  "8.3": {
+    id: "8.3",
+    title: "Ensure Adequate Audit Log Storage", 
+    description: "Ensure that logging destinations maintain adequate storage to comply with the enterprise's audit log management process.",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [
+      "comply with the enterprise's audit log management process"
+    ],
+    coreRequirements: [
+      "logging destinations maintain adequate storage"
+    ],
+    subTaxonomicalElements: [
+      "adequate storage",
+      "maintain",
+      "comply",
+      "logging destinations"
+    ],
+    implementationSuggestions: [
+      "log management tool", 
+      "potentially OS dependent"
+    ],
+    relatedSafeguards: ["8.1", "8.9", "8.10"],
+    keywords: ["adequate storage", "logging destinations", "maintain", "comply"]
+  },
+  "8.4": {
+    id: "8.4",
+    title: "Standardize Time Synchronization",
+    description: "Standardize time synchronization. Configure at least two synchronized time sources across enterprise assets, where supported.",
+    implementationGroup: "IG2", 
+    assetType: ["enterprise assets", "data"],
+    securityFunction: ["Protect"],
+    governanceElements: [
+      "standardize time synchronization"
+    ],
+    coreRequirements: [
+      "configure at least two synchronized time sources",
+      "enterprise assets", 
+      "where supported"
+    ],
+    subTaxonomicalElements: [
+      "at least two",
+      "synchronized",
+      "time sources",
+      "where supported"
+    ],
+    implementationSuggestions: [
+      "secure configuration policy/process",
+      "potentially OS dependent"
+    ],
+    relatedSafeguards: ["4.1"],
+    keywords: ["time synchronization", "synchronized", "time sources", "configure", "standardize"]
+  },
+  "8.5": {
+    id: "8.5",
+    title: "Collect Detailed Audit Logs",
+    description: "Configure detailed audit logging for enterprise assets containing sensitive data. Include event source, date, username, timestamp, source addresses, destination addresses, and other useful elements that could assist in a forensic investigation.",
+    implementationGroup: "IG2",
+    assetType: ["enterprise assets", "data"],
+    securityFunction: ["Detect"], 
+    governanceElements: [
+      "configure detailed audit logging"
+    ],
+    coreRequirements: [
+      "enterprise assets containing sensitive data",
+      "forensic investigation"
+    ],
+    subTaxonomicalElements: [
+      "event source",
+      "date", 
+      "username",
+      "timestamp",
+      "source addresses",
+      "destination addresses", 
+      "other useful elements"
+    ],
+    implementationSuggestions: [
+      "log management tool",
+      "log management policy/process",
+      "potentially OS dependent"
+    ],
+    relatedSafeguards: ["8.1", "1.1", "3.2"],
+    keywords: ["detailed audit logging", "sensitive data", "forensic investigation", "event source", "timestamp"]
+  },
+  "8.6": {
+    id: "8.6",
+    title: "Collect DNS Query Audit Logs", 
+    description: "Collect DNS query audit logs on enterprise assets, where appropriate and supported.",
+    implementationGroup: "IG2",
+    assetType: ["enterprise assets", "data"],
+    securityFunction: ["Detect"],
+    governanceElements: [
+      "where appropriate and supported"
+    ],
+    coreRequirements: [
+      "collect DNS query audit logs",
+      "enterprise assets"
+    ],
+    subTaxonomicalElements: [
+      "DNS query logs",
+      "where appropriate",
+      "where supported"
+    ],
+    implementationSuggestions: [
+      "log management tool",
+      "secure configuration policy/process", 
+      "potentially OS dependent"
+    ],
+    relatedSafeguards: ["8.1", "4.9"],
+    keywords: ["DNS query", "audit logs", "collect", "DNS", "query logs"]
+  },
+  "8.7": {
+    id: "8.7",
+    title: "Collect URL Request Audit Logs",
+    description: "Collect URL request audit logs on enterprise assets, where appropriate and supported.",
+    implementationGroup: "IG2",
+    assetType: ["enterprise assets", "data"],
+    securityFunction: ["Detect"],
+    governanceElements: [
+      "where appropriate and supported"
+    ],
+    coreRequirements: [
+      "collect URL request audit logs", 
+      "enterprise assets"
+    ],
+    subTaxonomicalElements: [
+      "URL request audit logs",
+      "where appropriate", 
+      "where supported"
+    ],
+    implementationSuggestions: [
+      "log management tool",
+      "secure configuration policy/process",
+      "potentially OS dependent"
+    ],
+    relatedSafeguards: ["8.1"],
+    keywords: ["URL request", "audit logs", "collect", "URL", "web logs"]
+  },
+  "8.8": {
+    id: "8.8",
+    title: "Collect Command-Line Audit Logs",
+    description: "Collect command-line audit logs. Example implementations include collecting audit logs from PowerShell®, BASH™, and remote administrative terminals.",
+    implementationGroup: "IG2",
+    assetType: ["data"],
+    securityFunction: ["Detect"],
+    governanceElements: [
+      "collect command-line audit logs"
+    ],
+    coreRequirements: [
+      "command-line audit logs"
+    ],
+    subTaxonomicalElements: [
+      "PowerShell",
+      "BASH", 
+      "remote administrative terminals"
+    ],
+    implementationSuggestions: [
+      "log management tool",
+      "secure configuration policy/process",
+      "OS dependent"
+    ],
+    relatedSafeguards: ["8.1"],
+    keywords: ["command-line", "audit logs", "PowerShell", "BASH", "terminal", "administrative"]
+  },
+  "8.9": {
+    id: "8.9",
+    title: "Centralize Audit Logs",
+    description: "Centralize, to the extent possible, audit log collection and retention across enterprise assets in accordance with the documented audit log management process. Example implementations include leveraging a SIEM tool to centralize multiple log sources.",
+    implementationGroup: "IG2",
+    assetType: ["enterprise assets", "data"],
+    securityFunction: ["Detect"], 
+    governanceElements: [
+      "in accordance with documented audit log management process",
+      "to the extent possible"
+    ],
+    coreRequirements: [
+      "centralize audit log collection and retention",
+      "enterprise assets"
+    ],
+    subTaxonomicalElements: [
+      "audit log collection",
+      "audit log retention",
+      "to the extent possible"
+    ],
+    implementationSuggestions: [
+      "SIEM tool",
+      "log analytics and centralization tool", 
+      "OS dependent"
+    ],
+    relatedSafeguards: ["8.1", "8.3", "12.5", "13.1"],
+    keywords: ["centralize", "audit logs", "collection", "retention", "SIEM", "log sources"]
+  },
+  "8.10": {
+    id: "8.10",
+    title: "Retain Audit Logs", 
+    description: "Retain audit logs across enterprise assets for a minimum of 90 days.",
+    implementationGroup: "IG2",
+    assetType: ["enterprise assets", "data"],
+    securityFunction: ["Protect"],
+    governanceElements: [
+      "minimum of 90 days"
+    ],
+    coreRequirements: [
+      "retain audit logs",
+      "enterprise assets"
+    ],
+    subTaxonomicalElements: [
+      "minimum of 90 days"
+    ],
+    implementationSuggestions: [
+      "log analytics and centralization tool"
+    ],
+    relatedSafeguards: ["8.1", "8.3"],
+    keywords: ["retain", "audit logs", "90 days", "retention", "minimum"]
+  },
+  "8.11": {
+    id: "8.11",
+    title: "Conduct Audit Log Reviews",
+    description: "Conduct reviews of audit logs to detect anomalies or abnormal events that could indicate a potential threat. Conduct reviews on a weekly, or more frequent, basis.",
+    implementationGroup: "IG2",
+    assetType: ["data"],
+    securityFunction: ["Detect"],
+    governanceElements: [
+      "conduct reviews on a weekly, or more frequent, basis"
+    ],
+    coreRequirements: [
+      "detect anomalies or abnormal events",
+      "potential threat"
+    ],
+    subTaxonomicalElements: [
+      "weekly", 
+      "more frequent",
+      "anomalies",
+      "abnormal events"
+    ],
+    implementationSuggestions: [
+      "log analytics and centralization tool"
+    ],
+    relatedSafeguards: ["8.1", "8.12"],
+    keywords: ["audit log reviews", "anomalies", "abnormal events", "threat", "weekly", "reviews"]
+  },
+  "8.12": {
+    id: "8.12",
+    title: "Collect Service Provider Logs",
+    description: "Collect service provider logs, where supported. Example implementations include collecting authentication and authorization events, data creation and disposal events, and user management events.",
+    implementationGroup: "IG3",
+    assetType: ["data"], 
+    securityFunction: ["Detect"],
+    governanceElements: [
+      "where supported"
+    ],
+    coreRequirements: [
+      "collect service provider logs"
+    ],
+    subTaxonomicalElements: [
+      "authentication events",
+      "authorization events",
+      "data creation events", 
+      "disposal events",
+      "user management events"
+    ],
+    implementationSuggestions: [
+      "log analytics and centralization tool",
+      "secure configuration policy/process"
+    ],
+    relatedSafeguards: ["8.1", "8.11", "15.1"],
+    keywords: ["service provider logs", "authentication", "authorization", "data creation", "disposal", "user management"]
   }
 };
 
