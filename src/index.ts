@@ -3097,6 +3097,301 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["11.1"],
     keywords: ["test", "backup", "recovery", "quarterly", "frequently", "sampling", "enterprise", "assets"]
+  },
+  "12.1": {
+    id: "12.1",
+    title: "Ensure Network Infrastructure is Up-to-Date",
+    description: "Ensure network infrastructure is kept up-to-date. Example implementations include running the latest stable release of software and/or using currently supported network-as-a-service (NaaS) offerings. Review software versions monthly, or more frequently, to verify software support",
+    implementationGroup: "IG1",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "ensure network infrastructure is kept up-to-date",
+      "review software versions monthly or more frequently",
+      "verify software support",
+      "network infrastructure maintenance"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "network infrastructure up-to-date",
+      "latest stable release of software",
+      "currently supported network-as-a-service offerings",
+      "software version review"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "ensure",
+      "network infrastructure is kept up-to-date",
+      "running the latest stable release of software",
+      "using currently supported network-as-a-service (NaaS) offerings",
+      "review software versions",
+      "monthly",
+      "more frequently",
+      "verify software support"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "enterprise and software asset management tool",
+      "network management systems",
+      "automated patching tools",
+      "network-as-a-service platforms"
+    ],
+    relatedSafeguards: ["4.2", "7.3"],
+    keywords: ["ensure", "network", "infrastructure", "up-to-date", "software", "versions", "monthly", "NaaS"]
+  },
+  "12.2": {
+    id: "12.2",
+    title: "Establish and Maintain a Secure Network Architecture",
+    description: "Design and maintain a secure network architecture. A secure network architecture must address segmentation, least privilege, and availability, at a minimum. Example implementations may include documentation, policy, and design components",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "design secure network architecture",
+      "maintain secure network architecture",
+      "must address segmentation, least privilege, and availability at minimum",
+      "secure network architecture requirements"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure network architecture",
+      "segmentation",
+      "least privilege (POLP)",
+      "availability"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "design",
+      "maintain", 
+      "secure network architecture",
+      "must address",
+      "segmentation",
+      "least privilege",
+      "availability",
+      "at a minimum"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure network management and design policy/process",
+      "documentation",
+      "policy", 
+      "design components",
+      "network architecture tools"
+    ],
+    relatedSafeguards: ["3.3", "3.10", "4.2", "12.4", "13.3", "13.4", "13.6", "13.8", "13.9", "13.10"],
+    keywords: ["establish", "maintain", "secure", "network", "architecture", "segmentation", "least", "privilege", "availability"]
+  },
+  "12.3": {
+    id: "12.3",
+    title: "Securely Manage Network Infrastructure",
+    description: "Securely manage network infrastructure. Example implementations include version-controlled-infrastructure-as code, and the use of secure network protocols, such as SSH and HTTPS",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "securely manage network infrastructure",
+      "secure network protocols usage",
+      "infrastructure security management",
+      "secure management practices"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure network management",
+      "version-controlled infrastructure-as-code", 
+      "secure network protocols",
+      "infrastructure security"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "securely manage",
+      "network infrastructure",
+      "version-controlled infrastructure-as-code",
+      "use of secure network protocols",
+      "SSH",
+      "HTTPS"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure network management and design policy/process",
+      "network management and monitoring tool",
+      "infrastructure-as-code platforms",
+      "secure protocol implementations"
+    ],
+    relatedSafeguards: ["4.2", "12.6"],
+    keywords: ["securely", "manage", "network", "infrastructure", "version-controlled", "SSH", "HTTPS", "protocols"]
+  },
+  "12.4": {
+    id: "12.4",
+    title: "Establish and Maintain Architecture Diagram(s)",
+    description: "Establish and maintain architecture diagram(s) and/or other network system documentation. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG2",
+    assetType: ["documentation"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish architecture diagrams",
+      "maintain architecture diagrams", 
+      "review and update documentation annually",
+      "when significant enterprise changes occur that could impact this Safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "architecture diagrams",
+      "network system documentation",
+      "documentation review and updates",
+      "enterprise change management"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "establish",
+      "maintain",
+      "architecture diagrams",
+      "other network system documentation",
+      "review and update documentation",
+      "annually",
+      "when significant enterprise changes occur"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure network management and design policy/process",
+      "network architecture diagramming tool",
+      "documentation management systems",
+      "architecture visualization tools"
+    ],
+    relatedSafeguards: ["3.8", "4.2", "12.2"],
+    keywords: ["establish", "maintain", "architecture", "diagrams", "documentation", "annually", "enterprise", "changes"]
+  },
+  "12.5": {
+    id: "12.5",
+    title: "Centralize Network Authentication, Authorization, and Auditing (AAA)",
+    description: "Centralize network AAA",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "centralize network AAA",
+      "network authentication centralization",
+      "network authorization centralization", 
+      "network auditing centralization"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "network AAA centralization",
+      "authentication",
+      "authorization",
+      "auditing"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "centralize",
+      "network AAA",
+      "authentication",
+      "authorization", 
+      "auditing"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure network management and design policy/process",
+      "identity and access management tool",
+      "AAA servers",
+      "centralized authentication systems"
+    ],
+    relatedSafeguards: ["4.2", "5.6", "6.7", "8.9", "12.6", "12.7"],
+    keywords: ["centralize", "network", "AAA", "authentication", "authorization", "auditing"]
+  },
+  "12.6": {
+    id: "12.6",
+    title: "Use of Secure Network Management and Communication Protocols",
+    description: "Use secure network management and communication protocols (e.g., 802.1X, Wi-Fi Protected Access 2 (WPA2) Enterprise or greater)",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use secure network management protocols",
+      "use secure communication protocols",
+      "secure protocol implementation",
+      "enterprise-grade security protocols"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure network management",
+      "secure communication protocols",
+      "802.1X implementation",
+      "WPA2 Enterprise or greater"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "use",
+      "secure network management",
+      "communication protocols",
+      "802.1X", 
+      "Wi-Fi Protected Access 2 (WPA2) Enterprise",
+      "greater"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure network management and design policy/process",
+      "802.1X authentication systems",
+      "enterprise wireless controllers",
+      "secure protocol implementations"
+    ],
+    relatedSafeguards: ["12.3", "12.5"],
+    keywords: ["use", "secure", "network", "management", "communication", "protocols", "802.1X", "WPA2", "enterprise"]
+  },
+  "12.7": {
+    id: "12.7",
+    title: "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise's AAA Infrastructure",
+    description: "Require users to authenticate to enterprise-managed VPN and authentication services prior to accessing enterprise resources on end-user devices",
+    implementationGroup: "IG2",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "require users to authenticate to enterprise-managed VPN",
+      "authenticate to authentication services",
+      "prior to accessing enterprise resources on end-user devices",
+      "VPN and AAA integration requirements"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "enterprise-managed VPN",
+      "authentication services",
+      "user authentication requirements",
+      "enterprise resource access control"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "require",
+      "users to authenticate",
+      "enterprise-managed VPN",
+      "authentication services",
+      "prior to accessing enterprise resources",
+      "end-user devices"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure network management and design policy/process",
+      "VPN/encryption tool",
+      "enterprise VPN solutions",
+      "AAA integration systems"
+    ],
+    relatedSafeguards: ["6.4", "12.5"],
+    keywords: ["require", "users", "authenticate", "enterprise-managed", "VPN", "authentication", "services", "devices"]
+  },
+  "12.8": {
+    id: "12.8",
+    title: "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
+    description: "Establish and maintain dedicated computing resources, either physically or logically separated, for all administrative tasks or tasks requiring administrative access. The computing resources should be segmented from the enterprise's primary network and not be allowed internet access",
+    implementationGroup: "IG3",
+    assetType: ["devices"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "establish dedicated computing resources for administrative work",
+      "maintain dedicated computing resources",
+      "segmented from enterprise's primary network",
+      "not allowed internet access"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "dedicated computing resources (SAW)",
+      "administrative tasks isolation", 
+      "administrative access separation",
+      "network segmentation from primary network"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "establish",
+      "maintain",
+      "dedicated computing resources",
+      "physically or logically separated",
+      "all administrative tasks",
+      "tasks requiring administrative access",
+      "segmented from primary network",
+      "no internet access"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure network management and design policy/process",
+      "secure admin workstations (SAW)",
+      "network segmentation tools",
+      "administrative isolation systems"
+    ],
+    relatedSafeguards: ["1.1", "5.1"],
+    keywords: ["establish", "maintain", "dedicated", "computing", "resources", "administrative", "work", "segmented", "SAW"]
   }
 };
 
