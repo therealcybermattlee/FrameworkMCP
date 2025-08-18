@@ -181,13 +181,13 @@ git push origin main
 - ✅ **Control 13: Network Monitoring and Defense** (11 safeguards: 13.1-13.11)
 - ✅ **Control 14: Security Awareness and Skills Training** (9 safeguards: 14.1-14.9)
 - ✅ **Control 15: Service Provider Management** (7 safeguards: 15.1-15.7)
+- ✅ **Control 16: Application Software Security** (14 safeguards: 16.1-16.14)
 
 ### In Progress
-- [ ] **Current Target**: Control 16 (Application Software Security)
+- [ ] **Current Target**: Control 17 (Incident Response Management)
 - [ ] **Session Status**: Ready to begin
 
 ### Remaining Controls
-- [ ] Control 16: Application Software Security
 - [ ] Control 17: Incident Response Management
 - [ ] Control 18: Penetration Testing
 

@@ -4567,6 +4567,498 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["15.1", "15.2"],
     keywords: ["securely", "decommission", "service", "providers", "account", "deactivation", "data", "flows", "disposal", "enterprise", "data"]
+  },
+
+  // Control 16: Application Software Security
+  "16.1": {
+    id: "16.1",
+    title: "Establish and Maintain a Secure Application Development Process",
+    description: "Establish and maintain a secure application development process. In the process, address such items as: secure application design standards, secure coding practices, developer training, vulnerability management, security of third-party code, and application security testing procedures. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain a secure application development process",
+      "review and update documentation annually or when significant enterprise changes occur that could impact this safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure application development process",
+      "secure application design standards",
+      "secure coding practices",
+      "developer training",
+      "vulnerability management",
+      "security of third-party code",
+      "application security testing procedures"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "address such items as secure application design standards",
+      "address such items as secure coding practices",
+      "address such items as developer training",
+      "address such items as vulnerability management",
+      "address such items as security of third-party code",
+      "address such items as application security testing procedures",
+      "review and update documentation annually",
+      "when significant enterprise changes occur"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure development lifecycle (SDLC) frameworks",
+      "application security policies",
+      "development process documentation",
+      "security training programs for developers"
+    ],
+    relatedSafeguards: ["16.2", "16.3", "16.4", "16.5", "16.6", "16.7", "16.8", "16.9", "16.10", "16.11", "16.12", "16.13", "16.14"],
+    keywords: ["establish", "maintain", "secure", "application", "development", "process", "design", "standards", "coding", "practices", "training"]
+  },
+  "16.2": {
+    id: "16.2",
+    title: "Establish and Maintain a Process to Accept and Address Software Vulnerabilities",
+    description: "Establish and maintain a process to accept and address reports of software vulnerabilities, including providing a means for external entities to report. The process is to include such items as: a vulnerability handling policy that identifies reporting process, responsible party for handling vulnerability reports, and a process for intake, assignment, remediation, and remediation testing. As part of the process, use a vulnerability tracking system that includes severity ratings, and metrics for measuring timing for identification, analysis, and remediation of vulnerabilities. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard. Third-party application developers need to consider this an externally-facing policy that helps to set expectations for outside stakeholders",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain a process to accept and address reports of software vulnerabilities",
+      "provide a means for external entities to report vulnerabilities",
+      "review and update documentation annually or when significant enterprise changes occur that could impact this safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "process to accept and address software vulnerabilities",
+      "vulnerability handling policy",
+      "reporting process",
+      "responsible party for handling vulnerability reports",
+      "process for intake, assignment, remediation, and remediation testing",
+      "vulnerability tracking system",
+      "severity ratings",
+      "metrics for measuring timing"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "vulnerability handling policy that identifies reporting process",
+      "process for intake",
+      "process for assignment",
+      "process for remediation",
+      "process for remediation testing",
+      "vulnerability tracking system that includes severity ratings",
+      "metrics for measuring timing for identification of vulnerabilities",
+      "metrics for measuring timing for analysis of vulnerabilities",
+      "metrics for measuring timing for remediation of vulnerabilities",
+      "externally-facing policy that helps to set expectations for outside stakeholders"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "vulnerability disclosure platforms",
+      "bug bounty programs",
+      "vulnerability management systems",
+      "incident response tools"
+    ],
+    relatedSafeguards: ["16.1", "16.3", "16.6"],
+    keywords: ["establish", "maintain", "process", "accept", "address", "software", "vulnerabilities", "external", "entities", "report", "vulnerability", "handling", "policy"]
+  },
+  "16.3": {
+    id: "16.3",
+    title: "Perform Root Cause Analysis on Security Vulnerabilities",
+    description: "Perform root cause analysis on security vulnerabilities. When reviewing vulnerabilities, root cause analysis is the task of evaluating underlying issues that create vulnerabilities in code, and allows development teams to move beyond just fixing individual vulnerabilities as they arise",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform root cause analysis on security vulnerabilities"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "root cause analysis on security vulnerabilities",
+      "evaluating underlying issues that create vulnerabilities in code"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "when reviewing vulnerabilities",
+      "root cause analysis is the task of evaluating underlying issues",
+      "allows development teams to move beyond just fixing individual vulnerabilities as they arise"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "code analysis tools",
+      "vulnerability assessment platforms",
+      "development team training on root cause analysis",
+      "systematic vulnerability review processes"
+    ],
+    relatedSafeguards: ["16.1", "16.2"],
+    keywords: ["perform", "root", "cause", "analysis", "security", "vulnerabilities", "reviewing", "evaluating", "underlying", "issues", "code"]
+  },
+  "16.4": {
+    id: "16.4",
+    title: "Establish and Manage an Inventory of Third-Party Software Components",
+    description: "Establish and manage an updated inventory of third-party components used in development, often referred to as a \"bill of materials,\" as well as components slated for future use. This inventory is to include any risks that each third-party component could pose. Evaluate the list at least monthly to identify any changes or updates to these components, and validate that the component is still supported",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and manage an updated inventory of third-party components used in development",
+      "evaluate the list at least monthly to identify any changes or updates to these components and validate that the component is still supported"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "updated inventory of third-party components",
+      "bill of materials",
+      "components slated for future use",
+      "risks that each third-party component could pose",
+      "monthly evaluation",
+      "component support validation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "third-party components used in development",
+      "often referred to as bill of materials",
+      "components slated for future use",
+      "any risks that each third-party component could pose",
+      "identify any changes or updates to these components",
+      "validate that the component is still supported"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "software composition analysis (SCA) tools",
+      "dependency management systems",
+      "component vulnerability databases",
+      "automated inventory tracking tools"
+    ],
+    relatedSafeguards: ["16.1", "16.5"],
+    keywords: ["establish", "manage", "inventory", "third-party", "software", "components", "bill", "materials", "risks", "monthly", "evaluation"]
+  },
+  "16.5": {
+    id: "16.5",
+    title: "Use Up-to-Date and Trusted Third-Party Software Components",
+    description: "Use up-to-date and trusted third-party software components. When possible, choose established and proven frameworks and libraries that provide adequate security. Acquire these components from trusted sources or evaluate the software for vulnerabilities before use",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use up-to-date and trusted third-party software components"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "up-to-date third-party software components",
+      "trusted third-party software components",
+      "established and proven frameworks and libraries",
+      "adequate security",
+      "trusted sources",
+      "vulnerability evaluation before use"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "when possible choose established and proven frameworks and libraries",
+      "that provide adequate security",
+      "acquire these components from trusted sources",
+      "evaluate the software for vulnerabilities before use"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "software composition analysis (SCA) tools",
+      "trusted software repositories",
+      "vulnerability scanning tools",
+      "component security assessment processes"
+    ],
+    relatedSafeguards: ["16.1", "16.4", "16.11", "7.1"],
+    keywords: ["use", "up-to-date", "trusted", "third-party", "software", "components", "established", "proven", "frameworks", "libraries", "adequate", "security"]
+  },
+  "16.6": {
+    id: "16.6",
+    title: "Establish and Maintain a Severity Rating System and Process for Application Vulnerabilities",
+    description: "Establish and maintain a severity rating system and process for application vulnerabilities that facilitates prioritizing the order in which discovered vulnerabilities are fixed. This process includes setting a minimum level of security acceptability for releasing code or applications. Severity ratings bring a systematic way of triaging vulnerabilities that improves risk management and helps ensure the most severe bugs are fixed first. Review and update the system and process annually",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain a severity rating system and process for application vulnerabilities",
+      "review and update the system and process annually"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "severity rating system",
+      "process for application vulnerabilities",
+      "prioritizing the order in which discovered vulnerabilities are fixed",
+      "minimum level of security acceptability for releasing code or applications",
+      "systematic way of triaging vulnerabilities"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "facilitates prioritizing the order in which discovered vulnerabilities are fixed",
+      "setting a minimum level of security acceptability for releasing code or applications",
+      "severity ratings bring a systematic way of triaging vulnerabilities",
+      "improves risk management",
+      "helps ensure the most severe bugs are fixed first"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "CVSS scoring systems",
+      "vulnerability management platforms",
+      "risk assessment frameworks",
+      "prioritization workflows"
+    ],
+    relatedSafeguards: ["16.1", "16.2"],
+    keywords: ["establish", "maintain", "severity", "rating", "system", "process", "application", "vulnerabilities", "prioritizing", "triaging", "risk", "management"]
+  },
+  "16.7": {
+    id: "16.7",
+    title: "Use Standard Hardening Configuration Templates for Application Infrastructure",
+    description: "Use standard, industry-recommended hardening configuration templates for application infrastructure components. This includes underlying servers, databases, and web servers, and applies to cloud containers, Platform as a Service (PaaS) components, and SaaS components. Do not allow in-house developed software to weaken configuration hardening",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use standard, industry-recommended hardening configuration templates for application infrastructure components",
+      "do not allow in-house developed software to weaken configuration hardening"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "standard hardening configuration templates",
+      "application infrastructure components",
+      "underlying servers",
+      "databases",
+      "web servers",
+      "cloud containers",
+      "Platform as a Service (PaaS) components",
+      "SaaS components"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "industry-recommended hardening configuration templates",
+      "includes underlying servers, databases, and web servers",
+      "applies to cloud containers",
+      "applies to Platform as a Service (PaaS) components",
+      "applies to SaaS components"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "configuration baseline tools",
+      "infrastructure as code (IaC) templates",
+      "security hardening guides",
+      "automated configuration management"
+    ],
+    relatedSafeguards: ["16.1"],
+    keywords: ["use", "standard", "hardening", "configuration", "templates", "application", "infrastructure", "servers", "databases", "web", "servers", "cloud", "containers", "PaaS", "SaaS"]
+  },
+  "16.8": {
+    id: "16.8",
+    title: "Separate Production and Non-Production Systems",
+    description: "Maintain separate environments for production and non-production systems",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "maintain separate environments for production and non-production systems"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "separate environments",
+      "production systems",
+      "non-production systems"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "separate environments for production systems",
+      "separate environments for non-production systems"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network segmentation tools",
+      "environment isolation technologies",
+      "access control systems",
+      "deployment pipeline controls"
+    ],
+    relatedSafeguards: ["16.1"],
+    keywords: ["maintain", "separate", "environments", "production", "non-production", "systems"]
+  },
+  "16.9": {
+    id: "16.9",
+    title: "Train Developers in Application Security Concepts and Secure Coding",
+    description: "Ensure that all software development personnel receive training in writing secure code for their specific development environment and responsibilities. Training can include general security principles and application security standard practices. Conduct training at least annually and design in a way to promote security within the development team, and build a culture of security among the developers",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "ensure that all software development personnel receive training in writing secure code",
+      "conduct training at least annually"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "training in writing secure code",
+      "specific development environment and responsibilities",
+      "general security principles",
+      "application security standard practices",
+      "promote security within the development team",
+      "build a culture of security among the developers"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "all software development personnel receive training",
+      "for their specific development environment and responsibilities",
+      "training can include general security principles",
+      "training can include application security standard practices",
+      "design in a way to promote security within the development team",
+      "build a culture of security among the developers"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security training and awareness tools",
+      "secure coding training programs",
+      "developer security certifications",
+      "hands-on security workshops"
+    ],
+    relatedSafeguards: ["16.1", "14.1", "14.9"],
+    keywords: ["train", "developers", "application", "security", "concepts", "secure", "coding", "software", "development", "personnel", "training", "annually"]
+  },
+  "16.10": {
+    id: "16.10",
+    title: "Apply Secure Design Principles in Application Architectures",
+    description: "Apply secure design principles in application architectures. Secure design principles include the concept of least privilege and enforcing mediation to validate every operation that the user makes, promoting the concept of \"never trust user input.\" Examples include ensuring that explicit error checking is performed and documented for all input, including for size, data type, and acceptable ranges or formats. Secure design also means minimizing the application infrastructure attack surface, such as turning off unprotected ports and services, removing unnecessary programs and files, and renaming or removing default accounts",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "apply secure design principles in application architectures"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "secure design principles",
+      "concept of least privilege",
+      "enforcing mediation to validate every operation",
+      "never trust user input",
+      "explicit error checking for all input",
+      "minimizing the application infrastructure attack surface"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "concept of least privilege",
+      "enforcing mediation",
+      "validate every operation that the user makes",
+      "promoting the concept of never trust user input",
+      "ensuring that explicit error checking is performed and documented for all input",
+      "including for size, data type, and acceptable ranges or formats",
+      "turning off unprotected ports and services",
+      "removing unnecessary programs and files",
+      "renaming or removing default accounts"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "secure architecture frameworks",
+      "input validation libraries",
+      "access control systems",
+      "security design patterns"
+    ],
+    relatedSafeguards: ["16.1"],
+    keywords: ["apply", "secure", "design", "principles", "application", "architectures", "least", "privilege", "mediation", "validate", "never", "trust", "user", "input"]
+  },
+  "16.11": {
+    id: "16.11",
+    title: "Leverage Vetted Modules or Services for Application Security Components",
+    description: "Leverage vetted modules or services for application security components, such as identity management, encryption, and auditing and logging. Using platform features in critical security functions will reduce developers' workload and minimize the likelihood of design or implementation errors. Modern operating systems provide effective mechanisms for identification, authentication, and authorization and make those mechanisms available to applications. Use only standardized, currently accepted, and extensively reviewed encryption algorithms. Operating systems also provide mechanisms to create and maintain secure audit logs",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "leverage vetted modules or services for application security components",
+      "use only standardized, currently accepted, and extensively reviewed encryption algorithms"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "vetted modules or services",
+      "application security components",
+      "identity management",
+      "encryption",
+      "auditing and logging",
+      "platform features in critical security functions",
+      "identification, authentication, and authorization mechanisms",
+      "secure audit logs"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "such as identity management, encryption, and auditing and logging",
+      "using platform features in critical security functions will reduce developers' workload",
+      "minimize the likelihood of design or implementation errors",
+      "modern operating systems provide effective mechanisms for identification, authentication, and authorization",
+      "make those mechanisms available to applications",
+      "operating systems also provide mechanisms to create and maintain secure audit logs"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "established security libraries",
+      "platform security services",
+      "cryptographic modules",
+      "operating system security features"
+    ],
+    relatedSafeguards: ["16.1", "16.5"],
+    keywords: ["leverage", "vetted", "modules", "services", "application", "security", "components", "identity", "management", "encryption", "auditing", "logging", "platform", "features"]
+  },
+  "16.12": {
+    id: "16.12",
+    title: "Implement Code-Level Security Checks",
+    description: "Apply static and dynamic analysis tools within the application life cycle to verify that secure coding practices are being followed",
+    implementationGroup: "IG3",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "apply static and dynamic analysis tools within the application life cycle to verify that secure coding practices are being followed"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "static analysis tools",
+      "dynamic analysis tools",
+      "application life cycle",
+      "secure coding practices verification"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "apply static analysis tools within the application life cycle",
+      "apply dynamic analysis tools within the application life cycle",
+      "verify that secure coding practices are being followed"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "code analysis tools",
+      "static application security testing (SAST)",
+      "dynamic application security testing (DAST)",
+      "interactive application security testing (IAST)"
+    ],
+    relatedSafeguards: ["16.1"],
+    keywords: ["implement", "code-level", "security", "checks", "static", "dynamic", "analysis", "tools", "application", "life", "cycle", "secure", "coding", "practices"]
+  },
+  "16.13": {
+    id: "16.13",
+    title: "Conduct Application Penetration Testing",
+    description: "Conduct application penetration testing. For critical applications, authenticated penetration testing is better suited to finding business logic vulnerabilities than code scanning and automated security testing. Penetration testing relies on the skill of the tester to manually manipulate an application as an authenticated and unauthenticated user",
+    implementationGroup: "IG3",
+    assetType: ["applications"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "conduct application penetration testing"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "application penetration testing",
+      "authenticated penetration testing for critical applications",
+      "business logic vulnerabilities",
+      "manual manipulation of application",
+      "authenticated and unauthenticated user testing"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "for critical applications",
+      "authenticated penetration testing is better suited to finding business logic vulnerabilities",
+      "than code scanning and automated security testing",
+      "penetration testing relies on the skill of the tester",
+      "to manually manipulate an application as an authenticated and unauthenticated user"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "application security testing tools",
+      "penetration testing frameworks",
+      "security testing methodologies",
+      "skilled penetration testers"
+    ],
+    relatedSafeguards: ["16.1"],
+    keywords: ["conduct", "application", "penetration", "testing", "critical", "applications", "authenticated", "business", "logic", "vulnerabilities", "manual", "manipulation"]
+  },
+  "16.14": {
+    id: "16.14",
+    title: "Conduct Threat Modeling",
+    description: "Conduct threat modeling. Threat modeling is the process of identifying and addressing application security design flaws within a design, before code is created. It is conducted through specially trained individuals who evaluate the application design and gauge security risks for each entry point and access level. The goal is to map out the application, architecture, and infrastructure in a structured way to understand its weaknesses",
+    implementationGroup: "IG3",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "conduct threat modeling"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "threat modeling",
+      "identifying and addressing application security design flaws",
+      "before code is created",
+      "specially trained individuals",
+      "evaluate application design",
+      "gauge security risks for each entry point and access level",
+      "map out the application, architecture, and infrastructure"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "threat modeling is the process of identifying and addressing application security design flaws within a design",
+      "before code is created",
+      "conducted through specially trained individuals",
+      "who evaluate the application design and gauge security risks",
+      "for each entry point and access level",
+      "the goal is to map out the application, architecture, and infrastructure in a structured way",
+      "to understand its weaknesses"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "threat modeling frameworks",
+      "security design review processes",
+      "threat modeling tools",
+      "security architecture documentation"
+    ],
+    relatedSafeguards: ["16.1"],
+    keywords: ["conduct", "threat", "modeling", "identifying", "addressing", "application", "security", "design", "flaws", "specially", "trained", "individuals", "entry", "point", "access", "level"]
   }
 };
 
