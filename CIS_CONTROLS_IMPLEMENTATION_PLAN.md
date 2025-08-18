@@ -175,14 +175,14 @@ git push origin main
 - ✅ Control 7: Continuous Vulnerability Management
 - ✅ **Control 8: Audit Log Management** (12 safeguards: 8.1-8.12)
 - ✅ **Control 10: Malware Defenses** (7 safeguards: 10.1-10.7)
+- ✅ **Control 11: Data Recovery** (5 safeguards: 11.1-11.5)
 
 ### In Progress
 - [ ] **Current Target**: Control 12 (Network Infrastructure Management)
 - [ ] **Session Status**: Ready to begin
 
 ### Remaining Controls
-- [ ] Control 9: Email and Web Browser Protections
-- [ ] Control 11: Data Recovery  
+- [ ] Control 9: Email and Web Browser Protections  
 - [ ] Control 12: Network Infrastructure Management
 - [ ] Control 13: Network Monitoring and Defense
 - [ ] Control 14: Security Awareness and Skills Training

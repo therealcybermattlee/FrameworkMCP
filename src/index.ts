@@ -2911,6 +2911,192 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["10.1"],
     keywords: ["use", "behavior-based", "anti-malware", "software", "behavioral", "analysis", "advanced", "detection"]
+  },
+  "11.1": {
+    id: "11.1",
+    title: "Establish and Maintain a Data Recovery Process",
+    description: "Establish and maintain a documented data recovery process. In the process, address the scope of data recovery activities, recovery prioritization, and the security of backup data. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish documented data recovery process",
+      "maintain documented data recovery process",
+      "review and update documentation annually",
+      "when significant enterprise changes occur that could impact this Safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "documented data recovery process",
+      "scope of data recovery activities",
+      "recovery prioritization", 
+      "security of backup data"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "establish",
+      "maintain",
+      "documented data recovery process",
+      "scope of data recovery activities",
+      "recovery prioritization",
+      "security of backup data",
+      "review and update documentation",
+      "annually",
+      "when significant enterprise changes occur"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data recovery policy/process",
+      "business continuity documentation",
+      "recovery procedures manual",
+      "backup and recovery strategy"
+    ],
+    relatedSafeguards: ["3.2", "3.4", "3.5", "3.8", "11.2", "11.3", "11.4", "11.5"],
+    keywords: ["establish", "maintain", "documented", "data", "recovery", "process", "backup", "prioritization"]
+  },
+  "11.2": {
+    id: "11.2", 
+    title: "Perform Automated Backups",
+    description: "Perform automated backups of in-scope enterprise assets. Run backups weekly, or more frequently, based on the sensitivity of the data",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Recover"],
+    governanceElements: [ // Orange - MUST be met
+      "perform automated backups",
+      "in-scope enterprise assets",
+      "run backups weekly or more frequently",
+      "based on sensitivity of data"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "automated backups",
+      "in-scope enterprise assets",
+      "backup frequency requirements",
+      "data sensitivity considerations"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "perform",
+      "automated backups",
+      "in-scope enterprise assets",
+      "run backups",
+      "weekly",
+      "more frequently", 
+      "based on sensitivity of the data"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data backup and recovery tool",
+      "automated backup systems",
+      "backup scheduling software",
+      "enterprise backup solutions"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "11.1"],
+    keywords: ["perform", "automated", "backups", "enterprise", "assets", "weekly", "frequency", "sensitivity"]
+  },
+  "11.3": {
+    id: "11.3",
+    title: "Protect Recovery Data", 
+    description: "Protect recovery data with equivalent controls to the original data. Reference encryption or data separation, based on requirements",
+    implementationGroup: "IG1",
+    assetType: ["data"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "protect recovery data",
+      "equivalent controls to original data",
+      "reference encryption or data separation", 
+      "based on requirements"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "recovery data protection",
+      "equivalent controls",
+      "original data protection parity",
+      "requirements-based implementation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "protect",
+      "recovery data", 
+      "equivalent controls to the original data",
+      "reference encryption",
+      "data separation",
+      "based on requirements"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data backup and recovery tool",
+      "backup encryption systems",
+      "secure backup storage",
+      "data separation technologies"
+    ],
+    relatedSafeguards: ["3.3", "3.10", "3.11", "11.1"],
+    keywords: ["protect", "recovery", "data", "equivalent", "controls", "encryption", "separation", "requirements"]
+  },
+  "11.4": {
+    id: "11.4",
+    title: "Establish and Maintain an Isolated Instance of Recovery Data",
+    description: "Establish and maintain an isolated instance of recovery data. Example implementations include version controlling backup destinations through offline, cloud, or off-site systems or services",
+    implementationGroup: "IG1", 
+    assetType: ["data"],
+    securityFunction: ["Recover"],
+    governanceElements: [ // Orange - MUST be met
+      "establish isolated instance of recovery data",
+      "maintain isolated instance of recovery data",
+      "version controlling backup destinations",
+      "example implementations include offline, cloud, or off-site systems or services"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "isolated instance of recovery data",
+      "backup destination control",
+      "recovery data isolation",
+      "implementation flexibility"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "establish",
+      "maintain",
+      "isolated instance of recovery data",
+      "version controlling backup destinations",
+      "offline", 
+      "cloud",
+      "off-site systems",
+      "services"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data backup and recovery tool",
+      "offline backup systems",
+      "cloud backup services", 
+      "off-site storage solutions",
+      "version controlling backup destinations"
+    ],
+    relatedSafeguards: ["11.1"],
+    keywords: ["establish", "maintain", "isolated", "instance", "recovery", "data", "offline", "cloud", "off-site"]
+  },
+  "11.5": {
+    id: "11.5",
+    title: "Test Data Recovery",
+    description: "Test backup recovery quarterly, or more frequently, for a sampling of in-scope enterprise assets", 
+    implementationGroup: "IG2",
+    assetType: ["data"],
+    securityFunction: ["Recover"],
+    governanceElements: [ // Orange - MUST be met
+      "test backup recovery quarterly or more frequently",
+      "sampling of in-scope enterprise assets",
+      "recovery testing requirements",
+      "testing frequency management"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "backup recovery testing", 
+      "quarterly testing frequency",
+      "in-scope enterprise assets sampling",
+      "recovery validation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "test backup recovery",
+      "quarterly",
+      "more frequently",
+      "sampling",
+      "in-scope enterprise assets"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "data recovery policy/process",
+      "data backup and recovery tool",
+      "recovery testing procedures",
+      "backup validation systems"
+    ],
+    relatedSafeguards: ["11.1"],
+    keywords: ["test", "backup", "recovery", "quarterly", "frequently", "sampling", "enterprise", "assets"]
   }
 };
 
