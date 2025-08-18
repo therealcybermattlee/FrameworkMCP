@@ -2635,19 +2635,28 @@ export class GRCAnalysisServer {
     const governanceKeywords = [
       'policy', 'policies', 'manage', 'process', 'workflow', 'governance', 'grc', 
       'compliance management', 'documented', 'establish', 'maintain', 'procedure',
-      'control', 'controls', 'framework', 'standard'
+      'control', 'controls', 'framework', 'standard', 'enterprise risk management',
+      'centralized management', 'oversight'
     ];
     
     const facilitatesKeywords = [
+      // Technical facilitation (original keywords)
       'improve', 'enhance', 'optimize', 'faster', 'better', 'stronger', 'automate', 
       'streamline', 'efficiency', 'facilitate', 'support', 'enable', 'accelerate',
-      'api', 'integration', 'data', 'export', 'import', 'sync', 'feed'
+      'api', 'integration', 'data', 'export', 'import', 'sync', 'feed',
+      // Governance/process facilitation (new keywords for tools like Upolicy)
+      'enables compliance', 'facilitates implementation', 'supports compliance',
+      'creates framework', 'enables organizations', 'infrastructure', 'foundation',
+      'compliance infrastructure', 'audit infrastructure', 'policy framework',
+      'enables effective', 'working together', 'comprehensive coverage',
+      'template', 'templates', 'workflow automation', 'orchestration'
     ];
     
     const validatesKeywords = [
       'audit', 'report', 'evidence', 'verify', 'validate', 'check', 'monitor', 
       'compliance report', 'assessment', 'logging', 'tracking', 'review', 'attest',
-      'dashboard', 'metrics', 'analytics', 'visibility', 'alert'
+      'dashboard', 'metrics', 'analytics', 'visibility', 'alert', 'attestation',
+      'compliance tracking', 'audit trail', 'reporting capabilities'
     ];
 
     // Analyze element coverage (binary: covered or not)
@@ -2656,10 +2665,32 @@ export class GRCAnalysisServer {
     const governanceCoverage = this.analyzeBinaryElementCoverage(text, safeguard.governanceElements);
     const implementationCoverage = this.analyzeBinaryElementCoverage(text, safeguard.implementationSuggestions);
 
-    // Determine capability flags
-    const governanceCapability = this.calculateKeywordScore(text, governanceKeywords) > 0.3;
-    const facilitatesCapability = this.calculateKeywordScore(text, facilitatesKeywords) > 0.3;
-    const validatesCapability = this.calculateKeywordScore(text, validatesKeywords) > 0.3;
+    // Enhanced capability detection with better scoring
+    const governanceScore = this.calculateKeywordScore(text, governanceKeywords);
+    const facilitatesScore = this.calculateKeywordScore(text, facilitatesKeywords);
+    const validatesScore = this.calculateKeywordScore(text, validatesKeywords);
+    
+    const governanceCapability = governanceScore > 0.3;
+    const facilitatesCapability = facilitatesScore > 0.3;
+    const validatesCapability = validatesScore > 0.3;
+    
+    // Check for specific facilitation patterns (tools that enable/support compliance)
+    const facilitationPatterns = [
+      'enables compliance', 'facilitates implementation', 'creates framework',
+      'policy framework', 'compliance infrastructure', 'audit infrastructure',
+      'enables organizations', 'enables effective', 'working together',
+      'creates the policy framework', 'enables organizations to implement',
+      'facilitates implementation of', 'compliance infrastructure facilitates'
+    ];
+    const hasFacilitationPattern = facilitationPatterns.some(pattern => text.includes(pattern));
+    
+    // Check for explicit non-implementation language
+    const nonImplementationPatterns = [
+      'don\'t scan', 'don\'t catalog', 'doesn\'t scan', 'doesn\'t catalog',
+      'not scan', 'not catalog', 'even though we don\'t', 'we don\'t directly',
+      'rather than direct', 'instead of direct'
+    ];
+    const hasNonImplementationLanguage = nonImplementationPatterns.some(pattern => text.includes(pattern));
     
     // Determine if full or partial coverage (based on core + sub-taxonomical elements)
     const totalCoreAndSubElements = safeguard.coreRequirements.length + safeguard.subTaxonomicalElements.length;
@@ -2676,22 +2707,31 @@ export class GRCAnalysisServer {
       }
     }
 
-    // Determine primary capability
+    // Enhanced primary capability logic
     let primaryCapability: 'full' | 'partial' | 'facilitates' | 'governance' | 'validates' | 'none' = 'none';
     
     if (fullCapability) {
       primaryCapability = 'full';
+    } else if (hasFacilitationPattern || hasNonImplementationLanguage || 
+               (facilitatesScore > 0.4 && facilitatesScore > governanceScore * 1.2)) {
+      // Prioritize facilitation when:
+      // 1. Clear facilitation language patterns detected, OR
+      // 2. Explicit non-implementation language (tool doesn't directly implement), OR  
+      // 3. Facilitates score is substantial AND significantly higher than governance
+      primaryCapability = 'facilitates';
     } else if (partialCapability) {
       primaryCapability = 'partial';
     } else if (governanceCapability && (facilitatesCapability || validatesCapability)) {
-      primaryCapability = 'governance'; // Governance + other capabilities
-    } else if (facilitatesCapability && validatesCapability) {
-      primaryCapability = 'facilitates'; // Helps with implementation
-    } else if (governanceCapability) {
+      // Tools that primarily manage governance but also facilitate/validate
       primaryCapability = 'governance';
-    } else if (validatesCapability) {
+    } else if (governanceScore > facilitatesScore && governanceCapability) {
+      // Pure governance tools
+      primaryCapability = 'governance';
+    } else if (validatesScore > facilitatesScore && validatesCapability) {
+      // Validation-focused tools
       primaryCapability = 'validates';
     } else if (facilitatesCapability) {
+      // Default facilitation
       primaryCapability = 'facilitates';
     }
 
@@ -2699,11 +2739,7 @@ export class GRCAnalysisServer {
     const evidence = this.extractEnhancedEvidence(responseText, safeguard);
 
     // Calculate confidence based on evidence strength and keyword matches
-    const keywordConfidence = (
-      this.calculateKeywordScore(text, governanceKeywords) +
-      this.calculateKeywordScore(text, facilitatesKeywords) +
-      this.calculateKeywordScore(text, validatesKeywords)
-    ) / 3;
+    const keywordConfidence = (governanceScore + facilitatesScore + validatesScore) / 3;
     
     const coverageConfidence = totalCoreAndSubElements > 0 ? 
       coveredCoreAndSubElements / totalCoreAndSubElements : 0;
@@ -2726,7 +2762,7 @@ export class GRCAnalysisServer {
         validates: validatesCapability
       },
       confidence: Math.round(confidence),
-      reasoning: this.generateCapabilityReasoning(primaryCapability, fullCapability, partialCapability, governanceCapability, facilitatesCapability, validatesCapability, coreCoverage, subElementCoverage, safeguard),
+      reasoning: this.generateCapabilityReasoning(primaryCapability, fullCapability, partialCapability, governanceCapability, facilitatesCapability, validatesCapability, coreCoverage, subElementCoverage, safeguard, hasFacilitationPattern, hasNonImplementationLanguage),
       evidence,
       elementsCovered: {
         coreRequirements: coreCoverage.coveredElements,
@@ -2905,26 +2941,32 @@ export class GRCAnalysisServer {
     validates: boolean,
     coreCoverage: any,
     subElementCoverage: any,
-    safeguard: SafeguardElement
+    safeguard: SafeguardElement,
+    hasFacilitationPattern: boolean = false,
+    hasNonImplementationLanguage: boolean = false
   ): string {
     const reasons = [];
     
     // Primary capability explanation
     switch (primaryCapability) {
       case 'full':
-        reasons.push(`Provides FULL coverage of ${safeguard.title} - addresses all core and sub-taxonomical elements`);
+        reasons.push(`Provides FULL coverage of ${safeguard.title} - directly implements all core and sub-taxonomical elements`);
         break;
       case 'partial':
-        reasons.push(`Provides PARTIAL coverage of ${safeguard.title} - addresses some but not all core and sub-taxonomical elements`);
+        reasons.push(`Provides PARTIAL coverage of ${safeguard.title} - directly implements some but not all core and sub-taxonomical elements`);
         break;
       case 'facilitates':
-        reasons.push(`FACILITATES ${safeguard.title} through data integration or automation capabilities`);
+        if (hasFacilitationPattern || hasNonImplementationLanguage || governance) {
+          reasons.push(`FACILITATES ${safeguard.title} by creating governance frameworks, policy infrastructure, and compliance processes that enable organizations to implement the control effectively`);
+        } else {
+          reasons.push(`FACILITATES ${safeguard.title} through data integration, automation, or technical capabilities that support implementation`);
+        }
         break;
       case 'governance':
-        reasons.push(`Provides GOVERNANCE capabilities for ${safeguard.title} through policy, process, and procedure controls`);
+        reasons.push(`Provides GOVERNANCE capabilities for ${safeguard.title} through centralized policy management, process controls, and compliance oversight`);
         break;
       case 'validates':
-        reasons.push(`VALIDATES ${safeguard.title} implementation through evidence collection and reporting`);
+        reasons.push(`VALIDATES ${safeguard.title} implementation through evidence collection, compliance reporting, and audit capabilities`);
         break;
       default:
         reasons.push(`No clear capability identified for ${safeguard.title}`);
@@ -2936,6 +2978,16 @@ export class GRCAnalysisServer {
     }
     if (subElementCoverage.coveredElements.length > 0) {
       reasons.push(`Sub-taxonomical elements addressed: ${subElementCoverage.coveredElements.length}/${safeguard.subTaxonomicalElements.length}`);
+    }
+    
+    // Additional context for facilitation tools
+    if (primaryCapability === 'facilitates') {
+      if (hasFacilitationPattern || hasNonImplementationLanguage || governance) {
+        reasons.push(`Note: This type of facilitation tool works alongside technical implementation solutions (asset scanners, MDM tools, etc.) to provide comprehensive control coverage`);
+      }
+      if (hasNonImplementationLanguage) {
+        reasons.push(`Tool explicitly enables compliance through governance/process rather than direct technical implementation`);
+      }
     }
     
     // Multi-capability products
