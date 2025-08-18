@@ -30,23 +30,29 @@ interface VendorAnalysis {
   vendor: string;
   safeguardId: string;
   safeguardTitle: string;
-  governance: boolean;
-  facilitates: boolean;
-  coverage: 'full' | 'partial' | 'none';
-  validates: boolean;
+  // Primary capability categorization
+  capability: 'full' | 'partial' | 'facilitates' | 'governance' | 'validates' | 'none';
+  // Detailed breakdown for complex products
+  capabilities: {
+    full: boolean;        // Does the safeguard completely (all core + sub-taxonomical elements)
+    partial: boolean;     // Does some of the safeguard elements  
+    facilitates: boolean; // Helps with data or automation for the safeguard
+    governance: boolean;  // Controls policy, process, procedures
+    validates: boolean;   // Provides evidence of safeguard implementation
+  };
   confidence: number;
   reasoning: string;
   evidence: string[];
-  // Enhanced coverage analysis
-  governanceElementsCovered: string[];
-  coreRequirementsCovered: string[];
-  subElementsCovered: string[];
-  implementationMethodsUsed: string[];
-  coverageBreakdown: {
-    governance: number;    // % of orange elements covered
-    core: number;         // % of green elements covered  
-    subElements: number;  // % of yellow elements covered
-    overall: number;      // Overall percentage
+  // Coverage analysis (binary: met or not met)
+  elementsCovered: {
+    coreRequirements: string[];        // Green elements addressed
+    subTaxonomicalElements: string[];  // Yellow elements addressed  
+    governanceElements: string[];      // Orange elements addressed
+    implementationMethods: string[];   // Gray elements used
+  };
+  elementsNotCovered: {
+    coreRequirements: string[];
+    subTaxonomicalElements: string[];
   };
 }
 
@@ -55,18 +61,23 @@ interface AnalysisResult {
     totalVendors: number;
     safeguardId: string;
     safeguardTitle: string;
-    byAttribute: {
-      governance: number;
-      facilitates: number;
-      validates: number;
-      fullCoverage: number;
-      partialCoverage: number;
+    byCapability: {
+      full: number;         // Count of vendors doing full safeguard
+      partial: number;      // Count of vendors doing partial safeguard  
+      facilitates: number;  // Count of vendors facilitating safeguard
+      governance: number;   // Count of vendors providing governance
+      validates: number;    // Count of vendors providing validation
+      none: number;         // Count of vendors with no relevant capability
     };
-    averageCoverageBreakdown: {
-      governance: number;
-      core: number;
-      subElements: number;
-      overall: number;
+    elementCoverage: {
+      coreRequirements: {
+        total: number;
+        coveredByAtLeastOne: number;
+      };
+      subTaxonomicalElements: {
+        total: number;
+        coveredByAtLeastOne: number;
+      };
     };
   };
   vendors: VendorAnalysis[];
@@ -2338,7 +2349,7 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
   }
 };
 
-class GRCAnalysisServer {
+export class GRCAnalysisServer {
   private server: Server;
 
   constructor() {
@@ -2620,58 +2631,85 @@ class GRCAnalysisServer {
   private performEnhancedSafeguardAnalysis(vendorName: string, safeguard: SafeguardElement, responseText: string): VendorAnalysis {
     const text = responseText.toLowerCase();
     
-    // Enhanced keywords based on GRC attributes
+    // Capability detection keywords
     const governanceKeywords = [
       'policy', 'policies', 'manage', 'process', 'workflow', 'governance', 'grc', 
-      'compliance management', 'documented', 'establish', 'maintain', 'procedure'
+      'compliance management', 'documented', 'establish', 'maintain', 'procedure',
+      'control', 'controls', 'framework', 'standard'
     ];
     
     const facilitatesKeywords = [
       'improve', 'enhance', 'optimize', 'faster', 'better', 'stronger', 'automate', 
-      'streamline', 'efficiency', 'facilitate', 'support', 'enable', 'accelerate'
+      'streamline', 'efficiency', 'facilitate', 'support', 'enable', 'accelerate',
+      'api', 'integration', 'data', 'export', 'import', 'sync', 'feed'
     ];
     
     const validatesKeywords = [
       'audit', 'report', 'evidence', 'verify', 'validate', 'check', 'monitor', 
-      'compliance report', 'assessment', 'logging', 'tracking', 'review', 'attest'
+      'compliance report', 'assessment', 'logging', 'tracking', 'review', 'attest',
+      'dashboard', 'metrics', 'analytics', 'visibility', 'alert'
     ];
 
-    // Calculate GRC attribute scores
-    const governanceScore = this.calculateKeywordScore(text, governanceKeywords);
-    const facilitatesScore = this.calculateKeywordScore(text, facilitatesKeywords);
-    const validatesScore = this.calculateKeywordScore(text, validatesKeywords);
+    // Analyze element coverage (binary: covered or not)
+    const coreCoverage = this.analyzeBinaryElementCoverage(text, safeguard.coreRequirements);
+    const subElementCoverage = this.analyzeBinaryElementCoverage(text, safeguard.subTaxonomicalElements);
+    const governanceCoverage = this.analyzeBinaryElementCoverage(text, safeguard.governanceElements);
+    const implementationCoverage = this.analyzeBinaryElementCoverage(text, safeguard.implementationSuggestions);
 
-    // Analyze coverage against each category of elements
-    const governanceCoverage = this.analyzeElementCoverage(text, safeguard.governanceElements);
-    const coreCoverage = this.analyzeElementCoverage(text, safeguard.coreRequirements);
-    const subElementCoverage = this.analyzeElementCoverage(text, safeguard.subTaxonomicalElements);
-    const implementationCoverage = this.analyzeElementCoverage(text, safeguard.implementationSuggestions);
-
-    // Calculate overall coverage breakdown
-    const coverageBreakdown = {
-      governance: governanceCoverage.percentage,
-      core: coreCoverage.percentage,
-      subElements: subElementCoverage.percentage,
-      overall: (governanceCoverage.percentage * 0.4 + coreCoverage.percentage * 0.4 + subElementCoverage.percentage * 0.2)
-    };
-
-    // Determine coverage level based on comprehensive analysis
-    let coverage: 'full' | 'partial' | 'none' = 'none';
-    if (coverageBreakdown.governance >= 80 && coverageBreakdown.core >= 70) {
-      coverage = 'full';
-    } else if (coverageBreakdown.overall >= 25) {
-      coverage = 'partial';
+    // Determine capability flags
+    const governanceCapability = this.calculateKeywordScore(text, governanceKeywords) > 0.3;
+    const facilitatesCapability = this.calculateKeywordScore(text, facilitatesKeywords) > 0.3;
+    const validatesCapability = this.calculateKeywordScore(text, validatesKeywords) > 0.3;
+    
+    // Determine if full or partial coverage (based on core + sub-taxonomical elements)
+    const totalCoreAndSubElements = safeguard.coreRequirements.length + safeguard.subTaxonomicalElements.length;
+    const coveredCoreAndSubElements = coreCoverage.coveredElements.length + subElementCoverage.coveredElements.length;
+    
+    let fullCapability = false;
+    let partialCapability = false;
+    
+    if (totalCoreAndSubElements > 0) {
+      if (coveredCoreAndSubElements === totalCoreAndSubElements) {
+        fullCapability = true;
+      } else if (coveredCoreAndSubElements > 0) {
+        partialCapability = true;
+      }
     }
 
-    // Extract evidence with enhanced context
+    // Determine primary capability
+    let primaryCapability: 'full' | 'partial' | 'facilitates' | 'governance' | 'validates' | 'none' = 'none';
+    
+    if (fullCapability) {
+      primaryCapability = 'full';
+    } else if (partialCapability) {
+      primaryCapability = 'partial';
+    } else if (governanceCapability && (facilitatesCapability || validatesCapability)) {
+      primaryCapability = 'governance'; // Governance + other capabilities
+    } else if (facilitatesCapability && validatesCapability) {
+      primaryCapability = 'facilitates'; // Helps with implementation
+    } else if (governanceCapability) {
+      primaryCapability = 'governance';
+    } else if (validatesCapability) {
+      primaryCapability = 'validates';
+    } else if (facilitatesCapability) {
+      primaryCapability = 'facilitates';
+    }
+
+    // Extract evidence
     const evidence = this.extractEnhancedEvidence(responseText, safeguard);
 
-    // Calculate confidence based on multiple factors
+    // Calculate confidence based on evidence strength and keyword matches
+    const keywordConfidence = (
+      this.calculateKeywordScore(text, governanceKeywords) +
+      this.calculateKeywordScore(text, facilitatesKeywords) +
+      this.calculateKeywordScore(text, validatesKeywords)
+    ) / 3;
+    
+    const coverageConfidence = totalCoreAndSubElements > 0 ? 
+      coveredCoreAndSubElements / totalCoreAndSubElements : 0;
+    
     const confidence = Math.min(
-      (
-        (governanceScore + facilitatesScore + validatesScore) / 3 * 0.4 +
-        coverageBreakdown.overall / 100 * 0.6
-      ) * 100,
+      (keywordConfidence * 0.4 + coverageConfidence * 0.6) * 100,
       100
     );
 
@@ -2679,22 +2717,26 @@ class GRCAnalysisServer {
       vendor: vendorName,
       safeguardId: safeguard.id,
       safeguardTitle: safeguard.title,
-      governance: governanceScore > 0.3,
-      facilitates: facilitatesScore > 0.3,
-      coverage,
-      validates: validatesScore > 0.3,
+      capability: primaryCapability,
+      capabilities: {
+        full: fullCapability,
+        partial: partialCapability,
+        facilitates: facilitatesCapability,
+        governance: governanceCapability,
+        validates: validatesCapability
+      },
       confidence: Math.round(confidence),
-      reasoning: this.generateEnhancedReasoning(governanceScore, facilitatesScore, validatesScore, coverageBreakdown, safeguard),
+      reasoning: this.generateCapabilityReasoning(primaryCapability, fullCapability, partialCapability, governanceCapability, facilitatesCapability, validatesCapability, coreCoverage, subElementCoverage, safeguard),
       evidence,
-      governanceElementsCovered: governanceCoverage.coveredElements,
-      coreRequirementsCovered: coreCoverage.coveredElements,
-      subElementsCovered: subElementCoverage.coveredElements,
-      implementationMethodsUsed: implementationCoverage.coveredElements,
-      coverageBreakdown: {
-        governance: Math.round(coverageBreakdown.governance),
-        core: Math.round(coverageBreakdown.core),
-        subElements: Math.round(coverageBreakdown.subElements),
-        overall: Math.round(coverageBreakdown.overall)
+      elementsCovered: {
+        coreRequirements: coreCoverage.coveredElements,
+        subTaxonomicalElements: subElementCoverage.coveredElements,
+        governanceElements: governanceCoverage.coveredElements,
+        implementationMethods: implementationCoverage.coveredElements
+      },
+      elementsNotCovered: {
+        coreRequirements: coreCoverage.uncoveredElements,
+        subTaxonomicalElements: subElementCoverage.uncoveredElements
       }
     };
   }
@@ -2757,6 +2799,46 @@ class GRCAnalysisServer {
     };
   }
 
+  private analyzeBinaryElementCoverage(text: string, elements: string[]): {
+    coveredElements: string[];
+    uncoveredElements: string[];
+  } {
+    const coveredElements: string[] = [];
+    const uncoveredElements: string[] = [];
+
+    elements.forEach(element => {
+      const elementKeywords = element.toLowerCase().split(/[\s\-\(\)\/]+/).filter(w => w.length > 2);
+      let elementFound = false;
+
+      // Check for keyword matches
+      for (const keyword of elementKeywords) {
+        if (text.includes(keyword)) {
+          elementFound = true;
+          break;
+        }
+      }
+
+      // Check for semantic matches
+      if (!elementFound) {
+        const regex = new RegExp(element.replace(/[()]/g, '').replace(/\s+/g, '\\s*'), 'gi');
+        if (regex.test(text)) {
+          elementFound = true;
+        }
+      }
+
+      if (elementFound) {
+        coveredElements.push(element);
+      } else {
+        uncoveredElements.push(element);
+      }
+    });
+
+    return {
+      coveredElements,
+      uncoveredElements
+    };
+  }
+
   private extractEnhancedEvidence(text: string, safeguard: SafeguardElement): string[] {
     const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 15);
     const evidence: string[] = [];
@@ -2814,6 +2896,61 @@ class GRCAnalysisServer {
     return reasons.join('. ');
   }
 
+  private generateCapabilityReasoning(
+    primaryCapability: string,
+    full: boolean,
+    partial: boolean, 
+    governance: boolean,
+    facilitates: boolean,
+    validates: boolean,
+    coreCoverage: any,
+    subElementCoverage: any,
+    safeguard: SafeguardElement
+  ): string {
+    const reasons = [];
+    
+    // Primary capability explanation
+    switch (primaryCapability) {
+      case 'full':
+        reasons.push(`Provides FULL coverage of ${safeguard.title} - addresses all core and sub-taxonomical elements`);
+        break;
+      case 'partial':
+        reasons.push(`Provides PARTIAL coverage of ${safeguard.title} - addresses some but not all core and sub-taxonomical elements`);
+        break;
+      case 'facilitates':
+        reasons.push(`FACILITATES ${safeguard.title} through data integration or automation capabilities`);
+        break;
+      case 'governance':
+        reasons.push(`Provides GOVERNANCE capabilities for ${safeguard.title} through policy, process, and procedure controls`);
+        break;
+      case 'validates':
+        reasons.push(`VALIDATES ${safeguard.title} implementation through evidence collection and reporting`);
+        break;
+      default:
+        reasons.push(`No clear capability identified for ${safeguard.title}`);
+    }
+    
+    // Coverage details
+    if (coreCoverage.coveredElements.length > 0) {
+      reasons.push(`Core elements addressed: ${coreCoverage.coveredElements.length}/${safeguard.coreRequirements.length}`);
+    }
+    if (subElementCoverage.coveredElements.length > 0) {
+      reasons.push(`Sub-taxonomical elements addressed: ${subElementCoverage.coveredElements.length}/${safeguard.subTaxonomicalElements.length}`);
+    }
+    
+    // Multi-capability products
+    const capabilityFlags = [governance, facilitates, validates].filter(Boolean);
+    if (capabilityFlags.length > 1) {
+      const capabilities = [];
+      if (governance) capabilities.push('governance');
+      if (facilitates) capabilities.push('facilitates');
+      if (validates) capabilities.push('validates');
+      reasons.push(`Multi-capability product with: ${capabilities.join(', ')}`);
+    }
+    
+    return reasons.join('. ');
+  }
+
   private validateClaim(claim: string, analysis: VendorAnalysis, capabilities: string[], safeguard: SafeguardElement) {
     const validation = {
       coverageClaimValid: false,
@@ -2822,23 +2959,22 @@ class GRCAnalysisServer {
       recommendations: [] as string[]
     };
 
-    // Validate coverage claim
+    // Validate coverage claims
     if (claim === 'FULL') {
-      // For FULL claim, should cover at least 80% of governance elements and 70% of core requirements
-      const meetsFullCriteria = analysis.coverageBreakdown.governance >= 80 && 
-                               analysis.coverageBreakdown.core >= 70;
+      const meetsFullCriteria = analysis.capabilities.full;
       validation.coverageClaimValid = meetsFullCriteria;
       
       if (!meetsFullCriteria) {
-        validation.gaps.push(`FULL coverage claim not supported: Governance ${analysis.coverageBreakdown.governance}% (need 80%+), Core ${analysis.coverageBreakdown.core}% (need 70%+)`);
+        const totalElements = safeguard.coreRequirements.length + safeguard.subTaxonomicalElements.length;
+        const coveredElements = analysis.elementsCovered.coreRequirements.length + analysis.elementsCovered.subTaxonomicalElements.length;
+        validation.gaps.push(`FULL coverage claim not supported: Only ${coveredElements}/${totalElements} core and sub-taxonomical elements covered`);
       }
     } else if (claim === 'PARTIAL') {
-      // For PARTIAL claim, should cover at least some elements
-      const meetsPartialCriteria = analysis.coverageBreakdown.overall >= 20;
+      const meetsPartialCriteria = analysis.capabilities.partial || analysis.capabilities.full;
       validation.coverageClaimValid = meetsPartialCriteria;
       
       if (!meetsPartialCriteria) {
-        validation.gaps.push(`PARTIAL coverage claim questionable: Overall coverage only ${analysis.coverageBreakdown.overall}%`);
+        validation.gaps.push(`PARTIAL coverage claim questionable: No core or sub-taxonomical elements clearly addressed`);
       }
     }
 
@@ -2846,21 +2982,33 @@ class GRCAnalysisServer {
     capabilities.forEach(capability => {
       switch (capability.toLowerCase()) {
         case 'governance':
-          validation.capabilityClaimsValid[capability] = analysis.governance;
-          if (!analysis.governance) {
+          validation.capabilityClaimsValid[capability] = analysis.capabilities.governance;
+          if (!analysis.capabilities.governance) {
             validation.gaps.push(`Governance capability not evidenced in response`);
           }
           break;
         case 'facilitates':
-          validation.capabilityClaimsValid[capability] = analysis.facilitates;
-          if (!analysis.facilitates) {
+          validation.capabilityClaimsValid[capability] = analysis.capabilities.facilitates;
+          if (!analysis.capabilities.facilitates) {
             validation.gaps.push(`Facilitates capability not evidenced in response`);
           }
           break;
         case 'validates':
-          validation.capabilityClaimsValid[capability] = analysis.validates;
-          if (!analysis.validates) {
+          validation.capabilityClaimsValid[capability] = analysis.capabilities.validates;
+          if (!analysis.capabilities.validates) {
             validation.gaps.push(`Validates capability not evidenced in response`);
+          }
+          break;
+        case 'full':
+          validation.capabilityClaimsValid[capability] = analysis.capabilities.full;
+          if (!analysis.capabilities.full) {
+            validation.gaps.push(`Full coverage capability not evidenced in response`);
+          }
+          break;
+        case 'partial':
+          validation.capabilityClaimsValid[capability] = analysis.capabilities.partial;
+          if (!analysis.capabilities.partial) {
+            validation.gaps.push(`Partial coverage capability not evidenced in response`);
           }
           break;
       }
@@ -2873,15 +3021,15 @@ class GRCAnalysisServer {
       validation.recommendations.push(`Consider requesting additional information about: ${validation.gaps.join(', ')}`);
       
       // Specific recommendations based on gaps
-      if (analysis.coverageBreakdown.governance < 80) {
-        validation.recommendations.push(`Request details on policy management and documented processes`);
+      if (analysis.elementsNotCovered.coreRequirements.length > 0) {
+        validation.recommendations.push(`Request details on how these core elements are addressed: ${analysis.elementsNotCovered.coreRequirements.slice(0,3).join(', ')}${analysis.elementsNotCovered.coreRequirements.length > 3 ? '...' : ''}`);
       }
       
-      if (analysis.coverageBreakdown.core < 70) {
-        validation.recommendations.push(`Ask for specifics on how core safeguard requirements are met`);
+      if (analysis.elementsNotCovered.subTaxonomicalElements.length > 0) {
+        validation.recommendations.push(`Ask for specifics on these sub-taxonomical elements: ${analysis.elementsNotCovered.subTaxonomicalElements.slice(0,3).join(', ')}${analysis.elementsNotCovered.subTaxonomicalElements.length > 3 ? '...' : ''}`);
       }
       
-      if (!analysis.validates && capabilities.includes('Validates')) {
+      if (!analysis.capabilities.validates && capabilities.includes('Validates')) {
         validation.recommendations.push(`Request examples of audit trails, reporting capabilities, and compliance evidence`);
       }
     }
