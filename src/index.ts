@@ -3392,6 +3392,358 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["1.1", "5.1"],
     keywords: ["establish", "maintain", "dedicated", "computing", "resources", "administrative", "work", "segmented", "SAW"]
+  },
+
+  // Control 13: Network Monitoring and Defense
+  "13.1": {
+    id: "13.1",
+    title: "Centralize Security Event Alerting",
+    description: "Centralize security event alerting across enterprise assets for log correlation and analysis. Security event alerting includes, at a minimum, active exploitation attempts of enterprise assets",
+    implementationGroup: "IG2",
+    assetType: ["network", "devices"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "centralize security event alerting across enterprise assets",
+      "log correlation and analysis",
+      "active exploitation attempts monitoring"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "centralized security event alerting",
+      "log correlation capabilities", 
+      "analysis of security events",
+      "active exploitation attempt detection"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "centralize security event alerting",
+      "across enterprise assets",
+      "for log correlation",
+      "for analysis",
+      "active exploitation attempts",
+      "of enterprise assets"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security information and event management (SIEM)",
+      "security orchestration, automation and response (SOAR)",
+      "log aggregation platforms",
+      "event correlation engines"
+    ],
+    relatedSafeguards: ["8.1", "8.2", "8.11", "13.2", "13.3", "13.11"],
+    keywords: ["centralize", "security", "event", "alerting", "log", "correlation", "analysis", "exploitation"]
+  },
+  "13.2": {
+    id: "13.2", 
+    title: "Deploy a Host-Based Intrusion Detection Solution",
+    description: "Deploy a host-based intrusion detection solution on enterprise assets, where technically feasible",
+    implementationGroup: "IG2",
+    assetType: ["devices"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy host-based intrusion detection solution",
+      "on enterprise assets",
+      "where technically feasible"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "host-based intrusion detection solution",
+      "deployment on enterprise assets",
+      "technical feasibility assessment"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "deploy",
+      "host-based intrusion detection solution",
+      "on enterprise assets", 
+      "where technically feasible"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "host-based intrusion detection systems (HIDS)",
+      "endpoint detection and response (EDR)",
+      "host-based security monitoring",
+      "behavioral analysis tools"
+    ],
+    relatedSafeguards: ["1.1", "13.1", "13.3", "13.7"],
+    keywords: ["deploy", "host-based", "intrusion", "detection", "solution", "enterprise", "assets"]
+  },
+  "13.3": {
+    id: "13.3",
+    title: "Deploy a Network Intrusion Detection Solution", 
+    description: "Deploy a network intrusion detection solution with ruleset tuned for threats facing the enterprise's industry sector",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy network intrusion detection solution",
+      "ruleset tuned for threats facing enterprise's industry sector"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "network intrusion detection solution",
+      "threat-tuned rulesets",
+      "industry-specific threat focus"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "deploy",
+      "network intrusion detection solution", 
+      "with ruleset tuned",
+      "for threats facing",
+      "the enterprise's industry sector"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network intrusion detection systems (NIDS)",
+      "network security monitoring",
+      "threat intelligence integration",
+      "industry-specific threat feeds"
+    ],
+    relatedSafeguards: ["13.1", "13.2", "13.8"],
+    keywords: ["deploy", "network", "intrusion", "detection", "solution", "ruleset", "threats", "industry"]
+  },
+  "13.4": {
+    id: "13.4",
+    title: "Perform Traffic Filtering Between Network Segments",
+    description: "Perform traffic filtering between network segments, where technically feasible",
+    implementationGroup: "IG2", 
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform traffic filtering between network segments",
+      "where technically feasible"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "traffic filtering between network segments",
+      "network segmentation controls",
+      "technical feasibility assessment"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "perform traffic filtering",
+      "between network segments",
+      "where technically feasible"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network firewalls",
+      "micro-segmentation",
+      "network access control",
+      "software-defined perimeter"
+    ],
+    relatedSafeguards: ["12.2", "12.3", "13.9"],
+    keywords: ["perform", "traffic", "filtering", "network", "segments", "technically", "feasible"]
+  },
+  "13.5": {
+    id: "13.5",
+    title: "Manage Access Control for Remote Assets",
+    description: "Manage access control for assets remotely connecting to enterprise networks. Determine amount of access to the enterprise network based on: up-to-date anti-malware software, up-to date system patches, up-to-date host-based firewall, and up-to-date host-based intrusion detection or intrusion prevention system",
+    implementationGroup: "IG2",
+    assetType: ["devices", "network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "manage access control for assets remotely connecting to enterprise networks",
+      "determine amount of access based on security posture"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "access control for remote assets",
+      "remote connection management",
+      "security posture-based access"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "manage access control",
+      "for assets remotely connecting", 
+      "to enterprise networks",
+      "determine amount of access",
+      "up-to-date anti-malware software",
+      "up-to-date system patches",
+      "up-to-date host-based firewall", 
+      "up-to-date host-based intrusion detection or prevention"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network access control (NAC)",
+      "zero trust network access",
+      "device compliance checking",
+      "posture assessment tools"
+    ],
+    relatedSafeguards: ["6.1", "10.1", "10.7", "12.1", "13.2"],
+    keywords: ["manage", "access", "control", "remote", "assets", "connecting", "enterprise", "networks"]
+  },
+  "13.6": {
+    id: "13.6",
+    title: "Collect Network Traffic Flow Logs",
+    description: "Collect network traffic flow logs and/or network traffic to review and alert upon",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "collect network traffic flow logs and/or network traffic",
+      "to review and alert upon"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "network traffic flow log collection",
+      "network traffic monitoring",
+      "review and alerting capabilities"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "collect network traffic flow logs",
+      "collect network traffic",
+      "to review",
+      "to alert upon"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network flow analyzers",
+      "packet capture systems",
+      "network monitoring tools",
+      "traffic analysis platforms"
+    ],
+    relatedSafeguards: ["8.5", "13.1", "13.3"],
+    keywords: ["collect", "network", "traffic", "flow", "logs", "review", "alert"]
+  },
+  "13.7": {
+    id: "13.7",
+    title: "Deploy a Host-Based Intrusion Prevention Solution",
+    description: "Deploy a host-based intrusion prevention solution on enterprise assets, where technically feasible",
+    implementationGroup: "IG3",
+    assetType: ["devices"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy host-based intrusion prevention solution",
+      "on enterprise assets",
+      "where technically feasible"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "host-based intrusion prevention solution",
+      "deployment on enterprise assets",
+      "technical feasibility assessment"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "deploy",
+      "host-based intrusion prevention solution",
+      "on enterprise assets",
+      "where technically feasible"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "host-based intrusion prevention systems (HIPS)",
+      "endpoint protection platforms",
+      "behavioral blocking systems",
+      "automated threat response"
+    ],
+    relatedSafeguards: ["13.2", "13.8"],
+    keywords: ["deploy", "host-based", "intrusion", "prevention", "solution", "enterprise", "assets"]
+  },
+  "13.8": {
+    id: "13.8",
+    title: "Deploy a Network Intrusion Prevention Solution",
+    description: "Deploy a network intrusion prevention solution to block malicious network traffic in real-time",
+    implementationGroup: "IG3",
+    assetType: ["network"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy network intrusion prevention solution",
+      "to block malicious network traffic in real-time"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "network intrusion prevention solution",
+      "malicious traffic blocking",
+      "real-time response capabilities"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "deploy",
+      "network intrusion prevention solution",
+      "to block malicious network traffic",
+      "in real-time"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "network intrusion prevention systems (NIPS)",
+      "inline security appliances",
+      "automated blocking systems",
+      "real-time threat mitigation"
+    ],
+    relatedSafeguards: ["13.3", "13.7"],
+    keywords: ["deploy", "network", "intrusion", "prevention", "solution", "block", "malicious", "real-time"]
+  },
+  "13.9": {
+    id: "13.9",
+    title: "Deploy Port-Level Access Control",
+    description: "Deploy port-level access control. Port-level access control utilizes 802.1x, or similar network access control protocols, such as certificates",
+    implementationGroup: "IG3",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy port-level access control",
+      "utilizes 802.1x or similar network access control protocols"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "port-level access control",
+      "802.1x implementation",
+      "network access control protocols"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "deploy port-level access control",
+      "utilizes 802.1x",
+      "similar network access control protocols",
+      "such as certificates"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "802.1x authentication",
+      "network access control systems",
+      "certificate-based authentication",
+      "port-based network access control"
+    ],
+    relatedSafeguards: ["12.7", "13.4"],
+    keywords: ["deploy", "port-level", "access", "control", "802.1x", "network", "protocols", "certificates"]
+  },
+  "13.10": {
+    id: "13.10",
+    title: "Perform Application Layer Filtering",
+    description: "Perform application layer filtering to protect against the enterprise's most common network-based attacks",
+    implementationGroup: "IG3",
+    assetType: ["network", "applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform application layer filtering",
+      "to protect against enterprise's most common network-based attacks"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "application layer filtering",
+      "protection against common network-based attacks",
+      "enterprise-specific threat focus"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "perform application layer filtering",
+      "to protect against",
+      "the enterprise's most common",
+      "network-based attacks"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "web application firewalls",
+      "application layer gateways",
+      "deep packet inspection",
+      "application-aware filtering"
+    ],
+    relatedSafeguards: ["13.4", "16.11"],
+    keywords: ["perform", "application", "layer", "filtering", "protect", "network-based", "attacks"]
+  },
+  "13.11": {
+    id: "13.11",
+    title: "Tune Security Event Alerting Thresholds",
+    description: "Tune security event alerting thresholds monthly, or more frequently",
+    implementationGroup: "IG3",
+    assetType: ["network", "devices"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "tune security event alerting thresholds",
+      "monthly or more frequently"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "security event alerting threshold tuning",
+      "monthly tuning frequency",
+      "threshold optimization"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "tune security event alerting thresholds",
+      "monthly",
+      "or more frequently"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "SIEM tuning processes",
+      "threshold optimization tools",
+      "alert management platforms",
+      "false positive reduction"
+    ],
+    relatedSafeguards: ["13.1", "8.11"],
+    keywords: ["tune", "security", "event", "alerting", "thresholds", "monthly", "frequently"]
   }
 };
 
