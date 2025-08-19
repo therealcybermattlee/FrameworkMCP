@@ -97,11 +97,51 @@ interface ValidationResult {
     governance_alignment: number;
     language_consistency: number;
   };
+  domain_validation: {
+    required_tool_type: string;
+    detected_tool_type: string;
+    domain_match: boolean;
+    capability_adjusted: boolean;
+    original_claim?: string;
+  };
   gaps_identified: string[];
   strengths_identified: string[];
   recommendations: string[];
   detailed_feedback: string;
 }
+
+// Domain-specific validation mapping
+const SAFEGUARD_DOMAIN_REQUIREMENTS: Record<string, {
+  domain: string;
+  required_tool_types: string[];
+  description: string;
+}> = {
+  "1.1": {
+    domain: "Asset Inventory",
+    required_tool_types: ["inventory", "asset_management", "cmdb", "discovery"],
+    description: "Only asset inventory and discovery tools can provide FULL/PARTIAL coverage"
+  },
+  "1.2": {
+    domain: "Asset Management", 
+    required_tool_types: ["inventory", "asset_management", "network_security", "nac"],
+    description: "Asset management or network access control tools required for FULL/PARTIAL"
+  },
+  "5.1": {
+    domain: "Account Management",
+    required_tool_types: ["identity_management", "iam", "directory", "account_management"],
+    description: "Identity and account management tools required for FULL/PARTIAL"
+  },
+  "6.3": {
+    domain: "Authentication",
+    required_tool_types: ["mfa", "authentication", "identity_management", "iam"],
+    description: "Multi-factor authentication and identity tools required for FULL/PARTIAL"
+  },
+  "7.1": {
+    domain: "Vulnerability Management",
+    required_tool_types: ["vulnerability_management", "vulnerability_scanner", "patch_management"],
+    description: "Vulnerability management and scanning tools required for FULL/PARTIAL"
+  }
+};
 
 // Enhanced CIS Controls Framework Data with color-coded categorization
 const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
@@ -6358,6 +6398,19 @@ export class GRCAnalysisServer {
   ): ValidationResult {
     const text = supportingText.toLowerCase();
     
+    // Detect tool type and validate domain match
+    const detectedToolType = this.detectToolType(supportingText);
+    const domainValidation = this.validateDomainMatch(safeguard.id, claimedCapability, detectedToolType);
+    
+    // Adjust capability if domain mismatch detected
+    let effectiveCapability = claimedCapability;
+    let originalClaim: string | undefined;
+    
+    if (domainValidation.should_adjust_capability) {
+      originalClaim = claimedCapability;
+      effectiveCapability = domainValidation.adjusted_capability!;
+    }
+    
     // Perform actual analysis of the supporting text
     const actualAnalysis = this.performEnhancedSafeguardAnalysis(vendorName, safeguard, supportingText);
     
@@ -6373,15 +6426,23 @@ export class GRCAnalysisServer {
     const governancePercentage = safeguard.governanceElements.length > 0 ? 
       (governanceCoverage.coveredElements.length / safeguard.governanceElements.length) * 100 : 0;
 
-    // Validate claim against criteria
+    // Validate claim against criteria (using effective capability after domain adjustment)
     const validation = this.assessClaimAlignment(
-      claimedCapability, 
+      effectiveCapability, 
       actualAnalysis, 
       corePercentage, 
       subElementPercentage, 
       governancePercentage,
       text
     );
+    
+    // Add domain validation gaps if capability was adjusted
+    if (domainValidation.should_adjust_capability) {
+      validation.gaps.unshift(`Domain mismatch: ${domainValidation.reasoning}`);
+      validation.recommendations.unshift(`Correct capability mapping should be '${effectiveCapability.toUpperCase()}' for ${detectedToolType} tools`);
+      // Reduce confidence for domain mismatches
+      validation.confidence = Math.max(validation.confidence - 20, 0);
+    }
 
     return {
       vendor: vendorName,
@@ -6395,6 +6456,13 @@ export class GRCAnalysisServer {
         sub_elements_coverage: Math.round(subElementPercentage),
         governance_alignment: Math.round(governancePercentage),
         language_consistency: validation.languageConsistency
+      },
+      domain_validation: {
+        required_tool_type: domainValidation.required_tool_types.join('/'),
+        detected_tool_type: detectedToolType,
+        domain_match: domainValidation.domain_match,
+        capability_adjusted: domainValidation.should_adjust_capability,
+        original_claim: originalClaim
       },
       gaps_identified: validation.gaps,
       strengths_identified: validation.strengths,
@@ -6615,6 +6683,120 @@ export class GRCAnalysisServer {
       'compliance reports', 'audit capabilities', 'audit trail', 'reporting capabilities'
     ];
     return this.calculateKeywordScore(text, validationKeywords) * 100;
+  }
+
+  private detectToolType(text: string): string {
+    const lowerText = text.toLowerCase();
+    
+    // Inventory/Asset Management tools
+    const inventoryKeywords = [
+      'asset management', 'inventory', 'cmdb', 'discovery', 'asset discovery',
+      'hardware inventory', 'software inventory', 'device inventory', 'asset tracking',
+      'configuration management database', 'it asset management', 'endpoint discovery'
+    ];
+    
+    // Identity/Authentication tools  
+    const identityKeywords = [
+      'identity management', 'iam', 'active directory', 'ldap', 'sso', 'single sign-on',
+      'mfa', 'multi-factor', 'authentication', 'identity provider', 'access management',
+      'user management', 'account management', 'directory service'
+    ];
+    
+    // Vulnerability Management tools
+    const vulnerabilityKeywords = [
+      'vulnerability scanner', 'vulnerability management', 'patch management', 
+      'security scanner', 'vuln scan', 'penetration test', 'security assessment',
+      'scanning capabilities', 'vulnerability scanning', 'network discovery'
+    ];
+    
+    // Network Security tools
+    const networkSecurityKeywords = [
+      'firewall', 'network access control', 'nac', 'network security', 'intrusion detection',
+      'network monitoring', 'traffic analysis', 'network segmentation'
+    ];
+    
+    // Threat Intelligence/Data Enrichment tools
+    const threatIntelKeywords = [
+      'threat intelligence', 'threat intel', 'threat feed', 'security intelligence',
+      'enrichment', 'data feed', 'contextual data', 'risk intelligence', 
+      'cyber threat intelligence', 'ioc feed', 'threat data'
+    ];
+    
+    // GRC/Governance tools
+    const governanceKeywords = [
+      'grc', 'governance', 'compliance management', 'policy management',
+      'risk management', 'audit management', 'compliance platform'
+    ];
+    
+    // Security Analytics/SIEM tools
+    const analyticsKeywords = [
+      'siem', 'security analytics', 'log management', 'security monitoring',
+      'event correlation', 'security orchestration', 'soar'
+    ];
+    
+    // Check for tool type patterns - order by specificity (most specific first)
+    if (threatIntelKeywords.some(keyword => lowerText.includes(keyword))) {
+      return 'threat_intelligence';
+    } else if (vulnerabilityKeywords.some(keyword => lowerText.includes(keyword))) {
+      return 'vulnerability_management';
+    } else if (identityKeywords.some(keyword => lowerText.includes(keyword))) {
+      return 'identity_management';
+    } else if (networkSecurityKeywords.some(keyword => lowerText.includes(keyword))) {
+      return 'network_security';
+    } else if (governanceKeywords.some(keyword => lowerText.includes(keyword))) {
+      return 'governance';
+    } else if (analyticsKeywords.some(keyword => lowerText.includes(keyword))) {
+      return 'security_analytics';
+    } else if (inventoryKeywords.some(keyword => lowerText.includes(keyword))) {
+      return 'inventory';
+    }
+    
+    return 'unknown';
+  }
+
+  private validateDomainMatch(
+    safeguardId: string, 
+    claimedCapability: string, 
+    detectedToolType: string
+  ): {
+    domain_match: boolean;
+    required_tool_types: string[];
+    should_adjust_capability: boolean;
+    adjusted_capability?: string;
+    reasoning: string;
+  } {
+    const domainReq = SAFEGUARD_DOMAIN_REQUIREMENTS[safeguardId];
+    
+    if (!domainReq) {
+      return {
+        domain_match: true,
+        required_tool_types: [],
+        should_adjust_capability: false,
+        reasoning: 'No domain restrictions defined for this safeguard'
+      };
+    }
+    
+    const isFullOrPartial = ['full', 'partial'].includes(claimedCapability.toLowerCase());
+    const toolTypeMatches = domainReq.required_tool_types.includes(detectedToolType);
+    
+    if (isFullOrPartial && !toolTypeMatches) {
+      return {
+        domain_match: false,
+        required_tool_types: domainReq.required_tool_types,
+        should_adjust_capability: true,
+        adjusted_capability: 'facilitates',
+        reasoning: `${domainReq.domain} safeguard requires ${domainReq.required_tool_types.join('/')} tool types for FULL/PARTIAL coverage. Detected tool type '${detectedToolType}' can only facilitate implementation.`
+      };
+    }
+    
+    return {
+      domain_match: true,
+      required_tool_types: domainReq.required_tool_types,
+      should_adjust_capability: false,
+      reasoning: toolTypeMatches ? 
+        `Tool type '${detectedToolType}' is appropriate for ${domainReq.domain} safeguard` :
+        'No domain validation required for this capability type'
+    };
   }
 
   private generateValidationFeedback(
