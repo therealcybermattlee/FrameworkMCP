@@ -1,6 +1,6 @@
 {
   "name": "framework-mcp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "MCP server for analyzing vendor responses against CIS Controls Framework using 4 GRC attributes (Governance, Facilitates, Coverage, Validates)",
   "main": "dist/index.js",
   "type": "module",

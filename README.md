@@ -126,8 +126,21 @@ claude-code "Analyze the vendor responses in vendors.csv and provide recommendat
 claude-code "Show me the detailed breakdown of safeguard 5.1 including all sub-elements"
 ```
 
+### Validate Vendor Capability Claims
+
+**NEW**: Validate whether a vendor's stated capability mapping is actually supported by their explanatory text.
+
+```bash
+claude-code "Validate this vendor capability claim:
+Vendor: SecureAssets Corp
+Safeguard: 1.1  
+Claimed Capability: FULL
+Supporting Text: 'Our comprehensive asset management platform performs automated discovery of all enterprise devices, maintains detailed hardware and software inventories, tracks ownership and location data, provides real-time asset status monitoring, and includes documented inventory procedures with bi-annual review capabilities.'"
+```
+
 ## 📊 Sample Output
 
+### Standard Analysis Output
 ```json
 {
   "vendor": "SecureIAM Corp",
@@ -157,16 +170,40 @@ claude-code "Show me the detailed breakdown of safeguard 5.1 including all sub-e
 }
 ```
 
+### Validation Tool Output
+```json
+{
+  "vendor": "SecureAssets Corp",
+  "safeguard_id": "1.1",
+  "safeguard_title": "Establish and Maintain a Detailed Enterprise Asset Inventory",
+  "claimed_capability": "full",
+  "validation_status": "SUPPORTED",
+  "confidence_score": 85,
+  "evidence_analysis": {
+    "core_requirements_coverage": 100,
+    "sub_elements_coverage": 47,
+    "governance_alignment": 80,
+    "language_consistency": 90
+  },
+  "gaps_identified": [],
+  "strengths_identified": [
+    "High coverage of core requirements and sub-elements",
+    "Strong implementation language consistency"
+  ],
+  "recommendations": [],
+  "detailed_feedback": "Validation of FULL capability claim: SUPPORTED (85% alignment)\n\nSTRENGTHS:\n• High coverage of core requirements and sub-elements\n• Strong implementation language consistency\n\nASSESSMENT: The vendor's supporting evidence strongly aligns with their claimed capability."
+}
+```
+
 ## 🔧 Available Tools
 
 | Tool | Description |
 |------|-------------|
 | `analyze_vendor_response` | Analyze vendor response for specific safeguard |
+| `validate_vendor_mapping` | **NEW** Validate vendor's claimed capability against supporting evidence |
 | `validate_coverage_claim` | Validate FULL/PARTIAL coverage claims |
 | `get_safeguard_details` | Get detailed safeguard breakdown |
 | `list_available_safeguards` | List all available CIS safeguards |
-| `generate_coverage_report` | Generate detailed coverage analysis |
-| `export_analysis` | Export results to JSON/CSV/Markdown |
 
 ## 📁 File Formats Supported
 
@@ -194,6 +231,39 @@ Response text here...
 
 Vendor: AnotherVendor - Safeguard: 6.3
 Another response...
+```
+
+## 🆕 Vendor Mapping Validation
+
+The **validate_vendor_mapping** tool provides evidence-based validation of vendor capability claims. This addresses a critical need: vendors often self-assess their capabilities, but practitioners need to verify whether the supporting evidence actually justifies the claimed mapping.
+
+### Validation Criteria
+
+| Capability | Requirements | Validation Thresholds |
+|------------|-------------|----------------------|
+| **FULL** | Complete implementation within scope | ≥70% core requirements + ≥40% sub-elements |
+| **PARTIAL** | Limited scope with clear boundaries | ≥30% core requirements OR some core + ≥20% sub-elements |
+| **FACILITATES** | Enables/enhances implementation | Facilitation language present, no direct implementation claims |
+| **GOVERNANCE** | Policy/process management | ≥60% governance elements + policy language |
+| **VALIDATES** | Evidence collection & reporting | Audit/monitoring/reporting capabilities present |
+
+### Validation Statuses
+
+- **SUPPORTED** (70-100%): Evidence strongly supports the claimed capability
+- **QUESTIONABLE** (40-69%): Evidence partially supports but has notable gaps  
+- **UNSUPPORTED** (0-39%): Evidence does not adequately support the claim
+
+### Usage Examples
+
+```bash
+# Validate a FULL coverage claim
+claude-code "Use validate_vendor_mapping for vendor 'AssetMax Pro', safeguard '1.1', claimed capability 'full', with supporting text: 'Our platform provides comprehensive automated discovery, detailed inventory management, and complete asset lifecycle tracking for all enterprise devices including servers, workstations, and network equipment.'"
+
+# Validate a FACILITATES claim  
+claude-code "Use validate_vendor_mapping for vendor 'ThreatIntel Feed', safeguard '1.1', claimed capability 'facilitates', with supporting text: 'Our threat intelligence service provides supplemental risk data that enriches existing asset management systems, enabling organizations to prioritize asset security based on threat exposure.'"
+
+# Validate a questionable claim
+claude-code "Use validate_vendor_mapping for vendor 'BasicTracker', safeguard '1.1', claimed capability 'full', with supporting text: 'We help track computers and provide some visibility into your IT environment.'"
 ```
 
 ## 🎯 CIS Controls Coverage

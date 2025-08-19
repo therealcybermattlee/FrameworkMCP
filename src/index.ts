@@ -84,6 +84,25 @@ interface AnalysisResult {
   recommendations: string[];
 }
 
+interface ValidationResult {
+  vendor: string;
+  safeguard_id: string;
+  safeguard_title: string;
+  claimed_capability: string;
+  validation_status: 'SUPPORTED' | 'QUESTIONABLE' | 'UNSUPPORTED';
+  confidence_score: number; // 0-100
+  evidence_analysis: {
+    core_requirements_coverage: number;
+    sub_elements_coverage: number;
+    governance_alignment: number;
+    language_consistency: number;
+  };
+  gaps_identified: string[];
+  strengths_identified: string[];
+  recommendations: string[];
+  detailed_feedback: string;
+}
+
 // Enhanced CIS Controls Framework Data with color-coded categorization
 const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
   "1.1": {
@@ -5633,6 +5652,35 @@ export class GRCAnalysisServer {
               }
             }
           }
+        } as Tool,
+        {
+          name: 'validate_vendor_mapping',
+          description: 'Validate whether a vendor\'s stated capability mapping (Full/Partial/Facilitates/Governance/Validates) is actually supported by their explanatory text for a specific CIS safeguard',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              vendor_name: {
+                type: 'string',
+                description: 'Name of the vendor (optional)',
+                default: 'Unknown Vendor'
+              },
+              safeguard_id: {
+                type: 'string',
+                description: 'CIS Control safeguard ID (e.g., "5.1", "1.1", "6.3")',
+                pattern: '^[0-9]+\\.[0-9]+$'
+              },
+              claimed_capability: {
+                type: 'string',
+                enum: ['full', 'partial', 'facilitates', 'governance', 'validates'],
+                description: 'Vendor\'s claimed capability mapping for this safeguard'
+              },
+              supporting_text: {
+                type: 'string',
+                description: 'Vendor\'s supporting text blob explaining how they meet the claimed capability'
+              }
+            },
+            required: ['safeguard_id', 'claimed_capability', 'supporting_text']
+          }
         } as Tool
       ],
     }));
@@ -5650,6 +5698,8 @@ export class GRCAnalysisServer {
             return await this.validateCoverageClaim(args);
           case 'list_available_safeguards':
             return await this.listAvailableSafeguards(args);
+          case 'validate_vendor_mapping':
+            return await this.validateVendorMapping(args);
           default:
             throw new Error(`Unknown tool: ${name}`);
         }
@@ -5817,6 +5867,11 @@ export class GRCAnalysisServer {
       'improve', 'enhance', 'optimize', 'faster', 'better', 'stronger', 'automate', 
       'streamline', 'efficiency', 'facilitate', 'support', 'enable', 'accelerate',
       'api', 'integration', 'data', 'export', 'import', 'sync', 'feed',
+      // Data provision and enrichment
+      'provides data', 'data source', 'data feeds', 'enrichment', 'data enrichment',
+      'supplemental data', 'additional data', 'contextual data', 'threat data',
+      'intelligence feeds', 'data aggregation', 'data collection', 'data gathering',
+      'feeds data', 'populates', 'informs', 'enriches', 'supplements',
       // Governance/process facilitation (new keywords for tools like Upolicy)
       'enables compliance', 'facilitates implementation', 'supports compliance',
       'creates framework', 'enables organizations', 'infrastructure', 'foundation',
@@ -5827,9 +5882,9 @@ export class GRCAnalysisServer {
     
     const validatesKeywords = [
       'audit', 'report', 'evidence', 'verify', 'validate', 'check', 'monitor', 
-      'compliance report', 'assessment', 'logging', 'tracking', 'review', 'attest',
+      'compliance', 'compliance report', 'assessment', 'logging', 'tracking', 'review', 'attest',
       'dashboard', 'metrics', 'analytics', 'visibility', 'alert', 'attestation',
-      'compliance tracking', 'audit trail', 'reporting capabilities'
+      'compliance tracking', 'audit trail', 'reporting capabilities', 'audit capabilities'
     ];
 
     // Analyze element coverage (binary: covered or not)
@@ -5865,19 +5920,25 @@ export class GRCAnalysisServer {
     ];
     const hasNonImplementationLanguage = nonImplementationPatterns.some(pattern => text.includes(pattern));
     
-    // Determine if full or partial coverage (based on core + sub-taxonomical elements)
-    const totalCoreAndSubElements = safeguard.coreRequirements.length + safeguard.subTaxonomicalElements.length;
-    const coveredCoreAndSubElements = coreCoverage.coveredElements.length + subElementCoverage.coveredElements.length;
+    // Determine if full or partial coverage (based on core + sub-taxonomical elements WITHIN SCOPE)
+    // Full = addresses majority of core requirements + substantial sub-elements within their stated scope
+    // Partial = addresses some core requirements with clear scope boundaries
+    
+    const corePercentage = safeguard.coreRequirements.length > 0 ? 
+      (coreCoverage.coveredElements.length / safeguard.coreRequirements.length) * 100 : 0;
+    const subElementPercentage = safeguard.subTaxonomicalElements.length > 0 ? 
+      (subElementCoverage.coveredElements.length / safeguard.subTaxonomicalElements.length) * 100 : 0;
     
     let fullCapability = false;
     let partialCapability = false;
     
-    if (totalCoreAndSubElements > 0) {
-      if (coveredCoreAndSubElements === totalCoreAndSubElements) {
-        fullCapability = true;
-      } else if (coveredCoreAndSubElements > 0) {
-        partialCapability = true;
-      }
+    // Full capability: High coverage of core requirements + reasonable sub-element coverage
+    if (corePercentage >= 70 && subElementPercentage >= 50) {
+      fullCapability = true;
+    }
+    // Partial capability: Moderate core coverage OR clear scope-limited implementation
+    else if (corePercentage >= 30 || (coreCoverage.coveredElements.length > 0 && subElementPercentage >= 20)) {
+      partialCapability = true;
     }
 
     // Enhanced primary capability logic
@@ -5914,6 +5975,8 @@ export class GRCAnalysisServer {
     // Calculate confidence based on evidence strength and keyword matches
     const keywordConfidence = (governanceScore + facilitatesScore + validatesScore) / 3;
     
+    const totalCoreAndSubElements = safeguard.coreRequirements.length + safeguard.subTaxonomicalElements.length;
+    const coveredCoreAndSubElements = coreCoverage.coveredElements.length + subElementCoverage.coveredElements.length;
     const coverageConfidence = totalCoreAndSubElements > 0 ? 
       coveredCoreAndSubElements / totalCoreAndSubElements : 0;
     
@@ -6260,6 +6323,331 @@ export class GRCAnalysisServer {
     }
 
     return validation;
+  }
+
+  private async validateVendorMapping(args: any) {
+    const { vendor_name = 'Unknown Vendor', safeguard_id, claimed_capability, supporting_text } = args;
+
+    const safeguard = CIS_SAFEGUARDS[safeguard_id];
+    if (!safeguard) {
+      throw new Error(`Safeguard ${safeguard_id} not found. Available safeguards: ${Object.keys(CIS_SAFEGUARDS).join(', ')}`);
+    }
+
+    const validation = this.validateCapabilityClaim(
+      vendor_name, 
+      safeguard, 
+      claimed_capability, 
+      supporting_text
+    );
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(validation, null, 2),
+        },
+      ],
+    };
+  }
+
+  private validateCapabilityClaim(
+    vendorName: string,
+    safeguard: SafeguardElement,
+    claimedCapability: string,
+    supportingText: string
+  ): ValidationResult {
+    const text = supportingText.toLowerCase();
+    
+    // Perform actual analysis of the supporting text
+    const actualAnalysis = this.performEnhancedSafeguardAnalysis(vendorName, safeguard, supportingText);
+    
+    // Calculate coverage percentages
+    const coreCoverage = this.analyzeBinaryElementCoverage(text, safeguard.coreRequirements);
+    const subElementCoverage = this.analyzeBinaryElementCoverage(text, safeguard.subTaxonomicalElements);
+    const governanceCoverage = this.analyzeBinaryElementCoverage(text, safeguard.governanceElements);
+    
+    const corePercentage = safeguard.coreRequirements.length > 0 ? 
+      (coreCoverage.coveredElements.length / safeguard.coreRequirements.length) * 100 : 0;
+    const subElementPercentage = safeguard.subTaxonomicalElements.length > 0 ? 
+      (subElementCoverage.coveredElements.length / safeguard.subTaxonomicalElements.length) * 100 : 0;
+    const governancePercentage = safeguard.governanceElements.length > 0 ? 
+      (governanceCoverage.coveredElements.length / safeguard.governanceElements.length) * 100 : 0;
+
+    // Validate claim against criteria
+    const validation = this.assessClaimAlignment(
+      claimedCapability, 
+      actualAnalysis, 
+      corePercentage, 
+      subElementPercentage, 
+      governancePercentage,
+      text
+    );
+
+    return {
+      vendor: vendorName,
+      safeguard_id: safeguard.id,
+      safeguard_title: safeguard.title,
+      claimed_capability: claimedCapability,
+      validation_status: validation.status,
+      confidence_score: validation.confidence,
+      evidence_analysis: {
+        core_requirements_coverage: Math.round(corePercentage),
+        sub_elements_coverage: Math.round(subElementPercentage),
+        governance_alignment: Math.round(governancePercentage),
+        language_consistency: validation.languageConsistency
+      },
+      gaps_identified: validation.gaps,
+      strengths_identified: validation.strengths,
+      recommendations: validation.recommendations,
+      detailed_feedback: validation.feedback
+    };
+  }
+
+  private assessClaimAlignment(
+    claimedCapability: string,
+    actualAnalysis: VendorAnalysis,
+    corePercentage: number,
+    subElementPercentage: number,
+    governancePercentage: number,
+    text: string
+  ): {
+    status: 'SUPPORTED' | 'QUESTIONABLE' | 'UNSUPPORTED';
+    confidence: number;
+    languageConsistency: number;
+    gaps: string[];
+    strengths: string[];
+    recommendations: string[];
+    feedback: string;
+  } {
+    const gaps: string[] = [];
+    const strengths: string[] = [];
+    const recommendations: string[] = [];
+    let languageConsistency = 0;
+    let alignmentScore = 0;
+
+    switch (claimedCapability.toLowerCase()) {
+      case 'full':
+        // Validate FULL claim
+        if (corePercentage >= 70 && subElementPercentage >= 40) {
+          alignmentScore = 85;
+          strengths.push('High coverage of core requirements and sub-elements');
+        } else if (corePercentage >= 80 && subElementPercentage >= 30) {
+          // Alternative path: very high core with moderate sub-elements
+          alignmentScore = 80;
+          strengths.push('Very high core requirements coverage with adequate sub-element coverage');
+        } else {
+          alignmentScore = Math.max(0, (corePercentage + subElementPercentage) / 2 - 15);
+          if (corePercentage < 70) gaps.push(`Core requirements coverage (${Math.round(corePercentage)}%) below FULL threshold (70%)`);
+          if (subElementPercentage < 40) gaps.push(`Sub-element coverage (${Math.round(subElementPercentage)}%) below FULL threshold (40%)`);
+        }
+        
+        // Check for conflicting facilitation language
+        if (this.hasFacilitationLanguage(text)) {
+          alignmentScore -= 30;
+          gaps.push('Contains facilitation language inconsistent with FULL implementation claim');
+        }
+        
+        languageConsistency = this.assessImplementationLanguage(text);
+        break;
+
+      case 'partial':
+        // Validate PARTIAL claim
+        if (corePercentage >= 30 || (corePercentage > 0 && subElementPercentage >= 20)) {
+          alignmentScore = 75;
+          strengths.push('Appropriate coverage level for PARTIAL implementation');
+        } else {
+          alignmentScore = Math.max(0, corePercentage + subElementPercentage - 10);
+          gaps.push(`Coverage too low even for PARTIAL claim: ${Math.round(corePercentage)}% core, ${Math.round(subElementPercentage)}% sub-elements`);
+        }
+        
+        // Check for scope boundary definition
+        if (this.hasScopeBoundaries(text)) {
+          strengths.push('Clearly defines scope boundaries and limitations');
+          alignmentScore += 10;
+        } else {
+          gaps.push('Should clearly define scope boundaries for PARTIAL implementation');
+          recommendations.push('Specify exactly which elements are covered and which are not');
+        }
+        
+        languageConsistency = this.assessImplementationLanguage(text);
+        break;
+
+      case 'facilitates':
+        // Validate FACILITATES claim
+        if (this.hasFacilitationLanguage(text) || actualAnalysis.capabilities.facilitates) {
+          alignmentScore = 80;
+          strengths.push('Contains appropriate facilitation and enablement language');
+        } else {
+          alignmentScore = 40;
+          gaps.push('Lacks clear facilitation language (enables, supports, provides framework)');
+        }
+        
+        // Check that it doesn't claim direct implementation
+        if (this.hasDirectImplementationLanguage(text)) {
+          // Special handling: If it lacks facilitation language AND claims implementation, stay QUESTIONABLE
+          if (alignmentScore <= 40) {
+            alignmentScore = 45; // Keep it in QUESTIONABLE range
+          } else {
+            alignmentScore -= 15;
+          }
+          gaps.push('Claims direct implementation, inconsistent with FACILITATES capability');
+        }
+        
+        languageConsistency = this.assessFacilitationLanguage(text);
+        break;
+
+      case 'governance':
+        // Validate GOVERNANCE claim
+        if (governancePercentage >= 60 || actualAnalysis.capabilities.governance) {
+          alignmentScore = 85;
+          strengths.push('Strong governance element coverage and policy management language');
+        } else {
+          alignmentScore = Math.max(30, governancePercentage);
+          gaps.push(`Governance element coverage (${Math.round(governancePercentage)}%) below expected threshold (60%)`);
+        }
+        
+        languageConsistency = this.assessGovernanceLanguage(text);
+        break;
+
+      case 'validates':
+        // Validate VALIDATES claim
+        if (actualAnalysis.capabilities.validates) {
+          alignmentScore = 85;
+          strengths.push('Contains evidence collection and reporting capabilities');
+        } else {
+          alignmentScore = 30;
+          gaps.push('Lacks validation language (audit, report, evidence, verify, monitor)');
+        }
+        
+        languageConsistency = this.assessValidationLanguage(text);
+        break;
+
+      default:
+        alignmentScore = 0;
+        gaps.push(`Unknown capability type: ${claimedCapability}`);
+        languageConsistency = 0;
+    }
+
+    // Determine overall status
+    let status: 'SUPPORTED' | 'QUESTIONABLE' | 'UNSUPPORTED';
+    if (alignmentScore >= 70) {
+      status = 'SUPPORTED';
+    } else if (alignmentScore >= 40) {
+      status = 'QUESTIONABLE';
+    } else {
+      status = 'UNSUPPORTED';
+    }
+
+    // Generate recommendations
+    if (gaps.length > 0) {
+      recommendations.push('Address identified gaps to strengthen capability claim');
+    }
+    if (status === 'QUESTIONABLE') {
+      recommendations.push('Provide additional evidence or clarify scope to support claim');
+    }
+
+    const feedback = this.generateValidationFeedback(claimedCapability, status, gaps, strengths, alignmentScore);
+
+    return {
+      status,
+      confidence: Math.round(alignmentScore),
+      languageConsistency: Math.round(languageConsistency),
+      gaps,
+      strengths,
+      recommendations,
+      feedback
+    };
+  }
+
+  private hasFacilitationLanguage(text: string): boolean {
+    const facilitationPatterns = [
+      'enables', 'facilitates', 'supports', 'helps', 'provides framework',
+      'creates infrastructure', 'enables organizations', 'supports compliance',
+      'provides data', 'enriches', 'supplements', 'feeds data'
+    ];
+    return facilitationPatterns.some(pattern => text.includes(pattern));
+  }
+
+  private hasScopeBoundaries(text: string): boolean {
+    const boundaryPatterns = [
+      'covers', 'but not', 'limited to', 'specifically', 'only', 'excludes',
+      'scope includes', 'scope excludes', 'within', 'applies to'
+    ];
+    return boundaryPatterns.some(pattern => text.includes(pattern));
+  }
+
+  private hasDirectImplementationLanguage(text: string): boolean {
+    const implementationPatterns = [
+      'directly implements', 'performs', 'executes', 'scans', 'catalogs',
+      'inventories', 'manages assets', 'controls access', 'blocks threats'
+    ];
+    return implementationPatterns.some(pattern => text.includes(pattern));
+  }
+
+  private assessImplementationLanguage(text: string): number {
+    const implementationKeywords = [
+      'implements', 'performs', 'executes', 'manages', 'controls', 'maintains',
+      'establishes', 'configures', 'monitors', 'tracks', 'inventories'
+    ];
+    return this.calculateKeywordScore(text, implementationKeywords) * 100;
+  }
+
+  private assessFacilitationLanguage(text: string): number {
+    const facilitationKeywords = [
+      'enables', 'facilitates', 'supports', 'helps', 'enhances', 'improves',
+      'streamlines', 'automates', 'optimizes', 'provides framework'
+    ];
+    return this.calculateKeywordScore(text, facilitationKeywords) * 100;
+  }
+
+  private assessGovernanceLanguage(text: string): number {
+    const governanceKeywords = [
+      'policy', 'governance', 'compliance', 'oversight', 'management',
+      'framework', 'procedures', 'processes', 'controls', 'standards'
+    ];
+    return this.calculateKeywordScore(text, governanceKeywords) * 100;
+  }
+
+  private assessValidationLanguage(text: string): number {
+    const validationKeywords = [
+      'audit', 'validate', 'verify', 'report', 'evidence', 'monitor',
+      'assess', 'check', 'review', 'attest', 'compliance', 'compliance tracking',
+      'compliance reports', 'audit capabilities', 'audit trail', 'reporting capabilities'
+    ];
+    return this.calculateKeywordScore(text, validationKeywords) * 100;
+  }
+
+  private generateValidationFeedback(
+    claimedCapability: string,
+    status: string,
+    gaps: string[],
+    strengths: string[],
+    score: number
+  ): string {
+    let feedback = `Validation of ${claimedCapability.toUpperCase()} capability claim: ${status} (${Math.round(score)}% alignment)\n\n`;
+    
+    if (strengths.length > 0) {
+      feedback += `STRENGTHS:\n${strengths.map(s => `• ${s}`).join('\n')}\n\n`;
+    }
+    
+    if (gaps.length > 0) {
+      feedback += `GAPS IDENTIFIED:\n${gaps.map(g => `• ${g}`).join('\n')}\n\n`;
+    }
+    
+    feedback += `ASSESSMENT: `;
+    switch (status) {
+      case 'SUPPORTED':
+        feedback += 'The vendor\'s supporting evidence strongly aligns with their claimed capability.';
+        break;
+      case 'QUESTIONABLE':
+        feedback += 'The vendor\'s evidence partially supports their claim but has notable gaps or inconsistencies.';
+        break;
+      case 'UNSUPPORTED':
+        feedback += 'The vendor\'s evidence does not adequately support their claimed capability.';
+        break;
+    }
+    
+    return feedback;
   }
 
   async run() {
