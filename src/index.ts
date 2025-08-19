@@ -5059,6 +5059,301 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["16.1"],
     keywords: ["conduct", "threat", "modeling", "identifying", "addressing", "application", "security", "design", "flaws", "specially", "trained", "individuals", "entry", "point", "access", "level"]
+  },
+
+  // Control 17: Incident Response Management
+  "17.1": {
+    id: "17.1",
+    title: "Designate Personnel to Manage Incident Handling",
+    description: "Designate one key person, and at least one backup, who will manage the enterprise's incident handling process. Management personnel are responsible for the coordination and documentation of incident response and recovery efforts and can consist of employees internal to the enterprise, service providers, or a hybrid approach. If using a service provider, designate at least one person internal to the enterprise to oversee any third-party work. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "designate one key person and at least one backup who will manage the enterprise's incident handling process",
+      "review annually or when significant enterprise changes occur that could impact this safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "one key person to manage incident handling",
+      "at least one backup person",
+      "coordination of incident response and recovery efforts",
+      "documentation of incident response and recovery efforts",
+      "management personnel for incident handling process"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "management personnel are responsible for coordination and documentation",
+      "can consist of employees internal to the enterprise",
+      "can consist of service providers",
+      "can consist of a hybrid approach",
+      "if using a service provider, designate at least one person internal to the enterprise to oversee any third-party work"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "incident response team structures",
+      "incident management roles and responsibilities",
+      "coordination tools and processes",
+      "documentation templates"
+    ],
+    relatedSafeguards: ["17.4"],
+    keywords: ["designate", "personnel", "manage", "incident", "handling", "key", "person", "backup", "coordination", "documentation", "response", "recovery"]
+  },
+  "17.2": {
+    id: "17.2",
+    title: "Establish and Maintain Contact Information for Reporting Security Incidents",
+    description: "Establish and maintain contact information for reporting security incidents. This information must be available to all workforce members and should include various contact methods (e.g., phone, email) and be regularly updated. Consider the availability of these contact methods in different circumstances, such as when primary communication systems are compromised",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain contact information for reporting security incidents",
+      "information must be available to all workforce members"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "contact information for reporting security incidents",
+      "available to all workforce members",
+      "various contact methods",
+      "regularly updated contact information"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "should include various contact methods (e.g., phone, email)",
+      "be regularly updated",
+      "consider the availability of these contact methods in different circumstances",
+      "such as when primary communication systems are compromised"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "incident reporting hotlines",
+      "emergency contact lists",
+      "multiple communication channels",
+      "contact information distribution methods"
+    ],
+    relatedSafeguards: ["17.3", "17.4"],
+    keywords: ["establish", "maintain", "contact", "information", "reporting", "security", "incidents", "workforce", "members", "communication", "methods"]
+  },
+  "17.3": {
+    id: "17.3",
+    title: "Establish and Maintain an Enterprise Process for Reporting Incidents",
+    description: "Establish and maintain an documented enterprise process for the workforce to report security incidents. The process includes reporting timeframe, personnel to report to, mechanism for reporting, and the minimum information to be reported. Ensure the process is publicly available to all of the workforce. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain a documented enterprise process for the workforce to report security incidents",
+      "ensure the process is publicly available to all of the workforce",
+      "review annually or when significant enterprise changes occur that could impact this safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "documented enterprise process for reporting incidents",
+      "reporting timeframe",
+      "personnel to report to",
+      "mechanism for reporting",
+      "minimum information to be reported"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "the process includes reporting timeframe",
+      "the process includes personnel to report to",
+      "the process includes mechanism for reporting",
+      "the process includes the minimum information to be reported"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "incident reporting procedures",
+      "reporting forms and templates",
+      "workforce training materials",
+      "process communication methods"
+    ],
+    relatedSafeguards: ["17.2", "17.4", "14.6"],
+    keywords: ["establish", "maintain", "enterprise", "process", "reporting", "incidents", "documented", "timeframe", "personnel", "mechanism", "minimum", "information"]
+  },
+  "17.4": {
+    id: "17.4",
+    title: "Establish and Maintain an Incident Response Process",
+    description: "Establish and maintain a documented incident response process that addresses roles and responsibilities, compliance requirements, and a communication plan. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain a documented incident response process",
+      "review annually or when significant enterprise changes occur that could impact this safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "documented incident response process",
+      "roles and responsibilities",
+      "compliance requirements",
+      "communication plan"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "that addresses roles and responsibilities",
+      "that addresses compliance requirements",
+      "that addresses a communication plan"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "incident response playbooks",
+      "process documentation templates",
+      "compliance frameworks",
+      "communication protocols"
+    ],
+    relatedSafeguards: ["17.1", "17.3", "17.5", "17.6", "17.7", "17.8", "17.9"],
+    keywords: ["establish", "maintain", "incident", "response", "process", "documented", "roles", "responsibilities", "compliance", "requirements", "communication", "plan"]
+  },
+  "17.5": {
+    id: "17.5",
+    title: "Assign Key Roles and Responsibilities",
+    description: "Assign key roles and responsibilities for incident response, including staff from legal, IT, information security, facilities, public relations, human resources, incident responders, and analysts. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "assign key roles and responsibilities for incident response",
+      "review annually or when significant enterprise changes occur that could impact this safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "key roles and responsibilities for incident response",
+      "staff from legal",
+      "staff from IT",
+      "staff from information security",
+      "staff from facilities",
+      "staff from public relations",
+      "staff from human resources",
+      "incident responders",
+      "analysts"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "including staff from legal, IT, information security, facilities, public relations, human resources, incident responders, and analysts"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "incident response team structures",
+      "role definition templates",
+      "responsibility matrices",
+      "cross-functional team coordination"
+    ],
+    relatedSafeguards: ["17.4"],
+    keywords: ["assign", "key", "roles", "responsibilities", "incident", "response", "legal", "IT", "information", "security", "facilities", "public", "relations", "human", "resources", "responders", "analysts"]
+  },
+  "17.6": {
+    id: "17.6",
+    title: "Define Mechanisms for Communicating During Incident Response",
+    description: "Determine which primary and secondary mechanisms will be used to communicate and report during a security incident. Mechanisms can include phone calls, emails, secure chat or notification letters. Keep in mind that certain mechanisms, such as emails, can be affected during a security incident. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Respond"],
+    governanceElements: [ // Orange - MUST be met
+      "determine which primary and secondary mechanisms will be used to communicate and report during a security incident",
+      "review annually or when significant enterprise changes occur that could impact this safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "primary mechanisms for communicating during incident response",
+      "secondary mechanisms for communicating during incident response",
+      "mechanisms to communicate during security incident",
+      "mechanisms to report during security incident"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "mechanisms can include phone calls",
+      "mechanisms can include emails",
+      "mechanisms can include secure chat",
+      "mechanisms can include notification letters",
+      "keep in mind that certain mechanisms, such as emails, can be affected during a security incident"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "communication platforms",
+      "backup communication methods",
+      "secure messaging systems",
+      "notification systems"
+    ],
+    relatedSafeguards: ["17.4"],
+    keywords: ["define", "mechanisms", "communicating", "incident", "response", "primary", "secondary", "communicate", "report", "security", "incident", "phone", "calls", "emails", "secure", "chat"]
+  },
+  "17.7": {
+    id: "17.7",
+    title: "Conduct Routine Incident Response Exercises",
+    description: "Plan and conduct routine incident response exercises and scenarios for key personnel involved in the incident response process to prepare for responding to real-world incidents. Exercises need to test communication channels, decision-making, and workflows. Conduct testing on an annual basis, at a minimum",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Recover"],
+    governanceElements: [ // Orange - MUST be met
+      "plan and conduct routine incident response exercises and scenarios for key personnel involved in the incident response process",
+      "conduct testing on an annual basis, at a minimum"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "routine incident response exercises",
+      "scenarios for key personnel",
+      "prepare for responding to real-world incidents",
+      "test communication channels",
+      "test decision-making",
+      "test workflows"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "key personnel involved in the incident response process",
+      "to prepare for responding to real-world incidents",
+      "exercises need to test communication channels, decision-making, and workflows"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "tabletop exercises",
+      "simulation scenarios",
+      "exercise planning frameworks",
+      "testing schedules and protocols"
+    ],
+    relatedSafeguards: ["17.4"],
+    keywords: ["conduct", "routine", "incident", "response", "exercises", "plan", "scenarios", "key", "personnel", "real-world", "incidents", "test", "communication", "channels", "decision-making", "workflows"]
+  },
+  "17.8": {
+    id: "17.8",
+    title: "Conduct Post-Incident Reviews",
+    description: "Conduct post-incident reviews. Post-incident reviews help prevent incident recurrence through identifying lessons learned and follow-up action",
+    implementationGroup: "IG2",
+    assetType: ["users"],
+    securityFunction: ["Recover"],
+    governanceElements: [ // Orange - MUST be met
+      "conduct post-incident reviews"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "post-incident reviews",
+      "prevent incident recurrence",
+      "identifying lessons learned",
+      "follow-up action"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "post-incident reviews help prevent incident recurrence",
+      "through identifying lessons learned and follow-up action"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "post-incident review templates",
+      "lessons learned documentation",
+      "improvement action plans",
+      "review meeting processes"
+    ],
+    relatedSafeguards: ["17.4"],
+    keywords: ["conduct", "post-incident", "reviews", "prevent", "incident", "recurrence", "identifying", "lessons", "learned", "follow-up", "action"]
+  },
+  "17.9": {
+    id: "17.9",
+    title: "Establish and Maintain Security Incident Thresholds",
+    description: "Establish and maintain security incident thresholds, including, at a minimum, differentiating between an incident and an event. Examples can include: abnormal activity, security vulnerability, security weakness, data breach, privacy incident, etc. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
+    implementationGroup: "IG3",
+    assetType: ["users"],
+    securityFunction: ["Recover"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain security incident thresholds",
+      "review annually or when significant enterprise changes occur that could impact this safeguard"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "security incident thresholds",
+      "differentiating between an incident and an event",
+      "incident classification criteria"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "including, at a minimum, differentiating between an incident and an event",
+      "examples can include abnormal activity",
+      "examples can include security vulnerability",
+      "examples can include security weakness",
+      "examples can include data breach",
+      "examples can include privacy incident"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "incident classification frameworks",
+      "threshold definition templates",
+      "severity rating systems",
+      "incident categorization tools"
+    ],
+    relatedSafeguards: ["17.4"],
+    keywords: ["establish", "maintain", "security", "incident", "thresholds", "differentiating", "incident", "event", "abnormal", "activity", "vulnerability", "weakness", "data", "breach", "privacy"]
   }
 };
 

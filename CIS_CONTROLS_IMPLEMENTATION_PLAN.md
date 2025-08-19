@@ -182,13 +182,13 @@ git push origin main
 - ✅ **Control 14: Security Awareness and Skills Training** (9 safeguards: 14.1-14.9)
 - ✅ **Control 15: Service Provider Management** (7 safeguards: 15.1-15.7)
 - ✅ **Control 16: Application Software Security** (14 safeguards: 16.1-16.14)
+- ✅ **Control 17: Incident Response Management** (9 safeguards: 17.1-17.9)
 
 ### In Progress
-- [ ] **Current Target**: Control 17 (Incident Response Management)
+- [ ] **Current Target**: Control 18 (Penetration Testing)
 - [ ] **Session Status**: Ready to begin
 
 ### Remaining Controls
-- [ ] Control 17: Incident Response Management
 - [ ] Control 18: Penetration Testing
 
 ## Risk Mitigation
