@@ -5354,6 +5354,171 @@ const CIS_SAFEGUARDS: Record<string, SafeguardElement> = {
     ],
     relatedSafeguards: ["17.4"],
     keywords: ["establish", "maintain", "security", "incident", "thresholds", "differentiating", "incident", "event", "abnormal", "activity", "vulnerability", "weakness", "data", "breach", "privacy"]
+  },
+
+  // Control 18: Penetration Testing
+  "18.1": {
+    id: "18.1",
+    title: "Establish and Maintain a Penetration Testing Program",
+    description: "Establish and maintain a penetration testing program appropriate to the size, complexity, industry, and maturity of the enterprise. Penetration testing program characteristics include scope, such as network, web application, Application Programming Interface (API), hosted services, and physical premise controls; frequency; limitations, such as acceptable hours, and excluded attack types; point of contact information; remediation, such as how findings will be routed internally; and retrospective requirements",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish and maintain a penetration testing program appropriate to the size, complexity, industry, and maturity of the enterprise"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "penetration testing program",
+      "scope including network, web application, API, hosted services, and physical premise controls",
+      "frequency requirements",
+      "limitations including acceptable hours and excluded attack types",
+      "point of contact information",
+      "remediation procedures for routing findings internally",
+      "retrospective requirements"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "appropriate to the size, complexity, industry, and maturity of the enterprise",
+      "penetration testing program characteristics include scope",
+      "such as network, web application, Application Programming Interface (API), hosted services, and physical premise controls",
+      "characteristics include frequency",
+      "characteristics include limitations, such as acceptable hours, and excluded attack types",
+      "characteristics include point of contact information",
+      "characteristics include remediation, such as how findings will be routed internally",
+      "characteristics include retrospective requirements"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "penetration testing frameworks",
+      "program documentation templates",
+      "scope definition guidelines",
+      "testing frequency schedules"
+    ],
+    relatedSafeguards: ["18.2", "18.3", "18.4", "18.5"],
+    keywords: ["establish", "maintain", "penetration", "testing", "program", "scope", "network", "web", "application", "API", "hosted", "services", "frequency", "limitations", "remediation"]
+  },
+  "18.2": {
+    id: "18.2",
+    title: "Perform Periodic External Penetration Tests",
+    description: "Perform periodic external penetration tests based on program requirements, no less than annually. External penetration testing must include enterprise and environmental reconnaissance to detect exploitable information. Penetration testing requires specialized skills and experience and must be conducted through a qualified party. The testing may be clear box or opaque box",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform periodic external penetration tests based on program requirements, no less than annually",
+      "external penetration testing must include enterprise and environmental reconnaissance to detect exploitable information",
+      "penetration testing requires specialized skills and experience and must be conducted through a qualified party"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "periodic external penetration tests",
+      "enterprise reconnaissance",
+      "environmental reconnaissance",
+      "detect exploitable information",
+      "specialized skills and experience",
+      "qualified party to conduct testing"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "based on program requirements",
+      "no less than annually",
+      "to detect exploitable information",
+      "the testing may be clear box or opaque box"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "external penetration testing services",
+      "reconnaissance tools and techniques",
+      "qualified penetration testing vendors",
+      "clear box and opaque box methodologies"
+    ],
+    relatedSafeguards: ["18.1", "18.3", "18.4"],
+    keywords: ["perform", "periodic", "external", "penetration", "tests", "annually", "enterprise", "environmental", "reconnaissance", "exploitable", "information", "qualified", "party", "clear", "box", "opaque", "box"]
+  },
+  "18.3": {
+    id: "18.3",
+    title: "Remediate Penetration Test Findings",
+    description: "Remediate penetration test findings based on the enterprise's documented vulnerability remediation process. This should include determining a timeline and level of effort based on the impact and prioritization of each identified finding",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "remediate penetration test findings based on the enterprise's documented vulnerability remediation process"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "remediate penetration test findings",
+      "documented vulnerability remediation process",
+      "timeline for remediation",
+      "level of effort determination",
+      "impact assessment",
+      "prioritization of findings"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "this should include determining a timeline and level of effort",
+      "based on the impact and prioritization of each identified finding"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "vulnerability remediation workflows",
+      "finding prioritization frameworks",
+      "remediation tracking systems",
+      "impact assessment methodologies"
+    ],
+    relatedSafeguards: ["18.1", "18.2", "18.5"],
+    keywords: ["remediate", "penetration", "test", "findings", "documented", "vulnerability", "remediation", "process", "timeline", "level", "effort", "impact", "prioritization"]
+  },
+  "18.4": {
+    id: "18.4",
+    title: "Validate Security Measures",
+    description: "Validate security measures after each penetration test. If deemed necessary, modify rulesets and capabilities to detect the techniques used during testing",
+    implementationGroup: "IG3",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "validate security measures after each penetration test"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "validate security measures",
+      "modify rulesets if necessary",
+      "modify capabilities if necessary",
+      "detect techniques used during testing"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "after each penetration test",
+      "if deemed necessary",
+      "to detect the techniques used during testing"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "security control validation frameworks",
+      "detection rule tuning processes",
+      "capability enhancement procedures",
+      "technique analysis methodologies"
+    ],
+    relatedSafeguards: ["18.1", "18.2", "18.5"],
+    keywords: ["validate", "security", "measures", "penetration", "test", "modify", "rulesets", "capabilities", "detect", "techniques", "testing"]
+  },
+  "18.5": {
+    id: "18.5",
+    title: "Perform Periodic Internal Penetration Tests",
+    description: "Perform periodic internal penetration tests based on program requirements, no less than annually. The testing may be clear box or opaque box",
+    implementationGroup: "IG3",
+    assetType: ["network"],
+    securityFunction: ["Detect"],
+    governanceElements: [ // Orange - MUST be met
+      "perform periodic internal penetration tests based on program requirements, no less than annually"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "periodic internal penetration tests",
+      "program requirements compliance",
+      "annual testing frequency minimum"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "based on program requirements",
+      "no less than annually",
+      "the testing may be clear box or opaque box"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "internal penetration testing tools",
+      "internal testing methodologies",
+      "clear box and opaque box approaches",
+      "internal security assessment frameworks"
+    ],
+    relatedSafeguards: ["18.1", "18.3", "18.4"],
+    keywords: ["perform", "periodic", "internal", "penetration", "tests", "program", "requirements", "annually", "clear", "box", "opaque", "box"]
   }
 };
 
