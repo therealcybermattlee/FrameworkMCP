@@ -44,6 +44,17 @@ The server uses the CIS Controls visual framework with color-coded categorizatio
 npm install -g framework-mcp
 ```
 
+### Update to Latest Version
+```bash
+npm update -g framework-mcp
+```
+
+Or reinstall to get the latest version:
+```bash
+npm uninstall -g framework-mcp
+npm install -g framework-mcp
+```
+
 ### Install from source
 ```bash
 git clone https://github.com/therealcybermattlee/FrameworkMCP.git
@@ -187,14 +198,16 @@ Another response...
 
 ## 🎯 CIS Controls Coverage
 
-Currently supports key safeguards including:
-- **1.1** - Enterprise Asset Inventory
-- **1.2** - Address Unauthorized Assets  
-- **5.1** - Inventory of Accounts
-- **6.3** - MFA for Externally-Exposed Applications
-- **7.1** - Vulnerability Management Process
+**Complete CIS Controls v8.1 Framework Implementation**
+- **153 total safeguards** across all 18 controls
+- **Full framework coverage** from Controls 1-18
+- **Comprehensive vendor analysis** capability for all CIS safeguards
 
-*Additional safeguards can be easily added to the framework.*
+### Current Version Highlights
+- ✅ **All 18 Controls** implemented (Enterprise Assets through Penetration Testing)
+- ✅ **Color-coded element categorization** (Orange/Green/Yellow/Gray)
+- ✅ **Enhanced capability detection** (Governance, Facilitates, Coverage, Validates)
+- ✅ **Production-ready** vendor analysis for complete compliance assessments
 
 ## 🛠️ Development
 
