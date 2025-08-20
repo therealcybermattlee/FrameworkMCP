@@ -30,30 +30,22 @@ interface VendorAnalysis {
   vendor: string;
   safeguardId: string;
   safeguardTitle: string;
-  // Primary capability categorization
-  capability: 'full' | 'partial' | 'facilitates' | 'governance' | 'validates' | 'none';
-  // Detailed breakdown for complex products
+  // Primary capability categorization - what role does this tool play?
+  capability: 'full' | 'partial' | 'facilitates' | 'governance' | 'validates';
+  // Detailed capability breakdown
   capabilities: {
-    full: boolean;        // Does the safeguard completely (all core + sub-taxonomical elements)
-    partial: boolean;     // Does some of the safeguard elements  
-    facilitates: boolean; // Helps with data or automation for the safeguard
-    governance: boolean;  // Controls policy, process, procedures
-    validates: boolean;   // Provides evidence of safeguard implementation
+    full: boolean;        // Directly implements the core safeguard functionality
+    partial: boolean;     // Implements limited aspects of the safeguard
+    facilitates: boolean; // Enhances or enables safeguard implementation by others
+    governance: boolean;  // Provides policy, process, and oversight capabilities
+    validates: boolean;   // Provides evidence, audit, and validation reporting
   };
   confidence: number;
   reasoning: string;
   evidence: string[];
-  // Coverage analysis (binary: met or not met)
-  elementsCovered: {
-    coreRequirements: string[];        // Green elements addressed
-    subTaxonomicalElements: string[];  // Yellow elements addressed  
-    governanceElements: string[];      // Orange elements addressed
-    implementationMethods: string[];   // Gray elements used
-  };
-  elementsNotCovered: {
-    coreRequirements: string[];
-    subTaxonomicalElements: string[];
-  };
+  // Capability-focused descriptions (replaces element coverage scoring)
+  toolCapabilityDescription: string;  // What type of tool this is and its role
+  recommendedUse: string;             // How practitioners should use this tool
 }
 
 interface AnalysisResult {
@@ -91,12 +83,10 @@ interface ValidationResult {
   claimed_capability: string;
   validation_status: 'SUPPORTED' | 'QUESTIONABLE' | 'UNSUPPORTED';
   confidence_score: number; // 0-100
-  evidence_analysis: {
-    core_requirements_coverage: number;
-    sub_elements_coverage: number;
-    governance_alignment: number;
-    language_consistency: number;
-  };
+  actual_capability_detected: string; // What capability the tool actually provides
+  capability_confidence: number; // Confidence in the detected capability
+  tool_capability_description: string; // Description of what type of tool this is
+  recommended_use: string; // How practitioners should use this tool
   domain_validation: {
     required_tool_type: string;
     detected_tool_type: string;
@@ -119,27 +109,27 @@ const SAFEGUARD_DOMAIN_REQUIREMENTS: Record<string, {
   "1.1": {
     domain: "Asset Inventory",
     required_tool_types: ["inventory", "asset_management", "cmdb", "discovery"],
-    description: "Only asset inventory and discovery tools can provide FULL/PARTIAL coverage"
+    description: "Only asset inventory and discovery tools can provide FULL/PARTIAL implementation capability"
   },
   "1.2": {
     domain: "Asset Management", 
     required_tool_types: ["inventory", "asset_management", "network_security", "nac"],
-    description: "Asset management or network access control tools required for FULL/PARTIAL"
+    description: "Asset management or network access control tools required for FULL/PARTIAL implementation capability"
   },
   "5.1": {
     domain: "Account Management",
     required_tool_types: ["identity_management", "iam", "directory", "account_management"],
-    description: "Identity and account management tools required for FULL/PARTIAL"
+    description: "Identity and account management tools required for FULL/PARTIAL implementation capability"
   },
   "6.3": {
     domain: "Authentication",
     required_tool_types: ["mfa", "authentication", "identity_management", "iam"],
-    description: "Multi-factor authentication and identity tools required for FULL/PARTIAL"
+    description: "Multi-factor authentication and identity tools required for FULL/PARTIAL implementation capability"
   },
   "7.1": {
     domain: "Vulnerability Management",
     required_tool_types: ["vulnerability_management", "vulnerability_scanner", "patch_management"],
-    description: "Vulnerability management and scanning tools required for FULL/PARTIAL"
+    description: "Vulnerability management and scanning tools required for FULL/PARTIAL implementation capability"
   }
 };
 
@@ -5600,7 +5590,7 @@ export class GRCAnalysisServer {
       tools: [
         {
           name: 'analyze_vendor_response',
-          description: 'Analyze a vendor response for a specific CIS Control safeguard against the 4 GRC attributes with detailed sub-element coverage',
+          description: 'Analyze a vendor response to determine their tool capability role (Full Implementation, Partial Implementation, Facilitates, Governance, or Validates) for a specific CIS Control safeguard',
           inputSchema: {
             type: 'object',
             properties: {
@@ -5615,7 +5605,7 @@ export class GRCAnalysisServer {
               },
               response_text: {
                 type: 'string',
-                description: 'Vendor response text to analyze'
+                description: 'Vendor response text describing their tool capabilities for the safeguard'
               }
             },
             required: ['vendor_name', 'safeguard_id', 'response_text']
@@ -5643,7 +5633,7 @@ export class GRCAnalysisServer {
         } as Tool,
         {
           name: 'validate_coverage_claim',
-          description: 'Validate a vendor\'s coverage claim (FULL/PARTIAL) against specific safeguard requirements',
+          description: 'Validate a vendor\'s implementation capability claim (FULL/PARTIAL) against specific safeguard requirements and evidence quality',
           inputSchema: {
             type: 'object',
             properties: {
@@ -5659,16 +5649,16 @@ export class GRCAnalysisServer {
               coverage_claim: {
                 type: 'string',
                 enum: ['FULL', 'PARTIAL'],
-                description: 'Vendor\'s coverage claim'
+                description: 'Vendor\'s implementation capability claim (FULL = complete implementation, PARTIAL = limited scope implementation)'
               },
               response_text: {
                 type: 'string',
-                description: 'Vendor response explaining their coverage'
+                description: 'Vendor response explaining their implementation capabilities'
               },
               capabilities: {
                 type: 'array',
                 items: { type: 'string' },
-                description: 'List of vendor capabilities/attributes (Governance, Facilitates, Validates)'
+                description: 'List of additional vendor capability types (Governance, Facilitates, Validates)'
               }
             },
             required: ['vendor_name', 'safeguard_id', 'coverage_claim', 'response_text', 'capabilities']
@@ -5695,7 +5685,7 @@ export class GRCAnalysisServer {
         } as Tool,
         {
           name: 'validate_vendor_mapping',
-          description: 'Validate whether a vendor\'s stated capability mapping (Full/Partial/Facilitates/Governance/Validates) is actually supported by their explanatory text for a specific CIS safeguard',
+          description: 'Validate whether a vendor\'s claimed capability role (Full Implementation/Partial Implementation/Facilitates/Governance/Validates) is actually supported by their supporting evidence for a specific CIS safeguard',
           inputSchema: {
             type: 'object',
             properties: {
@@ -5712,11 +5702,11 @@ export class GRCAnalysisServer {
               claimed_capability: {
                 type: 'string',
                 enum: ['full', 'partial', 'facilitates', 'governance', 'validates'],
-                description: 'Vendor\'s claimed capability mapping for this safeguard'
+                description: 'Vendor\'s claimed capability role: full (complete implementation), partial (limited implementation), facilitates (enables/enhances), governance (policies/processes), validates (evidence/reporting)'
               },
               supporting_text: {
                 type: 'string',
-                description: 'Vendor\'s supporting text blob explaining how they meet the claimed capability'
+                description: 'Vendor\'s supporting evidence explaining how their tool fulfills the claimed capability role'
               }
             },
             required: ['safeguard_id', 'claimed_capability', 'supporting_text']
@@ -5727,28 +5717,49 @@ export class GRCAnalysisServer {
 
     this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const { name, arguments: args } = request.params;
+      const startTime = Date.now();
 
       try {
+        let result;
         switch (name) {
           case 'analyze_vendor_response':
-            return await this.analyzeVendorResponse(args);
+            result = await this.analyzeVendorResponse(args);
+            break;
           case 'get_safeguard_details':
-            return await this.getSafeguardDetails(args);
+            result = await this.getSafeguardDetails(args);
+            break;
           case 'validate_coverage_claim':
-            return await this.validateCoverageClaim(args);
+            result = await this.validateCoverageClaim(args);
+            break;
           case 'list_available_safeguards':
-            return await this.listAvailableSafeguards(args);
+            result = await this.listAvailableSafeguards(args);
+            break;
           case 'validate_vendor_mapping':
-            return await this.validateVendorMapping(args);
+            result = await this.validateVendorMapping(args);
+            break;
           default:
             throw new Error(`Unknown tool: ${name}`);
         }
+
+        // Record successful execution time
+        const executionTime = Date.now() - startTime;
+        this.recordToolExecution(name, executionTime);
+        
+        return result;
       } catch (error) {
+        // Record error and performance metrics
+        this.performanceMetrics.errorCount++;
+        const executionTime = Date.now() - startTime;
+        this.recordToolExecution(`${name}_error`, executionTime);
+        
+        const errorMessage = this.formatErrorMessage(error, name);
+        console.error(`[FrameworkMCP] Tool execution error: ${name}`, error);
+        
         return {
           content: [
             {
               type: 'text',
-              text: `Error: ${error instanceof Error ? error.message : String(error)}`,
+              text: errorMessage,
             },
           ],
         };
@@ -5759,10 +5770,16 @@ export class GRCAnalysisServer {
   private async getSafeguardDetails(args: any) {
     const { safeguard_id, include_examples = true } = args;
     
-    const safeguard = CIS_SAFEGUARDS[safeguard_id];
-    if (!safeguard) {
-      throw new Error(`Safeguard ${safeguard_id} not found. Use list_available_safeguards to see available safeguards.`);
+    // Input validation
+    this.validateSafeguardId(safeguard_id);
+    
+    // Check cache first
+    const cached = this.getCachedSafeguardDetails(safeguard_id, include_examples);
+    if (cached) {
+      return cached;
     }
+    
+    const safeguard = CIS_SAFEGUARDS[safeguard_id];
 
     const result = {
       ...safeguard,
@@ -5792,7 +5809,7 @@ export class GRCAnalysisServer {
       }
     };
 
-    return {
+    const response = {
       content: [
         {
           type: 'text',
@@ -5800,10 +5817,23 @@ export class GRCAnalysisServer {
         },
       ],
     };
+
+    // Cache the result for future requests
+    this.setCachedSafeguardDetails(safeguard_id, include_examples, response);
+
+    return response;
   }
 
   private async listAvailableSafeguards(args: any) {
     const { implementation_group, security_function } = args;
+    
+    // Check cache for complete safeguard list (only if no filters applied)
+    if (!implementation_group && !security_function && this.cache.safeguardList) {
+      const cacheAge = Date.now() - this.cache.safeguardList.timestamp;
+      if (cacheAge < 10 * 60 * 1000) { // 10 minute cache for safeguard list
+        return this.cache.safeguardList.data;
+      }
+    }
     
     let safeguards = Object.values(CIS_SAFEGUARDS);
     
@@ -5831,7 +5861,7 @@ export class GRCAnalysisServer {
       }))
     };
 
-    return {
+    const response = {
       content: [
         {
           type: 'text',
@@ -5839,17 +5869,32 @@ export class GRCAnalysisServer {
         },
       ],
     };
+
+    // Cache the complete list if no filters were applied
+    if (!implementation_group && !security_function) {
+      this.cache.safeguardList = {
+        data: response,
+        timestamp: Date.now()
+      };
+    }
+
+    return response;
   }
 
   private async analyzeVendorResponse(args: any) {
     const { vendor_name, safeguard_id, response_text } = args;
 
-    const safeguard = CIS_SAFEGUARDS[safeguard_id];
-    if (!safeguard) {
-      throw new Error(`Safeguard ${safeguard_id} not found. Available safeguards: ${Object.keys(CIS_SAFEGUARDS).join(', ')}`);
+    // Input validation
+    this.validateSafeguardId(safeguard_id);
+    this.validateTextInput(response_text, 'Response text');
+    
+    if (!vendor_name || typeof vendor_name !== 'string' || vendor_name.trim().length === 0) {
+      throw new Error('Vendor name is required');
     }
 
-    const analysis = this.performEnhancedSafeguardAnalysis(vendor_name, safeguard, response_text);
+    const safeguard = CIS_SAFEGUARDS[safeguard_id];
+
+    const analysis = this.performCapabilityAnalysis(vendor_name, safeguard, response_text);
 
     return {
       content: [
@@ -5869,7 +5914,7 @@ export class GRCAnalysisServer {
       throw new Error(`Safeguard ${safeguard_id} not found`);
     }
 
-    const analysis = this.performEnhancedSafeguardAnalysis(vendor_name, safeguard, response_text);
+    const analysis = this.performCapabilityAnalysis(vendor_name, safeguard, response_text);
     
     // Validate the coverage claim
     const validation = this.validateClaim(coverage_claim, analysis, capabilities, safeguard);
@@ -5891,182 +5936,284 @@ export class GRCAnalysisServer {
     };
   }
 
-  private performEnhancedSafeguardAnalysis(vendorName: string, safeguard: SafeguardElement, responseText: string): VendorAnalysis {
+  private performCapabilityAnalysis(vendorName: string, safeguard: SafeguardElement, responseText: string): VendorAnalysis {
     const text = responseText.toLowerCase();
     
-    // Capability detection keywords
-    const governanceKeywords = [
+    // Step 1: Determine what type of capability this tool is claiming
+    const claimedCapability = this.determineClaimedCapability(text, safeguard);
+    
+    // Step 2: Assess how well the tool executes that specific capability type  
+    const qualityAssessment = this.assessCapabilityQuality(text, safeguard, claimedCapability);
+    
+    // Step 3: Generate capability-focused analysis
+    return this.generateCapabilityAnalysis(vendorName, safeguard, responseText, claimedCapability, qualityAssessment);
+  }
+
+  private determineClaimedCapability(text: string, safeguard: SafeguardElement): 'full' | 'partial' | 'facilitates' | 'governance' | 'validates' {
+    // Capability detection keywords - focused on what the tool DOES, not what elements it covers
+    const governanceIndicators = [
       'policy', 'policies', 'manage', 'process', 'workflow', 'governance', 'grc', 
       'compliance management', 'documented', 'establish', 'maintain', 'procedure',
       'control', 'controls', 'framework', 'standard', 'enterprise risk management',
       'centralized management', 'oversight'
     ];
     
-    const facilitatesKeywords = [
-      // Technical facilitation (original keywords)
+    const facilitatesIndicators = [
       'improve', 'enhance', 'optimize', 'faster', 'better', 'stronger', 'automate', 
       'streamline', 'efficiency', 'facilitate', 'support', 'enable', 'accelerate',
       'api', 'integration', 'data', 'export', 'import', 'sync', 'feed',
-      // Data provision and enrichment
       'provides data', 'data source', 'data feeds', 'enrichment', 'data enrichment',
       'supplemental data', 'additional data', 'contextual data', 'threat data',
       'intelligence feeds', 'data aggregation', 'data collection', 'data gathering',
       'feeds data', 'populates', 'informs', 'enriches', 'supplements',
-      // Governance/process facilitation (new keywords for tools like Upolicy)
       'enables compliance', 'facilitates implementation', 'supports compliance',
       'creates framework', 'enables organizations', 'infrastructure', 'foundation',
-      'compliance infrastructure', 'audit infrastructure', 'policy framework',
-      'enables effective', 'working together', 'comprehensive coverage',
       'template', 'templates', 'workflow automation', 'orchestration'
     ];
     
-    const validatesKeywords = [
+    const validatesIndicators = [
       'audit', 'report', 'evidence', 'verify', 'validate', 'check', 'monitor', 
       'compliance', 'compliance report', 'assessment', 'logging', 'tracking', 'review', 'attest',
       'dashboard', 'metrics', 'analytics', 'visibility', 'alert', 'attestation',
       'compliance tracking', 'audit trail', 'reporting capabilities', 'audit capabilities'
     ];
 
-    // Analyze element coverage (binary: covered or not)
-    const coreCoverage = this.analyzeBinaryElementCoverage(text, safeguard.coreRequirements);
-    const subElementCoverage = this.analyzeBinaryElementCoverage(text, safeguard.subTaxonomicalElements);
-    const governanceCoverage = this.analyzeBinaryElementCoverage(text, safeguard.governanceElements);
-    const implementationCoverage = this.analyzeBinaryElementCoverage(text, safeguard.implementationSuggestions);
-
-    // Enhanced capability detection with better scoring
-    const governanceScore = this.calculateKeywordScore(text, governanceKeywords);
-    const facilitatesScore = this.calculateKeywordScore(text, facilitatesKeywords);
-    const validatesScore = this.calculateKeywordScore(text, validatesKeywords);
+    // Direct implementation indicators (tools that actually perform the safeguard)
+    const implementationIndicators = this.getImplementationIndicators(safeguard.id);
     
-    const governanceCapability = governanceScore > 0.3;
-    const facilitatesCapability = facilitatesScore > 0.3;
-    const validatesCapability = validatesScore > 0.3;
+    // Calculate keyword presence scores
+    const governanceScore = this.calculateKeywordScore(text, governanceIndicators);
+    const facilitatesScore = this.calculateKeywordScore(text, facilitatesIndicators);
+    const validatesScore = this.calculateKeywordScore(text, validatesIndicators);
+    const implementationScore = this.calculateKeywordScore(text, implementationIndicators);
     
-    // Check for specific facilitation patterns (tools that enable/support compliance)
-    const facilitationPatterns = [
-      'enables compliance', 'facilitates implementation', 'creates framework',
-      'policy framework', 'compliance infrastructure', 'audit infrastructure',
-      'enables organizations', 'enables effective', 'working together',
-      'creates the policy framework', 'enables organizations to implement',
-      'facilitates implementation of', 'compliance infrastructure facilitates'
-    ];
-    const hasFacilitationPattern = facilitationPatterns.some(pattern => text.includes(pattern));
-    
-    // Check for explicit non-implementation language
-    const nonImplementationPatterns = [
-      'don\'t scan', 'don\'t catalog', 'doesn\'t scan', 'doesn\'t catalog',
-      'not scan', 'not catalog', 'even though we don\'t', 'we don\'t directly',
-      'rather than direct', 'instead of direct'
-    ];
-    const hasNonImplementationLanguage = nonImplementationPatterns.some(pattern => text.includes(pattern));
-    
-    // Determine if full or partial coverage (based on core + sub-taxonomical elements WITHIN SCOPE)
-    // Full = addresses majority of core requirements + substantial sub-elements within their stated scope
-    // Partial = addresses some core requirements with clear scope boundaries
-    
-    const corePercentage = safeguard.coreRequirements.length > 0 ? 
-      (coreCoverage.coveredElements.length / safeguard.coreRequirements.length) * 100 : 0;
-    const subElementPercentage = safeguard.subTaxonomicalElements.length > 0 ? 
-      (subElementCoverage.coveredElements.length / safeguard.subTaxonomicalElements.length) * 100 : 0;
-    
-    let fullCapability = false;
-    let partialCapability = false;
-    
-    // Full capability: High coverage of core requirements + reasonable sub-element coverage
-    if (corePercentage >= 70 && subElementPercentage >= 50) {
-      fullCapability = true;
+    // Determine claimed capability based on strongest indicators and patterns
+    if (implementationScore > 0.2 && implementationScore >= Math.max(facilitatesScore, governanceScore, validatesScore)) {
+      // Tool claims to directly implement the safeguard
+      return implementationScore > 0.5 ? 'full' : 'partial';
+    } else if (governanceScore > 0.2 && governanceScore >= Math.max(facilitatesScore, validatesScore)) {
+      return 'governance';
+    } else if (validatesScore > 0.2 && validatesScore >= facilitatesScore) {
+      return 'validates';
+    } else {
+      return 'facilitates';
     }
-    // Partial capability: Moderate core coverage OR clear scope-limited implementation
-    else if (corePercentage >= 30 || (coreCoverage.coveredElements.length > 0 && subElementPercentage >= 20)) {
-      partialCapability = true;
+  }
+
+  private getImplementationIndicators(safeguardId: string): string[] {
+    // Return specific indicators for what constitutes direct implementation for each safeguard
+    const implementationMap: Record<string, string[]> = {
+      "1.1": ['inventory', 'discovery', 'asset management', 'catalog', 'enumerate', 'scan devices', 'device database'],
+      "1.2": ['unauthorized', 'rogue', 'detect', 'identify unauthorized', 'quarantine', 'block unauthorized'],
+      "5.1": ['account inventory', 'user management', 'identity management', 'account lifecycle', 'user provisioning'],
+      "6.3": ['multi-factor', 'mfa', '2fa', 'authentication', 'two-factor', 'multi-factor authentication'],
+      "7.1": ['vulnerability', 'vuln', 'scanning', 'vulnerability management', 'security testing', 'penetration testing']
+    };
+    
+    return implementationMap[safeguardId] || [];
+  }
+
+  private assessCapabilityQuality(text: string, safeguard: SafeguardElement, claimedCapability: string): {
+    quality: 'excellent' | 'good' | 'fair' | 'poor',
+    confidence: number,
+    evidence: string[],
+    gaps: string[]
+  } {
+    // Assess how well the tool executes the claimed capability type
+    const evidence: string[] = [];
+    const gaps: string[] = [];
+    
+    // Quality assessment based on capability type
+    let qualityScore = 0;
+    
+    switch (claimedCapability) {
+      case 'full':
+      case 'partial':
+        qualityScore = this.assessImplementationQuality(text, safeguard, evidence, gaps);
+        break;
+      case 'governance':
+        qualityScore = this.assessGovernanceQuality(text, safeguard, evidence, gaps);
+        break;
+      case 'facilitates':
+        qualityScore = this.assessFacilitationQuality(text, safeguard, evidence, gaps);
+        break;
+      case 'validates':
+        qualityScore = this.assessValidationQuality(text, safeguard, evidence, gaps);
+        break;
     }
-
-    // Enhanced primary capability logic
-    let primaryCapability: 'full' | 'partial' | 'facilitates' | 'governance' | 'validates' | 'none' = 'none';
     
-    if (fullCapability) {
-      primaryCapability = 'full';
-    } else if (hasFacilitationPattern || hasNonImplementationLanguage || 
-               (facilitatesScore > 0.4 && facilitatesScore > governanceScore * 1.2)) {
-      // Prioritize facilitation when:
-      // 1. Clear facilitation language patterns detected, OR
-      // 2. Explicit non-implementation language (tool doesn't directly implement), OR  
-      // 3. Facilitates score is substantial AND significantly higher than governance
-      primaryCapability = 'facilitates';
-    } else if (partialCapability) {
-      primaryCapability = 'partial';
-    } else if (governanceCapability && (facilitatesCapability || validatesCapability)) {
-      // Tools that primarily manage governance but also facilitate/validate
-      primaryCapability = 'governance';
-    } else if (governanceScore > facilitatesScore && governanceCapability) {
-      // Pure governance tools
-      primaryCapability = 'governance';
-    } else if (validatesScore > facilitatesScore && validatesCapability) {
-      // Validation-focused tools
-      primaryCapability = 'validates';
-    } else if (facilitatesCapability) {
-      // Default facilitation
-      primaryCapability = 'facilitates';
+    // Convert score to quality rating
+    let quality: 'excellent' | 'good' | 'fair' | 'poor';
+    if (qualityScore >= 0.8) quality = 'excellent';
+    else if (qualityScore >= 0.6) quality = 'good';
+    else if (qualityScore >= 0.4) quality = 'fair';
+    else quality = 'poor';
+    
+    return {
+      quality,
+      confidence: Math.round(qualityScore * 100),
+      evidence: evidence.slice(0, 5), // Top 5 pieces of evidence
+      gaps: gaps.slice(0, 3) // Top 3 gaps identified
+    };
+  }
+
+  private assessImplementationQuality(text: string, safeguard: SafeguardElement, evidence: string[], gaps: string[]): number {
+    // Assess quality of direct implementation capability
+    const implementationIndicators = this.getImplementationIndicators(safeguard.id);
+    let score = 0;
+    
+    // Check for strong implementation language
+    const strongIndicators = implementationIndicators.filter(indicator => text.includes(indicator.toLowerCase()));
+    if (strongIndicators.length > 0) {
+      score += 0.4;
+      evidence.push(`Strong implementation indicators: ${strongIndicators.join(', ')}`);
     }
-
-    // Extract evidence
-    const evidence = this.extractEnhancedEvidence(responseText, safeguard);
-
-    // Calculate confidence based on evidence strength and keyword matches
-    const keywordConfidence = (governanceScore + facilitatesScore + validatesScore) / 3;
     
-    const totalCoreAndSubElements = safeguard.coreRequirements.length + safeguard.subTaxonomicalElements.length;
-    const coveredCoreAndSubElements = coreCoverage.coveredElements.length + subElementCoverage.coveredElements.length;
-    const coverageConfidence = totalCoreAndSubElements > 0 ? 
-      coveredCoreAndSubElements / totalCoreAndSubElements : 0;
+    // Check for comprehensive functionality description
+    if (text.includes('comprehensive') || text.includes('complete') || text.includes('full')) {
+      score += 0.2;
+      evidence.push('Claims comprehensive functionality');
+    }
     
-    const confidence = Math.min(
-      (keywordConfidence * 0.4 + coverageConfidence * 0.6) * 100,
-      100
-    );
+    // Check for automated vs manual implementation
+    if (text.includes('automat') || text.includes('real-time') || text.includes('continuous')) {
+      score += 0.2;
+      evidence.push('Automated implementation capability');
+    }
+    
+    // Identify potential gaps
+    if (strongIndicators.length === 0) {
+      gaps.push('No clear implementation indicators found');
+    }
+    
+    return Math.min(score, 1.0);
+  }
 
+  private assessGovernanceQuality(text: string, safeguard: SafeguardElement, evidence: string[], gaps: string[]): number {
+    const governanceIndicators = ['policy', 'process', 'governance', 'compliance', 'documentation', 'oversight'];
+    let score = 0;
+    
+    const foundIndicators = governanceIndicators.filter(indicator => text.includes(indicator));
+    if (foundIndicators.length >= 3) {
+      score += 0.5;
+      evidence.push(`Strong governance capability: ${foundIndicators.join(', ')}`);
+    }
+    
+    if (text.includes('documented') && text.includes('process')) {
+      score += 0.3;
+      evidence.push('Documented process management');
+    }
+    
+    return Math.min(score, 1.0);
+  }
+
+  private assessFacilitationQuality(text: string, safeguard: SafeguardElement, evidence: string[], gaps: string[]): number {
+    const facilitationIndicators = ['enhance', 'enable', 'support', 'facilitate', 'improve', 'optimize'];
+    let score = 0;
+    
+    const foundIndicators = facilitationIndicators.filter(indicator => text.includes(indicator));
+    if (foundIndicators.length >= 2) {
+      score += 0.4;
+      evidence.push(`Clear facilitation capability: ${foundIndicators.join(', ')}`);
+    }
+    
+    return Math.min(score, 1.0);
+  }
+
+  private assessValidationQuality(text: string, safeguard: SafeguardElement, evidence: string[], gaps: string[]): number {
+    const validationIndicators = ['audit', 'report', 'monitor', 'track', 'verify', 'validate'];
+    let score = 0;
+    
+    const foundIndicators = validationIndicators.filter(indicator => text.includes(indicator));
+    if (foundIndicators.length >= 2) {
+      score += 0.4;
+      evidence.push(`Strong validation capability: ${foundIndicators.join(', ')}`);
+    }
+    
+    return Math.min(score, 1.0);
+  }
+
+  private generateCapabilityAnalysis(vendorName: string, safeguard: SafeguardElement, responseText: string, 
+                                   claimedCapability: string, qualityAssessment: any): VendorAnalysis {
+    // Generate the new capability-focused analysis result
     return {
       vendor: vendorName,
       safeguardId: safeguard.id,
       safeguardTitle: safeguard.title,
-      capability: primaryCapability,
+      capability: claimedCapability as 'full' | 'partial' | 'facilitates' | 'governance' | 'validates',
       capabilities: {
-        full: fullCapability,
-        partial: partialCapability,
-        facilitates: facilitatesCapability,
-        governance: governanceCapability,
-        validates: validatesCapability
+        full: claimedCapability === 'full',
+        partial: claimedCapability === 'partial',
+        facilitates: claimedCapability === 'facilitates',
+        governance: claimedCapability === 'governance',
+        validates: claimedCapability === 'validates'
       },
-      confidence: Math.round(confidence),
-      reasoning: this.generateCapabilityReasoning(primaryCapability, fullCapability, partialCapability, governanceCapability, facilitatesCapability, validatesCapability, coreCoverage, subElementCoverage, safeguard, hasFacilitationPattern, hasNonImplementationLanguage),
-      evidence,
-      elementsCovered: {
-        coreRequirements: coreCoverage.coveredElements,
-        subTaxonomicalElements: subElementCoverage.coveredElements,
-        governanceElements: governanceCoverage.coveredElements,
-        implementationMethods: implementationCoverage.coveredElements
-      },
-      elementsNotCovered: {
-        coreRequirements: coreCoverage.uncoveredElements,
-        subTaxonomicalElements: subElementCoverage.uncoveredElements
-      }
+      confidence: qualityAssessment.confidence,
+      reasoning: this.generateCapabilityReasoning(claimedCapability, qualityAssessment, safeguard),
+      evidence: qualityAssessment.evidence,
+      // Note: elementsCovered is now less relevant in capability-focused analysis
+      // We focus on tool capability rather than element coverage
+      toolCapabilityDescription: this.generateToolCapabilityDescription(claimedCapability, qualityAssessment),
+      recommendedUse: this.generateRecommendedUse(claimedCapability, safeguard)
     };
   }
 
+  private generateCapabilityReasoning(claimedCapability: string, qualityAssessment: any, safeguard: SafeguardElement): string {
+    const capabilityDescriptions = {
+      full: "directly implements the core functionality of this safeguard",
+      partial: "implements limited aspects of this safeguard with clear scope boundaries", 
+      facilitates: "enhances or enables the implementation of this safeguard by others",
+      governance: "provides governance, policy, and oversight capabilities for this safeguard",
+      validates: "provides evidence, audit, and compliance validation for this safeguard"
+    };
+    
+    const qualityDescriptor = qualityAssessment.quality;
+    const description = capabilityDescriptions[claimedCapability as keyof typeof capabilityDescriptions];
+    
+    return `This tool ${description} with ${qualityDescriptor} capability quality. ${qualityAssessment.evidence.length > 0 ? 'Evidence: ' + qualityAssessment.evidence.join('; ') : ''}`;
+  }
+
+  private generateToolCapabilityDescription(claimedCapability: string, qualityAssessment: any): string {
+    const roleDescriptions = {
+      full: "Core Implementation Tool - Directly performs the safeguard functionality",
+      partial: "Focused Implementation Tool - Performs specific aspects of the safeguard",
+      facilitates: "Enablement Tool - Helps organizations implement the safeguard more effectively",
+      governance: "Governance Tool - Manages policies, processes, and oversight for the safeguard", 
+      validates: "Compliance Tool - Provides audit, evidence, and validation capabilities"
+    };
+    
+    return roleDescriptions[claimedCapability as keyof typeof roleDescriptions] || "Support Tool";
+  }
+
+  private generateRecommendedUse(claimedCapability: string, safeguard: SafeguardElement): string {
+    const recommendations = {
+      full: `Use as primary implementation tool for ${safeguard.title}. Ensure proper configuration and integration.`,
+      partial: `Use as part of a multi-tool strategy for ${safeguard.title}. Supplement with additional capabilities as needed.`,
+      facilitates: `Use to enhance existing safeguard implementation. Combine with direct implementation tools.`,
+      governance: `Use for policy management and governance oversight. Pair with implementation and validation tools.`,
+      validates: `Use for compliance monitoring and evidence collection. Combine with implementation tools for complete coverage.`
+    };
+    
+    return recommendations[claimedCapability as keyof typeof recommendations] || "Evaluate specific use case alignment.";
+  }
+
   private calculateKeywordScore(text: string, keywords: string[]): number {
-    let score = 0;
-    let matches = 0;
+    let matchedKeywords = 0;
+    let totalMatches = 0;
     
     keywords.forEach(keyword => {
       const regex = new RegExp(keyword.replace(/\s+/g, '\\s+'), 'gi');
       const keywordMatches = (text.match(regex) || []).length;
       if (keywordMatches > 0) {
-        matches++;
-        score += keywordMatches;
+        matchedKeywords++;
+        totalMatches += keywordMatches;
       }
     });
 
-    return matches > 0 ? score / text.split(' ').length : 0;
+    // Return percentage of keywords that were found, with bonus for multiple matches
+    const baseScore = matchedKeywords / keywords.length;
+    const matchBonus = Math.min(totalMatches * 0.1, 0.5); // Up to 50% bonus for multiple matches
+    return Math.min(baseScore + matchBonus, 1.0);
   }
 
   private analyzeElementCoverage(text: string, elements: string[]): {
@@ -6208,76 +6355,6 @@ export class GRCAnalysisServer {
     return reasons.join('. ');
   }
 
-  private generateCapabilityReasoning(
-    primaryCapability: string,
-    full: boolean,
-    partial: boolean, 
-    governance: boolean,
-    facilitates: boolean,
-    validates: boolean,
-    coreCoverage: any,
-    subElementCoverage: any,
-    safeguard: SafeguardElement,
-    hasFacilitationPattern: boolean = false,
-    hasNonImplementationLanguage: boolean = false
-  ): string {
-    const reasons = [];
-    
-    // Primary capability explanation
-    switch (primaryCapability) {
-      case 'full':
-        reasons.push(`Provides FULL coverage of ${safeguard.title} - directly implements all core and sub-taxonomical elements`);
-        break;
-      case 'partial':
-        reasons.push(`Provides PARTIAL coverage of ${safeguard.title} - directly implements some but not all core and sub-taxonomical elements`);
-        break;
-      case 'facilitates':
-        if (hasFacilitationPattern || hasNonImplementationLanguage || governance) {
-          reasons.push(`FACILITATES ${safeguard.title} by creating governance frameworks, policy infrastructure, and compliance processes that enable organizations to implement the control effectively`);
-        } else {
-          reasons.push(`FACILITATES ${safeguard.title} through data integration, automation, or technical capabilities that support implementation`);
-        }
-        break;
-      case 'governance':
-        reasons.push(`Provides GOVERNANCE capabilities for ${safeguard.title} through centralized policy management, process controls, and compliance oversight`);
-        break;
-      case 'validates':
-        reasons.push(`VALIDATES ${safeguard.title} implementation through evidence collection, compliance reporting, and audit capabilities`);
-        break;
-      default:
-        reasons.push(`No clear capability identified for ${safeguard.title}`);
-    }
-    
-    // Coverage details
-    if (coreCoverage.coveredElements.length > 0) {
-      reasons.push(`Core elements addressed: ${coreCoverage.coveredElements.length}/${safeguard.coreRequirements.length}`);
-    }
-    if (subElementCoverage.coveredElements.length > 0) {
-      reasons.push(`Sub-taxonomical elements addressed: ${subElementCoverage.coveredElements.length}/${safeguard.subTaxonomicalElements.length}`);
-    }
-    
-    // Additional context for facilitation tools
-    if (primaryCapability === 'facilitates') {
-      if (hasFacilitationPattern || hasNonImplementationLanguage || governance) {
-        reasons.push(`Note: This type of facilitation tool works alongside technical implementation solutions (asset scanners, MDM tools, etc.) to provide comprehensive control coverage`);
-      }
-      if (hasNonImplementationLanguage) {
-        reasons.push(`Tool explicitly enables compliance through governance/process rather than direct technical implementation`);
-      }
-    }
-    
-    // Multi-capability products
-    const capabilityFlags = [governance, facilitates, validates].filter(Boolean);
-    if (capabilityFlags.length > 1) {
-      const capabilities = [];
-      if (governance) capabilities.push('governance');
-      if (facilitates) capabilities.push('facilitates');
-      if (validates) capabilities.push('validates');
-      reasons.push(`Multi-capability product with: ${capabilities.join(', ')}`);
-    }
-    
-    return reasons.join('. ');
-  }
 
   private validateClaim(claim: string, analysis: VendorAnalysis, capabilities: string[], safeguard: SafeguardElement) {
     const validation = {
@@ -6293,16 +6370,14 @@ export class GRCAnalysisServer {
       validation.coverageClaimValid = meetsFullCriteria;
       
       if (!meetsFullCriteria) {
-        const totalElements = safeguard.coreRequirements.length + safeguard.subTaxonomicalElements.length;
-        const coveredElements = analysis.elementsCovered.coreRequirements.length + analysis.elementsCovered.subTaxonomicalElements.length;
-        validation.gaps.push(`FULL coverage claim not supported: Only ${coveredElements}/${totalElements} core and sub-taxonomical elements covered`);
+        validation.gaps.push(`FULL implementation capability claim not supported: Tool does not demonstrate direct implementation of core safeguard functionality`);
       }
     } else if (claim === 'PARTIAL') {
       const meetsPartialCriteria = analysis.capabilities.partial || analysis.capabilities.full;
       validation.coverageClaimValid = meetsPartialCriteria;
       
       if (!meetsPartialCriteria) {
-        validation.gaps.push(`PARTIAL coverage claim questionable: No core or sub-taxonomical elements clearly addressed`);
+        validation.gaps.push(`PARTIAL implementation capability claim questionable: No core or sub-taxonomical elements clearly addressed`);
       }
     }
 
@@ -6348,13 +6423,15 @@ export class GRCAnalysisServer {
     } else {
       validation.recommendations.push(`Consider requesting additional information about: ${validation.gaps.join(', ')}`);
       
-      // Specific recommendations based on gaps
-      if (analysis.elementsNotCovered.coreRequirements.length > 0) {
-        validation.recommendations.push(`Request details on how these core elements are addressed: ${analysis.elementsNotCovered.coreRequirements.slice(0,3).join(', ')}${analysis.elementsNotCovered.coreRequirements.length > 3 ? '...' : ''}`);
-      }
-      
-      if (analysis.elementsNotCovered.subTaxonomicalElements.length > 0) {
-        validation.recommendations.push(`Ask for specifics on these sub-taxonomical elements: ${analysis.elementsNotCovered.subTaxonomicalElements.slice(0,3).join(', ')}${analysis.elementsNotCovered.subTaxonomicalElements.length > 3 ? '...' : ''}`);
+      // Capability-based recommendations
+      if (analysis.capability === 'facilitates') {
+        validation.recommendations.push('Consider pairing with direct implementation tools for complete safeguard coverage');
+      } else if (analysis.capability === 'partial') {
+        validation.recommendations.push('Evaluate scope limitations and identify complementary tools for full coverage');
+      } else if (analysis.capability === 'governance') {
+        validation.recommendations.push('Combine with technical implementation tools for complete safeguard execution');
+      } else if (analysis.capability === 'validates') {
+        validation.recommendations.push('Pair with implementation tools to ensure both execution and validation coverage');
       }
       
       if (!analysis.capabilities.validates && capabilities.includes('Validates')) {
@@ -6368,10 +6445,12 @@ export class GRCAnalysisServer {
   private async validateVendorMapping(args: any) {
     const { vendor_name = 'Unknown Vendor', safeguard_id, claimed_capability, supporting_text } = args;
 
+    // Input validation
+    this.validateSafeguardId(safeguard_id);
+    this.validateTextInput(supporting_text, 'Supporting text');
+    this.validateCapability(claimed_capability);
+
     const safeguard = CIS_SAFEGUARDS[safeguard_id];
-    if (!safeguard) {
-      throw new Error(`Safeguard ${safeguard_id} not found. Available safeguards: ${Object.keys(CIS_SAFEGUARDS).join(', ')}`);
-    }
 
     const validation = this.validateCapabilityClaim(
       vendor_name, 
@@ -6399,7 +6478,7 @@ export class GRCAnalysisServer {
     const text = supportingText.toLowerCase();
     
     // Detect tool type and validate domain match
-    const detectedToolType = this.detectToolType(supportingText);
+    const detectedToolType = this.detectToolType(supportingText, safeguard.id);
     const domainValidation = this.validateDomainMatch(safeguard.id, claimedCapability, detectedToolType);
     
     // Adjust capability if domain mismatch detected
@@ -6411,28 +6490,15 @@ export class GRCAnalysisServer {
       effectiveCapability = domainValidation.adjusted_capability!;
     }
     
-    // Perform actual analysis of the supporting text
-    const actualAnalysis = this.performEnhancedSafeguardAnalysis(vendorName, safeguard, supportingText);
+    // Perform capability-focused analysis of the supporting text
+    const actualAnalysis = this.performCapabilityAnalysis(vendorName, safeguard, supportingText);
     
-    // Calculate coverage percentages
-    const coreCoverage = this.analyzeBinaryElementCoverage(text, safeguard.coreRequirements);
-    const subElementCoverage = this.analyzeBinaryElementCoverage(text, safeguard.subTaxonomicalElements);
-    const governanceCoverage = this.analyzeBinaryElementCoverage(text, safeguard.governanceElements);
-    
-    const corePercentage = safeguard.coreRequirements.length > 0 ? 
-      (coreCoverage.coveredElements.length / safeguard.coreRequirements.length) * 100 : 0;
-    const subElementPercentage = safeguard.subTaxonomicalElements.length > 0 ? 
-      (subElementCoverage.coveredElements.length / safeguard.subTaxonomicalElements.length) * 100 : 0;
-    const governancePercentage = safeguard.governanceElements.length > 0 ? 
-      (governanceCoverage.coveredElements.length / safeguard.governanceElements.length) * 100 : 0;
-
-    // Validate claim against criteria (using effective capability after domain adjustment)
-    const validation = this.assessClaimAlignment(
+    // Validate claimed capability against actual capability analysis and domain requirements
+    const validation = this.assessCapabilityClaimAlignment(
+      claimedCapability,
       effectiveCapability, 
-      actualAnalysis, 
-      corePercentage, 
-      subElementPercentage, 
-      governancePercentage,
+      actualAnalysis,
+      domainValidation,
       text
     );
     
@@ -6451,12 +6517,10 @@ export class GRCAnalysisServer {
       claimed_capability: claimedCapability,
       validation_status: validation.status,
       confidence_score: validation.confidence,
-      evidence_analysis: {
-        core_requirements_coverage: Math.round(corePercentage),
-        sub_elements_coverage: Math.round(subElementPercentage),
-        governance_alignment: Math.round(governancePercentage),
-        language_consistency: validation.languageConsistency
-      },
+      actual_capability_detected: actualAnalysis.capability,
+      capability_confidence: actualAnalysis.confidence,
+      tool_capability_description: actualAnalysis.toolCapabilityDescription,
+      recommended_use: actualAnalysis.recommendedUse,
       domain_validation: {
         required_tool_type: domainValidation.required_tool_types.join('/'),
         detected_tool_type: detectedToolType,
@@ -6471,17 +6535,15 @@ export class GRCAnalysisServer {
     };
   }
 
-  private assessClaimAlignment(
+  private assessCapabilityClaimAlignment(
     claimedCapability: string,
+    effectiveCapability: string,
     actualAnalysis: VendorAnalysis,
-    corePercentage: number,
-    subElementPercentage: number,
-    governancePercentage: number,
+    domainValidation: any,
     text: string
   ): {
     status: 'SUPPORTED' | 'QUESTIONABLE' | 'UNSUPPORTED';
     confidence: number;
-    languageConsistency: number;
     gaps: string[];
     strengths: string[];
     recommendations: string[];
@@ -6490,113 +6552,42 @@ export class GRCAnalysisServer {
     const gaps: string[] = [];
     const strengths: string[] = [];
     const recommendations: string[] = [];
-    let languageConsistency = 0;
+    
+    // Compare claimed capability with what we actually detected
+    const claimedLower = claimedCapability.toLowerCase();
+    const effectiveLower = effectiveCapability.toLowerCase();
+    const actualCapability = actualAnalysis.capability;
+    
     let alignmentScore = 0;
-
-    switch (claimedCapability.toLowerCase()) {
-      case 'full':
-        // Validate FULL claim
-        if (corePercentage >= 70 && subElementPercentage >= 40) {
-          alignmentScore = 85;
-          strengths.push('High coverage of core requirements and sub-elements');
-        } else if (corePercentage >= 80 && subElementPercentage >= 30) {
-          // Alternative path: very high core with moderate sub-elements
-          alignmentScore = 80;
-          strengths.push('Very high core requirements coverage with adequate sub-element coverage');
-        } else {
-          alignmentScore = Math.max(0, (corePercentage + subElementPercentage) / 2 - 15);
-          if (corePercentage < 70) gaps.push(`Core requirements coverage (${Math.round(corePercentage)}%) below FULL threshold (70%)`);
-          if (subElementPercentage < 40) gaps.push(`Sub-element coverage (${Math.round(subElementPercentage)}%) below FULL threshold (40%)`);
-        }
-        
-        // Check for conflicting facilitation language
-        if (this.hasFacilitationLanguage(text)) {
-          alignmentScore -= 30;
-          gaps.push('Contains facilitation language inconsistent with FULL implementation claim');
-        }
-        
-        languageConsistency = this.assessImplementationLanguage(text);
-        break;
-
-      case 'partial':
-        // Validate PARTIAL claim
-        if (corePercentage >= 30 || (corePercentage > 0 && subElementPercentage >= 20)) {
-          alignmentScore = 75;
-          strengths.push('Appropriate coverage level for PARTIAL implementation');
-        } else {
-          alignmentScore = Math.max(0, corePercentage + subElementPercentage - 10);
-          gaps.push(`Coverage too low even for PARTIAL claim: ${Math.round(corePercentage)}% core, ${Math.round(subElementPercentage)}% sub-elements`);
-        }
-        
-        // Check for scope boundary definition
-        if (this.hasScopeBoundaries(text)) {
-          strengths.push('Clearly defines scope boundaries and limitations');
-          alignmentScore += 10;
-        } else {
-          gaps.push('Should clearly define scope boundaries for PARTIAL implementation');
-          recommendations.push('Specify exactly which elements are covered and which are not');
-        }
-        
-        languageConsistency = this.assessImplementationLanguage(text);
-        break;
-
-      case 'facilitates':
-        // Validate FACILITATES claim
-        if (this.hasFacilitationLanguage(text) || actualAnalysis.capabilities.facilitates) {
-          alignmentScore = 80;
-          strengths.push('Contains appropriate facilitation and enablement language');
-        } else {
-          alignmentScore = 40;
-          gaps.push('Lacks clear facilitation language (enables, supports, provides framework)');
-        }
-        
-        // Check that it doesn't claim direct implementation
-        if (this.hasDirectImplementationLanguage(text)) {
-          // Special handling: If it lacks facilitation language AND claims implementation, stay QUESTIONABLE
-          if (alignmentScore <= 40) {
-            alignmentScore = 45; // Keep it in QUESTIONABLE range
-          } else {
-            alignmentScore -= 15;
-          }
-          gaps.push('Claims direct implementation, inconsistent with FACILITATES capability');
-        }
-        
-        languageConsistency = this.assessFacilitationLanguage(text);
-        break;
-
-      case 'governance':
-        // Validate GOVERNANCE claim
-        if (governancePercentage >= 60 || actualAnalysis.capabilities.governance) {
-          alignmentScore = 85;
-          strengths.push('Strong governance element coverage and policy management language');
-        } else {
-          alignmentScore = Math.max(30, governancePercentage);
-          gaps.push(`Governance element coverage (${Math.round(governancePercentage)}%) below expected threshold (60%)`);
-        }
-        
-        languageConsistency = this.assessGovernanceLanguage(text);
-        break;
-
-      case 'validates':
-        // Validate VALIDATES claim
-        if (actualAnalysis.capabilities.validates) {
-          alignmentScore = 85;
-          strengths.push('Contains evidence collection and reporting capabilities');
-        } else {
-          alignmentScore = 30;
-          gaps.push('Lacks validation language (audit, report, evidence, verify, monitor)');
-        }
-        
-        languageConsistency = this.assessValidationLanguage(text);
-        break;
-
-      default:
-        alignmentScore = 0;
-        gaps.push(`Unknown capability type: ${claimedCapability}`);
-        languageConsistency = 0;
+    
+    // Check if claim aligns with actual analysis
+    if (claimedLower === actualCapability) {
+      alignmentScore = actualAnalysis.confidence;
+      strengths.push(`Claimed capability '${claimedCapability}' aligns with detected capability`);
+      strengths.push(`Tool demonstrates appropriate ${actualAnalysis.toolCapabilityDescription.toLowerCase()}`);
+    } else if (effectiveLower === actualCapability) {
+      // Domain validation adjusted the capability and it matches the analysis
+      alignmentScore = Math.max(actualAnalysis.confidence - 20, 30);
+      gaps.push(`Original claim '${claimedCapability}' doesn't match tool type, adjusted to '${effectiveCapability}'`);
+      strengths.push(`Adjusted capability '${effectiveCapability}' aligns with tool analysis`);
+    } else {
+      // Neither claimed nor effective capability matches the analysis
+      alignmentScore = Math.max(actualAnalysis.confidence - 40, 10);
+      gaps.push(`Claimed capability '${claimedCapability}' doesn't align with detected capability '${actualCapability}'`);
+      gaps.push(`Tool appears to be: ${actualAnalysis.toolCapabilityDescription}`);
     }
-
-    // Determine overall status
+    
+    // Add evidence from the capability analysis
+    if (actualAnalysis.evidence && actualAnalysis.evidence.length > 0) {
+      strengths.push(`Supporting evidence: ${actualAnalysis.evidence.slice(0, 2).join('; ')}`);
+    }
+    
+    // Domain validation feedback
+    if (!domainValidation.domain_match) {
+      gaps.push(`Tool type '${domainValidation.detected_tool_type}' not appropriate for this safeguard domain`);
+    }
+    
+    // Determine overall status based on alignment score
     let status: 'SUPPORTED' | 'QUESTIONABLE' | 'UNSUPPORTED';
     if (alignmentScore >= 70) {
       status = 'SUPPORTED';
@@ -6605,21 +6596,23 @@ export class GRCAnalysisServer {
     } else {
       status = 'UNSUPPORTED';
     }
-
-    // Generate recommendations
-    if (gaps.length > 0) {
-      recommendations.push('Address identified gaps to strengthen capability claim');
-    }
+    
+    // Generate capability-focused recommendations
+    recommendations.push(actualAnalysis.recommendedUse);
+    
     if (status === 'QUESTIONABLE') {
-      recommendations.push('Provide additional evidence or clarify scope to support claim');
+      recommendations.push('Consider clarifying tool capabilities or adjusting capability claim');
     }
-
-    const feedback = this.generateValidationFeedback(claimedCapability, status, gaps, strengths, alignmentScore);
+    
+    if (!domainValidation.domain_match) {
+      recommendations.push(`For ${actualCapability.toUpperCase()} capability, focus on how the tool ${actualCapability === 'facilitates' ? 'enables and enhances' : actualCapability === 'governance' ? 'manages policies and processes for' : actualCapability === 'validates' ? 'provides evidence and reporting on' : 'directly implements'} this safeguard`);
+    }
+    
+    const feedback = this.generateCapabilityValidationFeedback(claimedCapability, effectiveCapability, actualCapability, status, alignmentScore, domainValidation);
 
     return {
       status,
       confidence: Math.round(alignmentScore),
-      languageConsistency: Math.round(languageConsistency),
       gaps,
       strengths,
       recommendations,
@@ -6685,73 +6678,153 @@ export class GRCAnalysisServer {
     return this.calculateKeywordScore(text, validationKeywords) * 100;
   }
 
-  private detectToolType(text: string): string {
+  private detectToolType(text: string, safeguardId?: string): string {
     const lowerText = text.toLowerCase();
     
-    // Inventory/Asset Management tools
-    const inventoryKeywords = [
-      'asset management', 'inventory', 'cmdb', 'discovery', 'asset discovery',
-      'hardware inventory', 'software inventory', 'device inventory', 'asset tracking',
-      'configuration management database', 'it asset management', 'endpoint discovery'
-    ];
+    // Enhanced keyword definitions with scoring weights and context
+    const toolTypePatterns = {
+      'inventory': {
+        primary: [
+          'asset management', 'inventory management', 'cmdb', 'configuration management database',
+          'asset discovery', 'hardware inventory', 'software inventory', 'device inventory', 
+          'asset tracking', 'it asset management', 'endpoint discovery', 'asset lifecycle'
+        ],
+        secondary: [
+          'inventory', 'discovery', 'device management', 'endpoint management',
+          'configuration management', 'asset database', 'equipment tracking'
+        ],
+        weight: { primary: 3, secondary: 1 }
+      },
+      'identity_management': {
+        primary: [
+          'identity management', 'iam', 'active directory', 'identity provider',
+          'single sign-on', 'sso', 'multi-factor authentication', 'mfa',
+          'user management', 'account management', 'directory service'
+        ],
+        secondary: [
+          'ldap', 'authentication', 'access management', 'identity access management',
+          'user directory', 'account lifecycle', 'privileged access'
+        ],
+        weight: { primary: 3, secondary: 1 }
+      },
+      'vulnerability_management': {
+        primary: [
+          'vulnerability management', 'vulnerability scanner', 'patch management',
+          'security scanning', 'vulnerability assessment', 'penetration testing'
+        ],
+        secondary: [
+          'vuln scan', 'security scanner', 'network scanner', 'scanning capabilities',
+          'security assessment', 'vulnerability scanning', 'patch deployment'
+        ],
+        weight: { primary: 3, secondary: 1 }
+      },
+      'threat_intelligence': {
+        primary: [
+          'threat intelligence', 'cyber threat intelligence', 'threat intel',
+          'threat feed', 'ioc feed', 'security intelligence', 'threat data'
+        ],
+        secondary: [
+          'enrichment', 'data feed', 'contextual data', 'risk intelligence',
+          'threat indicators', 'intelligence platform', 'threat correlation'
+        ],
+        weight: { primary: 3, secondary: 1 }
+      },
+      'network_security': {
+        primary: [
+          'firewall', 'network access control', 'nac', 'intrusion detection',
+          'network security', 'network segmentation'
+        ],
+        secondary: [
+          'network monitoring', 'traffic analysis', 'perimeter security',
+          'network protection', 'network filtering'
+        ],
+        weight: { primary: 3, secondary: 1 }
+      },
+      'governance': {
+        primary: [
+          'grc', 'governance risk compliance', 'compliance management',
+          'policy management', 'risk management', 'audit management'
+        ],
+        secondary: [
+          'governance', 'compliance platform', 'policy enforcement',
+          'regulatory compliance', 'framework management'
+        ],
+        weight: { primary: 3, secondary: 1 }
+      },
+      'security_analytics': {
+        primary: [
+          'siem', 'security information event management', 'security analytics',
+          'soar', 'security orchestration', 'log management'
+        ],
+        secondary: [
+          'security monitoring', 'event correlation', 'log analysis',
+          'security intelligence', 'incident response platform'
+        ],
+        weight: { primary: 3, secondary: 1 }
+      }
+    };
     
-    // Identity/Authentication tools  
-    const identityKeywords = [
-      'identity management', 'iam', 'active directory', 'ldap', 'sso', 'single sign-on',
-      'mfa', 'multi-factor', 'authentication', 'identity provider', 'access management',
-      'user management', 'account management', 'directory service'
-    ];
+    // Calculate scores for each tool type
+    const toolScores: Record<string, number> = {};
     
-    // Vulnerability Management tools
-    const vulnerabilityKeywords = [
-      'vulnerability scanner', 'vulnerability management', 'patch management', 
-      'security scanner', 'vuln scan', 'penetration test', 'security assessment',
-      'scanning capabilities', 'vulnerability scanning', 'network discovery'
-    ];
-    
-    // Network Security tools
-    const networkSecurityKeywords = [
-      'firewall', 'network access control', 'nac', 'network security', 'intrusion detection',
-      'network monitoring', 'traffic analysis', 'network segmentation'
-    ];
-    
-    // Threat Intelligence/Data Enrichment tools
-    const threatIntelKeywords = [
-      'threat intelligence', 'threat intel', 'threat feed', 'security intelligence',
-      'enrichment', 'data feed', 'contextual data', 'risk intelligence', 
-      'cyber threat intelligence', 'ioc feed', 'threat data'
-    ];
-    
-    // GRC/Governance tools
-    const governanceKeywords = [
-      'grc', 'governance', 'compliance management', 'policy management',
-      'risk management', 'audit management', 'compliance platform'
-    ];
-    
-    // Security Analytics/SIEM tools
-    const analyticsKeywords = [
-      'siem', 'security analytics', 'log management', 'security monitoring',
-      'event correlation', 'security orchestration', 'soar'
-    ];
-    
-    // Check for tool type patterns - order by specificity (most specific first)
-    if (threatIntelKeywords.some(keyword => lowerText.includes(keyword))) {
-      return 'threat_intelligence';
-    } else if (vulnerabilityKeywords.some(keyword => lowerText.includes(keyword))) {
-      return 'vulnerability_management';
-    } else if (identityKeywords.some(keyword => lowerText.includes(keyword))) {
-      return 'identity_management';
-    } else if (networkSecurityKeywords.some(keyword => lowerText.includes(keyword))) {
-      return 'network_security';
-    } else if (governanceKeywords.some(keyword => lowerText.includes(keyword))) {
-      return 'governance';
-    } else if (analyticsKeywords.some(keyword => lowerText.includes(keyword))) {
-      return 'security_analytics';
-    } else if (inventoryKeywords.some(keyword => lowerText.includes(keyword))) {
-      return 'inventory';
+    for (const [toolType, patterns] of Object.entries(toolTypePatterns)) {
+      let score = 0;
+      
+      // Check primary keywords
+      for (const keyword of patterns.primary) {
+        if (lowerText.includes(keyword)) {
+          score += patterns.weight.primary;
+        }
+      }
+      
+      // Check secondary keywords
+      for (const keyword of patterns.secondary) {
+        if (lowerText.includes(keyword)) {
+          score += patterns.weight.secondary;
+        }
+      }
+      
+      toolScores[toolType] = score;
     }
     
-    return 'unknown';
+    // Apply safeguard-specific context weighting if provided
+    if (safeguardId && toolScores) {
+      const contextBonus = 1; // Small bonus for domain alignment
+      
+      // Asset inventory safeguards (1.1, 1.2) favor inventory tools
+      if (['1.1', '1.2'].includes(safeguardId) && toolScores['inventory'] > 0) {
+        toolScores['inventory'] += contextBonus;
+      }
+      
+      // Account inventory safeguards (5.1, 5.2, 5.3) favor identity tools
+      if (['5.1', '5.2', '5.3'].includes(safeguardId) && toolScores['identity_management'] > 0) {
+        toolScores['identity_management'] += contextBonus;
+      }
+      
+      // Authentication safeguards (6.1, 6.2, 6.3) favor identity tools
+      if (['6.1', '6.2', '6.3'].includes(safeguardId) && toolScores['identity_management'] > 0) {
+        toolScores['identity_management'] += contextBonus;
+      }
+      
+      // Vulnerability safeguards (7.1-7.7) favor vulnerability management tools
+      if (['7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.7'].includes(safeguardId) && toolScores['vulnerability_management'] > 0) {
+        toolScores['vulnerability_management'] += contextBonus;
+      }
+    }
+    
+    // Find the tool type with highest score
+    let maxScore = 0;
+    let detectedType = 'unknown';
+    
+    for (const [toolType, score] of Object.entries(toolScores)) {
+      if (score > maxScore) {
+        maxScore = score;
+        detectedType = toolType;
+      }
+    }
+    
+    // Require minimum score threshold to avoid false positives
+    return maxScore >= 2 ? detectedType : 'unknown';
   }
 
   private validateDomainMatch(
@@ -6785,7 +6858,7 @@ export class GRCAnalysisServer {
         required_tool_types: domainReq.required_tool_types,
         should_adjust_capability: true,
         adjusted_capability: 'facilitates',
-        reasoning: `${domainReq.domain} safeguard requires ${domainReq.required_tool_types.join('/')} tool types for FULL/PARTIAL coverage. Detected tool type '${detectedToolType}' can only facilitate implementation.`
+        reasoning: `${domainReq.domain} safeguard requires ${domainReq.required_tool_types.join('/')} tool types for FULL/PARTIAL implementation capability. Detected tool type '${detectedToolType}' can only facilitate implementation.`
       };
     }
     
@@ -6799,6 +6872,38 @@ export class GRCAnalysisServer {
     };
   }
 
+  private generateCapabilityValidationFeedback(
+    claimedCapability: string,
+    effectiveCapability: string,
+    actualCapability: string,
+    status: string,
+    score: number,
+    domainValidation: any
+  ): string {
+    let feedback = `Capability Validation: ${claimedCapability.toUpperCase()} claim is ${status} (${Math.round(score)}% confidence)\n\n`;
+    
+    // Analysis summary
+    feedback += `ANALYSIS:\n`;
+    feedback += `• Claimed: ${claimedCapability.toUpperCase()}\n`;
+    if (effectiveCapability !== claimedCapability) {
+      feedback += `• Domain Adjusted: ${effectiveCapability.toUpperCase()} (${domainValidation.reasoning})\n`;
+    }
+    feedback += `• Detected: ${actualCapability.toUpperCase()}\n`;
+    feedback += `• Tool Type: ${domainValidation.detected_tool_type}\n\n`;
+    
+    // Assessment
+    feedback += `ASSESSMENT: `;
+    if (claimedCapability.toLowerCase() === actualCapability) {
+      feedback += 'Claimed capability aligns perfectly with tool analysis.';
+    } else if (effectiveCapability.toLowerCase() === actualCapability) {
+      feedback += 'After domain validation adjustment, capability aligns with tool analysis.';
+    } else {
+      feedback += `Capability mismatch detected. Tool functions as ${actualCapability.toUpperCase()} rather than claimed ${claimedCapability.toUpperCase()}.`;
+    }
+    
+    return feedback;
+  }
+
   private generateValidationFeedback(
     claimedCapability: string,
     status: string,
@@ -6806,7 +6911,7 @@ export class GRCAnalysisServer {
     strengths: string[],
     score: number
   ): string {
-    let feedback = `Validation of ${claimedCapability.toUpperCase()} capability claim: ${status} (${Math.round(score)}% alignment)\n\n`;
+    let feedback = `Validation of ${claimedCapability.toUpperCase()} capability role claim: ${status} (${Math.round(score)}% alignment)\n\n`;
     
     if (strengths.length > 0) {
       feedback += `STRENGTHS:\n${strengths.map(s => `• ${s}`).join('\n')}\n\n`;
@@ -6819,23 +6924,162 @@ export class GRCAnalysisServer {
     feedback += `ASSESSMENT: `;
     switch (status) {
       case 'SUPPORTED':
-        feedback += 'The vendor\'s supporting evidence strongly aligns with their claimed capability.';
+        feedback += 'The vendor\'s supporting evidence strongly aligns with their claimed capability role.';
         break;
       case 'QUESTIONABLE':
         feedback += 'The vendor\'s evidence partially supports their claim but has notable gaps or inconsistencies.';
         break;
       case 'UNSUPPORTED':
-        feedback += 'The vendor\'s evidence does not adequately support their claimed capability.';
+        feedback += 'The vendor\'s evidence does not adequately support their claimed capability role.';
         break;
     }
     
     return feedback;
   }
 
+  // Enhanced error handling and formatting
+  private formatErrorMessage(error: unknown, toolName: string): string {
+    if (error instanceof Error) {
+      // Production-friendly error messages
+      switch (error.message) {
+        case /^Safeguard .+ not found/.test(error.message) ? error.message : '':
+          return `❌ Invalid safeguard ID. Use 'list_available_safeguards' to see available CIS Control safeguards.`;
+        case /^Unknown tool/.test(error.message) ? error.message : '':
+          return `❌ Tool '${toolName}' is not available. Available tools: analyze_vendor_response, validate_vendor_mapping, validate_coverage_claim, get_safeguard_details, list_available_safeguards.`;
+        default:
+          return `❌ Error in ${toolName}: ${error.message}`;
+      }
+    }
+    return `❌ Unexpected error in ${toolName}: ${String(error)}`;
+  }
+
+  // Performance monitoring and caching
+  private performanceMetrics = {
+    toolExecutionTimes: new Map<string, number[]>(),
+    startTime: Date.now(),
+    totalRequests: 0,
+    errorCount: 0
+  };
+
+  // Simple cache for safeguard details (most commonly requested data)
+  private cache = {
+    safeguardDetails: new Map<string, any>(),
+    safeguardList: null as any,
+    lastCacheCleanup: Date.now()
+  };
+
+  private getCachedSafeguardDetails(safeguardId: string, includeExamples: boolean): any | null {
+    const cacheKey = `${safeguardId}_${includeExamples}`;
+    const cached = this.cache.safeguardDetails.get(cacheKey);
+    
+    if (cached && (Date.now() - cached.timestamp < 5 * 60 * 1000)) { // 5 minute cache
+      return cached.data;
+    }
+    
+    return null;
+  }
+
+  private setCachedSafeguardDetails(safeguardId: string, includeExamples: boolean, data: any): void {
+    const cacheKey = `${safeguardId}_${includeExamples}`;
+    this.cache.safeguardDetails.set(cacheKey, {
+      data,
+      timestamp: Date.now()
+    });
+
+    // Periodic cache cleanup to prevent memory leaks
+    if (Date.now() - this.cache.lastCacheCleanup > 10 * 60 * 1000) { // 10 minutes
+      this.cleanupCache();
+    }
+  }
+
+  private cleanupCache(): void {
+    const now = Date.now();
+    const maxAge = 10 * 60 * 1000; // 10 minutes
+
+    // Clean up safeguard details cache
+    for (const [key, value] of this.cache.safeguardDetails.entries()) {
+      if (now - value.timestamp > maxAge) {
+        this.cache.safeguardDetails.delete(key);
+      }
+    }
+
+    this.cache.lastCacheCleanup = now;
+  }
+
+  private recordToolExecution(toolName: string, executionTime: number) {
+    this.performanceMetrics.totalRequests++;
+    
+    if (!this.performanceMetrics.toolExecutionTimes.has(toolName)) {
+      this.performanceMetrics.toolExecutionTimes.set(toolName, []);
+    }
+    
+    const times = this.performanceMetrics.toolExecutionTimes.get(toolName)!;
+    times.push(executionTime);
+    
+    // Keep only last 100 measurements for memory efficiency
+    if (times.length > 100) {
+      times.shift();
+    }
+  }
+
+  private getPerformanceStats(): string {
+    const uptime = Date.now() - this.performanceMetrics.startTime;
+    const avgTimes = Array.from(this.performanceMetrics.toolExecutionTimes.entries())
+      .map(([tool, times]) => {
+        const avg = times.reduce((a, b) => a + b, 0) / times.length;
+        return `${tool}: ${avg.toFixed(2)}ms`;
+      });
+    
+    return `Performance Stats (Uptime: ${(uptime / 1000).toFixed(1)}s, Requests: ${this.performanceMetrics.totalRequests}, Errors: ${this.performanceMetrics.errorCount})\n${avgTimes.join(', ')}`;
+  }
+
+  // Input validation and sanitization
+  private validateSafeguardId(safeguardId: string): void {
+    if (!safeguardId || typeof safeguardId !== 'string') {
+      throw new Error('Safeguard ID is required and must be a string');
+    }
+    
+    if (!/^[0-9]+\.[0-9]+$/.test(safeguardId)) {
+      throw new Error('Safeguard ID must be in format "X.Y" (e.g., "1.1", "5.1")');
+    }
+    
+    if (!CIS_SAFEGUARDS[safeguardId]) {
+      throw new Error(`Safeguard ${safeguardId} not found`);
+    }
+  }
+
+  private validateTextInput(text: string, fieldName: string): void {
+    if (!text || typeof text !== 'string') {
+      throw new Error(`${fieldName} is required and must be a string`);
+    }
+    
+    if (text.length > 10000) {
+      throw new Error(`${fieldName} must be less than 10,000 characters`);
+    }
+    
+    if (text.trim().length < 10) {
+      throw new Error(`${fieldName} must contain at least 10 meaningful characters`);
+    }
+  }
+
+  private validateCapability(capability: string): void {
+    const validCapabilities = ['full', 'partial', 'facilitates', 'governance', 'validates'];
+    if (!validCapabilities.includes(capability.toLowerCase())) {
+      throw new Error(`Invalid capability. Must be one of: ${validCapabilities.join(', ')}`);
+    }
+  }
+
   async run() {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
     console.error('FrameworkMCP server running on stdio');
+    
+    // Log performance stats every 5 minutes in production
+    if (process.env.NODE_ENV === 'production') {
+      setInterval(() => {
+        console.error(`[FrameworkMCP] ${this.getPerformanceStats()}`);
+      }, 5 * 60 * 1000);
+    }
   }
 }
 

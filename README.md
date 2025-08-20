@@ -5,24 +5,25 @@
 [![GitHub](https://img.shields.io/github/stars/therealcybermattlee/FrameworkMCP?style=social)](https://github.com/therealcybermattlee/FrameworkMCP)
 [![Website](https://img.shields.io/badge/Website-cyberrise.org-blue)](https://cyberrise.org)
 
-A Model Context Protocol (MCP) server that analyzes vendor responses against the **CIS Controls Framework** using a 4-attribute methodology. This tool helps security professionals evaluate vendor capabilities against specific CIS Control safeguards with detailed sub-taxonomical analysis.
+A Model Context Protocol (MCP) server that determines vendor tool **capability roles** (Full Implementation, Partial Implementation, Facilitates, Governance, Validates) against the **CIS Controls Framework**. This tool helps security professionals accurately categorize vendor capabilities for specific CIS Control safeguards with domain validation and evidence-based assessment.
 
 ## 🎯 Purpose
 
 This MCP server enables security teams to:
-- **Analyze vendor responses** against specific CIS Control safeguards (1.1, 5.1, 6.3, etc.)
-- **Validate coverage claims** (FULL/PARTIAL) with evidence-based assessment
-- **Categorize vendor capabilities** across 4 key attributes: Governance, Facilitates, Coverage, and Validates
-- **Generate detailed reports** showing sub-element coverage and compliance gaps
+- **Determine vendor tool capability roles** for specific CIS Control safeguards (1.1, 5.1, 6.3, etc.)
+- **Validate implementation capability claims** (FULL/PARTIAL) with domain-appropriate tool type verification
+- **Accurately categorize vendor roles** across 5 capability types: Full, Partial, Facilitates, Governance, and Validates
+- **Generate evidence-based assessments** showing capability alignment and domain validation results
 
-## 🔧 The 4 Analysis Attributes
+## 🎯 The 5 Capability Roles
 
-| Attribute | Description | Example |
-|-----------|-------------|---------|
-| **Governance** | GRC platform capabilities for policy/process management | Policy management, documented processes, compliance workflows |
-| **Facilitates** | Enhancement capabilities that enable others to implement safeguards better/faster/stronger (does not perform safeguard directly) | Automation tools, optimization platforms, streamlined workflows |
-| **Coverage** | Scope of safeguard elements directly addressed by tools that perform the safeguard (Full/Partial) | Percentage of sub-taxonomical elements actually implemented |
-| **Validates** | Verification capabilities providing evidence and reporting | Audit logs, compliance reports, evidence collection |
+| Capability Role | Description | Domain Requirements |
+|-----------------|-------------|--------------------|
+| **FULL** | Complete implementation of safeguard requirements | Must use domain-appropriate tool types (e.g., inventory tools for asset safeguards) |
+| **PARTIAL** | Limited scope implementation with clear boundaries | Must use domain-appropriate tool types with explicit scope limitations |
+| **FACILITATES** | Enhancement capabilities that enable others to implement safeguards better/faster/stronger | No tool type restrictions - any tool can facilitate |
+| **GOVERNANCE** | Policy/process management and oversight capabilities | No tool type restrictions - governance applies across domains |
+| **VALIDATES** | Verification capabilities providing evidence and reporting | No tool type restrictions - validation applies across domains |
 
 ## 🎨 CIS Controls Framework Integration
 
@@ -91,18 +92,18 @@ claude-code "List available CIS Control safeguards"
 ### Analyze Single Vendor Response
 
 ```bash
-claude-code "Analyze this vendor response for safeguard 5.1:
+claude-code "Determine the capability role for this vendor response to safeguard 5.1:
 Vendor: SecureIAM Corp
 Response: 'Our tool is a full identity provider with comprehensive account management. We maintain detailed user inventories including names, usernames, departments, and access rights. Automated quarterly reviews ensure all accounts are authorized and compliant.'"
 ```
 
-### Validate Coverage Claims
+### Validate Implementation Capability Claims
 
 ```bash
-claude-code "Validate this coverage claim:
+claude-code "Validate this implementation capability claim:
 Vendor: ComplianceBot
 Safeguard: 5.1  
-Claim: FULL coverage with Governance and Validates capabilities
+Claimed Capability: FULL
 Response: 'We provide automated account lifecycle management with real-time inventory tracking and compliance reporting.'"
 ```
 
@@ -117,7 +118,7 @@ VendorC,6.3,"MFA enforcement for all external applications with SSO integration"
 ```
 
 ```bash
-claude-code "Analyze the vendor responses in vendors.csv and provide recommendations"
+claude-code "Determine capability roles for the vendor responses in vendors.csv and provide recommendations"
 ```
 
 ### Get Safeguard Details
@@ -140,28 +141,26 @@ Supporting Text: 'Our comprehensive asset management platform performs automated
 
 ## 📊 Sample Output
 
-### Standard Analysis Output
+### Standard Capability Role Analysis Output
 ```json
 {
   "vendor": "SecureIAM Corp",
   "safeguardId": "5.1",
   "safeguardTitle": "Establish and Maintain an Inventory of Accounts",
-  "governance": true,
-  "facilitates": true,
-  "coverage": "full",
-  "validates": true,
+  "capabilityRole": "full",
+  "additionalRoles": ["governance", "validates"],
   "confidence": 87,
-  "coverageBreakdown": {
-    "governance": 90,
-    "core": 85,
-    "subElements": 75,
-    "overall": 83
+  "domainValidation": {
+    "detectedToolType": "identity_management",
+    "domainMatch": true,
+    "capabilityAdjusted": false
   },
-  "governanceElementsCovered": [
-    "establish inventory process",
-    "maintain inventory process",
-    "validate all active accounts are authorized"
-  ],
+  "evidenceAnalysis": {
+    "coreRequirements": 85,
+    "subElements": 75,
+    "governance": 90,
+    "languageConsistency": 88
+  },
   "evidence": [
     "comprehensive account management",
     "detailed user inventories",
@@ -170,7 +169,7 @@ Supporting Text: 'Our comprehensive asset management platform performs automated
 }
 ```
 
-### Validation Tool Output
+### Primary Validation Tool Output (validate_vendor_mapping)
 ```json
 {
   "vendor": "SecureAssets Corp",
@@ -241,9 +240,9 @@ Supporting Text: 'Our comprehensive asset management platform performs automated
 
 | Tool | Description |
 |------|-------------|
-| `analyze_vendor_response` | Analyze vendor response for specific safeguard |
-| `validate_vendor_mapping` | **NEW** Validate vendor's claimed capability against supporting evidence |
-| `validate_coverage_claim` | Validate FULL/PARTIAL coverage claims |
+| `analyze_vendor_response` | Determine vendor tool capability role for specific safeguard |
+| `validate_vendor_mapping` | **PRIMARY** Validate vendor's claimed capability role against supporting evidence with domain validation |
+| `validate_coverage_claim` | Validate FULL/PARTIAL implementation capability claims |
 | `get_safeguard_details` | Get detailed safeguard breakdown |
 | `list_available_safeguards` | List all available CIS safeguards |
 
