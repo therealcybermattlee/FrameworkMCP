@@ -2,7 +2,7 @@
 
 ## Dual Architecture: MCP + HTTP API
 
-Framework MCP v1.3.5 features a **dual architecture** that solves the DigitalOcean App Services stdio vs HTTP mismatch:
+Framework MCP v1.3.6 features a **dual architecture** that solves the DigitalOcean App Services stdio vs HTTP mismatch:
 
 - **MCP Interface**: stdio-based for Claude Code integration
 - **HTTP Interface**: REST API for cloud deployment

@@ -20,7 +20,7 @@ export class FrameworkMcpServer {
     this.server = new Server(
       {
         name: 'framework-analyzer',
-        version: '1.3.4',
+        version: '1.3.6',
       }
     );
 

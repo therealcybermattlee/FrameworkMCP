@@ -3,7 +3,7 @@
   "info": {
     "title": "Framework MCP API - CIS Controls Capability Assessment",
     "description": "Microsoft Copilot-compatible API for vendor capability assessment against CIS Controls Framework v8.1 (153 safeguards). Features consolidated tool architecture with domain validation and auto-downgrade protection for accurate capability role determination (FULL, PARTIAL, FACILITATES, GOVERNANCE, VALIDATES).",
-    "version": "1.3.5",
+    "version": "1.3.6",
     "contact": {
       "name": "Framework MCP Support",
       "url": "https://github.com/therealcybermattlee/FrameworkMCP"

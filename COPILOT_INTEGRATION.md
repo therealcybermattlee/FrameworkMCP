@@ -52,7 +52,7 @@ Expected response:
   "uptime": 1234,
   "totalRequests": 0,
   "errorCount": 0,
-  "version": "1.3.5",
+  "version": "1.3.6",
   "timestamp": "2025-08-21T01:00:00.000Z"
 }
 ```
