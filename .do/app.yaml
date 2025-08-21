@@ -1,0 +1,78 @@
+# DigitalOcean App Services Configuration
+# Solves the stdio vs HTTP architecture mismatch
+
+name: framework-mcp-api
+region: nyc
+
+services:
+- name: api
+  source_dir: /
+  github:
+    repo: therealcybermattlee/FrameworkMCP
+    branch: feature/dual-architecture-http-api
+    deploy_on_push: true
+  
+  # HTTP server configuration (NOT stdio)
+  run_command: npm run start:http
+  
+  # DigitalOcean App Services requirements
+  environment_slug: node-js
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  
+  # HTTP port configuration (required for DigitalOcean)
+  http_port: 8080
+  
+  # Health check configuration (required)
+  health_check:
+    http_path: /health
+    initial_delay_seconds: 60
+    period_seconds: 10
+    timeout_seconds: 5
+    success_threshold: 1
+    failure_threshold: 3
+  
+  # Environment variables
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: PORT
+    value: "8080"
+  - key: ALLOWED_ORIGINS
+    value: "https://your-domain.com,https://app.your-domain.com"
+  
+  # Resource allocation
+  cpu_count: 1
+  memory_mb: 512
+  
+  # Auto-scaling configuration
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  
+  # Logging configuration
+  logs:
+    - name: app
+      location: /var/log/app.log
+      
+# Optional: Custom domain configuration
+# domains:
+# - domain: api.your-domain.com
+#   type: PRIMARY
+
+# Database configuration (if needed in future)
+# databases:
+# - name: framework-db
+#   engine: PG
+#   version: "14"
+#   production: false
+#   size: basic-xxs
+
+# Static site for documentation (optional)
+# static_sites:
+# - name: docs
+#   source_dir: /docs
+#   github:
+#     repo: therealcybermattlee/FrameworkMCP
+#     branch: main
+#   build_command: npm run build:docs
+#   output_dir: /dist
