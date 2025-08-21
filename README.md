@@ -219,14 +219,10 @@ claude-code "Show me the detailed breakdown of safeguard 5.1 including all sub-e
 
 ### Validate Vendor Capability Claims
 
-**NEW**: Validate whether a vendor's stated capability mapping is actually supported by their explanatory text.
+**PRIMARY TOOL**: Validate whether a vendor's stated capability mapping is actually supported by their explanatory text.
 
 ```bash
-claude-code "Validate this vendor capability claim:
-Vendor: SecureAssets Corp
-Safeguard: 1.1  
-Claimed Capability: FULL
-Supporting Text: 'Our comprehensive asset management platform performs automated discovery of all enterprise devices, maintains detailed hardware and software inventories, tracks ownership and location data, provides real-time asset status monitoring, and includes documented inventory procedures with bi-annual review capabilities.'"
+claude-code "Use validate_vendor_mapping with vendor_name 'SecureAssets Corp', safeguard_id '1.1', claimed_capability 'full', and supporting_text 'Our comprehensive asset management platform performs automated discovery of all enterprise devices, maintains detailed hardware and software inventories, tracks ownership and location data, provides real-time asset status monitoring, and includes documented inventory procedures with bi-annual review capabilities.'"
 ```
 
 ## 📊 Sample Output
@@ -330,9 +326,8 @@ Supporting Text: 'Our comprehensive asset management platform performs automated
 
 | Tool | Description |
 |------|-------------|
-| `analyze_vendor_response` | Determine vendor tool capability role for specific safeguard |
 | `validate_vendor_mapping` | **PRIMARY** Validate vendor's claimed capability role against supporting evidence with domain validation |
-| `validate_coverage_claim` | Validate FULL/PARTIAL implementation capability claims |
+| `analyze_vendor_response` | Determine vendor tool capability role for specific safeguard |
 | `get_safeguard_details` | Get detailed safeguard breakdown |
 | `list_available_safeguards` | List all available CIS safeguards |
 
@@ -442,7 +437,7 @@ npm run build
 ```
 
 ### Add New Safeguards
-Edit `src/index.ts` and add to the `CIS_SAFEGUARDS` object:
+Edit `src/core/safeguard-manager.ts` and add to the `initializeSafeguards()` method:
 
 ```typescript
 "X.Y": {

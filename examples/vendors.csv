@@ -1,5 +1,9 @@
 vendor,safeguard,response
-SecureIAM Corp,5.1,"Comprehensive IAM solution with automated account lifecycle management and quarterly compliance reviews"
-ComplianceBot,5.1,"Basic user directory with manual account tracking and limited reporting"
-MFA Solutions Inc,6.3,"Enterprise MFA with SAML/OAuth support and comprehensive policy enforcement"
-AssetTracker Pro,1.1,"Complete asset inventory management with automated discovery and detailed tracking"
+ServiceNow CMDB,1.1,"Comprehensive asset lifecycle management with automated discovery, detailed inventory tracking, ownership records, and bi-annual review processes"
+Microsoft Entra ID,5.1,"Centralized identity management with automated provisioning, account lifecycle management, and quarterly access reviews with compliance reporting"
+Okta Universal Directory,6.3,"Enterprise MFA for all external applications with adaptive policies, risk assessment, SSO integration, and detailed compliance reporting"
+Rapid7 InsightVM,7.1,"Continuous vulnerability management with automated scanning, remediation guidance, patch tracking, and governance workflows"
+Nessus Professional,1.1,"Network discovery during vulnerability scans with detailed device databases and hardware fingerprinting for security visibility"
+Splunk Enterprise Security,5.1,"Account activity monitoring, user behavior analytics, privileged account tracking, and identity event correlation with audit reporting"
+CrowdStrike Falcon,1.1,"Real-time endpoint asset visibility with comprehensive device inventory, software tracking, and continuous asset monitoring"
+Lansweeper IT Asset Management,1.1,"IT asset management with automated network discovery, hardware/software inventory, asset tracking with ownership and location data"

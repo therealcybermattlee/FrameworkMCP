@@ -52,7 +52,7 @@ Expected response:
   "uptime": 1234,
   "totalRequests": 0,
   "errorCount": 0,
-  "version": "1.3.1",
+  "version": "1.3.4",
   "timestamp": "2025-08-21T01:00:00.000Z"
 }
 ```
@@ -159,7 +159,7 @@ Configure this action for capability determination:
 - **Parameters**: safeguard_id, include_examples (optional)
 
 **List Available Safeguards:**
-- **Operation**: `listSafeguards`
+- **Operation**: `listAvailableSafeguards`  
 - **Parameters**: None
 
 ## Example User Interactions

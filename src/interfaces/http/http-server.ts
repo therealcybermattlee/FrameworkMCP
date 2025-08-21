@@ -74,7 +74,7 @@ export class FrameworkHttpServer {
         uptime: Math.round((Date.now() - metrics.uptime) / 1000),
         totalRequests: metrics.totalRequests,
         errorCount: metrics.errorCount,
-        version: '1.3.1',
+        version: '1.3.4',
         timestamp: new Date().toISOString()
       });
     });
@@ -143,36 +143,6 @@ export class FrameworkHttpServer {
       }
     });
 
-    // Coverage claim validation endpoint
-    this.app.post('/api/validate-coverage-claim', async (req, res) => {
-      try {
-        const { vendor_name, safeguard_id, claimed_capability, response_text } = req.body;
-
-        this.validateInput(req.body, ['vendor_name', 'safeguard_id', 'claimed_capability', 'response_text']);
-        this.validateTextInput(response_text, 'Response text');
-        this.validateCapability(claimed_capability);
-        this.safeguardManager.validateSafeguardId(safeguard_id);
-
-        const safeguard = this.safeguardManager.getSafeguardDetails(safeguard_id);
-        if (!safeguard) {
-          return res.status(404).json(this.createErrorResponse('Safeguard not found'));
-        }
-
-        // Use the primary validation method for coverage claims
-        const result = this.capabilityAnalyzer.validateVendorMapping(
-          vendor_name,
-          safeguard_id,
-          claimed_capability,
-          response_text,
-          safeguard
-        );
-
-        res.json(result);
-      } catch (error) {
-        console.error('[HTTP Server] validate-coverage-claim error:', error);
-        res.status(400).json(this.createErrorResponse(error instanceof Error ? error.message : 'Unknown error'));
-      }
-    });
 
     // Get safeguard details endpoint
     this.app.get('/api/safeguards/:safeguardId', (req, res) => {
@@ -235,12 +205,11 @@ export class FrameworkHttpServer {
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '1.3.1',
+        version: '1.3.4',
         description: 'Dual-architecture HTTP API for vendor capability assessment against CIS Controls Framework',
         endpoints: {
           'POST /api/validate-vendor-mapping': 'Primary capability validation with domain validation',
           'POST /api/analyze-vendor-response': 'Capability role determination for vendor responses',
-          'POST /api/validate-coverage-claim': 'Validate FULL/PARTIAL implementation claims',
           'GET /api/safeguards': 'List all available CIS safeguards',
           'GET /api/safeguards/:id': 'Get detailed safeguard breakdown',
           'GET /health': 'Health check endpoint',
@@ -332,7 +301,7 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v1.3.1 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v1.3.4 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);

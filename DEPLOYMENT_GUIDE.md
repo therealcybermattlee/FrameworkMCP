@@ -2,7 +2,7 @@
 
 ## Dual Architecture: MCP + HTTP API
 
-Framework MCP v1.1.3 features a **dual architecture** that solves the DigitalOcean App Services stdio vs HTTP mismatch:
+Framework MCP v1.3.4 features a **dual architecture** that solves the DigitalOcean App Services stdio vs HTTP mismatch:
 
 - **MCP Interface**: stdio-based for Claude Code integration
 - **HTTP Interface**: REST API for cloud deployment
@@ -56,7 +56,7 @@ curl http://localhost:8080/health
 2. In DigitalOcean Dashboard:
    - Create New App
    - Connect GitHub repository
-   - Select branch: `feature/dual-architecture-http-api` 
+   - Select branch: `main` 
    - Use provided `.do/app.yaml` configuration
 
 #### 2. Deploy via doctl CLI
@@ -332,4 +332,4 @@ npm install express-rate-limit
 
 ---
 
-**🎉 Framework MCP v1.1.3 solves the DigitalOcean stdio vs HTTP architecture mismatch while preserving full MCP functionality!**
+**🎉 Framework MCP v1.3.4 solves the DigitalOcean stdio vs HTTP architecture mismatch while preserving full MCP functionality!**

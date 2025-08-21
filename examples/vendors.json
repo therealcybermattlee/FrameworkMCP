@@ -1,17 +1,32 @@
 [
   {
-    "name": "SecureIAM Corp",
+    "name": "ServiceNow CMDB",
+    "safeguard_id": "1.1",
+    "response": "Our Configuration Management Database provides comprehensive asset lifecycle management with automated discovery, detailed hardware and software inventory tracking, enterprise asset ownership records, departmental assignments, and documented bi-annual review processes for complete enterprise visibility."
+  },
+  {
+    "name": "Microsoft Entra ID", 
     "safeguard_id": "5.1",
-    "response": "Our platform provides comprehensive identity and access management with automated account lifecycle management. We maintain detailed inventories including usernames, full names, department assignments, and start/stop dates. Quarterly validation processes ensure all accounts are authorized and compliant with enterprise policies."
+    "response": "Centralized identity management with automated user provisioning, comprehensive account lifecycle management, detailed user directories with departmental tracking, role-based access controls, and automated quarterly access reviews with full compliance reporting and audit trails."
   },
   {
-    "name": "ComplianceBot",
-    "safeguard_id": "5.1", 
-    "response": "Basic user directory service with manual account tracking. Limited reporting capabilities for account status and basic user information."
+    "name": "Okta Universal Directory",
+    "safeguard_id": "6.3", 
+    "response": "Enterprise-grade multi-factor authentication for all externally-exposed applications with adaptive authentication policies, risk-based assessments, comprehensive SSO integration, and detailed MFA compliance reporting across all access points."
   },
   {
-    "name": "MFA Solutions Inc",
-    "safeguard_id": "6.3",
-    "response": "Enterprise-grade multi-factor authentication for all externally-exposed applications. Supports SAML, OAuth, and directory service integration. Comprehensive reporting and policy enforcement across all access points."
+    "name": "Rapid7 InsightVM",
+    "safeguard_id": "7.1",
+    "response": "Continuous vulnerability management with automated scanning, comprehensive vulnerability assessment, detailed remediation guidance, patch deployment tracking, and complete vulnerability lifecycle management with governance workflows and compliance reporting."
+  },
+  {
+    "name": "Nessus Professional",
+    "safeguard_id": "1.1", 
+    "response": "During vulnerability assessments, we perform comprehensive network discovery and maintain detailed device databases with operating system detection, service enumeration, and hardware fingerprinting for enhanced security visibility."
+  },
+  {
+    "name": "Splunk Enterprise Security",
+    "safeguard_id": "5.1",
+    "response": "Our SIEM platform provides detailed account activity monitoring, user behavior analytics, privileged account tracking, and comprehensive identity-related event correlation with audit reporting and compliance dashboards."
   }
 ]
