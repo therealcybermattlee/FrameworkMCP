@@ -1,0 +1,718 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Framework MCP API - CIS Controls Capability Assessment",
+    "description": "Microsoft Copilot-compatible API for vendor capability assessment against CIS Controls Framework. Determines vendor tool roles (FULL, PARTIAL, FACILITATES, GOVERNANCE, VALIDATES) with domain validation and auto-downgrade protection.",
+    "version": "1.2.0",
+    "contact": {
+      "name": "Framework MCP Support",
+      "url": "https://github.com/therealcybermattlee/FrameworkMCP"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://your-deployment.ondigitalocean.app",
+      "description": "Production DigitalOcean App Services deployment"
+    },
+    {
+      "url": "http://localhost:8080",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Check API health status and performance metrics",
+        "operationId": "healthCheck",
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/validate-vendor-mapping": {
+      "post": {
+        "summary": "Validate Vendor Capability Mapping (PRIMARY)",
+        "description": "Primary endpoint for validating vendor capability claims against CIS safeguards with domain validation and auto-downgrade protection. Use this for evidence-based capability assessment.",
+        "operationId": "validateVendorMapping",
+        "tags": ["Capability Assessment"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorMappingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Validation completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Safeguard not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analyze-vendor-response": {
+      "post": {
+        "summary": "Analyze Vendor Response",
+        "description": "Analyze vendor response text to determine appropriate capability role with domain validation",
+        "operationId": "analyzeVendorResponse",
+        "tags": ["Capability Assessment"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Analysis completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Safeguard not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/validate-coverage-claim": {
+      "post": {
+        "summary": "Validate Coverage Claim",
+        "description": "Validate specific FULL or PARTIAL capability claims with supporting evidence",
+        "operationId": "validateCoverageClaim",
+        "tags": ["Capability Assessment"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoverageClaimRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Coverage claim validation completed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Safeguard not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/safeguards": {
+      "get": {
+        "summary": "List Available Safeguards",
+        "description": "Get a list of all available CIS Controls v8.1 safeguards (153 total)",
+        "operationId": "listSafeguards",
+        "tags": ["Safeguards"],
+        "responses": {
+          "200": {
+            "description": "List of available safeguards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SafeguardListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/safeguards/{safeguardId}": {
+      "get": {
+        "summary": "Get Safeguard Details",
+        "description": "Get detailed information about a specific CIS safeguard including governance elements, core requirements, and implementation suggestions",
+        "operationId": "getSafeguardDetails",
+        "tags": ["Safeguards"],
+        "parameters": [
+          {
+            "name": "safeguardId",
+            "in": "path",
+            "required": true,
+            "description": "CIS safeguard ID (e.g., '1.1', '5.1', '12.8')",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]+\\.[0-9]+$",
+              "example": "1.1"
+            }
+          },
+          {
+            "name": "include_examples",
+            "in": "query",
+            "required": false,
+            "description": "Include implementation examples in response",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Safeguard details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SafeguardDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid safeguard ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Safeguard not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/metrics": {
+      "get": {
+        "summary": "Performance Metrics",
+        "description": "Get API performance metrics and usage statistics",
+        "operationId": "getMetrics",
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "Performance metrics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CapabilityRole": {
+        "type": "string",
+        "enum": ["full", "partial", "facilitates", "governance", "validates"],
+        "description": "Vendor tool capability roles:\n- FULL: Complete implementation of safeguard (requires domain-appropriate tool)\n- PARTIAL: Limited scope implementation (requires domain-appropriate tool)\n- FACILITATES: Enhancement capabilities (no tool type restrictions)\n- GOVERNANCE: Policy/process management (no tool type restrictions)\n- VALIDATES: Evidence collection and reporting (no tool type restrictions)"
+      },
+      "VendorMappingRequest": {
+        "type": "object",
+        "required": ["vendor_name", "safeguard_id", "claimed_capability", "supporting_text"],
+        "properties": {
+          "vendor_name": {
+            "type": "string",
+            "description": "Name of the vendor or tool being analyzed",
+            "minLength": 1,
+            "maxLength": 100,
+            "example": "CrowdStrike Falcon"
+          },
+          "safeguard_id": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+$",
+            "description": "CIS safeguard ID (format: X.Y)",
+            "example": "1.1"
+          },
+          "claimed_capability": {
+            "$ref": "#/components/schemas/CapabilityRole"
+          },
+          "supporting_text": {
+            "type": "string",
+            "description": "Vendor response or documentation supporting their capability claim",
+            "minLength": 10,
+            "maxLength": 10000,
+            "example": "Our platform provides comprehensive enterprise asset inventory with real-time discovery, automated classification, and continuous monitoring of all hardware and software assets across the organization."
+          }
+        }
+      },
+      "AnalysisRequest": {
+        "type": "object",
+        "required": ["vendor_name", "safeguard_id", "response_text"],
+        "properties": {
+          "vendor_name": {
+            "type": "string",
+            "description": "Name of the vendor",
+            "minLength": 1,
+            "maxLength": 100,
+            "example": "Microsoft Defender"
+          },
+          "safeguard_id": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+$",
+            "description": "CIS safeguard ID",
+            "example": "5.1"
+          },
+          "response_text": {
+            "type": "string",
+            "description": "Vendor response text to analyze for capability determination",
+            "minLength": 10,
+            "maxLength": 10000,
+            "example": "We provide centralized account management with role-based access controls, automated provisioning and deprovisioning, and integration with Active Directory for enterprise identity management."
+          }
+        }
+      },
+      "CoverageClaimRequest": {
+        "type": "object",
+        "required": ["vendor_name", "safeguard_id", "claimed_capability", "response_text"],
+        "properties": {
+          "vendor_name": {
+            "type": "string",
+            "description": "Name of the vendor",
+            "minLength": 1,
+            "maxLength": 100,
+            "example": "Qualys VMDR"
+          },
+          "safeguard_id": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+$",
+            "description": "CIS safeguard ID",
+            "example": "7.1"
+          },
+          "claimed_capability": {
+            "$ref": "#/components/schemas/CapabilityRole"
+          },
+          "response_text": {
+            "type": "string",
+            "description": "Supporting evidence for the capability claim",
+            "minLength": 10,
+            "maxLength": 10000,
+            "example": "Our vulnerability management platform performs continuous scanning, prioritizes vulnerabilities based on risk, provides automated remediation guidance, and tracks remediation progress across the entire infrastructure."
+          }
+        }
+      },
+      "ValidationResponse": {
+        "type": "object",
+        "properties": {
+          "vendor_name": {
+            "type": "string",
+            "example": "CrowdStrike Falcon"
+          },
+          "safeguard_id": {
+            "type": "string",
+            "example": "1.1"
+          },
+          "claimed_capability": {
+            "$ref": "#/components/schemas/CapabilityRole"
+          },
+          "validated_capability": {
+            "$ref": "#/components/schemas/CapabilityRole"
+          },
+          "validation_status": {
+            "type": "string",
+            "enum": ["SUPPORTED", "QUESTIONABLE", "UNSUPPORTED"],
+            "description": "Overall validation result"
+          },
+          "confidence_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Confidence percentage in the assessment"
+          },
+          "domain_validation": {
+            "type": "object",
+            "properties": {
+              "tool_type": {
+                "type": "string",
+                "description": "Detected tool type category"
+              },
+              "domain_appropriate": {
+                "type": "boolean",
+                "description": "Whether tool type is appropriate for claimed capability"
+              },
+              "auto_downgrade_applied": {
+                "type": "boolean",
+                "description": "Whether capability was auto-downgraded due to domain mismatch"
+              }
+            }
+          },
+          "evidence_analysis": {
+            "type": "object",
+            "properties": {
+              "core_requirements_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "governance_elements_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "sub_elements_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "language_consistency_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "reasoning": {
+            "type": "string",
+            "description": "Detailed explanation of the validation decision"
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Actionable recommendations for capability improvement"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AnalysisResponse": {
+        "type": "object",
+        "properties": {
+          "vendor_name": {
+            "type": "string"
+          },
+          "safeguard_id": {
+            "type": "string"
+          },
+          "determined_capability": {
+            "$ref": "#/components/schemas/CapabilityRole"
+          },
+          "confidence_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "domain_validation": {
+            "type": "object",
+            "properties": {
+              "tool_type": {
+                "type": "string"
+              },
+              "domain_appropriate": {
+                "type": "boolean"
+              }
+            }
+          },
+          "analysis_details": {
+            "type": "object",
+            "properties": {
+              "core_coverage": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "implementation_depth": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "governance_support": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "reasoning": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "SafeguardListResponse": {
+        "type": "object",
+        "properties": {
+          "safeguards": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "1.1"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Establish and Maintain Detailed Enterprise Asset Inventory"
+                },
+                "implementationGroup": {
+                  "type": "string",
+                  "enum": ["IG1", "IG2", "IG3"],
+                  "example": "IG1"
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "example": 153
+          },
+          "framework": {
+            "type": "string",
+            "example": "CIS Controls v8.1"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "SafeguardDetails": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1.1"
+          },
+          "title": {
+            "type": "string",
+            "example": "Establish and Maintain Detailed Enterprise Asset Inventory"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the safeguard requirements"
+          },
+          "implementationGroup": {
+            "type": "string",
+            "enum": ["IG1", "IG2", "IG3"],
+            "example": "IG1"
+          },
+          "governanceElements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Governance requirements that MUST be met (Orange elements)"
+          },
+          "coreRequirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Core 'what' requirements of the safeguard (Green elements)"
+          },
+          "subTaxonomicalElements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Sub-taxonomical components (Yellow elements)"
+          },
+          "implementationSuggestions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Implementation methods and suggestions (Gray elements)"
+          }
+        }
+      },
+      "HealthResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "healthy"
+          },
+          "uptime": {
+            "type": "integer",
+            "description": "Uptime in seconds"
+          },
+          "totalRequests": {
+            "type": "integer",
+            "description": "Total requests processed"
+          },
+          "errorCount": {
+            "type": "integer",
+            "description": "Total errors encountered"
+          },
+          "version": {
+            "type": "string",
+            "example": "1.2.0"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "MetricsResponse": {
+        "type": "object",
+        "properties": {
+          "uptime_seconds": {
+            "type": "integer"
+          },
+          "total_requests": {
+            "type": "integer"
+          },
+          "error_count": {
+            "type": "integer"
+          },
+          "error_rate": {
+            "type": "string",
+            "example": "0.5%"
+          },
+          "request_counts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "details": {
+            "type": "string",
+            "description": "Additional error details"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Capability Assessment",
+      "description": "Primary API endpoints for vendor capability assessment against CIS Controls"
+    },
+    {
+      "name": "Safeguards",
+      "description": "CIS Controls safeguards information and details"
+    },
+    {
+      "name": "Monitoring",
+      "description": "Health checks and performance monitoring"
+    }
+  ],
+  "externalDocs": {
+    "description": "Framework MCP GitHub Repository",
+    "url": "https://github.com/therealcybermattlee/FrameworkMCP"
+  }
+}

@@ -34,11 +34,12 @@ The server uses the CIS Controls visual framework with color-coded categorizatio
 - **🟡 Yellow Elements**: Sub-taxonomical components
 - **⚫ Gray Elements**: Implementation suggestions and methods
 
-## 🚀 Installation
+## 🚀 Installation & Deployment
 
 ### Prerequisites
 - Node.js 18+
-- Claude Code CLI tool
+- Claude Code CLI tool (for MCP usage)
+- Microsoft Copilot Studio (for custom connector usage)
 
 ### Install from npm
 ```bash
@@ -64,9 +65,32 @@ npm install
 npm run build
 ```
 
+### Cloud Deployment Options
+
+#### Option 1: DigitalOcean App Services
+```bash
+# Deploy using the included configuration
+doctl apps create .do/app.yaml
+```
+
+#### Option 2: Railway
+```bash
+railway login
+railway up
+```
+
+#### Option 3: Render
+Connect your GitHub repository and use:
+- **Build Command**: `npm install && npm run build`
+- **Start Command**: `npm run start:http`
+- **Port**: 8080
+
+#### Option 4: Microsoft Copilot Custom Connector
+Deploy to any cloud platform and use the included `swagger.json` for Copilot integration.
+
 ## ⚙️ Configuration
 
-### Claude Code Integration
+### Claude Code MCP Integration
 
 Add to your MCP configuration file (`~/.config/claude-code/mcp.json`):
 
@@ -82,9 +106,75 @@ Add to your MCP configuration file (`~/.config/claude-code/mcp.json`):
 }
 ```
 
+### Microsoft Copilot Custom Connector Setup
+
+#### Step 1: Deploy HTTP API
+Deploy the Framework MCP HTTP API to any cloud platform (DigitalOcean, Railway, Render, etc.)
+
+#### Step 2: Create Custom Connector in Copilot Studio
+1. Open **Microsoft Copilot Studio**
+2. Navigate to **Data** → **Custom connectors**
+3. Click **+ New custom connector** → **Import from OpenAPI file**
+4. Upload the `swagger.json` file from this repository
+5. Update the **Host** field to your deployed API URL
+6. Save and test the connector
+
+#### Step 3: Configure Connection
+1. Create a new connection using your custom connector
+2. No authentication required (public API)
+3. Test with the `/health` endpoint to verify connectivity
+
+#### Step 4: Create Copilot Actions
+In your Copilot, create actions for capability assessment:
+
+**Primary Action - Validate Vendor Capability:**
+```
+Action: Validate Vendor Mapping
+Description: Validate vendor capability claims against CIS Controls with domain validation
+Connector: Framework MCP Custom Connector
+Operation: validateVendorMapping
+Parameters:
+- vendor_name: {User provided vendor name}
+- safeguard_id: {CIS safeguard ID like "1.1"}  
+- claimed_capability: {full|partial|facilitates|governance|validates}
+- supporting_text: {Vendor response text}
+```
+
+**Secondary Action - Analyze Response:**
+```
+Action: Analyze Vendor Response
+Description: Determine appropriate capability role for vendor response
+Connector: Framework MCP Custom Connector
+Operation: analyzeVendorResponse
+Parameters:
+- vendor_name: {User provided vendor name}
+- safeguard_id: {CIS safeguard ID}
+- response_text: {Vendor response to analyze}
+```
+
+#### Step 5: Example Copilot Prompts
+Once configured, users can interact with your Copilot:
+
+```
+"Validate this vendor capability: CrowdStrike Falcon claims FULL coverage for safeguard 1.1 with this response: 'Our platform provides comprehensive enterprise asset inventory with real-time discovery, automated classification, and continuous monitoring of all hardware and software assets.'"
+
+"Analyze this vendor response for safeguard 5.1: Microsoft Entra ID - 'We provide centralized identity management with automated user provisioning, role-based access controls, and integration with all major business applications.'"
+
+"What are the requirements for CIS safeguard 6.3?"
+```
+
 ### Verify Installation
 ```bash
+# For MCP usage
 claude-code "List available CIS Control safeguards"
+
+# For HTTP API usage  
+curl https://your-api-url.com/health
+
+# For Copilot testing
+curl -X POST https://your-api-url.com/api/validate-vendor-mapping \
+  -H "Content-Type: application/json" \
+  -d '{"vendor_name":"Test Vendor","safeguard_id":"1.1","claimed_capability":"facilitates","supporting_text":"We provide supplemental asset tracking capabilities that enhance existing inventory systems."}'
 ```
 
 ## 📋 Usage Examples
@@ -393,6 +483,9 @@ npm test
 - [API Reference](docs/api-reference.md)
 - [CIS Safeguards Reference](docs/safeguards-reference.md)
 - [Example Usage](examples/example-usage.md)
+- **[Microsoft Copilot Integration Guide](COPILOT_INTEGRATION.md)** - Complete setup guide for custom connectors
+- [Deployment Guide](DEPLOYMENT_GUIDE.md) - Cloud deployment instructions
+- [OpenAPI Specification](swagger.json) - Complete API schema for integrations
 
 ## 🐛 Troubleshooting
 
