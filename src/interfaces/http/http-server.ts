@@ -74,7 +74,7 @@ export class FrameworkHttpServer {
         uptime: Math.round((Date.now() - metrics.uptime) / 1000),
         totalRequests: metrics.totalRequests,
         errorCount: metrics.errorCount,
-        version: '1.2.0',
+        version: '1.3.1',
         timestamp: new Date().toISOString()
       });
     });
@@ -235,7 +235,7 @@ export class FrameworkHttpServer {
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '1.2.0',
+        version: '1.3.1',
         description: 'Dual-architecture HTTP API for vendor capability assessment against CIS Controls Framework',
         endpoints: {
           'POST /api/validate-vendor-mapping': 'Primary capability validation with domain validation',
@@ -332,7 +332,7 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v1.2.0 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v1.3.1 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);

@@ -20,7 +20,7 @@ export class FrameworkMcpServer {
     this.server = new Server(
       {
         name: 'framework-analyzer',
-        version: '1.2.0',
+        version: '1.3.1',
       }
     );
 
@@ -301,7 +301,7 @@ export class FrameworkMcpServer {
             safeguards,
             total: safeguards.length,
             framework: 'CIS Controls v8.1',
-            version: '1.2.0'
+            version: '1.3.1'
           }, null, 2),
         },
       ],
@@ -355,7 +355,7 @@ export class FrameworkMcpServer {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
     
-    console.error('🤖 Framework MCP Server v1.2.0 running via stdio');
+    console.error('🤖 Framework MCP Server v1.3.1 running via stdio');
     console.error('📊 Capability assessment with domain validation enabled');
   }
 }
