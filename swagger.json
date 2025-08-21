@@ -563,7 +563,7 @@
           },
           "version": {
             "type": "string",
-            "example": "1.3.4"
+            "example": "1.3.6"
           },
           "timestamp": {
             "type": "string",

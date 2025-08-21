@@ -301,7 +301,7 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v1.3.4 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v1.3.6 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);

@@ -332,4 +332,4 @@ npm install express-rate-limit
 
 ---
 
-**🎉 Framework MCP v1.3.4 solves the DigitalOcean stdio vs HTTP architecture mismatch while preserving full MCP functionality!**
+**🎉 Framework MCP v1.3.6 solves the DigitalOcean stdio vs HTTP architecture mismatch while preserving full MCP functionality!**
