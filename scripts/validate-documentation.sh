@@ -115,14 +115,14 @@ VERSION_ISSUES=()
 
 for file in "${VERSION_FILES[@]}"; do
     if [ -f "$file" ]; then
-        if ! grep -q "1.3.4" "$file"; then
+        if ! grep -q "1.3.5" "$file"; then
             VERSION_ISSUES+=("$file")
         fi
     fi
 done
 
 if [ ${#VERSION_ISSUES[@]} -eq 0 ]; then
-    echo "✅ Version 1.3.4 consistent across all files"
+    echo "✅ Version 1.3.5 consistent across all files"
 else
     echo "❌ Version inconsistency in: ${VERSION_ISSUES[*]}"
 fi
@@ -144,7 +144,7 @@ echo "✅ HTTP Server: Working"
 echo "✅ All 4 API Endpoints: Functional"
 echo "✅ 153 CIS Safeguards: Available"
 echo "✅ Documentation: Consistent"
-echo "✅ Version 1.3.4: Aligned"
+echo "✅ Version 1.3.5: Aligned"
 echo "✅ Architecture: Clean (4 tools)"
 echo
-echo "🎉 Framework MCP v1.3.4 Ready for Release!"
+echo "🎉 Framework MCP v1.3.5 Ready for Release!"
