@@ -85,33 +85,6 @@ export class FrameworkMcpServer {
             }
           } as Tool,
           {
-            name: 'validate_coverage_claim',
-            description: 'Validate FULL/PARTIAL implementation capability claims',
-            inputSchema: {
-              type: 'object',
-              properties: {
-                vendor_name: {
-                  type: 'string',
-                  description: 'Name of the vendor'
-                },
-                safeguard_id: {
-                  type: 'string',
-                  description: 'CIS safeguard ID (e.g., "1.1", "5.1")'
-                },
-                claimed_capability: {
-                  type: 'string',
-                  description: 'Claimed capability (typically "full" or "partial")',
-                  enum: ['full', 'partial', 'facilitates', 'governance', 'validates']
-                },
-                response_text: {
-                  type: 'string',
-                  description: 'Vendor response text supporting the claim'
-                }
-              },
-              required: ['vendor_name', 'safeguard_id', 'claimed_capability', 'response_text']
-            }
-          } as Tool,
-          {
             name: 'get_safeguard_details',
             description: 'Get detailed safeguard breakdown',
             inputSchema: {
@@ -153,9 +126,6 @@ export class FrameworkMcpServer {
 
           case 'analyze_vendor_response':
             return await this.analyzeVendorResponse(args);
-
-          case 'validate_coverage_claim':
-            return await this.validateCoverageClaim(args);
 
           case 'get_safeguard_details':
             return await this.getSafeguardDetails(args);
@@ -234,37 +204,6 @@ export class FrameworkMcpServer {
         {
           type: 'text',
           text: JSON.stringify(analysis, null, 2),
-        },
-      ],
-    };
-  }
-
-  private async validateCoverageClaim(args: any) {
-    const { vendor_name = 'Unknown Vendor', safeguard_id, claimed_capability, response_text } = args;
-
-    this.validateTextInput(response_text, 'Response text');
-    this.validateCapability(claimed_capability);
-    this.safeguardManager.validateSafeguardId(safeguard_id);
-
-    const safeguard = this.safeguardManager.getSafeguardDetails(safeguard_id);
-    if (!safeguard) {
-      throw new Error(`Safeguard ${safeguard_id} not found`);
-    }
-
-    // Use the primary validation method for coverage claims
-    const validation = this.capabilityAnalyzer.validateVendorMapping(
-      vendor_name,
-      safeguard_id,
-      claimed_capability,
-      response_text,
-      safeguard
-    );
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify(validation, null, 2),
         },
       ],
     };

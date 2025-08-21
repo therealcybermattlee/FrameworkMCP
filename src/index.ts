@@ -5649,39 +5649,6 @@ export class GRCAnalysisServer {
           }
         } as Tool,
         {
-          name: 'validate_coverage_claim',
-          description: 'Validate a vendor\'s implementation capability claim (FULL/PARTIAL) against specific safeguard requirements and evidence quality',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              vendor_name: {
-                type: 'string',
-                description: 'Name of the vendor'
-              },
-              safeguard_id: {
-                type: 'string',
-                description: 'CIS Control safeguard ID',
-                pattern: '^[0-9]+\\.[0-9]+$'
-              },
-              coverage_claim: {
-                type: 'string',
-                enum: ['FULL', 'PARTIAL'],
-                description: 'Vendor\'s implementation capability claim (FULL = complete implementation, PARTIAL = limited scope implementation)'
-              },
-              response_text: {
-                type: 'string',
-                description: 'Vendor response explaining their implementation capabilities'
-              },
-              capabilities: {
-                type: 'array',
-                items: { type: 'string' },
-                description: 'List of additional vendor capability types (Governance, Facilitates, Validates)'
-              }
-            },
-            required: ['vendor_name', 'safeguard_id', 'coverage_claim', 'response_text', 'capabilities']
-          }
-        } as Tool,
-        {
           name: 'list_available_safeguards',
           description: 'List all available CIS Control safeguards with their categorization',
           inputSchema: {
@@ -5744,9 +5711,6 @@ export class GRCAnalysisServer {
             break;
           case 'get_safeguard_details':
             result = await this.getSafeguardDetails(args);
-            break;
-          case 'validate_coverage_claim':
-            result = await this.validateCoverageClaim(args);
             break;
           case 'list_available_safeguards':
             result = await this.listAvailableSafeguards(args);
@@ -5923,35 +5887,6 @@ export class GRCAnalysisServer {
     };
   }
 
-  private async validateCoverageClaim(args: any) {
-    const { vendor_name, safeguard_id, coverage_claim, response_text, capabilities } = args;
-
-    const safeguard = CIS_SAFEGUARDS[safeguard_id];
-    if (!safeguard) {
-      throw new Error(`Safeguard ${safeguard_id} not found`);
-    }
-
-    const analysis = this.performCapabilityAnalysis(vendor_name, safeguard, response_text);
-    
-    // Validate the coverage claim
-    const validation = this.validateClaim(coverage_claim, analysis, capabilities, safeguard);
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify({
-            vendor: vendor_name,
-            safeguardId: safeguard_id,
-            claimedCoverage: coverage_claim,
-            claimedCapabilities: capabilities,
-            analysis,
-            validation
-          }, null, 2),
-        },
-      ],
-    };
-  }
 
   private performCapabilityAnalysis(vendorName: string, safeguard: SafeguardElement, responseText: string): VendorAnalysis {
     const text = responseText.toLowerCase();
@@ -6962,7 +6897,7 @@ export class GRCAnalysisServer {
         case /^Safeguard .+ not found/.test(error.message) ? error.message : '':
           return `❌ Invalid safeguard ID. Use 'list_available_safeguards' to see available CIS Control safeguards.`;
         case /^Unknown tool/.test(error.message) ? error.message : '':
-          return `❌ Tool '${toolName}' is not available. Available tools: analyze_vendor_response, validate_vendor_mapping, validate_coverage_claim, get_safeguard_details, list_available_safeguards.`;
+          return `❌ Tool '${toolName}' is not available. Available tools: analyze_vendor_response, validate_vendor_mapping, get_safeguard_details, list_available_safeguards.`;
         default:
           return `❌ Error in ${toolName}: ${error.message}`;
       }
