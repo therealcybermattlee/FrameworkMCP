@@ -74,47 +74,11 @@ export class FrameworkHttpServer {
         uptime: Math.round((Date.now() - metrics.uptime) / 1000),
         totalRequests: metrics.totalRequests,
         errorCount: metrics.errorCount,
-        version: '1.3.6',
+        version: '1.3.7',
         timestamp: new Date().toISOString()
       });
     });
 
-    // Primary validation endpoint
-    this.app.post('/api/validate-vendor-mapping', async (req, res) => {
-      try {
-        const { vendor_name, safeguard_id, claimed_capability, supporting_text } = req.body;
-
-        // Input validation
-        this.validateInput(req.body, [
-          'vendor_name',
-          'safeguard_id', 
-          'claimed_capability',
-          'supporting_text'
-        ]);
-
-        this.validateTextInput(supporting_text, 'Supporting text');
-        this.validateCapability(claimed_capability);
-        this.safeguardManager.validateSafeguardId(safeguard_id);
-
-        const safeguard = this.safeguardManager.getSafeguardDetails(safeguard_id);
-        if (!safeguard) {
-          return res.status(404).json(this.createErrorResponse('Safeguard not found'));
-        }
-
-        const result = this.capabilityAnalyzer.validateVendorMapping(
-          vendor_name,
-          safeguard_id,
-          claimed_capability,
-          supporting_text,
-          safeguard
-        );
-
-        res.json(result);
-      } catch (error) {
-        console.error('[HTTP Server] validate-vendor-mapping error:', error);
-        res.status(400).json(this.createErrorResponse(error instanceof Error ? error.message : 'Unknown error'));
-      }
-    });
 
     // Capability analysis endpoint
     this.app.post('/api/analyze-vendor-response', async (req, res) => {
@@ -205,11 +169,10 @@ export class FrameworkHttpServer {
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '1.3.6',
-        description: 'Dual-architecture HTTP API for vendor capability assessment against CIS Controls Framework',
+        version: '1.3.7',
+        description: 'Clean HTTP API for vendor capability assessment against CIS Controls Framework',
         endpoints: {
-          'POST /api/validate-vendor-mapping': 'Primary capability validation with domain validation',
-          'POST /api/analyze-vendor-response': 'Capability role determination for vendor responses',
+          'POST /api/analyze-vendor-response': 'Primary capability analysis for vendor responses',
           'GET /api/safeguards': 'List all available CIS safeguards',
           'GET /api/safeguards/:id': 'Get detailed safeguard breakdown',
           'GET /health': 'Health check endpoint',
@@ -223,7 +186,6 @@ export class FrameworkHttpServer {
           'GOVERNANCE - Policy/process management',
           'VALIDATES - Evidence collection and reporting'
         ],
-        domain_validation: 'Auto-downgrade protection for inappropriate capability claims',
         framework: 'CIS Controls v8.1 (153 safeguards)',
         deployment: 'DigitalOcean App Services compatible'
       });
@@ -301,11 +263,11 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v1.3.6 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v1.3.7 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`⚡ DigitalOcean App Services compatible`);
+      console.log(`⚡ Clean capability analysis - CIS Controls v8.1`);
     });
 
     // Graceful shutdown handling

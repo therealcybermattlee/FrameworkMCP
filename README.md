@@ -5,25 +5,25 @@
 [![GitHub](https://img.shields.io/github/stars/therealcybermattlee/FrameworkMCP?style=social)](https://github.com/therealcybermattlee/FrameworkMCP)
 [![Website](https://img.shields.io/badge/Website-cyberrise.org-blue)](https://cyberrise.org)
 
-A Model Context Protocol (MCP) server that determines vendor tool **capability roles** (Full Implementation, Partial Implementation, Facilitates, Governance, Validates) against the **CIS Controls Framework**. This tool helps security professionals accurately categorize vendor capabilities for specific CIS Control safeguards with domain validation and evidence-based assessment.
+A Model Context Protocol (MCP) server that determines vendor tool **capability roles** (Full Implementation, Partial Implementation, Facilitates, Governance, Validates) against the **CIS Controls Framework**. This tool helps security professionals accurately categorize vendor capabilities for specific CIS Control safeguards through comprehensive content-based analysis.
 
 ## 🎯 Purpose
 
 This MCP server enables security teams to:
 - **Determine vendor tool capability roles** for specific CIS Control safeguards (1.1, 5.1, 6.3, etc.)
-- **Validate implementation capability claims** (FULL/PARTIAL) with domain-appropriate tool type verification
+- **Validate implementation capability claims** through comprehensive content analysis
 - **Accurately categorize vendor roles** across 5 capability types: Full, Partial, Facilitates, Governance, and Validates
-- **Generate evidence-based assessments** showing capability alignment and domain validation results
+- **Generate evidence-based assessments** showing capability alignment and confidence scores
 
 ## 🎯 The 5 Capability Roles
 
-| Capability Role | Description | Domain Requirements |
-|-----------------|-------------|--------------------|
-| **FULL** | Complete implementation of safeguard requirements | Must use domain-appropriate tool types (e.g., inventory tools for asset safeguards) |
-| **PARTIAL** | Limited scope implementation with clear boundaries | Must use domain-appropriate tool types with explicit scope limitations |
-| **FACILITATES** | Enhancement capabilities that enable others to implement safeguards better/faster/stronger | No tool type restrictions - any tool can facilitate |
-| **GOVERNANCE** | Policy/process management and oversight capabilities | No tool type restrictions - governance applies across domains |
-| **VALIDATES** | Verification capabilities providing evidence and reporting | No tool type restrictions - validation applies across domains |
+| Capability Role | Description | Assessment Approach |
+|-----------------|-------------|--------------------| 
+| **FULL** | Complete implementation of safeguard requirements | Comprehensive content analysis for complete coverage |
+| **PARTIAL** | Limited scope implementation with clear boundaries | Content analysis identifies explicit scope limitations |
+| **FACILITATES** | Enhancement capabilities that enable others to implement safeguards better/faster/stronger | Analysis identifies facilitation language and indirect support |
+| **GOVERNANCE** | Policy/process management and oversight capabilities | Analysis identifies policy, process, and oversight elements |
+| **VALIDATES** | Verification capabilities providing evidence and reporting | Analysis identifies audit, monitoring, and reporting capabilities |
 
 ## 🎨 CIS Controls Framework Integration
 
@@ -130,7 +130,7 @@ In your Copilot, create actions for capability assessment:
 **Primary Action - Validate Vendor Capability:**
 ```
 Action: Validate Vendor Mapping
-Description: Validate vendor capability claims against CIS Controls with domain validation
+Description: Validate vendor capability claims against CIS Controls through content analysis
 Connector: Framework MCP Custom Connector
 Operation: validateVendorMapping
 Parameters:
@@ -236,10 +236,10 @@ claude-code "Use validate_vendor_mapping with vendor_name 'SecureAssets Corp', s
   "capabilityRole": "full",
   "additionalRoles": ["governance", "validates"],
   "confidence": 87,
-  "domainValidation": {
-    "detectedToolType": "identity_management",
-    "domainMatch": true,
-    "capabilityAdjusted": false
+  "contentAnalysis": {
+    "implementationLanguage": "strong",
+    "scopeDefinition": "comprehensive",
+    "evidenceQuality": "high"
   },
   "evidenceAnalysis": {
     "coreRequirements": 85,
@@ -270,55 +270,57 @@ claude-code "Use validate_vendor_mapping with vendor_name 'SecureAssets Corp', s
     "governance_alignment": 80,
     "language_consistency": 90
   },
-  "domain_validation": {
-    "required_tool_type": "inventory",
-    "detected_tool_type": "inventory",
-    "domain_match": true,
-    "capability_adjusted": false
+  "content_validation": {
+    "implementation_depth": "comprehensive",
+    "scope_clarity": "well_defined",
+    "evidence_strength": "strong",
+    "capability_aligned": true
   },
   "gaps_identified": [],
   "strengths_identified": [
     "High coverage of core requirements and sub-elements",
     "Strong implementation language consistency",
-    "Appropriate tool type for safeguard domain"
+    "Comprehensive coverage with clear implementation details"
   ],
   "recommendations": [],
-  "detailed_feedback": "Validation of FULL capability claim: SUPPORTED (85% alignment)\n\nSTRENGTHS:\n• High coverage of core requirements and sub-elements\n• Strong implementation language consistency\n• Appropriate tool type for safeguard domain\n\nASSESSMENT: The vendor's supporting evidence strongly aligns with their claimed capability."
+  "detailed_feedback": "Validation of FULL capability claim: SUPPORTED (85% alignment)\n\nSTRENGTHS:\n• High coverage of core requirements and sub-elements\n• Strong implementation language consistency\n• Comprehensive coverage with clear implementation details\n\nASSESSMENT: The vendor's supporting evidence strongly aligns with their claimed capability."
 }
 ```
 
-### Domain Mismatch Example Output
+### Insufficient Evidence Example Output
 ```json
 {
-  "vendor": "ThreatIntel Pro",
+  "vendor": "BasicTracker Pro",
   "safeguard_id": "1.1", 
   "safeguard_title": "Establish and Maintain a Detailed Enterprise Asset Inventory",
-  "claimed_capability": "facilitates",
-  "validation_status": "QUESTIONABLE",
-  "confidence_score": 45,
+  "claimed_capability": "full",
+  "validation_status": "UNSUPPORTED",
+  "confidence_score": 35,
   "evidence_analysis": {
-    "core_requirements_coverage": 65,
-    "sub_elements_coverage": 20,
-    "governance_alignment": 30,
-    "language_consistency": 75
+    "core_requirements_coverage": 40,
+    "sub_elements_coverage": 15,
+    "governance_alignment": 25,
+    "language_consistency": 60
   },
-  "domain_validation": {
-    "required_tool_type": "inventory",
-    "detected_tool_type": "threat_intelligence", 
-    "domain_match": false,
-    "capability_adjusted": true,
-    "original_claim": "full"
+  "content_validation": {
+    "implementation_depth": "limited",
+    "scope_clarity": "vague",
+    "evidence_strength": "weak",
+    "capability_aligned": false
   },
   "gaps_identified": [
-    "Tool type mismatch: threat_intelligence tools cannot provide FULL coverage for Asset Inventory safeguards"
+    "Insufficient detail on asset tracking capabilities",
+    "Missing governance and review processes",
+    "Limited coverage of sub-elements"
   ],
   "strengths_identified": [
-    "Good language consistency in supporting text"
+    "Basic asset visibility mentioned"
   ],
   "recommendations": [
-    "Consider repositioning as FACILITATES capability to align with tool type"
+    "Provide more detailed implementation specifics",
+    "Consider repositioning as FACILITATES capability based on limited scope"
   ],
-  "detailed_feedback": "DOMAIN VALIDATION: Tool type 'threat_intelligence' cannot provide FULL coverage for safeguard 1.1 (Asset Inventory). Capability automatically adjusted from FULL to FACILITATES.\n\nThe vendor's claim has been downgraded due to domain mismatch, though evidence quality is reasonable for facilitation capabilities."
+  "detailed_feedback": "Validation of FULL capability claim: UNSUPPORTED (35% alignment)\n\nGAPS IDENTIFIED:\n• Insufficient detail on asset tracking capabilities\n• Missing governance and review processes\n• Limited coverage of sub-elements\n\nASSESSMENT: The vendor's supporting evidence does not adequately support their FULL capability claim. Consider FACILITATES role instead."
 }
 ```
 
@@ -326,7 +328,7 @@ claude-code "Use validate_vendor_mapping with vendor_name 'SecureAssets Corp', s
 
 | Tool | Description |
 |------|-------------|
-| `validate_vendor_mapping` | **PRIMARY** Validate vendor's claimed capability role against supporting evidence with domain validation |
+| `validate_vendor_mapping` | **PRIMARY** Validate vendor's claimed capability role against supporting evidence through content analysis |
 | `analyze_vendor_response` | Determine vendor tool capability role for specific safeguard |
 | `get_safeguard_details` | Get detailed safeguard breakdown |
 | `list_available_safeguards` | List all available CIS safeguards |
@@ -373,43 +375,42 @@ The **validate_vendor_mapping** tool provides evidence-based validation of vendo
 | **GOVERNANCE** | Policy/process management | ≥60% governance elements + policy language |
 | **VALIDATES** | Evidence collection & reporting | Audit/monitoring/reporting capabilities present |
 
-### Domain-Specific Validation Rules
+### Content-Based Validation Approach
 
-**CRITICAL**: The validation tool enforces domain-specific requirements for capability claims:
+**APPROACH**: The validation tool uses comprehensive content analysis to assess capability claims:
 
-| Safeguard | Domain | Required Tool Types | Rule |
-|-----------|--------|-------------------|------|
-| **1.1** | Asset Inventory | inventory, asset_management, cmdb, discovery | Only inventory tools can claim FULL/PARTIAL |
-| **1.2** | Unauthorized Assets | inventory, asset_management, cmdb, discovery | Only inventory tools can claim FULL/PARTIAL |
-| **5.1** | Account Inventory | identity_management, governance | Only identity/governance tools can claim FULL/PARTIAL |
-| **6.3** | External MFA | identity_management | Only identity management tools can claim FULL/PARTIAL |
-| **7.1** | Vulnerability Process | vulnerability_management, governance | Only vulnerability/governance tools can claim FULL/PARTIAL |
+| Analysis Dimension | Description | Assessment Focus |
+|-------------------|-------------|------------------|
+| **Core Requirements Coverage** | Alignment with primary safeguard elements | Direct implementation language and specific capabilities |
+| **Sub-Elements Coverage** | Support for detailed safeguard components | Breadth of coverage across safeguard sub-requirements |
+| **Governance Alignment** | Policy/process management elements | Governance language and oversight capabilities |
+| **Implementation Depth** | Specificity and detail of implementation | Technical depth and implementation specifics |
+| **Language Consistency** | Alignment between claim and evidence | Consistency between stated capability and supporting text |
 
-**Auto-Downgrade Logic**: When a tool type doesn't match the safeguard domain:
-- **FULL/PARTIAL** claims → Automatically downgraded to **FACILITATES**
-- **FACILITATES/GOVERNANCE/VALIDATES** claims → Remain unchanged
-- Validation status becomes **QUESTIONABLE** with explanation
+**Content Analysis Logic**: Evidence is evaluated across multiple dimensions:
+- **Strong Evidence**: Detailed implementation specifics with comprehensive coverage
+- **Moderate Evidence**: Good coverage with some gaps or general language
+- **Weak Evidence**: Limited specifics or scope, vague implementation details
 
 ### Validation Statuses
 
 - **SUPPORTED** (70-100%): Evidence strongly supports the claimed capability
-- **QUESTIONABLE** (40-69%): Evidence partially supports but has notable gaps OR domain mismatch occurred
+- **QUESTIONABLE** (40-69%): Evidence partially supports but has notable gaps or inconsistencies
 - **UNSUPPORTED** (0-39%): Evidence does not adequately support the claim
 
 ### Usage Examples
 
 ```bash
-# Validate a FULL coverage claim (matching domain)
+# Validate a FULL coverage claim with strong evidence
 claude-code "Use validate_vendor_mapping for vendor 'AssetMax Pro', safeguard '1.1', claimed capability 'full', with supporting text: 'Our platform provides comprehensive automated discovery, detailed inventory management, and complete asset lifecycle tracking for all enterprise devices including servers, workstations, and network equipment.'"
 
 # Validate a FACILITATES claim  
 claude-code "Use validate_vendor_mapping for vendor 'ThreatIntel Feed', safeguard '1.1', claimed capability 'facilitates', with supporting text: 'Our threat intelligence service provides supplemental risk data that enriches existing asset management systems, enabling organizations to prioritize asset security based on threat exposure.'"
 
-# Domain mismatch example (auto-downgraded)
-claude-code "Use validate_vendor_mapping for vendor 'VulnScanner Pro', safeguard '1.1', claimed capability 'full', with supporting text: 'Our vulnerability scanner performs comprehensive network discovery and maintains detailed device databases with complete visibility into enterprise infrastructure.'"
-# Result: Downgraded from FULL to FACILITATES (vulnerability_management ≠ inventory tool)
+# Partial capability claim with clear scope limitations
+claude-code "Use validate_vendor_mapping for vendor 'NetworkScanner Pro', safeguard '1.1', claimed capability 'partial', with supporting text: 'Our scanner provides comprehensive network device discovery and maintains detailed hardware inventories, but is limited to network-accessible devices and does not track software installations or offline systems.'"
 
-# Questionable claim (insufficient evidence)
+# Insufficient evidence example
 claude-code "Use validate_vendor_mapping for vendor 'BasicTracker', safeguard '1.1', claimed capability 'full', with supporting text: 'We help track computers and provide some visibility into your IT environment.'"
 ```
 

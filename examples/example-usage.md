@@ -13,9 +13,9 @@
 
 ## 1. validate_vendor_mapping (PRIMARY Tool)
 
-**Purpose**: Evidence-based validation of vendor capability claims with domain validation
+**Purpose**: Evidence-based validation of vendor capability claims through comprehensive content analysis
 
-### Example 1: FULL Capability Validation (Domain Match)
+### Example 1: FULL Capability Validation (Strong Evidence)
 ```bash
 claude-code "Use validate_vendor_mapping to validate:
 Vendor: AssetMax Pro
@@ -24,18 +24,18 @@ Claimed Capability: full
 Supporting Text: Our platform provides comprehensive automated discovery, detailed inventory management with hardware/software tracking, enterprise asset ownership records, departmental assignments, network address management, and documented bi-annual review processes for all enterprise devices."
 ```
 
-**Expected Result**: SUPPORTED (high confidence, no auto-downgrade)
+**Expected Result**: SUPPORTED (high confidence with strong evidence coverage)
 
-### Example 2: FULL Capability Validation (Domain Mismatch - Auto-Downgrade)
+### Example 2: PARTIAL Capability Validation (Limited Scope)
 ```bash
 claude-code "Use validate_vendor_mapping to validate:
-Vendor: ThreatIntel Pro
+Vendor: NetworkScanner Pro
 Safeguard: 1.1  
-Claimed Capability: full
-Supporting Text: Our threat intelligence platform discovers network devices during security scans and maintains detailed vulnerability databases with comprehensive asset visibility."
+Claimed Capability: partial
+Supporting Text: Our network scanner provides comprehensive discovery and detailed inventory of network-connected devices including hardware specifications and operating systems, but is limited to devices accessible via network protocols and does not track software installations or offline systems."
 ```
 
-**Expected Result**: Auto-downgraded from FULL → FACILITATES (domain mismatch: threat_intelligence ≠ inventory)
+**Expected Result**: SUPPORTED (partial coverage with clearly defined scope limitations)
 
 ### Example 3: FACILITATES Capability Validation
 ```bash
@@ -46,7 +46,7 @@ Claimed Capability: facilitates
 Supporting Text: Our audit platform enhances existing identity management by providing detailed account usage analytics, compliance reporting, and risk-based account prioritization that strengthens account inventory processes."
 ```
 
-**Expected Result**: SUPPORTED (facilitation language present, no domain restrictions)
+**Expected Result**: SUPPORTED (clear facilitation language and enhancement capabilities)
 
 ---
 
@@ -62,9 +62,9 @@ Safeguard: 5.1
 Response Text: We provide centralized identity management with automated user provisioning, comprehensive account lifecycle management, role-based access controls, detailed user directories with departmental tracking, and automated quarterly access reviews with compliance reporting."
 ```
 
-**Expected Result**: FULL capability (identity_management tool for identity safeguard)
+**Expected Result**: FULL capability (comprehensive identity management with strong evidence)
 
-### Example 2: Cross-Domain Tool Analysis  
+### Example 2: Secondary Capability Analysis  
 ```bash
 claude-code "Use analyze_vendor_response to analyze:
 Vendor: Nessus Vulnerability Scanner
@@ -72,7 +72,7 @@ Safeguard: 1.1
 Response Text: During vulnerability assessments, we perform comprehensive network discovery and maintain detailed device databases with operating system detection, service enumeration, and hardware fingerprinting."
 ```
 
-**Expected Result**: FACILITATES capability (vulnerability_management tool for asset safeguard)
+**Expected Result**: FACILITATES capability (indirect support through discovery capabilities)
 
 ---
 
@@ -136,17 +136,17 @@ claude-code "Use analyze_vendor_response for each vendor in this list:
 3. Vendor: ServiceNow CMDB, Safeguard: 1.1, Response: 'Complete asset lifecycle management...'"
 ```
 
-### Domain Validation Testing
+### Insufficient Evidence Testing
 ```bash
-# Test auto-downgrade protection
-claude-code "Use validate_vendor_mapping to test domain validation:
-Vendor: Splunk SIEM
+# Test validation with insufficient evidence
+claude-code "Use validate_vendor_mapping to test evidence analysis:
+Vendor: BasicTracker
 Safeguard: 1.1 (Asset Inventory)
 Claimed: full
-Supporting Text: Our SIEM platform logs all network device activity and maintains comprehensive asset visibility through log analysis and network monitoring."
+Supporting Text: We help track computers and provide some visibility into your IT environment."
 ```
 
-**Expected**: Auto-downgrade from FULL → FACILITATES (SIEM ≠ inventory tool)
+**Expected**: UNSUPPORTED (insufficient evidence for FULL capability claim)
 
 ---
 
@@ -160,10 +160,11 @@ Supporting Text: Our SIEM platform logs all network device activity and maintain
   "validation_status": "SUPPORTED",
   "confidence_score": 92,
   "validated_capability": "full",
-  "domain_validation": {
-    "tool_type": "cmdb",
-    "domain_appropriate": true,
-    "auto_downgrade_applied": false
+  "content_validation": {
+    "implementation_depth": "comprehensive",
+    "scope_clarity": "well_defined", 
+    "evidence_strength": "strong",
+    "capability_aligned": true
   },
   "evidence_analysis": {
     "core_requirements_score": 95,
@@ -174,21 +175,25 @@ Supporting Text: Our SIEM platform logs all network device activity and maintain
 }
 ```
 
-### Auto-Downgrade Example
+### Insufficient Evidence Example
 ```json
 {
-  "vendor_name": "Nessus Scanner", 
+  "vendor_name": "BasicTracker", 
   "safeguard_id": "1.1",
-  "validation_status": "QUESTIONABLE",
-  "confidence_score": 65,
+  "validation_status": "UNSUPPORTED",
+  "confidence_score": 35,
   "claimed_capability": "full",
   "validated_capability": "facilitates",
-  "domain_validation": {
-    "tool_type": "vulnerability_management",
-    "domain_appropriate": false,
-    "auto_downgrade_applied": true,
-    "downgrade_reason": "Tool type mismatch: vulnerability scanners cannot provide FULL asset inventory coverage"
-  }
+  "content_validation": {
+    "implementation_depth": "limited",
+    "scope_clarity": "vague",
+    "evidence_strength": "weak", 
+    "capability_aligned": false
+  },
+  "gaps_identified": [
+    "Insufficient detail on asset tracking capabilities",
+    "Missing governance and review processes"
+  ]
 }
 ```
 
@@ -231,11 +236,11 @@ Vendor Response: 'Our endpoint protection platform provides comprehensive asset 
 
 ## 💡 Pro Tips
 
-### 1. Understanding Domain Validation
-- **Asset safeguards** (1.1, 1.2): Only inventory/CMDB tools can claim FULL/PARTIAL
-- **Identity safeguards** (5.1, 6.3): Only identity management tools can claim FULL/PARTIAL  
-- **Vulnerability safeguards** (7.1): Only vulnerability/patch management tools can claim FULL/PARTIAL
-- **All tools** can claim FACILITATES, GOVERNANCE, or VALIDATES regardless of domain
+### 1. Understanding Content Analysis
+- **Implementation Details**: Look for specific technical capabilities and processes
+- **Scope Definition**: Identify clear boundaries and limitations in vendor claims
+- **Evidence Quality**: Assess depth and specificity of supporting information
+- **Language Consistency**: Ensure alignment between claims and supporting evidence
 
 ### 2. Optimizing Confidence Scores
 - **High scores (80-100%)**: Comprehensive coverage with specific implementation details
@@ -244,7 +249,7 @@ Vendor Response: 'Our endpoint protection platform provides comprehensive asset 
 
 ### 3. Common Validation Patterns
 - **SUPPORTED**: Evidence strongly aligns with claimed capability
-- **QUESTIONABLE**: Partial support or domain mismatch (auto-downgrade)
+- **QUESTIONABLE**: Partial support with notable gaps or inconsistencies
 - **UNSUPPORTED**: Evidence does not support the claimed capability
 
 ### 4. Best Practices

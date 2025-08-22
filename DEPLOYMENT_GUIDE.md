@@ -2,7 +2,7 @@
 
 ## Dual Architecture: MCP + HTTP API
 
-Framework MCP v1.3.6 features a **dual architecture** that solves the DigitalOcean App Services stdio vs HTTP mismatch:
+Framework MCP v1.3.7 features a **dual architecture** that solves the DigitalOcean App Services stdio vs HTTP mismatch:
 
 - **MCP Interface**: stdio-based for Claude Code integration
 - **HTTP Interface**: REST API for cloud deployment
@@ -198,7 +198,7 @@ GET /api/metrics                # Performance metrics
 
 ### Shared Core Benefits
 - ✅ **Identical Functionality**: Both interfaces use same logic
-- ✅ **Domain Validation**: Auto-downgrade protection in both
+- ✅ **Content Analysis**: Comprehensive capability assessment in both
 - ✅ **Performance**: 95% cache optimization in both
 - ✅ **Consistency**: Same capability assessment results
 
@@ -320,7 +320,7 @@ npm install express-rate-limit
 ### HTTP Deployment Successful When:
 - ✅ Health check returns 200 status
 - ✅ `/api/validate-vendor-mapping` accepts POST requests
-- ✅ Domain validation auto-downgrade works correctly
+- ✅ Content-based capability analysis works correctly
 - ✅ All 5 capability roles determined accurately
 - ✅ Performance metrics show >95% cache efficiency
 
@@ -332,4 +332,4 @@ npm install express-rate-limit
 
 ---
 
-**🎉 Framework MCP v1.3.6 solves the DigitalOcean stdio vs HTTP architecture mismatch while preserving full MCP functionality!**
+**🎉 Framework MCP v1.3.7 solves the DigitalOcean stdio vs HTTP architecture mismatch while preserving full MCP functionality!**

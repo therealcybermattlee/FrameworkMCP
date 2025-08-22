@@ -20,7 +20,7 @@ export class FrameworkMcpServer {
     this.server = new Server(
       {
         name: 'framework-analyzer',
-        version: '1.3.6',
+        version: '1.3.7',
       }
     );
 
@@ -35,33 +35,6 @@ export class FrameworkMcpServer {
     this.server.setRequestHandler(ListToolsRequestSchema, async () => {
       return {
         tools: [
-          {
-            name: 'validate_vendor_mapping',
-            description: 'PRIMARY: Validate vendor capability claims with domain validation and evidence analysis',
-            inputSchema: {
-              type: 'object',
-              properties: {
-                vendor_name: {
-                  type: 'string',
-                  description: 'Name of the vendor/tool being analyzed'
-                },
-                safeguard_id: {
-                  type: 'string',
-                  description: 'CIS safeguard ID (e.g., "1.1", "5.1")'
-                },
-                claimed_capability: {
-                  type: 'string',
-                  description: 'Claimed capability role',
-                  enum: ['full', 'partial', 'facilitates', 'governance', 'validates']
-                },
-                supporting_text: {
-                  type: 'string',
-                  description: 'Vendor text supporting their capability claim'
-                }
-              },
-              required: ['vendor_name', 'safeguard_id', 'claimed_capability', 'supporting_text']
-            }
-          } as Tool,
           {
             name: 'analyze_vendor_response',
             description: 'Determine vendor tool capability role for specific safeguard',
@@ -121,9 +94,6 @@ export class FrameworkMcpServer {
 
       try {
         switch (name) {
-          case 'validate_vendor_mapping':
-            return await this.validateVendorMapping(args);
-
           case 'analyze_vendor_response':
             return await this.analyzeVendorResponse(args);
 
@@ -155,36 +125,6 @@ export class FrameworkMcpServer {
     });
   }
 
-  private async validateVendorMapping(args: any) {
-    const { vendor_name = 'Unknown Vendor', safeguard_id, claimed_capability, supporting_text } = args;
-
-    // Input validation
-    this.validateTextInput(supporting_text, 'Supporting text');
-    this.validateCapability(claimed_capability);
-    this.safeguardManager.validateSafeguardId(safeguard_id);
-
-    const safeguard = this.safeguardManager.getSafeguardDetails(safeguard_id);
-    if (!safeguard) {
-      throw new Error(`Safeguard ${safeguard_id} not found`);
-    }
-
-    const validation = this.capabilityAnalyzer.validateVendorMapping(
-      vendor_name, 
-      safeguard_id,
-      claimed_capability,
-      supporting_text,
-      safeguard
-    );
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify(validation, null, 2),
-        },
-      ],
-    };
-  }
 
   private async analyzeVendorResponse(args: any) {
     const { vendor_name = 'Unknown Vendor', safeguard_id, response_text } = args;
@@ -240,7 +180,7 @@ export class FrameworkMcpServer {
             safeguards,
             total: safeguards.length,
             framework: 'CIS Controls v8.1',
-            version: '1.3.6'
+            version: '1.3.7'
           }, null, 2),
         },
       ],
@@ -294,8 +234,8 @@ export class FrameworkMcpServer {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
     
-    console.error('🤖 Framework MCP Server v1.3.6 running via stdio');
-    console.error('📊 Capability assessment with domain validation enabled');
+    console.error('🤖 Framework MCP Server v1.3.7 running via stdio');
+    console.error('📊 Clean capability assessment for CIS Controls v8.1');
   }
 }
 

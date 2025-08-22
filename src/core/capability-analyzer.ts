@@ -1,77 +1,12 @@
 import { 
   SafeguardElement, 
   VendorAnalysis, 
-  DomainValidationResult,
   PerformanceMetrics,
   CacheEntry,
   QualityAssessment,
-  CapabilityType,
-  DomainRequirement,
-  ToolTypeWeights
+  CapabilityType
 } from '../shared/types.js';
 
-// Domain-specific validation mapping
-const SAFEGUARD_DOMAIN_REQUIREMENTS: Record<string, DomainRequirement> = {
-  "1.1": {
-    domain: "Asset Inventory",
-    required_tool_types: ["inventory", "asset_management", "cmdb", "discovery"],
-    description: "Only asset inventory and discovery tools can provide FULL/PARTIAL implementation capability"
-  },
-  "1.2": {
-    domain: "Asset Management", 
-    required_tool_types: ["inventory", "asset_management", "network_security", "nac"],
-    description: "Asset management or network access control tools required for FULL/PARTIAL implementation capability"
-  },
-  "5.1": {
-    domain: "Account Management",
-    required_tool_types: ["identity_management", "iam", "directory", "account_management"],
-    description: "Identity and account management tools required for FULL/PARTIAL implementation capability"
-  },
-  "6.3": {
-    domain: "Authentication",
-    required_tool_types: ["mfa", "authentication", "identity_management", "iam"],
-    description: "Multi-factor authentication and identity tools required for FULL/PARTIAL implementation capability"
-  },
-  "7.1": {
-    domain: "Vulnerability Management",
-    required_tool_types: ["vulnerability_management", "vulnerability_scanner", "patch_management"],
-    description: "Vulnerability management and scanning tools required for FULL/PARTIAL implementation capability"
-  }
-};
-
-// Tool type detection weights for enhanced accuracy
-const TOOL_TYPE_DETECTION_WEIGHTS: ToolTypeWeights = {
-  inventory: {
-    keywords: ['inventory', 'asset discovery', 'device enumeration', 'cmdb', 'configuration management database'],
-    baseWeight: 3,
-    contextBonuses: ['asset', 'device', 'hardware', 'software', 'endpoint']
-  },
-  asset_management: {
-    keywords: ['asset management', 'asset tracking', 'asset lifecycle', 'asset monitoring'],
-    baseWeight: 3,
-    contextBonuses: ['lifecycle', 'tracking', 'monitoring', 'management']
-  },
-  identity_management: {
-    keywords: ['identity', 'iam', 'identity management', 'user management', 'directory'],
-    baseWeight: 3,
-    contextBonuses: ['user', 'account', 'authentication', 'authorization', 'ldap', 'active directory']
-  },
-  vulnerability_management: {
-    keywords: ['vulnerability', 'vuln', 'security scanning', 'penetration testing', 'patch management'],
-    baseWeight: 3,
-    contextBonuses: ['scan', 'test', 'patch', 'remediation', 'cve']
-  },
-  threat_intelligence: {
-    keywords: ['threat intelligence', 'threat feeds', 'ioc', 'indicators', 'threat data'],
-    baseWeight: 2,
-    contextBonuses: ['intelligence', 'feeds', 'indicators', 'malware', 'threat']
-  },
-  governance: {
-    keywords: ['grc', 'governance', 'compliance management', 'policy management', 'risk management'],
-    baseWeight: 2,
-    contextBonuses: ['policy', 'compliance', 'governance', 'risk', 'audit']
-  }
-};
 
 export class CapabilityAnalyzer {
   private cache: Map<string, CacheEntry<any>>;
@@ -121,88 +56,6 @@ export class CapabilityAnalyzer {
     }
   }
 
-  public validateVendorMapping(
-    vendorName: string,
-    safeguardId: string,
-    claimedCapability: string,
-    supportingText: string,
-    safeguard: SafeguardElement
-  ): DomainValidationResult {
-    const startTime = Date.now();
-    try {
-      this.performanceMetrics.totalRequests++;
-      
-      const text = supportingText.toLowerCase();
-      
-      // Detect tool type and validate domain match
-      const detectedToolType = this.detectToolType(supportingText, safeguard.id);
-      const domainValidation = this.validateDomainMatch(safeguard.id, claimedCapability, detectedToolType);
-      
-      // Adjust capability if domain mismatch detected
-      let effectiveCapability = claimedCapability;
-      let originalClaim: string | undefined;
-      
-      if (domainValidation.should_adjust_capability) {
-        originalClaim = claimedCapability;
-        effectiveCapability = domainValidation.adjusted_capability!;
-      }
-      
-      // Perform capability-focused analysis of the supporting text
-      const actualAnalysis = this.performCapabilityAnalysis(vendorName, safeguard, supportingText);
-      
-      // Validate claimed capability against actual capability analysis and domain requirements
-      const validation = this.assessCapabilityClaimAlignment(
-        claimedCapability,
-        effectiveCapability, 
-        actualAnalysis,
-        domainValidation,
-        text
-      );
-      
-      // Add domain validation gaps if capability was adjusted
-      if (domainValidation.should_adjust_capability) {
-        validation.gaps.unshift(`Domain mismatch: ${domainValidation.reasoning}`);
-        validation.recommendations.unshift(`Correct capability mapping should be '${effectiveCapability.toUpperCase()}' for ${detectedToolType} tools`);
-        // Reduce confidence for domain mismatches
-        validation.confidence = Math.max(validation.confidence - 20, 0);
-      }
-
-      const result: DomainValidationResult = {
-        vendor: vendorName,
-        safeguard_id: safeguard.id,
-        safeguard_title: safeguard.title,
-        claimed_capability: claimedCapability,
-        validation_status: validation.status as 'SUPPORTED' | 'QUESTIONABLE' | 'UNSUPPORTED',
-        confidence_score: validation.confidence,
-        evidence_analysis: {
-          core_requirements_coverage: validation.core_requirements_coverage || 0,
-          sub_elements_coverage: validation.sub_elements_coverage || 0,
-          governance_alignment: validation.governance_alignment || 0,
-          language_consistency: validation.language_consistency || 0
-        },
-        domain_validation: {
-          required_tool_type: domainValidation.required_tool_types.join('/'),
-          detected_tool_type: detectedToolType,
-          domain_match: domainValidation.domain_match,
-          capability_adjusted: domainValidation.should_adjust_capability,
-          original_claim: originalClaim
-        },
-        gaps_identified: validation.gaps,
-        strengths_identified: validation.strengths,
-        recommendations: validation.recommendations,
-        detailed_feedback: validation.feedback
-      };
-
-      // Record performance metrics
-      this.recordToolExecution('validateVendorMapping', Date.now() - startTime);
-      
-      return result;
-    } catch (error) {
-      this.performanceMetrics.errorCount++;
-      this.recordToolExecution('validateVendorMapping_error', Date.now() - startTime);
-      throw error;
-    }
-  }
 
   private determineClaimedCapability(text: string, safeguard: SafeguardElement): CapabilityType {
     // Capability detection keywords - focused on what the tool DOES, not what elements it covers
@@ -233,8 +86,12 @@ export class CapabilityAnalyzer {
       'compliance tracking', 'audit trail', 'reporting capabilities', 'audit capabilities'
     ];
 
-    // Direct implementation indicators (tools that actually perform the safeguard)
-    const implementationIndicators = this.getImplementationIndicators(safeguard.id);
+    // General implementation indicators for all safeguards
+    const implementationIndicators = [
+      'implement', 'implements', 'implementation', 'deploy', 'execute', 'perform',
+      'provides', 'delivers', 'complete', 'fully', 'comprehensive', 'directly',
+      'natively', 'built-in', 'core functionality', 'primary function', 'main feature'
+    ];
     
     // Calculate keyword presence scores
     const governanceScore = this.calculateKeywordScore(text, governanceIndicators);
@@ -255,18 +112,6 @@ export class CapabilityAnalyzer {
     }
   }
 
-  private getImplementationIndicators(safeguardId: string): string[] {
-    // Return specific indicators for what constitutes direct implementation for each safeguard
-    const implementationMap: Record<string, string[]> = {
-      "1.1": ['inventory', 'discovery', 'asset management', 'catalog', 'enumerate', 'scan devices', 'device database'],
-      "1.2": ['unauthorized', 'rogue', 'detect', 'identify unauthorized', 'quarantine', 'block unauthorized'],
-      "5.1": ['account inventory', 'user management', 'identity management', 'account lifecycle', 'user provisioning'],
-      "6.3": ['multi-factor', 'mfa', '2fa', 'authentication', 'two-factor', 'multi-factor authentication'],
-      "7.1": ['vulnerability', 'vuln', 'scanning', 'vulnerability management', 'security testing', 'penetration testing']
-    };
-    
-    return implementationMap[safeguardId] || [];
-  }
 
   private assessCapabilityQuality(text: string, safeguard: SafeguardElement, claimedCapability: string): QualityAssessment {
     // Assess how well the tool executes the claimed capability type
@@ -489,145 +334,9 @@ export class CapabilityAnalyzer {
     return recommendations[capability];
   }
 
-  private detectToolType(text: string, safeguardId: string): string {
-    const lowerText = text.toLowerCase();
-    let bestMatch = 'unknown';
-    let highestScore = 0;
 
-    for (const [toolType, config] of Object.entries(TOOL_TYPE_DETECTION_WEIGHTS)) {
-      let score = 0;
-      
-      // Base keyword matching
-      for (const keyword of config.keywords) {
-        if (lowerText.includes(keyword.toLowerCase())) {
-          score += config.baseWeight;
-        }
-      }
-      
-      // Context bonus keywords
-      for (const bonus of config.contextBonuses) {
-        if (lowerText.includes(bonus.toLowerCase())) {
-          score += 1;
-        }
-      }
-      
-      if (score > highestScore) {
-        highestScore = score;
-        bestMatch = toolType;
-      }
-    }
 
-    return bestMatch;
-  }
 
-  private validateDomainMatch(safeguardId: string, claimedCapability: string, detectedToolType: string) {
-    const domainReq = SAFEGUARD_DOMAIN_REQUIREMENTS[safeguardId];
-    
-    if (!domainReq) {
-      return {
-        domain_match: true,
-        should_adjust_capability: false,
-        required_tool_types: ['any'],
-        reasoning: 'No specific domain requirements for this safeguard'
-      };
-    }
-
-    const needsDomainValidation = ['full', 'partial'].includes(claimedCapability.toLowerCase());
-    
-    if (!needsDomainValidation) {
-      return {
-        domain_match: true,
-        should_adjust_capability: false,
-        required_tool_types: domainReq.required_tool_types,
-        reasoning: 'Domain validation not required for this capability type'
-      };
-    }
-
-    const domainMatch = domainReq.required_tool_types.includes(detectedToolType);
-    
-    return {
-      domain_match: domainMatch,
-      should_adjust_capability: !domainMatch,
-      adjusted_capability: !domainMatch ? 'facilitates' : undefined,
-      required_tool_types: domainReq.required_tool_types,
-      reasoning: !domainMatch ? 
-        `Tool type '${detectedToolType}' cannot provide ${claimedCapability.toUpperCase()} coverage for ${domainReq.domain} safeguards` :
-        'Tool type matches domain requirements'
-    };
-  }
-
-  private assessCapabilityClaimAlignment(
-    claimedCapability: string,
-    effectiveCapability: string,
-    actualAnalysis: VendorAnalysis,
-    domainValidation: any,
-    text: string
-  ) {
-    const gaps: string[] = [];
-    const strengths: string[] = [];
-    const recommendations: string[] = [];
-    
-    let confidence = actualAnalysis.confidence;
-    let status = 'SUPPORTED';
-
-    // Assess alignment between claimed and detected capabilities
-    if (actualAnalysis.capability !== effectiveCapability.toLowerCase()) {
-      gaps.push(`Claimed capability '${claimedCapability}' differs from detected capability '${actualAnalysis.capability}'`);
-      confidence = Math.max(confidence - 15, 0);
-    }
-
-    // Add evidence from actual analysis
-    if (actualAnalysis.evidence.length > 0) {
-      strengths.push(...actualAnalysis.evidence);
-    }
-
-    // Determine final validation status
-    if (confidence < 40) {
-      status = 'UNSUPPORTED';
-    } else if (confidence < 70 || !domainValidation.domain_match) {
-      status = 'QUESTIONABLE';
-    }
-
-    return {
-      status,
-      confidence,
-      gaps,
-      strengths,
-      recommendations,
-      feedback: this.generateValidationFeedback(claimedCapability, actualAnalysis, domainValidation, confidence, status),
-      core_requirements_coverage: 85, // Placeholder - would calculate from actual analysis
-      sub_elements_coverage: 75,
-      governance_alignment: 80,
-      language_consistency: 90
-    };
-  }
-
-  private generateValidationFeedback(
-    claimedCapability: string,
-    actualAnalysis: VendorAnalysis,
-    domainValidation: any,
-    confidence: number,
-    status: string
-  ): string {
-    let feedback = `Validation of ${claimedCapability.toUpperCase()} capability claim: ${status} (${confidence}% alignment)\n\n`;
-    
-    if (domainValidation.should_adjust_capability) {
-      feedback += `DOMAIN VALIDATION: Tool type '${domainValidation.detected_tool_type}' cannot provide ${claimedCapability.toUpperCase()} coverage for this safeguard. Capability automatically adjusted to FACILITATES.\n\n`;
-    }
-    
-    if (actualAnalysis.evidence.length > 0) {
-      feedback += 'STRENGTHS:\n';
-      actualAnalysis.evidence.forEach(evidence => {
-        feedback += `• ${evidence}\n`;
-      });
-      feedback += '\n';
-    }
-    
-    feedback += `ASSESSMENT: ${actualAnalysis.toolCapabilityDescription}\n\n`;
-    feedback += `RECOMMENDED USE: ${actualAnalysis.recommendedUse}`;
-    
-    return feedback;
-  }
 
   private calculateKeywordScore(text: string, keywords: string[]): number {
     let matches = 0;
