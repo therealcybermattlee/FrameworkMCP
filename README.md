@@ -5,25 +5,25 @@
 [![GitHub](https://img.shields.io/github/stars/therealcybermattlee/FrameworkMCP?style=social)](https://github.com/therealcybermattlee/FrameworkMCP)
 [![Website](https://img.shields.io/badge/Website-cyberrise.org-blue)](https://cyberrise.org)
 
-A Model Context Protocol (MCP) server that determines vendor tool **capability roles** (Full Implementation, Partial Implementation, Facilitates, Governance, Validates) against the **CIS Controls Framework**. This tool helps security professionals accurately categorize vendor capabilities for specific CIS Control safeguards through comprehensive content-based analysis.
+A Model Context Protocol (MCP) server providing **authoritative CIS Controls Framework data** to empower LLMs with sophisticated, context-aware vendor capability analysis. This Pure Data Provider architecture enables security professionals to perform flexible, intelligent assessment of vendor tool capabilities against specific CIS Control safeguards.
 
 ## 🎯 Purpose
 
-This MCP server enables security teams to:
-- **Determine vendor tool capability roles** for specific CIS Control safeguards (1.1, 5.1, 6.3, etc.)
-- **Validate implementation capability claims** through comprehensive content analysis
-- **Accurately categorize vendor roles** across 5 capability types: Full, Partial, Facilitates, Governance, and Validates
-- **Generate evidence-based assessments** showing capability alignment and confidence scores
+This MCP server empowers security teams to:
+- **Access authoritative CIS Controls data** for all 153 safeguards across 18 controls
+- **Leverage LLM intelligence** for sophisticated, context-aware vendor capability analysis
+- **Perform flexible assessment** across 5 capability types: Full, Partial, Facilitates, Governance, and Validates
+- **Apply custom analysis methodologies** with complete transparency and reasoning
 
 ## 🎯 The 5 Capability Roles
 
-| Capability Role | Description | Assessment Approach |
-|-----------------|-------------|--------------------| 
-| **FULL** | Complete implementation of safeguard requirements | Comprehensive content analysis for complete coverage |
-| **PARTIAL** | Limited scope implementation with clear boundaries | Content analysis identifies explicit scope limitations |
-| **FACILITATES** | Enhancement capabilities that enable others to implement safeguards better/faster/stronger | Analysis identifies facilitation language and indirect support |
-| **GOVERNANCE** | Policy/process management and oversight capabilities | Analysis identifies policy, process, and oversight elements |
-| **VALIDATES** | Verification capabilities providing evidence and reporting | Analysis identifies audit, monitoring, and reporting capabilities |
+| Capability Role | Description | LLM Analysis Approach |
+|-----------------|-------------|----------------------| 
+| **FULL** | Complete implementation of safeguard requirements | LLMs assess comprehensive coverage against detailed safeguard data |
+| **PARTIAL** | Limited scope implementation with clear boundaries | LLMs identify scope limitations and coverage gaps |
+| **FACILITATES** | Enhancement capabilities that enable others to implement safeguards better/faster/stronger | LLMs recognize facilitation patterns and indirect support capabilities |
+| **GOVERNANCE** | Policy/process management and oversight capabilities | LLMs evaluate governance elements and process management features |
+| **VALIDATES** | Verification capabilities providing evidence and reporting | LLMs assess audit, monitoring, and reporting capabilities |
 
 ## 🎨 CIS Controls Framework Integration
 
@@ -177,27 +177,27 @@ curl -X POST https://your-api-url.com/api/validate-vendor-mapping \
   -d '{"vendor_name":"Test Vendor","safeguard_id":"1.1","claimed_capability":"facilitates","supporting_text":"We provide supplemental asset tracking capabilities that enhance existing inventory systems."}'
 ```
 
-## 📋 Usage Examples
+## 📋 LLM-Driven Analysis Examples
 
-### Analyze Single Vendor Response
-
-```bash
-claude-code "Determine the capability role for this vendor response to safeguard 5.1:
-Vendor: SecureIAM Corp
-Response: 'Our tool is a full identity provider with comprehensive account management. We maintain detailed user inventories including names, usernames, departments, and access rights. Automated quarterly reviews ensure all accounts are authorized and compliant.'"
-```
-
-### Validate Implementation Capability Claims
+### Basic Vendor Capability Assessment
 
 ```bash
-claude-code "Validate this implementation capability claim:
-Vendor: ComplianceBot
-Safeguard: 5.1  
-Claimed Capability: FULL
-Response: 'We provide automated account lifecycle management with real-time inventory tracking and compliance reporting.'"
+claude-code "Get safeguard details for 5.1, then analyze this vendor response: SecureIAM Corp - 'Our tool is a full identity provider with comprehensive account management. We maintain detailed user inventories including names, usernames, departments, and access rights. Automated quarterly reviews ensure all accounts are authorized and compliant.' Determine appropriate capability role and provide confidence assessment."
 ```
 
-### Analyze Multiple Vendors from File
+### Context-Aware Analysis
+
+```bash
+claude-code "Get safeguard 8.2 details. For a high-risk financial services environment, analyze this logging solution: 'We collect endpoint telemetry and forward logs to SIEM platforms.' Consider regulatory requirements (SOX, PCI-DSS) and determine capability role with implementation recommendations."
+```
+
+### Multi-Vendor Comparative Analysis
+
+```bash
+claude-code "Get safeguard 1.1 details. Compare these asset management solutions and rank by implementation completeness for a 500-employee company: 1) Lansweeper: 'Complete network discovery and automated inventory' 2) ServiceNow: 'CMDB with manual asset entry workflows' 3) Microsoft Intune: 'Managed device tracking with Azure AD integration'. Provide deployment complexity assessment."
+```
+
+### Bulk Analysis from File
 
 Create `vendors.csv`:
 ```csv
@@ -208,130 +208,114 @@ VendorC,6.3,"MFA enforcement for all external applications with SSO integration"
 ```
 
 ```bash
-claude-code "Determine capability roles for the vendor responses in vendors.csv and provide recommendations"
+claude-code "Get details for safeguards referenced in vendors.csv. Analyze each vendor response, determine capability roles, and provide implementation roadmap recommendations based on organizational gaps."
 ```
 
-### Get Safeguard Details
+### Claim Validation Assessment
 
 ```bash
-claude-code "Show me the detailed breakdown of safeguard 5.1 including all sub-elements"
+claude-code "Get safeguard 12.4 details. This vendor claims FULL capability for network boundary monitoring: 'We monitor all network traffic, identify unauthorized devices, and generate real-time alerts.' Validate this claim against the specific safeguard requirements and provide evidence-based assessment."
 ```
 
-### Validate Vendor Capability Claims
-
-**PRIMARY TOOL**: Validate whether a vendor's stated capability mapping is actually supported by their explanatory text.
+### Risk-Based Analysis
 
 ```bash
-claude-code "Use validate_vendor_mapping with vendor_name 'SecureAssets Corp', safeguard_id '1.1', claimed_capability 'full', and supporting_text 'Our comprehensive asset management platform performs automated discovery of all enterprise devices, maintains detailed hardware and software inventories, tracks ownership and location data, provides real-time asset status monitoring, and includes documented inventory procedures with bi-annual review capabilities.'"
+claude-code "Get safeguard 11.1 details. For a healthcare organization with HIPAA requirements, assess Veeam Backup's capability: 'Automated daily backups with 99.9% recovery success rate and quarterly recovery testing.' Focus on governance and validation aspects."
 ```
 
-## 📊 Sample Output
+## 📊 Sample LLM Analysis Patterns
 
-### Standard Capability Role Analysis Output
-```json
-{
-  "vendor": "SecureIAM Corp",
-  "safeguardId": "5.1",
-  "safeguardTitle": "Establish and Maintain an Inventory of Accounts",
-  "capabilityRole": "full",
-  "additionalRoles": ["governance", "validates"],
-  "confidence": 87,
-  "contentAnalysis": {
-    "implementationLanguage": "strong",
-    "scopeDefinition": "comprehensive",
-    "evidenceQuality": "high"
-  },
-  "evidenceAnalysis": {
-    "coreRequirements": 85,
-    "subElements": 75,
-    "governance": 90,
-    "languageConsistency": 88
-  },
-  "evidence": [
-    "comprehensive account management",
-    "detailed user inventories",
-    "automated quarterly reviews"
-  ]
-}
+### Context-Aware Assessment Response
+```
+ASSESSMENT: SecureIAM Corp - Safeguard 5.1 Analysis
+
+CAPABILITY DETERMINATION: FULL + GOVERNANCE + VALIDATES
+CONFIDENCE: 87%
+
+ANALYSIS:
+Based on safeguard 5.1 requirements for comprehensive account inventory management:
+
+✅ CORE REQUIREMENTS COVERAGE:
+- Complete user inventory (names, usernames, departments)
+- Access rights tracking and management  
+- Identity provider capabilities with centralized management
+
+✅ GOVERNANCE ELEMENTS:
+- Automated quarterly review processes
+- Compliance verification workflows
+- Policy enforcement capabilities
+
+✅ VALIDATION CAPABILITIES:
+- Continuous monitoring and reporting
+- Authorization verification
+- Compliance status tracking
+
+EVIDENCE QUALITY: High - Specific implementation details provided
+SCOPE DEFINITION: Comprehensive enterprise account management
+
+RECOMMENDATION: Strong FULL capability alignment with additional governance and validation roles. Suitable for enterprise Implementation Group 2-3 deployments.
 ```
 
-### Primary Validation Tool Output (validate_vendor_mapping)
-```json
-{
-  "vendor": "SecureAssets Corp",
-  "safeguard_id": "1.1",
-  "safeguard_title": "Establish and Maintain a Detailed Enterprise Asset Inventory",
-  "claimed_capability": "full",
-  "validation_status": "SUPPORTED",
-  "confidence_score": 85,
-  "evidence_analysis": {
-    "core_requirements_coverage": 100,
-    "sub_elements_coverage": 47,
-    "governance_alignment": 80,
-    "language_consistency": 90
-  },
-  "content_validation": {
-    "implementation_depth": "comprehensive",
-    "scope_clarity": "well_defined",
-    "evidence_strength": "strong",
-    "capability_aligned": true
-  },
-  "gaps_identified": [],
-  "strengths_identified": [
-    "High coverage of core requirements and sub-elements",
-    "Strong implementation language consistency",
-    "Comprehensive coverage with clear implementation details"
-  ],
-  "recommendations": [],
-  "detailed_feedback": "Validation of FULL capability claim: SUPPORTED (85% alignment)\n\nSTRENGTHS:\n• High coverage of core requirements and sub-elements\n• Strong implementation language consistency\n• Comprehensive coverage with clear implementation details\n\nASSESSMENT: The vendor's supporting evidence strongly aligns with their claimed capability."
-}
+### Multi-Vendor Comparison Response
+```
+COMPARATIVE ANALYSIS: Asset Management Solutions for Safeguard 1.1
+
+RANKING BY IMPLEMENTATION COMPLETENESS:
+
+1. 🥇 LANSWEEPER (FULL + VALIDATES)
+   - Comprehensive automated discovery
+   - Network-wide asset visibility
+   - Strong for 500-employee deployment
+   - Implementation: Medium complexity
+
+2. 🥈 MICROSOFT INTUNE (PARTIAL + GOVERNANCE)
+   - Managed device focus (limited scope)
+   - Strong Azure AD integration
+   - Governance capabilities present
+   - Implementation: Low complexity (if using Microsoft stack)
+
+3. 🥉 SERVICENOW (FACILITATES + GOVERNANCE)
+   - CMDB foundation requires manual processes
+   - Strong workflow and governance features
+   - Facilitates comprehensive asset management
+   - Implementation: High complexity
+
+RECOMMENDATION: Lansweeper provides best immediate coverage for IG1 requirements. Consider Intune if Microsoft-centric environment, ServiceNow for complex enterprise with mature processes.
 ```
 
-### Insufficient Evidence Example Output
-```json
-{
-  "vendor": "BasicTracker Pro",
-  "safeguard_id": "1.1", 
-  "safeguard_title": "Establish and Maintain a Detailed Enterprise Asset Inventory",
-  "claimed_capability": "full",
-  "validation_status": "UNSUPPORTED",
-  "confidence_score": 35,
-  "evidence_analysis": {
-    "core_requirements_coverage": 40,
-    "sub_elements_coverage": 15,
-    "governance_alignment": 25,
-    "language_consistency": 60
-  },
-  "content_validation": {
-    "implementation_depth": "limited",
-    "scope_clarity": "vague",
-    "evidence_strength": "weak",
-    "capability_aligned": false
-  },
-  "gaps_identified": [
-    "Insufficient detail on asset tracking capabilities",
-    "Missing governance and review processes",
-    "Limited coverage of sub-elements"
-  ],
-  "strengths_identified": [
-    "Basic asset visibility mentioned"
-  ],
-  "recommendations": [
-    "Provide more detailed implementation specifics",
-    "Consider repositioning as FACILITATES capability based on limited scope"
-  ],
-  "detailed_feedback": "Validation of FULL capability claim: UNSUPPORTED (35% alignment)\n\nGAPS IDENTIFIED:\n• Insufficient detail on asset tracking capabilities\n• Missing governance and review processes\n• Limited coverage of sub-elements\n\nASSESSMENT: The vendor's supporting evidence does not adequately support their FULL capability claim. Consider FACILITATES role instead."
-}
+### Risk-Based Healthcare Analysis
+```
+HIPAA-FOCUSED ANALYSIS: Veeam Backup vs Safeguard 11.1
+
+CAPABILITY: FULL + VALIDATES
+COMPLIANCE CONFIDENCE: 92%
+
+HIPAA CONSIDERATIONS:
+✅ Recovery time objectives meet healthcare uptime requirements
+✅ Quarterly testing demonstrates due diligence
+✅ 99.9% success rate supports business continuity
+
+GOVERNANCE ALIGNMENT:
+- Documented recovery procedures (required for HIPAA)
+- Regular testing and validation processes
+- Performance metrics and reporting
+
+GAPS TO ADDRESS:
+- Verify encryption at rest/in transit for PHI
+- Confirm audit logging capabilities
+- Validate access controls for backup systems
+
+IMPLEMENTATION RECOMMENDATION: Strong foundation for HIPAA compliance. Supplement with documented encryption policies and access control procedures.
 ```
 
 ## 🔧 Available Tools
 
 | Tool | Description |
 |------|-------------|
-| `validate_vendor_mapping` | **PRIMARY** Validate vendor's claimed capability role against supporting evidence through content analysis |
-| `analyze_vendor_response` | Determine vendor tool capability role for specific safeguard |
-| `get_safeguard_details` | Get detailed safeguard breakdown |
-| `list_available_safeguards` | List all available CIS safeguards |
+| `get_safeguard_details` | **PRIMARY** Get detailed safeguard breakdown with structured CIS data for LLM analysis |
+| `list_available_safeguards` | List all available CIS safeguards (153 total) for framework exploration |
+
+**Pure Data Provider Architecture**: Framework MCP provides authoritative CIS Controls data while LLMs perform sophisticated, context-aware capability analysis with unlimited flexibility.
 
 ## 📁 File Formats Supported
 
@@ -361,57 +345,47 @@ Vendor: AnotherVendor - Safeguard: 6.3
 Another response...
 ```
 
-## 🆕 Vendor Mapping Validation
+## 🚀 LLM-Driven Analysis Advantages
 
-The **validate_vendor_mapping** tool provides evidence-based validation of vendor capability claims. This addresses a critical need: vendors often self-assess their capabilities, but practitioners need to verify whether the supporting evidence actually justifies the claimed mapping.
+Framework MCP v1.4.0's **Pure Data Provider architecture** empowers LLMs to perform sophisticated vendor capability analysis with unprecedented flexibility and intelligence.
 
-### Validation Criteria
+### Key Benefits Over Hardcoded Analysis
 
-| Capability | Requirements | Validation Thresholds |
-|------------|-------------|----------------------|
-| **FULL** | Complete implementation within scope | ≥70% core requirements + ≥40% sub-elements |
-| **PARTIAL** | Limited scope with clear boundaries | ≥30% core requirements OR some core + ≥20% sub-elements |
-| **FACILITATES** | Enables/enhances implementation | Facilitation language present, no direct implementation claims |
-| **GOVERNANCE** | Policy/process management | ≥60% governance elements + policy language |
-| **VALIDATES** | Evidence collection & reporting | Audit/monitoring/reporting capabilities present |
+| Advantage | Description | LLM Capability |
+|-----------|-------------|----------------|
+| **Context Awareness** | Analysis considers industry, risk profile, and organizational needs | LLMs understand sector-specific requirements and compliance frameworks |
+| **Analytical Flexibility** | Apply custom methodologies and assessment criteria | Multiple analysis approaches: strict compliance, risk-based, comparative |
+| **Transparent Reasoning** | Complete visibility into analysis logic and evidence evaluation | LLMs explain their reasoning and provide detailed justifications |
+| **Adaptive Intelligence** | Dynamic assessment based on evolving requirements | LLMs can adjust analysis based on new information or changing priorities |
+| **Natural Language** | Complex analysis requests in plain English | No need for rigid tool parameters or predefined validation rules |
 
-### Content-Based Validation Approach
+### Enhanced Analysis Capabilities
 
-**APPROACH**: The validation tool uses comprehensive content analysis to assess capability claims:
+**Multi-Dimensional Assessment**: LLMs can simultaneously evaluate:
+- Technical capability alignment with safeguard requirements
+- Deployment complexity and organizational fit
+- Risk mitigation effectiveness and compliance coverage
+- Integration potential with existing technology stacks
+- Cost-benefit analysis and implementation roadmaps
 
-| Analysis Dimension | Description | Assessment Focus |
-|-------------------|-------------|------------------|
-| **Core Requirements Coverage** | Alignment with primary safeguard elements | Direct implementation language and specific capabilities |
-| **Sub-Elements Coverage** | Support for detailed safeguard components | Breadth of coverage across safeguard sub-requirements |
-| **Governance Alignment** | Policy/process management elements | Governance language and oversight capabilities |
-| **Implementation Depth** | Specificity and detail of implementation | Technical depth and implementation specifics |
-| **Language Consistency** | Alignment between claim and evidence | Consistency between stated capability and supporting text |
+**Advanced Analysis Patterns**:
+- **Comparative Vendor Evaluation**: Rank multiple solutions against specific criteria
+- **Gap Analysis**: Identify coverage gaps and recommend complementary tools
+- **Risk-Based Assessment**: Prioritize capability importance based on threat landscape
+- **Compliance Mapping**: Align vendor capabilities with regulatory requirements
+- **Implementation Planning**: Generate deployment strategies and success metrics
 
-**Content Analysis Logic**: Evidence is evaluated across multiple dimensions:
-- **Strong Evidence**: Detailed implementation specifics with comprehensive coverage
-- **Moderate Evidence**: Good coverage with some gaps or general language
-- **Weak Evidence**: Limited specifics or scope, vague implementation details
-
-### Validation Statuses
-
-- **SUPPORTED** (70-100%): Evidence strongly supports the claimed capability
-- **QUESTIONABLE** (40-69%): Evidence partially supports but has notable gaps or inconsistencies
-- **UNSUPPORTED** (0-39%): Evidence does not adequately support the claim
-
-### Usage Examples
+### Flexibility Examples
 
 ```bash
-# Validate a FULL coverage claim with strong evidence
-claude-code "Use validate_vendor_mapping for vendor 'AssetMax Pro', safeguard '1.1', claimed capability 'full', with supporting text: 'Our platform provides comprehensive automated discovery, detailed inventory management, and complete asset lifecycle tracking for all enterprise devices including servers, workstations, and network equipment.'"
+# Custom compliance-focused analysis
+claude-code "Get safeguard 8.3 details. For PCI-DSS Level 1 compliance, assess Splunk Enterprise Security considering cardholder data environment requirements and provide implementation timeline recommendations."
 
-# Validate a FACILITATES claim  
-claude-code "Use validate_vendor_mapping for vendor 'ThreatIntel Feed', safeguard '1.1', claimed capability 'facilitates', with supporting text: 'Our threat intelligence service provides supplemental risk data that enriches existing asset management systems, enabling organizations to prioritize asset security based on threat exposure.'"
+# Technology stack integration assessment  
+claude-code "Get safeguard 16.1 details. We use Azure DevOps and GitHub. Analyze how SonarQube integrates with our pipeline for secure code analysis and recommend configuration best practices."
 
-# Partial capability claim with clear scope limitations
-claude-code "Use validate_vendor_mapping for vendor 'NetworkScanner Pro', safeguard '1.1', claimed capability 'partial', with supporting text: 'Our scanner provides comprehensive network device discovery and maintains detailed hardware inventories, but is limited to network-accessible devices and does not track software installations or offline systems.'"
-
-# Insufficient evidence example
-claude-code "Use validate_vendor_mapping for vendor 'BasicTracker', safeguard '1.1', claimed capability 'full', with supporting text: 'We help track computers and provide some visibility into your IT environment.'"
+# Risk-based prioritization
+claude-code "Get details for safeguards 13.1, 13.3, and 13.6. Our organization faces advanced persistent threats. Rank these network monitoring vendors by threat detection capability: 1) CrowdStrike Falcon 2) SentinelOne 3) Microsoft Defender for Endpoint."
 ```
 
 ## 🎯 CIS Controls Coverage
@@ -421,11 +395,12 @@ claude-code "Use validate_vendor_mapping for vendor 'BasicTracker', safeguard '1
 - **Full framework coverage** from Controls 1-18
 - **Comprehensive vendor analysis** capability for all CIS safeguards
 
-### Current Version Highlights
-- ✅ **All 18 Controls** implemented (Enterprise Assets through Penetration Testing)
-- ✅ **Color-coded element categorization** (Orange/Green/Yellow/Gray)
-- ✅ **Enhanced capability detection** (Governance, Facilitates, Coverage, Validates)
-- ✅ **Production-ready** vendor analysis for complete compliance assessments
+### v1.4.0 Pure Data Provider Highlights
+- ✅ **Simplified Architecture** - Clean data provision without analysis complexity
+- ✅ **LLM-Powered Analysis** - Sophisticated, context-aware capability assessment
+- ✅ **Enhanced Flexibility** - Custom methodologies and unlimited analysis approaches  
+- ✅ **Complete Framework** - All 18 Controls with 153 safeguards for comprehensive evaluation
+- ✅ **Transparent Reasoning** - Full visibility into analysis logic and evidence evaluation
 
 ## 🛠️ Development
 

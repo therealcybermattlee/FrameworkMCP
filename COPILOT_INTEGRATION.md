@@ -1,10 +1,10 @@
 # Microsoft Copilot Integration Guide
 
-This guide provides step-by-step instructions for integrating Framework MCP with Microsoft Copilot using custom connectors.
+This guide provides step-by-step instructions for integrating Framework MCP v1.4.0's Pure Data Provider architecture with Microsoft Copilot using custom connectors.
 
 ## Overview
 
-Framework MCP provides a dual-architecture solution that enables both Model Context Protocol (MCP) integration with Claude Code and HTTP API integration with Microsoft Copilot. This allows security professionals to access CIS Controls capability assessment through their preferred AI platform.
+Framework MCP v1.4.0 provides a **Pure Data Provider architecture** with dual interfaces enabling both Model Context Protocol (MCP) integration with Claude Code and HTTP API integration with Microsoft Copilot. This empowers security professionals to access authoritative CIS Controls data through their preferred AI platform for sophisticated, LLM-driven vendor capability analysis.
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ Expected response:
   "uptime": 1234,
   "totalRequests": 0,
   "errorCount": 0,
-  "version": "1.3.7",
+  "version": "1.4.0",
   "timestamp": "2025-08-21T01:00:00.000Z"
 }
 ```
@@ -74,8 +74,8 @@ Expected response:
    - Click **Continue**
 
 4. **Configure Connector Details**
-   - **Name**: Framework MCP - CIS Controls Capability Assessment
-   - **Description**: Validate vendor capability claims against CIS Controls Framework
+   - **Name**: Framework MCP - Pure Data Provider
+   - **Description**: Authoritative CIS Controls Framework data for LLM-driven analysis
    - **Host**: Update to your deployed API URL (e.g., `your-app.ondigitalocean.app`)
    - **Base URL**: `/`
 
@@ -109,89 +109,72 @@ Expected response:
    - Select **Custom connector**
    - Choose your Framework MCP connector
 
-## Custom Actions Configuration
+## Data Actions Configuration
 
-### Primary Action: Validate Vendor Capability
+### Primary Action: Get Safeguard Details
 
-Configure this action for evidence-based validation:
+Configure this action for detailed CIS safeguard information:
 
 **Action Details:**
-- **Name**: Validate Vendor Capability Mapping
-- **Description**: Validate vendor capability claims against CIS Controls with domain validation and auto-downgrade protection
+- **Name**: Get CIS Safeguard Details
+- **Description**: Retrieve detailed CIS Controls safeguard breakdown for LLM analysis
 - **Connector**: Framework MCP Custom Connector
-- **Operation**: `validateVendorMapping`
+- **Operation**: `getSafeguardDetails`
 
 **Parameters:**
-- **vendor_name** (Required): Name of the vendor/tool being analyzed
-- **safeguard_id** (Required): CIS safeguard ID (e.g., "1.1", "5.1", "12.8")
-- **claimed_capability** (Required): Capability role (full, partial, facilitates, governance, validates)
-- **supporting_text** (Required): Vendor response supporting their capability claim
+- **safeguardId** (Required): CIS safeguard ID (e.g., "1.1", "5.1", "12.8")
+- **include_examples** (Optional): Include implementation examples (true/false)
 
 **Sample Input:**
 ```json
 {
-  "vendor_name": "CrowdStrike Falcon",
-  "safeguard_id": "1.1",
-  "claimed_capability": "full",
-  "supporting_text": "Our platform provides comprehensive enterprise asset inventory with real-time discovery, automated classification, and continuous monitoring of all hardware and software assets across the organization."
+  "safeguardId": "5.1",
+  "include_examples": true
 }
 ```
 
-### Secondary Action: Analyze Vendor Response
+### Secondary Action: List All Safeguards
 
-Configure this action for capability determination:
+Configure this action for safeguard discovery:
 
 **Action Details:**
-- **Name**: Analyze Vendor Response
-- **Description**: Determine appropriate capability role for vendor response text
+- **Name**: List CIS Safeguards
+- **Description**: Get complete list of available CIS Controls safeguards
 - **Connector**: Framework MCP Custom Connector
-- **Operation**: `analyzeVendorResponse`
+- **Operation**: `listSafeguards`
 
-**Parameters:**
-- **vendor_name** (Required): Name of the vendor
-- **safeguard_id** (Required): CIS safeguard ID
-- **response_text** (Required): Vendor response text to analyze
-
-### Additional Actions: Safeguard Information
-
-**Get Safeguard Details:**
-- **Operation**: `getSafeguardDetails`
-- **Parameters**: safeguard_id, include_examples (optional)
-
-**List Available Safeguards:**
-- **Operation**: `listAvailableSafeguards`  
-- **Parameters**: None
+**No Parameters Required**
 
 ## Example User Interactions
 
-Once configured, users can interact with your Copilot using natural language:
+Once configured, users can interact with your Copilot using natural language for LLM-driven analysis:
 
-### Capability Validation Examples
-
-```
-"Validate this vendor capability: Microsoft Defender for Endpoint claims FULL coverage for safeguard 1.1. Their response: 'Microsoft Defender provides comprehensive asset discovery, detailed hardware and software inventory, and real-time asset status monitoring across all enterprise endpoints.'"
-
-"Check if CrowdStrike Falcon can provide PARTIAL coverage for safeguard 5.1 based on this: 'We offer centralized identity integration with detailed user account tracking and automated access reviews.'"
-
-"Validate this FACILITATES claim: Qualys VMDR for safeguard 1.1 - 'Our vulnerability scanner enhances existing asset management by providing additional device discovery and detailed software inventory during security assessments.'"
-```
-
-### Response Analysis Examples
+### LLM-Driven Capability Assessment
 
 ```
-"Analyze this vendor response for safeguard 6.3: Okta - 'We provide comprehensive multi-factor authentication for all external applications with adaptive authentication policies, risk-based assessments, and SSO integration.'"
+"Get details for safeguard 1.1, then analyze Microsoft Defender for Endpoint's capability: 'Microsoft Defender provides comprehensive asset discovery, detailed hardware and software inventory, and real-time asset status monitoring across all enterprise endpoints.' Determine appropriate capability role and provide confidence assessment."
 
-"What capability role should we assign to this response for safeguard 7.1: Rapid7 InsightVM - 'Our platform performs continuous vulnerability scanning, provides automated remediation guidance, and tracks patch deployment across the infrastructure.'"
+"Retrieve safeguard 5.1 requirements and assess CrowdStrike Falcon: 'We offer centralized identity integration with detailed user account tracking and automated access reviews.' Consider enterprise environment and provide implementation recommendations."
+
+"Get safeguard 6.3 details. For a financial services organization with strict compliance requirements, analyze Okta's MFA solution: 'We provide comprehensive multi-factor authentication for all external applications with adaptive authentication policies, risk-based assessments, and SSO integration.'"
 ```
 
-### Information Requests
+### Comparative Analysis Examples
 
 ```
-"What are the requirements for CIS safeguard 1.1?"
+"Get safeguard 7.1 details and compare these vulnerability management solutions: 1) Rapid7 InsightVM: 'Continuous vulnerability scanning with automated remediation guidance' 2) Qualys VMDR: 'Cloud-based vulnerability scanning with patch prioritization' 3) Tenable Nessus: 'Comprehensive vulnerability assessment with compliance reporting'. Rank by implementation completeness."
 
-"Show me all available CIS safeguards in the inventory domain."
+"Retrieve details for safeguards 13.1, 13.3, and 13.6. Analyze how SentinelOne addresses these network monitoring requirements and identify any coverage gaps."
+```
 
-"What's the difference between FULL and PARTIAL capability roles?"
+### Data Discovery Requests
+
+```
+"Show me all available CIS safeguards related to identity and access management."
+
+"Get detailed breakdown of safeguard 11.1 including all sub-elements and governance requirements."
+
+"List all Implementation Group 1 (IG1) safeguards for a small business security assessment."
 ```
 
 ## Advanced Configuration
@@ -201,20 +184,24 @@ Once configured, users can interact with your Copilot using natural language:
 Add these instructions to your Copilot's system message:
 
 ```
-You are a CIS Controls capability assessment expert. You help security professionals evaluate vendor tool capabilities against specific CIS Control safeguards.
+You are a CIS Controls expert powered by Framework MCP's Pure Data Provider architecture. You help security professionals perform sophisticated vendor capability analysis using authoritative CIS Controls data.
 
 Key Principles:
-1. Use validate_vendor_mapping for evidence-based validation of capability claims
-2. Use analyze_vendor_response when the capability role is unknown
-3. Always explain the 5 capability roles: FULL, PARTIAL, FACILITATES, GOVERNANCE, VALIDATES
-4. Highlight domain validation results and auto-downgrade protection
-5. Provide actionable recommendations for capability improvements
+1. Always retrieve detailed safeguard data using get_safeguard_details before analysis
+2. Apply context-aware analysis considering industry, risk profile, and organizational needs
+3. Explain the 5 capability roles: FULL, PARTIAL, FACILITATES, GOVERNANCE, VALIDATES
+4. Provide transparent reasoning with evidence-based assessments
+5. Offer implementation recommendations and deployment guidance
 
-When users provide vendor responses:
-1. Ask for the specific CIS safeguard ID if not provided
-2. Determine if they want validation (they have a claimed capability) or analysis (no claimed capability)
-3. Use the appropriate action and explain the results in plain language
-4. Highlight any domain mismatches or auto-downgrades that occurred
+Analysis Approach:
+1. Get safeguard requirements using the data actions
+2. Analyze vendor capabilities against detailed CIS requirements
+3. Consider organizational context (industry, size, risk tolerance)
+4. Provide capability role determination with confidence assessment
+5. Include implementation recommendations and integration considerations
+6. For comparative analysis, rank vendors and explain reasoning
+
+Flexibility: Adapt analysis methodology based on user needs - strict compliance, risk-based assessment, technology integration, or custom evaluation criteria.
 ```
 
 ### Environment Variables

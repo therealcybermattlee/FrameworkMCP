@@ -4,7 +4,6 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
-import { CapabilityAnalyzer } from '../../core/capability-analyzer.js';
 import { SafeguardManager } from '../../core/safeguard-manager.js';
 
 interface ErrorResponse {
@@ -15,13 +14,11 @@ interface ErrorResponse {
 
 export class FrameworkHttpServer {
   private app: express.Application;
-  private capabilityAnalyzer: CapabilityAnalyzer;
   private safeguardManager: SafeguardManager;
   private port: number;
 
   constructor(port: number = 8080) {
     this.app = express();
-    this.capabilityAnalyzer = new CapabilityAnalyzer();
     this.safeguardManager = new SafeguardManager();
     this.port = port;
     
@@ -68,44 +65,14 @@ export class FrameworkHttpServer {
   private setupRoutes(): void {
     // Health check endpoint (required for DigitalOcean App Services)
     this.app.get('/health', (req, res) => {
-      const metrics = this.capabilityAnalyzer.getPerformanceMetrics();
       res.json({
         status: 'healthy',
-        uptime: Math.round((Date.now() - metrics.uptime) / 1000),
-        totalRequests: metrics.totalRequests,
-        errorCount: metrics.errorCount,
-        version: '1.3.7',
+        uptime: Math.round(process.uptime()),
+        version: '1.4.0',
         timestamp: new Date().toISOString()
       });
     });
 
-
-    // Capability analysis endpoint
-    this.app.post('/api/analyze-vendor-response', async (req, res) => {
-      try {
-        const { vendor_name, safeguard_id, response_text } = req.body;
-
-        this.validateInput(req.body, ['vendor_name', 'safeguard_id', 'response_text']);
-        this.validateTextInput(response_text, 'Response text');
-        this.safeguardManager.validateSafeguardId(safeguard_id);
-
-        const safeguard = this.safeguardManager.getSafeguardDetails(safeguard_id);
-        if (!safeguard) {
-          return res.status(404).json(this.createErrorResponse('Safeguard not found'));
-        }
-
-        const result = this.capabilityAnalyzer.performCapabilityAnalysis(
-          vendor_name,
-          safeguard,
-          response_text
-        );
-
-        res.json(result);
-      } catch (error) {
-        console.error('[HTTP Server] analyze-vendor-response error:', error);
-        res.status(400).json(this.createErrorResponse(error instanceof Error ? error.message : 'Unknown error'));
-      }
-    });
 
 
     // Get safeguard details endpoint
@@ -145,47 +112,19 @@ export class FrameworkHttpServer {
       }
     });
 
-    // Performance metrics endpoint
-    this.app.get('/api/metrics', (req, res) => {
-      try {
-        const metrics = this.capabilityAnalyzer.getPerformanceMetrics();
-        
-        res.json({
-          uptime_seconds: Math.round((Date.now() - metrics.uptime) / 1000),
-          total_requests: metrics.totalRequests,
-          error_count: metrics.errorCount,
-          error_rate: metrics.totalRequests > 0 ? 
-            ((metrics.errorCount / metrics.totalRequests) * 100).toFixed(2) + '%' : '0%',
-          request_counts: Object.fromEntries(metrics.requestCounts),
-          timestamp: new Date().toISOString()
-        });
-      } catch (error) {
-        console.error('[HTTP Server] metrics error:', error);
-        res.status(500).json(this.createErrorResponse('Metrics unavailable'));
-      }
-    });
 
     // API documentation endpoint
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '1.3.7',
-        description: 'Clean HTTP API for vendor capability assessment against CIS Controls Framework',
+        version: '1.4.0',
+        description: 'Pure Data Provider serving authentic CIS Controls Framework data',
         endpoints: {
-          'POST /api/analyze-vendor-response': 'Primary capability analysis for vendor responses',
           'GET /api/safeguards': 'List all available CIS safeguards',
           'GET /api/safeguards/:id': 'Get detailed safeguard breakdown',
           'GET /health': 'Health check endpoint',
-          'GET /api/metrics': 'Performance metrics',
           'GET /api': 'This documentation'
         },
-        capabilities: [
-          'FULL - Complete implementation of safeguard',
-          'PARTIAL - Limited scope implementation', 
-          'FACILITATES - Enhancement capabilities',
-          'GOVERNANCE - Policy/process management',
-          'VALIDATES - Evidence collection and reporting'
-        ],
         framework: 'CIS Controls v8.1 (153 safeguards)',
         deployment: 'DigitalOcean App Services compatible'
       });
@@ -219,40 +158,6 @@ export class FrameworkHttpServer {
     });
   }
 
-  private validateInput(body: any, requiredFields: string[]): void {
-    if (!body || typeof body !== 'object') {
-      throw new Error('Request body is required and must be valid JSON');
-    }
-
-    for (const field of requiredFields) {
-      if (!body[field] || typeof body[field] !== 'string') {
-        throw new Error(`Field '${field}' is required and must be a non-empty string`);
-      }
-    }
-  }
-
-  private validateTextInput(text: string, fieldName: string): void {
-    if (typeof text !== 'string') {
-      throw new Error(`${fieldName} must be a string`);
-    }
-    
-    if (text.length < 10) {
-      throw new Error(`${fieldName} must be at least 10 characters long`);
-    }
-    
-    if (text.length > 10000) {
-      throw new Error(`${fieldName} must be less than 10,000 characters`);
-    }
-  }
-
-  private validateCapability(capability: string): void {
-    const validCapabilities = ['full', 'partial', 'facilitates', 'governance', 'validates'];
-    
-    if (!validCapabilities.includes(capability.toLowerCase())) {
-      throw new Error(`Invalid capability '${capability}'. Valid options: ${validCapabilities.join(', ')}`);
-    }
-  }
-
   private createErrorResponse(error: string, details?: string): ErrorResponse {
     return {
       error,
@@ -263,11 +168,11 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v1.3.7 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v1.4.0 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`⚡ Clean capability analysis - CIS Controls v8.1`);
+      console.log(`📊 Pure Data Provider - CIS Controls v8.1`);
     });
 
     // Graceful shutdown handling

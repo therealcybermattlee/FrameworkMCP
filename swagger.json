@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Framework MCP API - CIS Controls Capability Assessment",
-    "description": "Microsoft Copilot-compatible API for vendor capability assessment against CIS Controls Framework v8.1 (153 safeguards). Features clean capability analysis architecture for accurate capability role determination (FULL, PARTIAL, FACILITATES, GOVERNANCE, VALIDATES).",
-    "version": "1.3.7",
+    "title": "Framework MCP API - Pure Data Provider",
+    "description": "Microsoft Copilot-compatible API providing authoritative CIS Controls Framework v8.1 data (153 safeguards). Pure Data Provider architecture empowers LLMs with structured safeguards data for sophisticated, context-aware vendor capability analysis.",
+    "version": "1.4.0",
     "contact": {
       "name": "Framework MCP Support",
       "url": "https://github.com/therealcybermattlee/FrameworkMCP"
@@ -37,56 +37,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HealthResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/analyze-vendor-response": {
-      "post": {
-        "summary": "Analyze Vendor Response (PRIMARY)",
-        "description": "Primary endpoint for analyzing vendor response text to determine appropriate capability role for CIS safeguards",
-        "operationId": "analyzeVendorResponse",
-        "tags": ["Capability Assessment"],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AnalysisRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Analysis completed successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VendorAnalysisResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request parameters",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Safeguard not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -220,112 +170,6 @@
   },
   "components": {
     "schemas": {
-      "CapabilityRole": {
-        "type": "string",
-        "enum": ["full", "partial", "facilitates", "governance", "validates"],
-        "description": "Vendor tool capability roles:\n- FULL: Complete implementation of safeguard\n- PARTIAL: Limited scope implementation\n- FACILITATES: Enhancement capabilities that enable better/faster/stronger implementation\n- GOVERNANCE: Policy/process management and oversight\n- VALIDATES: Evidence collection, audit, and reporting"
-      },
-      "AnalysisRequest": {
-        "type": "object",
-        "required": ["vendor_name", "safeguard_id", "response_text"],
-        "properties": {
-          "vendor_name": {
-            "type": "string",
-            "description": "Name of the vendor",
-            "minLength": 1,
-            "maxLength": 100,
-            "example": "Microsoft Defender"
-          },
-          "safeguard_id": {
-            "type": "string",
-            "pattern": "^[0-9]+\\.[0-9]+$",
-            "description": "CIS safeguard ID",
-            "example": "5.1"
-          },
-          "response_text": {
-            "type": "string",
-            "description": "Vendor response text to analyze for capability determination",
-            "minLength": 10,
-            "maxLength": 10000,
-            "example": "We provide centralized account management with role-based access controls, automated provisioning and deprovisioning, and integration with Active Directory for enterprise identity management."
-          }
-        }
-      },
-      "VendorAnalysisResponse": {
-        "type": "object",
-        "properties": {
-          "vendor": {
-            "type": "string",
-            "description": "Name of the vendor or tool",
-            "example": "Microsoft Defender"
-          },
-          "safeguardId": {
-            "type": "string",
-            "description": "CIS safeguard ID",
-            "example": "5.1"
-          },
-          "safeguardTitle": {
-            "type": "string",
-            "description": "Title of the CIS safeguard",
-            "example": "Establish and Maintain an Inventory of Accounts"
-          },
-          "capability": {
-            "$ref": "#/components/schemas/CapabilityRole",
-            "description": "Primary capability categorization"
-          },
-          "capabilities": {
-            "type": "object",
-            "description": "Detailed capability breakdown",
-            "properties": {
-              "full": {
-                "type": "boolean",
-                "description": "Directly implements the core safeguard functionality"
-              },
-              "partial": {
-                "type": "boolean",
-                "description": "Implements limited aspects of the safeguard"
-              },
-              "facilitates": {
-                "type": "boolean",
-                "description": "Enhances or enables safeguard implementation by others"
-              },
-              "governance": {
-                "type": "boolean",
-                "description": "Provides policy, process, and oversight capabilities"
-              },
-              "validates": {
-                "type": "boolean",
-                "description": "Provides evidence, audit, and validation reporting"
-              }
-            }
-          },
-          "confidence": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 100,
-            "description": "Confidence score in the assessment"
-          },
-          "reasoning": {
-            "type": "string",
-            "description": "Detailed explanation of the capability determination"
-          },
-          "evidence": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Evidence supporting the capability assessment"
-          },
-          "toolCapabilityDescription": {
-            "type": "string",
-            "description": "Description of what type of tool this is and its role"
-          },
-          "recommendedUse": {
-            "type": "string",
-            "description": "How practitioners should use this tool for the safeguard"
-          }
-        }
-      },
       "SafeguardListResponse": {
         "type": "object",
         "properties": {
@@ -435,7 +279,7 @@
           },
           "version": {
             "type": "string",
-            "example": "1.3.7"
+            "example": "1.4.0"
           },
           "timestamp": {
             "type": "string",
@@ -480,11 +324,11 @@
           },
           "version": {
             "type": "string",
-            "example": "1.3.7"
+            "example": "1.4.0"
           },
           "description": {
             "type": "string",
-            "example": "Clean HTTP API for vendor capability assessment against CIS Controls Framework"
+            "example": "Pure Data Provider API serving authoritative CIS Controls Framework data for LLM-driven analysis"
           },
           "endpoints": {
             "type": "object",
@@ -531,12 +375,8 @@
   },
   "tags": [
     {
-      "name": "Capability Assessment",
-      "description": "Primary API endpoints for vendor capability assessment against CIS Controls"
-    },
-    {
       "name": "Safeguards",
-      "description": "CIS Controls safeguards information and details"
+      "description": "Authoritative CIS Controls safeguards data for LLM-driven analysis"
     },
     {
       "name": "Monitoring",

@@ -8,23 +8,20 @@ import {
   Tool,
 } from '@modelcontextprotocol/sdk/types.js';
 
-import { CapabilityAnalyzer } from '../../core/capability-analyzer.js';
 import { SafeguardManager } from '../../core/safeguard-manager.js';
 
 export class FrameworkMcpServer {
   private server: Server;
-  private capabilityAnalyzer: CapabilityAnalyzer;
   private safeguardManager: SafeguardManager;
 
   constructor() {
     this.server = new Server(
       {
         name: 'framework-analyzer',
-        version: '1.3.7',
+        version: '1.4.0',
       }
     );
 
-    this.capabilityAnalyzer = new CapabilityAnalyzer();
     this.safeguardManager = new SafeguardManager();
 
     this.setupHandlers();
@@ -35,28 +32,6 @@ export class FrameworkMcpServer {
     this.server.setRequestHandler(ListToolsRequestSchema, async () => {
       return {
         tools: [
-          {
-            name: 'analyze_vendor_response',
-            description: 'Determine vendor tool capability role for specific safeguard',
-            inputSchema: {
-              type: 'object',
-              properties: {
-                vendor_name: {
-                  type: 'string',
-                  description: 'Name of the vendor'
-                },
-                safeguard_id: {
-                  type: 'string',
-                  description: 'CIS safeguard ID (e.g., "1.1", "5.1")'
-                },
-                response_text: {
-                  type: 'string',
-                  description: 'Vendor response text to analyze'
-                }
-              },
-              required: ['vendor_name', 'safeguard_id', 'response_text']
-            }
-          } as Tool,
           {
             name: 'get_safeguard_details',
             description: 'Get detailed safeguard breakdown',
@@ -94,9 +69,6 @@ export class FrameworkMcpServer {
 
       try {
         switch (name) {
-          case 'analyze_vendor_response':
-            return await this.analyzeVendorResponse(args);
-
           case 'get_safeguard_details':
             return await this.getSafeguardDetails(args);
 
@@ -125,29 +97,6 @@ export class FrameworkMcpServer {
     });
   }
 
-
-  private async analyzeVendorResponse(args: any) {
-    const { vendor_name = 'Unknown Vendor', safeguard_id, response_text } = args;
-
-    this.validateTextInput(response_text, 'Response text');
-    this.safeguardManager.validateSafeguardId(safeguard_id);
-
-    const safeguard = this.safeguardManager.getSafeguardDetails(safeguard_id);
-    if (!safeguard) {
-      throw new Error(`Safeguard ${safeguard_id} not found`);
-    }
-
-    const analysis = this.capabilityAnalyzer.performCapabilityAnalysis(vendor_name, safeguard, response_text);
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify(analysis, null, 2),
-        },
-      ],
-    };
-  }
 
   private async getSafeguardDetails(args: any) {
     const { safeguard_id, include_examples = false } = args;
@@ -180,33 +129,11 @@ export class FrameworkMcpServer {
             safeguards,
             total: safeguards.length,
             framework: 'CIS Controls v8.1',
-            version: '1.3.7'
+            version: '1.4.0'
           }, null, 2),
         },
       ],
     };
-  }
-
-  private validateTextInput(text: string, fieldName: string): void {
-    if (typeof text !== 'string') {
-      throw new Error(`${fieldName} must be a string`);
-    }
-    
-    if (text.length < 10) {
-      throw new Error(`${fieldName} must be at least 10 characters long`);
-    }
-    
-    if (text.length > 10000) {
-      throw new Error(`${fieldName} must be less than 10,000 characters`);
-    }
-  }
-
-  private validateCapability(capability: string): void {
-    const validCapabilities = ['full', 'partial', 'facilitates', 'governance', 'validates'];
-    
-    if (!validCapabilities.includes(capability.toLowerCase())) {
-      throw new Error(`Invalid capability '${capability}'. Valid options: ${validCapabilities.join(', ')}`);
-    }
   }
 
   private formatErrorMessage(error: unknown, toolName: string): string {
@@ -214,14 +141,6 @@ export class FrameworkMcpServer {
       // Provide helpful guidance for common errors
       if (error.message.includes('Safeguard') && error.message.includes('not found')) {
         return `${error.message}. Use list_available_safeguards to see all available options.`;
-      }
-      
-      if (error.message.includes('Invalid capability')) {
-        return `${error.message}. Capability roles determine what function the vendor tool plays in safeguard implementation.`;
-      }
-      
-      if (error.message.includes('characters')) {
-        return `${error.message}. Ensure your input text is substantive enough for analysis.`;
       }
       
       return error.message;
@@ -234,8 +153,8 @@ export class FrameworkMcpServer {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
     
-    console.error('🤖 Framework MCP Server v1.3.7 running via stdio');
-    console.error('📊 Clean capability assessment for CIS Controls v8.1');
+    console.error('🤖 Framework MCP Server v1.4.0 running via stdio');
+    console.error('📊 Pure Data Provider for CIS Controls v8.1');
   }
 }
 

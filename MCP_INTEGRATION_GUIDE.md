@@ -2,7 +2,7 @@
 
 ## Claude Code MCP Integration
 
-This guide shows how to integrate Framework MCP with Claude Code for CIS Controls capability assessment.
+This guide shows how to integrate Framework MCP v1.4.0's Pure Data Provider architecture with Claude Code for LLM-driven CIS Controls capability analysis.
 
 ## Prerequisites
 
@@ -68,189 +68,156 @@ claude-code "List all available CIS Control safeguards"
 
 Expected response: List of 153 safeguards across 18 CIS Controls
 
-## 🔧 MCP Tool Usage
+## 🔧 Pure Data Provider Tools
 
-### 1. validate_vendor_mapping (PRIMARY)
+### 1. get_safeguard_details (PRIMARY)
 
-**Most Important Tool**: Evidence-based validation with domain validation
+**Primary Tool**: Retrieve detailed CIS safeguard breakdown for LLM analysis
 
 ```bash
-# Validate FULL capability claim (should pass)
-claude-code "Use validate_vendor_mapping with vendor_name 'ServiceNow CMDB', safeguard_id '1.1', claimed_capability 'full', and supporting_text 'Our CMDB provides comprehensive asset lifecycle management with automated discovery, detailed hardware and software inventory tracking, enterprise asset ownership records, departmental assignments, and documented bi-annual review processes.'"
+# Get comprehensive safeguard data for analysis
+claude-code "Use get_safeguard_details with safeguard_id '1.1' and include_examples true"
 
-# Validate FULL capability claim (should auto-downgrade)  
-claude-code "Use validate_vendor_mapping with vendor_name 'Splunk SIEM', safeguard_id '1.1', claimed_capability 'full', and supporting_text 'Our SIEM platform provides comprehensive network visibility through log analysis and maintains detailed asset information through security event correlation.'"
+# Research multiple related safeguards
+claude-code "Use get_safeguard_details for safeguard 5.1 then explain the key requirements for account inventory management"
 
-# Validate FACILITATES capability claim
-claude-code "Use validate_vendor_mapping with vendor_name 'Nessus Scanner', safeguard_id '1.1', claimed_capability 'facilitates', and supporting_text 'Our vulnerability scanner enhances existing asset management by providing additional device discovery and detailed software inventory during security assessments.'"
+# Get data for comparative analysis
+claude-code "Use get_safeguard_details for safeguard 6.3 then explain what makes this different from basic authentication controls"
 ```
 
-### 2. analyze_vendor_response
+### 2. list_available_safeguards  
 
-**Purpose**: Determine appropriate capability role when unknown
-
-```bash
-# Analyze identity management vendor
-claude-code "Use analyze_vendor_response with vendor_name 'Okta', safeguard_id '5.1', and response_text 'We provide comprehensive identity lifecycle management with automated account provisioning, detailed user directories, quarterly access reviews, and full compliance reporting with audit trails.'"
-
-# Analyze cross-domain vendor
-claude-code "Use analyze_vendor_response with vendor_name 'CrowdStrike Falcon', safeguard_id '1.1', and response_text 'Our endpoint protection platform provides real-time asset visibility with comprehensive device inventory, software tracking, and continuous asset monitoring across all enterprise endpoints.'"
-```
-
-### 3. get_safeguard_details
-
-**Purpose**: Research safeguard requirements before assessment
+**Discovery Tool**: Explore available safeguards for planning and assessment
 
 ```bash
-# Basic safeguard details
-claude-code "Use get_safeguard_details with safeguard_id '1.1'"
-
-# Detailed safeguard with examples
-claude-code "Use get_safeguard_details with safeguard_id '5.1' and include_examples true"
-
-# Research multiple safeguards
-claude-code "Use get_safeguard_details for safeguard 6.3 then explain what makes this safeguard different from 5.1"
-```
-
-### 4. list_available_safeguards  
-
-**Purpose**: Discover available safeguards for planning
-
-```bash
-# Complete safeguard list
+# Complete safeguard framework exploration
 claude-code "Use list_available_safeguards"
 
 # Targeted safeguard discovery
 claude-code "Use list_available_safeguards then identify which safeguards are most relevant for identity management vendor assessment"
+
+# Implementation Group planning
+claude-code "Use list_available_safeguards then show me all IG1 safeguards for small business security planning"
 ```
 
-## 📋 Common MCP Workflows
+## 📋 LLM-Driven Analysis Workflows
 
-### Workflow 1: New Vendor Assessment
+### Workflow 1: Comprehensive Vendor Assessment
 ```bash
-# Step 1: Research the safeguard
-claude-code "Use get_safeguard_details for safeguard 1.1 to understand all requirements"
+# Step 1: Get authoritative safeguard data
+claude-code "Use get_safeguard_details with safeguard_id '1.1' and include_examples true"
 
-# Step 2: Analyze vendor response (capability unknown)
-claude-code "Use analyze_vendor_response for vendor 'Device42' with safeguard '1.1' and response 'Our IT asset management platform provides comprehensive device discovery, detailed inventory tracking, and complete asset lifecycle management.'"
+# Step 2: Perform LLM-driven analysis
+claude-code "Based on the safeguard 1.1 requirements above, analyze Device42's capability: 'Our IT asset management platform provides comprehensive device discovery, detailed inventory tracking, and complete asset lifecycle management.' Determine capability role, provide confidence assessment, and recommend implementation approach."
 
-# Step 3: Validate specific claim (if vendor claims specific capability)
-claude-code "Use validate_vendor_mapping to validate Device42's claim of 'full' capability for safeguard 1.1"
+# Step 3: Context-aware evaluation
+claude-code "For our 500-employee technology company, assess whether Device42 meets our asset management needs for IG2 compliance. Consider deployment complexity and integration requirements."
 ```
 
-### Workflow 2: Claims Validation Audit
+### Workflow 2: Multi-Vendor Comparative Analysis
 ```bash
-# Validate high-confidence claim
-claude-code "Use validate_vendor_mapping for vendor 'Microsoft Entra ID', safeguard '5.1', claimed capability 'full', with supporting text 'Complete identity management with automated provisioning, detailed account inventories, quarterly reviews, and comprehensive compliance reporting.'"
+# Get safeguard requirements
+claude-code "Use get_safeguard_details for safeguard 5.1 with examples"
 
-# Validate questionable claim  
-claude-code "Use validate_vendor_mapping for vendor 'Network Scanner Pro', safeguard '1.1', claimed capability 'full', with supporting text 'We scan networks and find devices.'"
+# Comparative analysis with business context
+claude-code "Using the safeguard 5.1 requirements above, compare these identity management solutions for our financial services organization: 1) Microsoft Entra ID: 'Complete identity management with automated provisioning and compliance reporting' 2) Okta: 'Cloud identity platform with advanced analytics and risk assessment' 3) Ping Identity: 'Enterprise SSO with detailed audit trails and governance workflows'. Rank by compliance strength and implementation fit."
 ```
 
-### Workflow 3: Multi-Safeguard Vendor Analysis
+### Workflow 3: Gap Analysis and Roadmap Planning
 ```bash
-# Analyze vendor across multiple safeguards
-claude-code "Use analyze_vendor_response for Microsoft Defender for Endpoint across these scenarios:
-1. Safeguard 1.1: 'Comprehensive endpoint asset discovery and inventory'
-2. Safeguard 7.1: 'Continuous vulnerability assessment and patch management'  
-3. Safeguard 1.2: 'Unauthorized device detection and blocking'"
+# Research multiple related safeguards
+claude-code "Use get_safeguard_details for safeguard 5.1, then get details for 5.2, 5.3, and 5.4"
+
+# Comprehensive gap analysis
+claude-code "Based on the account management safeguards 5.1-5.4 above, analyze our current IAM capability: Azure AD basic with manual quarterly reviews. Identify gaps, prioritize improvements, and create 12-month implementation roadmap with budget estimates."
 ```
 
-## 🎯 Domain Validation Examples
-
-### Asset Management Domain (Safeguards 1.1, 1.2)
+### Workflow 4: Risk-Based Assessment
 ```bash
-# Appropriate tool type (should pass)
-claude-code "Use validate_vendor_mapping for 'Lansweeper', safeguard '1.1', claimed 'full', with 'Complete IT asset management with automated discovery, comprehensive inventory, and detailed asset tracking.'"
+# Get network monitoring safeguards
+claude-code "Use get_safeguard_details for safeguard 13.1, then get details for 13.3 and 13.6"
 
-# Inappropriate tool type (should auto-downgrade)
-claude-code "Use validate_vendor_mapping for 'Qualys VMDR', safeguard '1.1', claimed 'full', with 'Vulnerability scanning with network discovery and asset databases.'"
+# Risk-focused analysis
+claude-code "Using the network monitoring safeguards above, our financial services organization faces advanced persistent threats and ransomware. Analyze Microsoft Defender for Endpoint's network capabilities: 'Real-time endpoint detection, behavioral analytics, automated response, and network traffic monitoring.' Prioritize safeguards by threat mitigation effectiveness and recommend complementary tools."
 ```
 
-### Identity Management Domain (Safeguards 5.1, 6.3)
+## 🚀 Advanced LLM Analysis Patterns
+
+### Custom Methodology Applications
 ```bash
-# Appropriate tool type (should pass)
-claude-code "Use validate_vendor_mapping for 'SailPoint', safeguard '5.1', claimed 'full', with 'Identity governance with comprehensive account management, lifecycle automation, and quarterly certifications.'"
+# Compliance-focused assessment
+claude-code "Use get_safeguard_details for safeguard 8.2. Apply PCI-DSS Level 1 compliance methodology to analyze Splunk Enterprise Security's logging capability: 'Centralized log management, real-time monitoring, compliance reporting, and data retention policies.' Focus on regulatory alignment and audit readiness."
 
-# Inappropriate tool type (should auto-downgrade)
-claude-code "Use validate_vendor_mapping for 'Splunk', safeguard '5.1', claimed 'full', with 'Account activity monitoring and user behavior analytics through log analysis.'"
+# Technology integration assessment
+claude-code "Use get_safeguard_details for safeguard 16.1. Our DevOps pipeline uses Azure DevOps, GitHub, and Kubernetes. Analyze SonarQube's capability: 'Static application security testing with CI/CD integration and policy enforcement.' Recommend implementation approach and configuration."
+
+# Strategic planning
+claude-code "Use list_available_safeguards to identify all Implementation Group 1 safeguards, then create vendor selection strategy for a 200-employee company with $500K security budget. Prioritize by business impact and implementation complexity."
 ```
 
-## 🚀 Advanced MCP Usage
-
-### Custom Analysis Prompts
-```bash
-# Comparative assessment
-claude-code "Use validate_vendor_mapping to compare these FULL capability claims for safeguard 1.1: ServiceNow CMDB vs Device42 vs Lansweeper. Analyze domain validation, evidence quality, and confidence scores."
-
-# Gap analysis
-claude-code "Use get_safeguard_details for safeguard 5.1, then use analyze_vendor_response for Vendor 'BasicIAM' with response 'We provide user directories and password management.' Identify capability gaps."
-
-# Compliance planning
-claude-code "Use list_available_safeguards to identify all safeguards in Controls 1-3, then recommend which vendor types would be needed for comprehensive coverage."
-```
-
-### Error Handling Examples
+### Data Validation Examples
 ```bash
 # Invalid safeguard ID
 claude-code "Use get_safeguard_details with safeguard_id '99.99'"
 # Expected: Error with available safeguards suggestion
 
-# Invalid capability role
-claude-code "Use validate_vendor_mapping with claimed_capability 'super-full'"
-# Expected: Error listing valid capability roles
+# Missing required parameter
+claude-code "Use get_safeguard_details without safeguard_id"
+# Expected: Error specifying required parameter
 
-# Insufficient supporting text
-claude-code "Use validate_vendor_mapping with supporting_text 'Good tool'"  
-# Expected: Error requiring minimum 10 characters
+# Valid request with detailed response
+claude-code "Use get_safeguard_details with safeguard_id '1.1' and include_examples true"
+# Expected: Complete safeguard breakdown with implementation examples
 ```
 
-## 📊 Understanding MCP Responses
+## 📊 Understanding Pure Data Provider Responses
 
-### Successful Validation Response
+### Detailed Safeguard Data Response
 ```json
 {
-  "vendor_name": "ServiceNow CMDB",
-  "safeguard_id": "1.1", 
-  "claimed_capability": "full",
-  "validated_capability": "full",
-  "validation_status": "SUPPORTED",
-  "confidence_score": 88,
-  "domain_validation": {
-    "tool_type": "cmdb",
-    "domain_appropriate": true,
-    "auto_downgrade_applied": false
-  },
-  "evidence_analysis": {
-    "core_requirements_score": 95,
-    "governance_elements_score": 80,
-    "sub_elements_score": 85,
-    "language_consistency_score": 92
-  },
-  "reasoning": "Strong evidence for FULL capability with appropriate tool type",
-  "recommendations": []
-}
-```
-
-### Auto-Downgrade Response
-```json
-{
-  "vendor_name": "Nessus Scanner",
-  "safeguard_id": "1.1",
-  "claimed_capability": "full", 
-  "validated_capability": "facilitates",
-  "validation_status": "QUESTIONABLE",
-  "confidence_score": 60,
-  "domain_validation": {
-    "tool_type": "vulnerability_management",
-    "domain_appropriate": false,
-    "auto_downgrade_applied": true
-  },
-  "reasoning": "Auto-downgraded from FULL to FACILITATES due to domain mismatch",
-  "recommendations": [
-    "Consider repositioning as FACILITATES capability to align with tool type"
+  "id": "1.1",
+  "title": "Establish and Maintain Detailed Enterprise Asset Inventory",
+  "description": "Establish and maintain an accurate, detailed, and up-to-date inventory of all enterprise assets...",
+  "implementationGroup": "IG1",
+  "governanceElements": [
+    "Maintain detailed inventory procedures",
+    "Establish asset classification standards",
+    "Define asset ownership responsibilities"
+  ],
+  "coreRequirements": [
+    "Automated discovery of enterprise assets",
+    "Detailed hardware and software inventory",
+    "Asset ownership and location tracking"
+  ],
+  "subTaxonomicalElements": [
+    "Device identification and classification",
+    "Software inventory and licensing",
+    "Network topology mapping"
+  ],
+  "implementationSuggestions": [
+    "Deploy automated discovery tools",
+    "Implement CMDB solutions",
+    "Regular inventory audits and updates"
   ]
 }
+```
+
+### LLM Analysis Response Pattern
+```
+CAPABILITY ASSESSMENT: ServiceNow CMDB vs Safeguard 1.1
+
+DETERMINATION: FULL + GOVERNANCE + VALIDATES
+CONFIDENCE: 88%
+
+EVIDENCE ANALYSIS:
+✅ Core Requirements: Comprehensive CMDB with automated discovery
+✅ Governance Elements: Detailed procedures and asset classification
+✅ Sub-Elements: Complete device and software inventory tracking
+✅ Implementation: Strong technical capabilities and proven enterprise deployment
+
+REASONING: ServiceNow CMDB demonstrates strong alignment with all core requirements and provides additional governance and validation capabilities through workflow automation and compliance reporting.
+
+RECOMMENDATIONS: Excellent foundation for IG2-IG3 implementation. Consider integration with security tools for enhanced asset risk assessment.
 ```
 
 ## 🔍 Troubleshooting

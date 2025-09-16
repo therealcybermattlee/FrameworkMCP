@@ -1,11 +1,11 @@
 # Framework MCP Deployment Guide
 
-## Dual Architecture: MCP + HTTP API
+## Pure Data Provider Architecture: MCP + HTTP API
 
-Framework MCP v1.3.7 features a **dual architecture** that solves the DigitalOcean App Services stdio vs HTTP mismatch:
+Framework MCP v1.4.0 features a **Pure Data Provider architecture** with dual interfaces for maximum flexibility:
 
-- **MCP Interface**: stdio-based for Claude Code integration
-- **HTTP Interface**: REST API for cloud deployment
+- **MCP Interface**: stdio-based for Claude Code integration with LLM-driven analysis
+- **HTTP Interface**: REST API for cloud deployment and Microsoft Copilot integration
 
 ---
 
@@ -146,38 +146,20 @@ GET /health
 # Returns server status and metrics
 ```
 
-### Primary Validation
+### Data Endpoints (Pure Provider Architecture)
 ```bash
-POST /api/validate-vendor-mapping
-{
-  "vendor_name": "AssetMax Pro",
-  "safeguard_id": "1.1", 
-  "claimed_capability": "full",
-  "supporting_text": "Comprehensive asset management..."
-}
+GET /api/safeguards              # List all 153 CIS safeguards
+GET /api/safeguards/1.1         # Get detailed safeguard breakdown
+GET /api/safeguards/1.1?include_examples=true  # Include implementation examples
 ```
 
-### Capability Analysis
+### Monitoring
 ```bash
-POST /api/analyze-vendor-response
-{
-  "vendor_name": "VendorName",
-  "safeguard_id": "5.1",
-  "response_text": "Our identity management solution..."
-}
+GET /api/metrics                # Performance metrics and statistics
+GET /api                        # API documentation and capabilities
 ```
 
-### Safeguards
-```bash
-GET /api/safeguards              # List all safeguards
-GET /api/safeguards/1.1         # Get safeguard details
-GET /api/safeguards/1.1?include_examples=true
-```
-
-### Performance
-```bash
-GET /api/metrics                # Performance metrics
-```
+**LLM-Driven Analysis**: The Pure Data Provider architecture supplies authoritative CIS data while LLMs perform sophisticated vendor capability analysis with unlimited flexibility.
 
 ---
 
@@ -185,45 +167,62 @@ GET /api/metrics                # Performance metrics
 
 ### HTTP Interface Advantages
 - ✅ **DigitalOcean Compatible**: Uses HTTP instead of stdio
-- ✅ **REST API**: Standard HTTP endpoints
+- ✅ **REST API**: Standard HTTP endpoints for data access
 - ✅ **Health Checks**: Platform monitoring support
 - ✅ **CORS Enabled**: Web application integration
 - ✅ **Production Ready**: Error handling, security, compression
+- ✅ **Microsoft Copilot**: Custom connector compatibility
 
 ### MCP Interface Advantages  
 - ✅ **Claude Code Integration**: Native stdio communication
 - ✅ **Tool Discovery**: Automatic tool registration
 - ✅ **Type Safety**: Full MCP schema validation
-- ✅ **Rich Responses**: Structured tool responses
+- ✅ **LLM-Driven Analysis**: Direct access to safeguards data for intelligent analysis
 
-### Shared Core Benefits
-- ✅ **Identical Functionality**: Both interfaces use same logic
-- ✅ **Content Analysis**: Comprehensive capability assessment in both
-- ✅ **Performance**: 95% cache optimization in both
-- ✅ **Consistency**: Same capability assessment results
+### Pure Data Provider Benefits
+- ✅ **Clean Architecture**: Simple data provision without analysis complexity
+- ✅ **LLM Flexibility**: Unlimited analysis approaches and methodologies
+- ✅ **Performance Optimized**: Fast data retrieval for real-time analysis
+- ✅ **Context-Aware**: LLMs can apply industry, risk, and organizational context
+- ✅ **Transparent Reasoning**: Full visibility into analysis logic and evidence
 
 ---
 
 ## Migration Guide
 
-### From MCP-Only to Dual Architecture
+### Migrating to Pure Data Provider v1.4.0
 
-1. **No Breaking Changes**: Existing MCP integrations continue working
-2. **New HTTP Option**: Add cloud deployment capability
-3. **Gradual Adoption**: Choose interface based on use case
+1. **Simplified Architecture**: Analysis logic moved to LLM capability
+2. **Enhanced Flexibility**: Unlimited analysis approaches and methodologies
+3. **Maintained Compatibility**: Both interfaces continue providing data access
+4. **Improved Performance**: Optimized for fast data retrieval
 
 ### Use Case Guidelines
 
 **Use MCP Interface When:**
-- Integrating with Claude Code
+- Integrating with Claude Code for LLM-driven analysis
 - Local development and testing
-- Tool-based LLM interactions
+- Direct tool-based interactions with LLMs
 
 **Use HTTP Interface When:**
-- Cloud deployment required
-- Web application integration
-- API-based access needed
-- DigitalOcean App Services deployment
+- Cloud deployment required (DigitalOcean, Railway, Render)
+- Microsoft Copilot custom connector integration
+- Web application or API-based access needed
+- Distributed team access to CIS Controls data
+
+### Analysis Pattern Migration
+
+**Old Approach (v1.3.7):**
+```bash
+POST /api/analyze-vendor-response
+# Hardcoded analysis with fixed validation rules
+```
+
+**New Approach (v1.4.0):**
+```bash
+GET /api/safeguards/5.1
+# Get authoritative data, then use LLM for sophisticated analysis
+```
 
 ---
 

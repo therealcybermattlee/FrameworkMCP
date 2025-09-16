@@ -11,8 +11,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 export { FrameworkMcpServer } from './interfaces/mcp/mcp-server.js';
 export { FrameworkHttpServer } from './interfaces/http/http-server.js';
-export { CapabilityAnalyzer } from './core/capability-analyzer.js';
 export { SafeguardManager } from './core/safeguard-manager.js';
 
-// Clean architecture - all safeguards data moved to SafeguardManager
+// Pure Data Provider architecture - authentic CIS Controls data via SafeguardManager
 
