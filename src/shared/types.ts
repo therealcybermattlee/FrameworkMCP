@@ -14,6 +14,13 @@ export interface SafeguardElement {
   implementationSuggestions: string[]; // Gray - Suggestions for implementation
   relatedSafeguards: string[];
   keywords: string[];
+  systemPrompt?: {
+    role: string;           // e.g., "asset_inventory_expert", "access_control_specialist"
+    context: string;        // Brief context about the safeguard for AI understanding
+    objective: string;      // What the AI should accomplish
+    guidelines: string[];   // Specific evaluation criteria and methods
+    outputFormat: string;   // Expected response structure for n8n processing
+  };
 }
 
 export interface VendorAnalysis {

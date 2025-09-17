@@ -238,7 +238,19 @@ export class SafeguardManager {
       "For mobile end-user devices, MDM type tools can support this process, where appropriate"
     ],
     relatedSafeguards: ["1.2", "1.3", "1.4", "1.5", "2.1", "3.2", "4.1", "5.1"],
-    keywords: ["asset", "inventory", "device", "network", "mobile", "IoT", "server", "detailed", "accurate", "up-to-date"]
+    keywords: ["asset", "inventory", "device", "network", "mobile", "IoT", "server", "detailed", "accurate", "up-to-date"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating enterprise asset inventory solutions against CIS Control 1.1 requirements for comprehensive asset tracking.",
+      objective: "Determine if a vendor solution provides complete, accurate, and up-to-date enterprise asset inventory capabilities.",
+      guidelines: [
+        "Verify coverage of all asset types: end-user devices, network devices, IoT, servers",
+        "Confirm data collection includes: network/hardware addresses, machine names, ownership, department approval",
+        "Validate inventory accuracy and real-time updating capabilities",
+        "Assess policy/process management and bi-annual review compliance"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "5.1": {
     id: "5.1",
@@ -277,7 +289,21 @@ export class SafeguardManager {
       "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["1.1", "2.1", "5.2", "5.3", "5.4", "5.5", "5.6", "6.1", "6.2", "6.7", "12.8"],
-    keywords: ["establish", "maintain", "inventory", "accounts", "user", "administrator", "name", "username", "dates", "department", "quarterly", "validate", "authorized", "recurring"]
+    keywords: ["establish", "maintain", "inventory", "accounts", "user", "administrator", "name", "username", "dates", "department", "quarterly", "validate", "authorized", "recurring"],
+    systemPrompt: {
+      role: "account_inventory_specialist",
+      context: "You are evaluating account management solutions against CIS Control 5.1 requirements for comprehensive account inventory and validation.",
+      objective: "Determine if a vendor solution provides complete account inventory management with quarterly validation processes.",
+      guidelines: [
+        "Verify comprehensive account inventory for all user and administrator accounts",
+        "Confirm tracking of required metadata (name, username, start/stop dates, department)",
+        "Validate quarterly account authorization review processes",
+        "Assess automated account discovery and lifecycle management",
+        "Review unauthorized account detection and remediation",
+        "Check compliance reporting and audit trail capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "6.3": {
     id: "6.3", 
@@ -308,7 +334,21 @@ export class SafeguardManager {
       "Multi-Factor Authentication Tool"
     ],
     relatedSafeguards: ["2.1", "4.1"],
-    keywords: ["require", "externally-exposed", "enterprise", "third-party", "applications", "enforce", "MFA", "supported", "directory", "service", "SSO", "provider"]
+    keywords: ["require", "externally-exposed", "enterprise", "third-party", "applications", "enforce", "MFA", "supported", "directory", "service", "SSO", "provider"],
+    systemPrompt: {
+      role: "multi_factor_authentication_expert",
+      context: "You are evaluating multi-factor authentication solutions against CIS Control 6.3 requirements for externally-exposed application protection.",
+      objective: "Determine if a vendor solution provides comprehensive MFA enforcement for externally-exposed enterprise and third-party applications.",
+      guidelines: [
+        "Verify MFA enforcement for all externally-exposed applications",
+        "Confirm support for enterprise and third-party application integration",
+        "Validate directory service and SSO provider MFA implementation",
+        "Assess MFA method variety and adaptive authentication",
+        "Review policy-based MFA enforcement and exception handling",
+        "Check compliance monitoring and MFA adoption reporting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "7.1": {
     id: "7.1",
@@ -350,7 +390,21 @@ export class SafeguardManager {
       "vulnerability management platforms"
     ],
     relatedSafeguards: ["1.1", "2.1", "7.2", "7.3", "7.4", "7.5", "7.6", "7.7"],
-    keywords: ["vulnerability", "management", "process", "documented", "annual", "review", "enterprise", "assets"]
+    keywords: ["vulnerability", "management", "process", "documented", "annual", "review", "enterprise", "assets"],
+    systemPrompt: {
+      role: "vulnerability_management_process_expert",
+      context: "You are evaluating vulnerability management solutions against CIS Control 7.1 requirements for establishing documented vulnerability management processes.",
+      objective: "Determine if a vendor solution provides comprehensive vulnerability management process establishment and maintenance capabilities.",
+      guidelines: [
+        "Verify documented vulnerability management process creation",
+        "Confirm process maintenance and annual review capabilities",
+        "Validate enterprise asset scope coverage and procedures",
+        "Assess vulnerability identification and assessment workflows",
+        "Review process update mechanisms for enterprise changes",
+        "Check policy integration and governance framework alignment"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "1.2": {
     id: "1.2",
@@ -373,7 +427,19 @@ export class SafeguardManager {
       "The enterprise may choose to remove the asset from the network, deny the asset from connecting remotely to the network, or quarantine the asset"
     ],
     relatedSafeguards: ["1.1", "1.3"],
-    keywords: ["unauthorized", "assets", "weekly", "remove", "deny", "quarantine", "process"]
+    keywords: ["unauthorized", "assets", "weekly", "remove", "deny", "quarantine", "process"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating solutions for addressing unauthorized assets against CIS Control 1.2 requirements for weekly remediation processes.",
+      objective: "Determine if a vendor solution provides automated detection and remediation of unauthorized assets on the network.",
+      guidelines: [
+        "Verify automated detection of unauthorized assets connected to the network",
+        "Confirm weekly or more frequent remediation processes",
+        "Assess capabilities for asset removal, network denial, or quarantine actions",
+        "Validate integration with asset inventory systems for authorization checks"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "1.3": {
     id: "1.3",
@@ -398,7 +464,19 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["1.1", "1.2", "1.4", "1.5"],
-    keywords: ["active", "discovery", "tool", "identify", "assets", "network", "scanning", "mapping"]
+    keywords: ["active", "discovery", "tool", "identify", "assets", "network", "scanning", "mapping"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating active discovery tools against CIS Control 1.3 requirements for daily network asset identification.",
+      objective: "Determine if a vendor solution provides active discovery capabilities to automatically identify network-connected assets.",
+      guidelines: [
+        "Verify active network scanning and asset discovery capabilities",
+        "Confirm daily or more frequent execution scheduling",
+        "Assess accuracy of asset identification across network segments",
+        "Validate integration with asset inventory systems for automatic updates"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "1.4": {
     id: "1.4", 
@@ -425,7 +503,19 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["1.1", "1.2", "1.3", "1.5"],
-    keywords: ["DHCP", "logging", "update", "asset", "inventory", "IP", "address", "network", "tracking"]
+    keywords: ["DHCP", "logging", "update", "asset", "inventory", "IP", "address", "network", "tracking"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating DHCP logging and IPAM solutions against CIS Control 1.4 requirements for network-based asset tracking.",
+      objective: "Determine if a vendor solution provides DHCP logging or IP address management capabilities to enhance asset inventory accuracy.",
+      guidelines: [
+        "Verify DHCP logging capabilities on all DHCP servers",
+        "Assess IP address management (IPAM) tool functionality",
+        "Confirm weekly or more frequent log review and asset inventory updates",
+        "Validate automatic correlation of IP assignments with asset records"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "1.5": {
     id: "1.5",
@@ -451,7 +541,19 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["1.1", "1.2", "1.3", "1.4"],
-    keywords: ["passive", "discovery", "tool", "identify", "assets", "network", "traffic", "monitoring", "non-intrusive"]
+    keywords: ["passive", "discovery", "tool", "identify", "assets", "network", "traffic", "monitoring", "non-intrusive"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating passive discovery tools against CIS Control 1.5 requirements for non-intrusive network asset identification.",
+      objective: "Determine if a vendor solution provides passive discovery capabilities to identify network assets without active scanning.",
+      guidelines: [
+        "Verify passive network monitoring and asset discovery capabilities",
+        "Assess non-intrusive traffic analysis for asset identification",
+        "Confirm weekly or more frequent scan review and inventory updates",
+        "Validate integration with asset inventory systems for comprehensive coverage"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "2.1": {
     id: "2.1",
@@ -489,7 +591,19 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["1.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7"],
-    keywords: ["software", "inventory", "licensed", "detailed", "enterprise", "assets", "applications"]
+    keywords: ["software", "inventory", "licensed", "detailed", "enterprise", "assets", "applications"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating software inventory solutions against CIS Control 2.1 requirements for comprehensive licensed software tracking.",
+      objective: "Determine if a vendor solution provides complete software inventory capabilities for all licensed applications on enterprise assets.",
+      guidelines: [
+        "Verify detailed tracking of all licensed software installations",
+        "Confirm documentation includes: title, publisher, install date, business purpose, URL, versions, deployment mechanism",
+        "Assess bi-annual or more frequent inventory review capabilities",
+        "Validate integration with asset management systems for comprehensive coverage"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "2.2": {
     id: "2.2",
@@ -519,7 +633,19 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["2.1", "2.3", "2.4", "2.5", "2.6", "2.7"],
-    keywords: ["supported", "software", "authorized", "designated", "inventory", "lifecycle", "end-of-life"]
+    keywords: ["supported", "software", "authorized", "designated", "inventory", "lifecycle", "end-of-life"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating software lifecycle management solutions against CIS Control 2.2 requirements for ensuring only supported software is authorized.",
+      objective: "Determine if a vendor solution provides capabilities to track software support status and manage authorization based on vendor support lifecycle.",
+      guidelines: [
+        "Verify tracking of software vendor support status and end-of-life dates",
+        "Assess automated designation of supported software as authorized",
+        "Confirm exception documentation capabilities for necessary unsupported software",
+        "Validate monthly or more frequent review processes for software support status"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "2.3": {
     id: "2.3",
@@ -545,7 +671,19 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["2.1", "2.2", "2.4", "2.5", "2.6", "2.7"],
-    keywords: ["unauthorized", "software", "removed", "approved", "enterprise", "assets", "address"]
+    keywords: ["unauthorized", "software", "removed", "approved", "enterprise", "assets", "address"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating software remediation solutions against CIS Control 2.3 requirements for addressing unauthorized software on enterprise assets.",
+      objective: "Determine if a vendor solution provides capabilities to detect and remediate unauthorized software installations.",
+      guidelines: [
+        "Verify automated detection of unauthorized software on enterprise assets",
+        "Assess software removal and uninstallation capabilities",
+        "Confirm exception documentation and approval workflow features",
+        "Validate monthly or more frequent review and remediation processes"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "2.4": {
     id: "2.4",
@@ -571,7 +709,19 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["2.1", "2.2", "2.3", "2.5", "2.6", "2.7"],
-    keywords: ["automated", "software", "inventory", "tools", "enterprise", "deployment", "discovery"]
+    keywords: ["automated", "software", "inventory", "tools", "enterprise", "deployment", "discovery"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating automated software inventory tools against CIS Control 2.4 requirements for enterprise-wide software discovery and documentation.",
+      objective: "Determine if a vendor solution provides automated software discovery and inventory capabilities across the enterprise.",
+      guidelines: [
+        "Verify automated software discovery capabilities across all enterprise assets",
+        "Assess comprehensive documentation of installed software details",
+        "Confirm enterprise-wide deployment and coverage capabilities",
+        "Validate integration with centralized inventory management systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "2.5": {
     id: "2.5",
@@ -602,7 +752,19 @@ export class SafeguardManager {
       "Application Allowlisting"
     ],
     relatedSafeguards: ["2.1", "2.2", "2.3", "2.4", "2.6", "2.7"],
-    keywords: ["allowlist", "authorized", "software", "technical", "controls", "application", "execution"]
+    keywords: ["allowlist", "authorized", "software", "technical", "controls", "application", "execution"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating application allowlisting solutions against CIS Control 2.5 requirements for restricting software execution to authorized applications only.",
+      objective: "Determine if a vendor solution provides technical controls to allowlist authorized software and prevent unauthorized execution.",
+      guidelines: [
+        "Verify application allowlisting and execution control capabilities",
+        "Assess technical controls for software execution restriction",
+        "Confirm bi-annual or more frequent reassessment processes",
+        "Validate policy management and exception handling features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "2.6": {
     id: "2.6",
@@ -637,7 +799,19 @@ export class SafeguardManager {
       "Specific .so files"
     ],
     relatedSafeguards: ["2.1", "2.2", "2.3", "2.4", "2.5", "2.7"],
-    keywords: ["allowlist", "authorized", "libraries", "dll", "ocx", "so", "system", "process", "technical"]
+    keywords: ["allowlist", "authorized", "libraries", "dll", "ocx", "so", "system", "process", "technical"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating library allowlisting solutions against CIS Control 2.6 requirements for restricting software library loading to authorized libraries only.",
+      objective: "Determine if a vendor solution provides technical controls to allowlist authorized software libraries and prevent unauthorized library loading.",
+      guidelines: [
+        "Verify software library allowlisting capabilities for .dll, .ocx, .so files",
+        "Assess technical controls for preventing unauthorized library loading",
+        "Confirm bi-annual or more frequent reassessment processes",
+        "Validate system process protection and library validation features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "2.7": {
     id: "2.7",
@@ -671,7 +845,19 @@ export class SafeguardManager {
       "Specific .py files"
     ],
     relatedSafeguards: ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6"],
-    keywords: ["allowlist", "authorized", "scripts", "digital", "signatures", "version", "control", "execution"]
+    keywords: ["allowlist", "authorized", "scripts", "digital", "signatures", "version", "control", "execution"],
+    systemPrompt: {
+      role: "asset_inventory_expert",
+      context: "You are evaluating script allowlisting solutions against CIS Control 2.7 requirements for restricting script execution to authorized scripts only.",
+      objective: "Determine if a vendor solution provides technical controls to allowlist authorized scripts and prevent unauthorized script execution.",
+      guidelines: [
+        "Verify script allowlisting capabilities for .ps1, .py, and other script files",
+        "Assess digital signature validation and version control integration",
+        "Confirm bi-annual or more frequent reassessment processes",
+        "Validate script blocking capabilities for unauthorized execution attempts"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.1": {
     id: "3.1",
@@ -704,7 +890,21 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"],
-    keywords: ["data", "management", "process", "establish", "maintain", "governance", "lifecycle"]
+    keywords: ["data", "management", "process", "establish", "maintain", "governance", "lifecycle"],
+    systemPrompt: {
+      role: "data_governance_expert",
+      context: "You are evaluating data management solutions against CIS Control 3.1 requirements for comprehensive data governance processes.",
+      objective: "Determine if a vendor solution provides documented data management processes covering sensitivity, ownership, handling, retention, and disposal.",
+      guidelines: [
+        "Verify comprehensive data management process documentation",
+        "Confirm coverage of data sensitivity classification and handling procedures", 
+        "Validate data ownership assignment and accountability measures",
+        "Assess retention policies with both minimum and maximum limits",
+        "Review disposal requirements commensurate with data sensitivity",
+        "Check annual review processes and change management triggers"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.2": {
     id: "3.2",
@@ -733,7 +933,21 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["1.1", "3.1", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"],
-    keywords: ["data", "inventory", "enterprise", "management", "process", "identification", "tracking"]
+    keywords: ["data", "inventory", "enterprise", "management", "process", "identification", "tracking"],
+    systemPrompt: {
+      role: "data_inventory_specialist",
+      context: "You are evaluating data inventory solutions against CIS Control 3.2 requirements for comprehensive data asset tracking.",
+      objective: "Determine if a vendor solution provides complete data inventory capabilities based on enterprise data management processes.",
+      guidelines: [
+        "Verify comprehensive data inventory creation and maintenance",
+        "Confirm sensitive data identification and prioritization",
+        "Validate integration with enterprise data management processes",
+        "Assess annual review and update mechanisms",
+        "Check inventory accuracy and completeness coverage",
+        "Review automated discovery and classification capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.3": {
     id: "3.3",
@@ -761,7 +975,21 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["3.1", "3.2", "3.4", "3.5", "3.6", "5.1", "6.1", "6.2"],
-    keywords: ["data", "access", "control", "lists", "need", "know", "user", "permissions"]
+    keywords: ["data", "access", "control", "lists", "need", "know", "user", "permissions"],
+    systemPrompt: {
+      role: "access_control_specialist",
+      context: "You are evaluating data access control solutions against CIS Control 3.3 requirements for need-to-know access management.",
+      objective: "Determine if a vendor solution provides comprehensive data access control lists with need-to-know enforcement capabilities.",
+      guidelines: [
+        "Verify granular access control list configuration and management",
+        "Confirm need-to-know principle enforcement mechanisms",
+        "Validate coverage across local and remote file systems",
+        "Assess database and application access permission capabilities",
+        "Review user-based access control granularity",
+        "Check integration with identity and access management systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.4": {
     id: "3.4",
@@ -788,7 +1016,21 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["3.1", "3.2", "3.5", "3.6", "3.10"],
-    keywords: ["data", "retention", "enterprise", "management", "process", "lifecycle", "schedule"]
+    keywords: ["data", "retention", "enterprise", "management", "process", "lifecycle", "schedule"],
+    systemPrompt: {
+      role: "data_retention_specialist",
+      context: "You are evaluating data retention solutions against CIS Control 3.4 requirements for enterprise data lifecycle management.",
+      objective: "Determine if a vendor solution provides comprehensive data retention enforcement with minimum and maximum timeline capabilities.",
+      guidelines: [
+        "Verify documented data retention policy implementation",
+        "Confirm minimum and maximum timeline enforcement mechanisms",
+        "Validate integration with enterprise data management processes",
+        "Assess automated retention schedule management",
+        "Review policy compliance monitoring and reporting",
+        "Check data lifecycle automation and enforcement capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.5": {
     id: "3.5",
@@ -812,7 +1054,21 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["3.1", "3.2", "3.4", "3.6", "3.10"],
-    keywords: ["securely", "dispose", "data", "enterprise", "management", "process", "destruction"]
+    keywords: ["securely", "dispose", "data", "enterprise", "management", "process", "destruction"],
+    systemPrompt: {
+      role: "data_disposal_expert",
+      context: "You are evaluating secure data disposal solutions against CIS Control 3.5 requirements for enterprise data destruction.",
+      objective: "Determine if a vendor solution provides secure data disposal capabilities commensurate with data sensitivity levels.",
+      guidelines: [
+        "Verify secure disposal method implementation and effectiveness",
+        "Confirm data sensitivity-appropriate destruction techniques",
+        "Validate integration with enterprise data management processes",
+        "Assess destruction method documentation and verification",
+        "Review disposal process automation and compliance tracking",
+        "Check certification and audit trail capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.6": {
     id: "3.6",
@@ -837,7 +1093,21 @@ export class SafeguardManager {
       "Linux dm-crypt"
     ],
     relatedSafeguards: ["1.1", "3.1", "3.2", "3.7", "3.8", "3.9", "3.11"],
-    keywords: ["encrypt", "data", "end-user", "devices", "sensitive", "protection", "encryption"]
+    keywords: ["encrypt", "data", "end-user", "devices", "sensitive", "protection", "encryption"],
+    systemPrompt: {
+      role: "endpoint_encryption_specialist",
+      context: "You are evaluating endpoint encryption solutions against CIS Control 3.6 requirements for end-user device data protection.",
+      objective: "Determine if a vendor solution provides comprehensive end-user device encryption for sensitive data protection.",
+      guidelines: [
+        "Verify full disk encryption implementation on end-user devices",
+        "Confirm sensitive data encryption coverage and strength",
+        "Validate encryption key management and recovery capabilities",
+        "Assess cross-platform support (Windows, macOS, Linux)",
+        "Review centralized encryption policy management",
+        "Check compliance reporting and device encryption status monitoring"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.7": {
     id: "3.7",
@@ -868,7 +1138,21 @@ export class SafeguardManager {
       "Public"
     ],
     relatedSafeguards: ["3.1", "3.2", "3.3", "3.8", "3.9", "3.10", "3.11", "3.12"],
-    keywords: ["establish", "maintain", "data", "classification", "scheme", "sensitivity", "labeling"]
+    keywords: ["establish", "maintain", "data", "classification", "scheme", "sensitivity", "labeling"],
+    systemPrompt: {
+      role: "data_classification_expert",
+      context: "You are evaluating data classification solutions against CIS Control 3.7 requirements for enterprise data sensitivity management.",
+      objective: "Determine if a vendor solution provides comprehensive data classification scheme establishment and maintenance capabilities.",
+      guidelines: [
+        "Verify data classification scheme creation and management",
+        "Confirm sensitivity label implementation (Sensitive, Confidential, Public)",
+        "Validate automated data classification and labeling capabilities",
+        "Assess annual review and update processes",
+        "Review integration with enterprise data management processes",
+        "Check policy enforcement and compliance monitoring"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.8": {
     id: "3.8",
@@ -898,7 +1182,21 @@ export class SafeguardManager {
       "Service provider documentation"
     ],
     relatedSafeguards: ["3.1", "3.2", "3.7", "3.9", "3.10", "3.11"],
-    keywords: ["document", "data", "flows", "sensitive", "mapping", "tracking", "lineage"]
+    keywords: ["document", "data", "flows", "sensitive", "mapping", "tracking", "lineage"],
+    systemPrompt: {
+      role: "data_flow_analyst",
+      context: "You are evaluating data flow documentation solutions against CIS Control 3.8 requirements for enterprise data movement tracking.",
+      objective: "Determine if a vendor solution provides comprehensive data flow documentation including service provider interactions.",
+      guidelines: [
+        "Verify comprehensive data flow mapping and documentation",
+        "Confirm service provider data flow tracking capabilities",
+        "Validate integration with enterprise data management processes",
+        "Assess automated data lineage discovery and documentation",
+        "Review annual update and change management processes",
+        "Check visual mapping and reporting capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.9": {
     id: "3.9",
@@ -919,7 +1217,21 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["3.1", "3.6", "3.7", "3.10", "3.11"],
-    keywords: ["encrypt", "data", "removable", "media", "portable", "storage", "USB"]
+    keywords: ["encrypt", "data", "removable", "media", "portable", "storage", "USB"],
+    systemPrompt: {
+      role: "removable_media_security_specialist",
+      context: "You are evaluating removable media encryption solutions against CIS Control 3.9 requirements for portable storage protection.",
+      objective: "Determine if a vendor solution provides comprehensive encryption for data on removable media devices.",
+      guidelines: [
+        "Verify encryption implementation for all removable media types",
+        "Confirm automatic encryption enforcement on USB devices",
+        "Validate encryption key management for portable storage",
+        "Assess policy-based encryption controls and exceptions",
+        "Review centralized management and monitoring capabilities",
+        "Check compliance reporting and device access controls"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.10": {
     id: "3.10",
@@ -942,7 +1254,21 @@ export class SafeguardManager {
       "OpenSSH"
     ],
     relatedSafeguards: ["3.1", "3.7", "3.8", "3.11", "13.1", "13.2"],
-    keywords: ["encrypt", "sensitive", "data", "transit", "transmission", "TLS", "communication"]
+    keywords: ["encrypt", "sensitive", "data", "transit", "transmission", "TLS", "communication"],
+    systemPrompt: {
+      role: "data_in_transit_encryption_expert",
+      context: "You are evaluating data-in-transit encryption solutions against CIS Control 3.10 requirements for transmission protection.",
+      objective: "Determine if a vendor solution provides comprehensive encryption for sensitive data during transmission.",
+      guidelines: [
+        "Verify encryption implementation for all data transmissions",
+        "Confirm TLS/SSL protocol support and configuration",
+        "Validate secure communication protocol enforcement",
+        "Assess certificate management and PKI integration",
+        "Review encryption strength and algorithm compliance",
+        "Check monitoring and compliance reporting capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.11": {
     id: "3.11",
@@ -972,7 +1298,21 @@ export class SafeguardManager {
       "Where access to the data storage device(s) does not permit access to the plain-text data"
     ],
     relatedSafeguards: ["3.1", "3.6", "3.7", "3.9", "3.10", "11.1"],
-    keywords: ["encrypt", "sensitive", "data", "rest", "storage", "database", "persistent"]
+    keywords: ["encrypt", "sensitive", "data", "rest", "storage", "database", "persistent"],
+    systemPrompt: {
+      role: "data_at_rest_encryption_specialist",
+      context: "You are evaluating data-at-rest encryption solutions against CIS Control 3.11 requirements for stored data protection.",
+      objective: "Determine if a vendor solution provides comprehensive encryption for sensitive data stored on servers, applications, and databases.",
+      guidelines: [
+        "Verify storage-layer encryption implementation on servers and databases",
+        "Confirm application-layer encryption capabilities for sensitive data",
+        "Validate encryption key management and protection mechanisms",
+        "Assess transparent data encryption and file-level encryption",
+        "Review encryption performance impact and optimization",
+        "Check compliance reporting and encryption status monitoring"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.12": {
     id: "3.12",
@@ -996,7 +1336,21 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["3.1", "3.7", "12.1", "12.2", "12.3"],
-    keywords: ["segment", "data", "processing", "storage", "classification", "separation", "isolation"]
+    keywords: ["segment", "data", "processing", "storage", "classification", "separation", "isolation"],
+    systemPrompt: {
+      role: "data_segmentation_architect",
+      context: "You are evaluating data segmentation solutions against CIS Control 3.12 requirements for sensitivity-based data isolation.",
+      objective: "Determine if a vendor solution provides comprehensive data processing and storage segmentation based on sensitivity levels.",
+      guidelines: [
+        "Verify data segmentation implementation based on classification",
+        "Confirm isolation of sensitive data from lower sensitivity environments",
+        "Validate network and storage separation capabilities",
+        "Assess automated policy enforcement for data placement",
+        "Review access control integration with segmentation",
+        "Check monitoring and compliance reporting for data isolation"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.13": {
     id: "3.13",
@@ -1026,7 +1380,21 @@ export class SafeguardManager {
       "Host-based Data loss Prevention (DLP) tool"
     ],
     relatedSafeguards: ["3.1", "3.7", "3.8", "3.10", "3.11"],
-    keywords: ["deploy", "data", "loss", "prevention", "solution", "sensitive", "DLP"]
+    keywords: ["deploy", "data", "loss", "prevention", "solution", "sensitive", "DLP"],
+    systemPrompt: {
+      role: "data_loss_prevention_specialist",
+      context: "You are evaluating Data Loss Prevention solutions against CIS Control 3.13 requirements for automated sensitive data identification and protection.",
+      objective: "Determine if a vendor solution provides comprehensive DLP capabilities for identifying and protecting sensitive data across all enterprise assets.",
+      guidelines: [
+        "Verify automated sensitive data discovery and classification",
+        "Confirm comprehensive coverage across onsite and remote assets",
+        "Validate data inventory integration and updating capabilities",
+        "Assess policy-based data protection and loss prevention",
+        "Review monitoring, alerting, and incident response integration",
+        "Check service provider data protection coverage"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "3.14": {
     id: "3.14",
@@ -1050,7 +1418,21 @@ export class SafeguardManager {
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["3.1", "3.7", "3.8", "8.1", "8.2"],
-    keywords: ["log", "sensitive", "data", "access", "modification", "disposal", "audit"]
+    keywords: ["log", "sensitive", "data", "access", "modification", "disposal", "audit"],
+    systemPrompt: {
+      role: "data_access_auditing_expert",
+      context: "You are evaluating data access logging solutions against CIS Control 3.14 requirements for sensitive data activity monitoring.",
+      objective: "Determine if a vendor solution provides comprehensive logging of sensitive data access, modification, and disposal activities.",
+      guidelines: [
+        "Verify comprehensive logging of all sensitive data access events",
+        "Confirm modification and disposal activity tracking",
+        "Validate integration with audit log management systems",
+        "Assess real-time monitoring and alerting capabilities",
+        "Review log retention and analysis capabilities",
+        "Check compliance reporting and forensic investigation support"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.1": {
     id: "4.1",
@@ -1087,7 +1469,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["1.1", "2.1", "4.2", "4.3", "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "4.10", "4.11", "4.12"],
-    keywords: ["establish", "maintain", "documented", "secure", "configuration", "process", "enterprise", "assets", "software", "review", "update"]
+    keywords: ["establish", "maintain", "documented", "secure", "configuration", "process", "enterprise", "assets", "software", "review", "update"],
+    systemPrompt: {
+      role: "secure_configuration_expert",
+      context: "You are evaluating secure configuration management solutions against CIS Control 4.1 requirements for enterprise asset hardening.",
+      objective: "Determine if a vendor solution provides comprehensive secure configuration processes for enterprise assets and software.",
+      guidelines: [
+        "Verify documented secure configuration process establishment",
+        "Confirm coverage of all enterprise assets and software types",
+        "Validate configuration baseline management and enforcement",
+        "Assess automated configuration monitoring and remediation",
+        "Review annual process updates and change management",
+        "Check integration with configuration management tools"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.2": {
     id: "4.2",
@@ -1115,7 +1511,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["1.1", "2.1", "3.10", "4.1", "6.4", "8.1", "12.1", "12.2", "12.3", "12.4", "12.5", "13.3", "13.4", "13.6", "13.8", "13.9", "13.10"],
-    keywords: ["establish", "maintain", "documented", "secure", "configuration", "network", "infrastructure", "process", "devices"]
+    keywords: ["establish", "maintain", "documented", "secure", "configuration", "network", "infrastructure", "process", "devices"],
+    systemPrompt: {
+      role: "network_configuration_specialist",
+      context: "You are evaluating network infrastructure configuration solutions against CIS Control 4.2 requirements for secure network device management.",
+      objective: "Determine if a vendor solution provides comprehensive secure configuration processes for network infrastructure devices.",
+      guidelines: [
+        "Verify documented network configuration process establishment",
+        "Confirm coverage of all network infrastructure device types",
+        "Validate network security baseline management and enforcement",
+        "Assess automated network configuration monitoring and compliance",
+        "Review network change management and approval processes",
+        "Check integration with network management and security tools"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.3": {
     id: "4.3",
@@ -1144,7 +1554,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["configure", "automatic", "session", "locking", "enterprise", "assets", "inactivity", "period", "minutes", "mobile", "operating", "systems"]
+    keywords: ["configure", "automatic", "session", "locking", "enterprise", "assets", "inactivity", "period", "minutes", "mobile", "operating", "systems"],
+    systemPrompt: {
+      role: "session_security_specialist",
+      context: "You are evaluating session management solutions against CIS Control 4.3 requirements for automatic session locking.",
+      objective: "Determine if a vendor solution provides comprehensive automatic session locking capabilities for enterprise assets.",
+      guidelines: [
+        "Verify automatic session locking configuration and enforcement",
+        "Confirm inactivity period customization and policy management",
+        "Validate coverage across all enterprise asset types",
+        "Assess mobile and desktop operating system support",
+        "Review centralized policy deployment and monitoring",
+        "Check user experience and security balance optimization"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.4": {
     id: "4.4",
@@ -1172,7 +1596,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["implement", "manage", "firewall", "servers", "virtual", "operating", "system", "third-party", "agent"]
+    keywords: ["implement", "manage", "firewall", "servers", "virtual", "operating", "system", "third-party", "agent"],
+    systemPrompt: {
+      role: "server_firewall_expert",
+      context: "You are evaluating server firewall solutions against CIS Control 4.4 requirements for host-based server protection.",
+      objective: "Determine if a vendor solution provides comprehensive firewall implementation and management for servers.",
+      guidelines: [
+        "Verify host-based firewall implementation on all servers",
+        "Confirm virtual environment and container firewall support",
+        "Validate centralized firewall policy management",
+        "Assess rule automation and threat-based configuration",
+        "Review monitoring, alerting, and compliance reporting",
+        "Check integration with security management platforms"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.5": {
     id: "4.5",
@@ -1202,7 +1640,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["implement", "manage", "host-based", "firewall", "port-filtering", "end-user", "devices", "default-deny", "explicitly", "allowed"]
+    keywords: ["implement", "manage", "host-based", "firewall", "port-filtering", "end-user", "devices", "default-deny", "explicitly", "allowed"],
+    systemPrompt: {
+      role: "endpoint_firewall_specialist",
+      context: "You are evaluating endpoint firewall solutions against CIS Control 4.5 requirements for end-user device protection.",
+      objective: "Determine if a vendor solution provides comprehensive host-based firewall and port filtering for end-user devices.",
+      guidelines: [
+        "Verify host-based firewall implementation on all end-user devices",
+        "Confirm default-deny policy with explicit allow configurations",
+        "Validate port-filtering capabilities and rule management",
+        "Assess centralized policy deployment and management",
+        "Review monitoring, logging, and compliance reporting",
+        "Check user experience and productivity impact minimization"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.6": {
     id: "4.6",
@@ -1231,7 +1683,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1", "12.3"],
-    keywords: ["securely", "manage", "enterprise", "assets", "software", "infrastructure-as-code", "administrative", "interfaces", "SSH", "HTTPS", "protocols"]
+    keywords: ["securely", "manage", "enterprise", "assets", "software", "infrastructure-as-code", "administrative", "interfaces", "SSH", "HTTPS", "protocols"],
+    systemPrompt: {
+      role: "secure_administration_expert",
+      context: "You are evaluating secure administrative interface solutions against CIS Control 4.6 requirements for enterprise asset management.",
+      objective: "Determine if a vendor solution provides secure management of enterprise assets and software administrative interfaces.",
+      guidelines: [
+        "Verify secure administrative interface implementation (SSH, HTTPS)",
+        "Confirm infrastructure-as-code security management capabilities",
+        "Validate encrypted administrative communication protocols",
+        "Assess administrative access control and authentication",
+        "Review privileged session monitoring and recording",
+        "Check integration with privileged access management systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.7": {
     id: "4.7",
@@ -1260,7 +1726,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["manage", "default", "accounts", "enterprise", "assets", "software", "root", "administrator", "pre-configured", "vendor", "disabling", "unusable"]
+    keywords: ["manage", "default", "accounts", "enterprise", "assets", "software", "root", "administrator", "pre-configured", "vendor", "disabling", "unusable"],
+    systemPrompt: {
+      role: "default_account_security_specialist",
+      context: "You are evaluating default account management solutions against CIS Control 4.7 requirements for vendor account security.",
+      objective: "Determine if a vendor solution provides comprehensive management of default accounts on enterprise assets and software.",
+      guidelines: [
+        "Verify identification and management of all default accounts",
+        "Confirm default account disabling or secure configuration",
+        "Validate vendor-supplied account discovery and remediation",
+        "Assess automated default account detection and management",
+        "Review policy enforcement and compliance monitoring",
+        "Check integration with identity and access management systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.8": {
     id: "4.8",
@@ -1288,7 +1768,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["uninstall", "disable", "unnecessary", "services", "enterprise", "assets", "software", "unused", "file", "sharing", "web", "application", "module", "function"]
+    keywords: ["uninstall", "disable", "unnecessary", "services", "enterprise", "assets", "software", "unused", "file", "sharing", "web", "application", "module", "function"],
+    systemPrompt: {
+      role: "service_hardening_expert",
+      context: "You are evaluating service management solutions against CIS Control 4.8 requirements for unnecessary service removal.",
+      objective: "Determine if a vendor solution provides comprehensive identification and management of unnecessary services on enterprise assets.",
+      guidelines: [
+        "Verify identification of all unnecessary services and functions",
+        "Confirm automated service removal and disabling capabilities",
+        "Validate coverage across all enterprise asset types",
+        "Assess risk-based service evaluation and recommendation",
+        "Review service dependency analysis and impact assessment",
+        "Check ongoing monitoring and compliance enforcement"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.9": {
     id: "4.9",
@@ -1313,7 +1807,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1", "8.6", "9.2"],
-    keywords: ["configure", "trusted", "DNS", "servers", "enterprise", "assets", "enterprise-controlled", "reputable", "externally", "accessible"]
+    keywords: ["configure", "trusted", "DNS", "servers", "enterprise", "assets", "enterprise-controlled", "reputable", "externally", "accessible"],
+    systemPrompt: {
+      role: "dns_security_specialist",
+      context: "You are evaluating DNS security solutions against CIS Control 4.9 requirements for trusted DNS server configuration.",
+      objective: "Determine if a vendor solution provides comprehensive trusted DNS server configuration and management for enterprise assets.",
+      guidelines: [
+        "Verify trusted DNS server configuration on all enterprise assets",
+        "Confirm enterprise-controlled or reputable DNS service usage",
+        "Validate DNS security policy enforcement and monitoring",
+        "Assess DNS filtering and threat protection capabilities",
+        "Review centralized DNS configuration management",
+        "Check DNS query logging and analysis capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.10": {
     id: "4.10",
@@ -1344,7 +1852,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["enforce", "automatic", "device", "lockout", "portable", "end-user", "devices", "failed", "authentication", "attempts", "laptops", "tablets", "smartphones", "InTune", "Apple"]
+    keywords: ["enforce", "automatic", "device", "lockout", "portable", "end-user", "devices", "failed", "authentication", "attempts", "laptops", "tablets", "smartphones", "InTune", "Apple"],
+    systemPrompt: {
+      role: "device_lockout_security_expert",
+      context: "You are evaluating device lockout solutions against CIS Control 4.10 requirements for failed authentication protection.",
+      objective: "Determine if a vendor solution provides comprehensive automatic device lockout enforcement for portable end-user devices.",
+      guidelines: [
+        "Verify automatic device lockout after failed authentication attempts",
+        "Confirm coverage across all portable device types (laptops, tablets, smartphones)",
+        "Validate lockout policy customization and management",
+        "Assess integration with mobile device management platforms",
+        "Review unlock procedures and security recovery mechanisms",
+        "Check compliance monitoring and reporting capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.11": {
     id: "4.11",
@@ -1370,7 +1892,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["remotely", "wipe", "enterprise", "data", "enterprise-owned", "portable", "end-user", "devices", "lost", "stolen", "individual", "no", "longer", "supports"]
+    keywords: ["remotely", "wipe", "enterprise", "data", "enterprise-owned", "portable", "end-user", "devices", "lost", "stolen", "individual", "no", "longer", "supports"],
+    systemPrompt: {
+      role: "remote_wipe_specialist",
+      context: "You are evaluating remote wipe solutions against CIS Control 4.11 requirements for enterprise data protection on portable devices.",
+      objective: "Determine if a vendor solution provides comprehensive remote wipe capabilities for enterprise data on portable end-user devices.",
+      guidelines: [
+        "Verify remote wipe capability for all enterprise-owned portable devices",
+        "Confirm selective enterprise data wiping without affecting personal data",
+        "Validate real-time remote wipe execution and verification",
+        "Assess integration with mobile device management platforms",
+        "Review policy-based automated wiping triggers",
+        "Check audit trails and compliance reporting for wipe operations"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "4.12": {
     id: "4.12",
@@ -1400,7 +1936,21 @@ export class SafeguardManager {
       "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["separate", "enterprise", "workspaces", "mobile", "end-user", "devices", "Apple", "Configuration", "Profile", "Android", "Work", "Profile", "applications", "data", "personal"]
+    keywords: ["separate", "enterprise", "workspaces", "mobile", "end-user", "devices", "Apple", "Configuration", "Profile", "Android", "Work", "Profile", "applications", "data", "personal"],
+    systemPrompt: {
+      role: "mobile_workspace_security_expert",
+      context: "You are evaluating mobile workspace separation solutions against CIS Control 4.12 requirements for enterprise and personal data isolation.",
+      objective: "Determine if a vendor solution provides comprehensive enterprise workspace separation on mobile end-user devices.",
+      guidelines: [
+        "Verify enterprise workspace separation on mobile devices",
+        "Confirm support for Apple Configuration Profiles and Android Work Profiles",
+        "Validate application and data isolation between enterprise and personal spaces",
+        "Assess policy enforcement and workspace management capabilities",
+        "Review user experience and productivity optimization",
+        "Check compliance monitoring and enterprise data protection"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "5.2": {
     id: "5.2",
@@ -1428,7 +1978,21 @@ export class SafeguardManager {
       "Password Management Tool"
     ],
     relatedSafeguards: ["5.1"],
-    keywords: ["use", "unique", "passwords", "enterprise", "assets", "8-character", "14-character", "MFA", "minimum"]
+    keywords: ["use", "unique", "passwords", "enterprise", "assets", "8-character", "14-character", "MFA", "minimum"],
+    systemPrompt: {
+      role: "password_security_expert",
+      context: "You are evaluating password management solutions against CIS Control 5.2 requirements for unique password enforcement.",
+      objective: "Determine if a vendor solution provides comprehensive unique password enforcement for enterprise assets.",
+      guidelines: [
+        "Verify unique password requirement enforcement across all assets",
+        "Confirm minimum length requirements (8-character minimum, 14-character for non-MFA)",
+        "Validate password complexity and uniqueness checking",
+        "Assess integration with multi-factor authentication systems",
+        "Review password policy management and enforcement capabilities",
+        "Check compliance monitoring and password strength reporting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "5.3": {
     id: "5.3",
@@ -1454,7 +2018,21 @@ export class SafeguardManager {
       "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["5.1"],
-    keywords: ["delete", "disable", "dormant", "accounts", "45", "days", "inactivity", "supported"]
+    keywords: ["delete", "disable", "dormant", "accounts", "45", "days", "inactivity", "supported"],
+    systemPrompt: {
+      role: "dormant_account_management_specialist",
+      context: "You are evaluating dormant account management solutions against CIS Control 5.3 requirements for inactive account cleanup.",
+      objective: "Determine if a vendor solution provides comprehensive dormant account detection and management capabilities.",
+      guidelines: [
+        "Verify automated dormant account detection after 45 days inactivity",
+        "Confirm account deletion or disabling capabilities",
+        "Validate supported vs unsupported account handling",
+        "Assess automated workflow and approval processes",
+        "Review account activity monitoring and tracking",
+        "Check compliance reporting and audit trail capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "5.4": {
     id: "5.4",
@@ -1486,7 +2064,21 @@ export class SafeguardManager {
       "Productivity suite use"
     ],
     relatedSafeguards: ["4.1", "5.1"],
-    keywords: ["restrict", "administrator", "privileges", "dedicated", "accounts", "enterprise", "assets", "general", "computing", "browsing", "email", "productivity"]
+    keywords: ["restrict", "administrator", "privileges", "dedicated", "accounts", "enterprise", "assets", "general", "computing", "browsing", "email", "productivity"],
+    systemPrompt: {
+      role: "privileged_access_specialist",
+      context: "You are evaluating privileged access management solutions against CIS Control 5.4 requirements for administrator privilege restriction.",
+      objective: "Determine if a vendor solution provides comprehensive administrator privilege restriction and dedicated account management.",
+      guidelines: [
+        "Verify administrator privilege restriction to dedicated accounts only",
+        "Confirm separation of administrative and general computing activities",
+        "Validate privileged access controls and session management",
+        "Assess just-in-time privilege elevation capabilities",
+        "Review privileged session monitoring and recording",
+        "Check compliance with principle of least privilege enforcement"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "5.5": {
     id: "5.5",
@@ -1521,7 +2113,21 @@ export class SafeguardManager {
       "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["5.1"],
-    keywords: ["establish", "maintain", "inventory", "service", "accounts", "department", "owner", "review", "date", "purpose", "quarterly", "validate", "authorized"]
+    keywords: ["establish", "maintain", "inventory", "service", "accounts", "department", "owner", "review", "date", "purpose", "quarterly", "validate", "authorized"],
+    systemPrompt: {
+      role: "service_account_management_expert",
+      context: "You are evaluating service account management solutions against CIS Control 5.5 requirements for service account inventory and oversight.",
+      objective: "Determine if a vendor solution provides comprehensive service account inventory management and quarterly validation processes.",
+      guidelines: [
+        "Verify comprehensive service account inventory establishment",
+        "Confirm tracking of department, owner, purpose, and review dates",
+        "Validate quarterly service account review and authorization processes",
+        "Assess automated service account discovery and classification",
+        "Review service account lifecycle management capabilities",
+        "Check compliance monitoring and unauthorized account detection"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "5.6": {
     id: "5.6",
@@ -1547,7 +2153,21 @@ export class SafeguardManager {
       "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["5.1", "6.6", "6.7", "12.5"],
-    keywords: ["centralize", "account", "management", "directory", "service", "identity"]
+    keywords: ["centralize", "account", "management", "directory", "service", "identity"],
+    systemPrompt: {
+      role: "centralized_identity_specialist",
+      context: "You are evaluating centralized identity management solutions against CIS Control 5.6 requirements for directory service implementation.",
+      objective: "Determine if a vendor solution provides comprehensive centralized account management through directory or identity services.",
+      guidelines: [
+        "Verify centralized account management implementation",
+        "Confirm directory service or identity service capabilities",
+        "Validate integration with enterprise authentication systems",
+        "Assess single sign-on and identity federation support",
+        "Review account provisioning and deprovisioning automation",
+        "Check scalability and multi-domain support capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "6.1": {
     id: "6.1",
@@ -1580,7 +2200,21 @@ export class SafeguardManager {
       "Account and Credential Management Policy/Process"
     ],
     relatedSafeguards: ["5.1", "6.7", "6.8"],
-    keywords: ["establish", "follow", "documented", "process", "automated", "granting", "access", "enterprise", "assets", "new", "hire", "role", "change"]
+    keywords: ["establish", "follow", "documented", "process", "automated", "granting", "access", "enterprise", "assets", "new", "hire", "role", "change"],
+    systemPrompt: {
+      role: "access_granting_process_expert",
+      context: "You are evaluating access granting solutions against CIS Control 6.1 requirements for establishing documented access provisioning processes.",
+      objective: "Determine if a vendor solution provides comprehensive access granting processes for new hires and role changes.",
+      guidelines: [
+        "Verify existence of documented access granting procedures",
+        "Confirm automation capabilities for access provisioning",
+        "Validate coverage of new hire onboarding scenarios",
+        "Assess role change access modification processes",
+        "Review enterprise asset access management integration",
+        "Check process documentation and governance compliance"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "6.2": {
     id: "6.2",
@@ -1618,7 +2252,21 @@ export class SafeguardManager {
       "Account and Credential Management Policy/Process"
     ],
     relatedSafeguards: ["5.1", "6.7"],
-    keywords: ["establish", "follow", "process", "automated", "revoking", "access", "enterprise", "assets", "disabling", "accounts", "termination", "rights", "revocation", "role", "change", "audit", "trails"]
+    keywords: ["establish", "follow", "process", "automated", "revoking", "access", "enterprise", "assets", "disabling", "accounts", "termination", "rights", "revocation", "role", "change", "audit", "trails"],
+    systemPrompt: {
+      role: "access_revocation_process_expert",
+      context: "You are evaluating access revocation solutions against CIS Control 6.2 requirements for establishing documented access deprovisioning processes.",
+      objective: "Determine if a vendor solution provides comprehensive access revocation processes for terminations, rights changes, and role modifications.",
+      guidelines: [
+        "Verify existence of documented access revocation procedures",
+        "Confirm automation capabilities for access deprovisioning",
+        "Validate immediate account disabling upon termination",
+        "Assess role change access modification processes",
+        "Review account preservation vs deletion for audit trail requirements",
+        "Check process documentation and governance compliance"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "6.4": {
     id: "6.4",
@@ -1644,7 +2292,21 @@ export class SafeguardManager {
       "Multi-Factor Authentication Tool"
     ],
     relatedSafeguards: ["4.2", "12.7"],
-    keywords: ["require", "MFA", "remote", "network", "access", "multi-factor", "authentication"]
+    keywords: ["require", "MFA", "remote", "network", "access", "multi-factor", "authentication"],
+    systemPrompt: {
+      role: "remote_access_security_specialist",
+      context: "You are evaluating remote access security solutions against CIS Control 6.4 requirements for MFA on remote network access.",
+      objective: "Determine if a vendor solution provides comprehensive MFA enforcement for remote network access connections.",
+      guidelines: [
+        "Verify MFA requirement for all remote network access",
+        "Confirm coverage of VPN, RDP, and other remote access methods",
+        "Validate integration with network access control systems",
+        "Assess conditional access and risk-based authentication",
+        "Review remote access session monitoring and logging",
+        "Check policy enforcement and compliance reporting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "6.5": {
     id: "6.5",
@@ -1676,7 +2338,21 @@ export class SafeguardManager {
       "Multi-Factor Authentication Tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["require", "MFA", "administrative", "access", "accounts", "supported", "enterprise", "assets", "managed", "onsite", "service", "provider"]
+    keywords: ["require", "MFA", "administrative", "access", "accounts", "supported", "enterprise", "assets", "managed", "onsite", "service", "provider"],
+    systemPrompt: {
+      role: "administrative_access_security_expert",
+      context: "You are evaluating administrative access security solutions against CIS Control 6.5 requirements for MFA on administrative accounts.",
+      objective: "Determine if a vendor solution provides comprehensive MFA enforcement for administrative access to enterprise assets.",
+      guidelines: [
+        "Verify MFA requirement for all administrative account access",
+        "Confirm coverage of onsite and service provider managed assets",
+        "Validate privileged access management integration",
+        "Assess just-in-time access and session management",
+        "Review administrative session monitoring and recording",
+        "Check policy enforcement and administrative access compliance"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "6.6": {
     id: "6.6",
@@ -1709,7 +2385,21 @@ export class SafeguardManager {
       "Account and Credential Management Policy/Process"
     ],
     relatedSafeguards: ["1.1", "2.1", "3.3", "5.6", "6.7"],
-    keywords: ["establish", "maintain", "inventory", "enterprise", "authentication", "authorization", "systems", "hosted", "onsite", "remote", "service", "provider", "review", "update", "annually"]
+    keywords: ["establish", "maintain", "inventory", "enterprise", "authentication", "authorization", "systems", "hosted", "onsite", "remote", "service", "provider", "review", "update", "annually"],
+    systemPrompt: {
+      role: "authentication_authorization_inventory_expert",
+      context: "You are evaluating authentication and authorization inventory solutions against CIS Control 6.6 requirements for comprehensive system tracking.",
+      objective: "Determine if a vendor solution provides complete inventory capabilities for authentication and authorization systems across the enterprise.",
+      guidelines: [
+        "Verify comprehensive authentication system discovery and inventory",
+        "Confirm authorization system tracking and documentation",
+        "Validate coverage of on-site and remote service provider systems",
+        "Assess inventory maintenance and annual review capabilities",
+        "Review system classification and risk assessment features",
+        "Check integration with identity governance platforms"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "6.7": {
     id: "6.7",
@@ -1743,7 +2433,21 @@ export class SafeguardManager {
       "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["4.1", "5.1", "5.6", "6.1", "6.2", "6.6", "12.5", "12.7"],
-    keywords: ["centralize", "access", "control", "enterprise", "assets", "directory", "service", "SSO", "provider", "supported"]
+    keywords: ["centralize", "access", "control", "enterprise", "assets", "directory", "service", "SSO", "provider", "supported"],
+    systemPrompt: {
+      role: "centralized_access_control_expert",
+      context: "You are evaluating centralized access control solutions against CIS Control 6.7 requirements for directory service and SSO-based access management.",
+      objective: "Determine if a vendor solution provides comprehensive centralized access control for enterprise assets through directory services or SSO providers.",
+      guidelines: [
+        "Verify centralized access control implementation capabilities",
+        "Confirm directory service integration and management",
+        "Validate SSO provider connectivity and configuration",
+        "Assess enterprise asset coverage and support levels",
+        "Review access policy enforcement and administration",
+        "Check scalability and performance of centralized systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "6.8": {
     id: "6.8",
@@ -1781,7 +2485,21 @@ export class SafeguardManager {
       "Identity and Access management Tool"
     ],
     relatedSafeguards: ["3.3", "4.1", "6.1"],
-    keywords: ["define", "maintain", "role-based", "access", "control", "determining", "documenting", "rights", "necessary", "role", "enterprise", "duties", "perform", "reviews", "validate", "privileges", "authorized", "recurring", "annually"]
+    keywords: ["define", "maintain", "role-based", "access", "control", "determining", "documenting", "rights", "necessary", "role", "enterprise", "duties", "perform", "reviews", "validate", "privileges", "authorized", "recurring", "annually"],
+    systemPrompt: {
+      role: "role_based_access_control_expert",
+      context: "You are evaluating role-based access control solutions against CIS Control 6.8 requirements for defining, maintaining, and reviewing role-based permissions.",
+      objective: "Determine if a vendor solution provides comprehensive RBAC capabilities including role definition, access rights documentation, and periodic reviews.",
+      guidelines: [
+        "Verify role definition and maintenance capabilities",
+        "Confirm access rights documentation and mapping to roles",
+        "Validate enterprise role modeling and assignment processes",
+        "Assess access control review and validation features",
+        "Review privilege authorization and least privilege enforcement",
+        "Check annual review processes and compliance reporting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "7.2": {
     id: "7.2",
@@ -1819,7 +2537,21 @@ export class SafeguardManager {
       "risk scoring frameworks"
     ],
     relatedSafeguards: ["7.1", "7.3", "7.4", "7.5", "7.6", "7.7"],
-    keywords: ["establish", "maintain", "remediation", "process", "SLA", "security", "vulnerabilities"]
+    keywords: ["establish", "maintain", "remediation", "process", "SLA", "security", "vulnerabilities"],
+    systemPrompt: {
+      role: "vulnerability_remediation_process_expert",
+      context: "You are evaluating vulnerability remediation solutions against CIS Control 7.2 requirements for establishing remediation processes and SLAs.",
+      objective: "Determine if a vendor solution provides comprehensive vulnerability remediation process management and SLA capabilities.",
+      guidelines: [
+        "Verify remediation process establishment and maintenance",
+        "Confirm SLA definition and tracking for security vulnerabilities",
+        "Validate vulnerability prioritization and timeline management",
+        "Assess remediation workflow automation and escalation procedures",
+        "Review patch management integration and coordination",
+        "Check remediation verification and compliance reporting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "7.3": {
     id: "7.3",
@@ -1857,7 +2589,21 @@ export class SafeguardManager {
       "system center tools"
     ],
     relatedSafeguards: ["1.1", "4.1", "7.1", "7.2", "7.4", "7.5"],
-    keywords: ["perform", "automated", "operating", "system", "patch", "management", "enterprise", "assets"]
+    keywords: ["perform", "automated", "operating", "system", "patch", "management", "enterprise", "assets"],
+    systemPrompt: {
+      role: "automated_os_patch_management_expert",
+      context: "You are evaluating automated OS patch management solutions against CIS Control 7.3 requirements for automated operating system patching.",
+      objective: "Determine if a vendor solution provides comprehensive automated operating system patch management for enterprise assets.",
+      guidelines: [
+        "Verify automated OS patch deployment capabilities",
+        "Confirm enterprise asset coverage and compatibility",
+        "Validate patch testing and approval workflows",
+        "Assess patch scheduling and deployment automation",
+        "Review rollback capabilities and failure recovery",
+        "Check compliance monitoring and patch status reporting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "7.4": {
     id: "7.4",
@@ -1895,7 +2641,21 @@ export class SafeguardManager {
       "patch compliance scanners"
     ],
     relatedSafeguards: ["2.1", "2.2", "7.1", "7.2", "7.3", "7.5"],
-    keywords: ["perform", "automated", "application", "patch", "management", "enterprise", "assets", "updates"]
+    keywords: ["perform", "automated", "application", "patch", "management", "enterprise", "assets", "updates"],
+    systemPrompt: {
+      role: "automated_application_patch_management_expert",
+      context: "You are evaluating automated application patch management solutions against CIS Control 7.4 requirements for automated application patching.",
+      objective: "Determine if a vendor solution provides comprehensive automated application patch management for enterprise assets.",
+      guidelines: [
+        "Verify automated application patch deployment capabilities",
+        "Confirm enterprise application coverage and compatibility",
+        "Validate third-party application update management",
+        "Assess browser plugin and security update automation",
+        "Review compatibility testing and rollback procedures",
+        "Check vendor patch notification and prioritization systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "7.5": {
     id: "7.5",
@@ -1933,7 +2693,21 @@ export class SafeguardManager {
       "vulnerability management systems"
     ],
     relatedSafeguards: ["1.1", "2.1", "7.1", "7.2", "7.3", "7.4", "7.6", "7.7"],
-    keywords: ["perform", "automated", "vulnerability", "scans", "internal", "enterprise", "assets", "quarterly"]
+    keywords: ["perform", "automated", "vulnerability", "scans", "internal", "enterprise", "assets", "quarterly"],
+    systemPrompt: {
+      role: "internal_vulnerability_scanning_expert",
+      context: "You are evaluating internal vulnerability scanning solutions against CIS Control 7.5 requirements for automated vulnerability scanning of internal enterprise assets.",
+      objective: "Determine if a vendor solution provides comprehensive automated vulnerability scanning capabilities for internal enterprise assets.",
+      guidelines: [
+        "Verify automated vulnerability scanning capabilities for internal assets",
+        "Confirm quarterly or more frequent scanning schedules",
+        "Validate coverage of devices and applications",
+        "Assess scan result analysis and false positive management",
+        "Review vulnerability prioritization and reporting features",
+        "Check integration with vulnerability management platforms"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "7.6": {
     id: "7.6",
@@ -1971,7 +2745,21 @@ export class SafeguardManager {
       "third-party scanning services"
     ],
     relatedSafeguards: ["1.1", "2.1", "7.1", "7.2", "7.5", "7.7"],
-    keywords: ["perform", "automated", "vulnerability", "scans", "externally-exposed", "enterprise", "assets"]
+    keywords: ["perform", "automated", "vulnerability", "scans", "externally-exposed", "enterprise", "assets"],
+    systemPrompt: {
+      role: "external_vulnerability_scanning_expert",
+      context: "You are evaluating external vulnerability scanning solutions against CIS Control 7.6 requirements for automated vulnerability scanning of externally-exposed enterprise assets.",
+      objective: "Determine if a vendor solution provides comprehensive automated vulnerability scanning capabilities for externally-exposed enterprise assets.",
+      guidelines: [
+        "Verify automated vulnerability scanning for externally-exposed assets",
+        "Confirm internal or external scanning service capabilities",
+        "Validate internet-facing asset discovery and inventory",
+        "Assess web application and cloud security scanning",
+        "Review external scan scheduling and result management",
+        "Check integration with threat intelligence and attack surface monitoring"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "7.7": {
     id: "7.7",
@@ -2009,7 +2797,21 @@ export class SafeguardManager {
       "risk assessment tools"
     ],
     relatedSafeguards: ["7.1", "7.2", "7.3", "7.4", "7.5", "7.6"],
-    keywords: ["remediate", "detected", "vulnerabilities", "software", "monthly", "processes", "tooling"]
+    keywords: ["remediate", "detected", "vulnerabilities", "software", "monthly", "processes", "tooling"],
+    systemPrompt: {
+      role: "vulnerability_remediation_specialist",
+      context: "You are evaluating vulnerability remediation solutions against CIS Control 7.7 requirements for monthly remediation of detected vulnerabilities.",
+      objective: "Determine if a vendor solution provides comprehensive vulnerability remediation capabilities with monthly or more frequent cycles.",
+      guidelines: [
+        "Verify vulnerability remediation processes and automation",
+        "Confirm monthly or more frequent remediation cycles",
+        "Validate software vulnerability handling and patching",
+        "Assess remediation workflow and tracking systems",
+        "Review patch management integration and coordination",
+        "Check remediation verification and compliance reporting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.1": {
     id: "8.1",
@@ -2041,7 +2843,21 @@ export class SafeguardManager {
       "documentation"
     ],
     relatedSafeguards: ["8.2", "8.3", "8.5", "8.6", "8.7", "8.8", "8.9", "8.10", "8.11", "8.12"],
-    keywords: ["audit log management", "logging requirements", "collection", "review", "retention", "process", "documented"]
+    keywords: ["audit log management", "logging requirements", "collection", "review", "retention", "process", "documented"],
+    systemPrompt: {
+      role: "audit_log_management_process_expert",
+      context: "You are evaluating audit log management solutions against CIS Control 8.1 requirements for establishing documented audit log management processes.",
+      objective: "Determine if a vendor solution provides comprehensive audit log management process establishment and maintenance capabilities.",
+      guidelines: [
+        "Verify documented audit log management process creation",
+        "Confirm enterprise logging requirements definition",
+        "Validate audit log collection, review, and retention capabilities",
+        "Assess process documentation and annual review procedures",
+        "Review enterprise asset coverage and logging scope",
+        "Check compliance with enterprise change management integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.2": {
     id: "8.2", 
@@ -2066,7 +2882,21 @@ export class SafeguardManager {
       "OS dependent"
     ],
     relatedSafeguards: ["8.1"],
-    keywords: ["collect", "audit logs", "logging", "enabled", "enterprise assets"]
+    keywords: ["collect", "audit logs", "logging", "enabled", "enterprise assets"],
+    systemPrompt: {
+      role: "audit_log_collection_expert",
+      context: "You are evaluating audit log collection solutions against CIS Control 8.2 requirements for comprehensive audit log collection across enterprise assets.",
+      objective: "Determine if a vendor solution provides comprehensive audit log collection capabilities for enterprise assets.",
+      guidelines: [
+        "Verify audit log collection across all enterprise assets",
+        "Confirm logging enablement per enterprise audit log management process",
+        "Validate comprehensive log source coverage and integration",
+        "Assess log collection tools and mechanisms",
+        "Review OS-dependent and platform-specific logging capabilities",
+        "Check log management tool integration and compatibility"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.3": {
     id: "8.3",
@@ -2092,7 +2922,21 @@ export class SafeguardManager {
       "potentially OS dependent"
     ],
     relatedSafeguards: ["8.1", "8.9", "8.10"],
-    keywords: ["adequate storage", "logging destinations", "maintain", "comply"]
+    keywords: ["adequate storage", "logging destinations", "maintain", "comply"],
+    systemPrompt: {
+      role: "audit_log_storage_expert",
+      context: "You are evaluating audit log storage solutions against CIS Control 8.3 requirements for ensuring adequate audit log storage capacity.",
+      objective: "Determine if a vendor solution provides adequate audit log storage to comply with enterprise audit log management processes.",
+      guidelines: [
+        "Verify adequate storage capacity for audit log retention",
+        "Confirm logging destination storage management",
+        "Validate compliance with enterprise audit log management processes",
+        "Assess storage scalability and expansion capabilities",
+        "Review storage performance and reliability features",
+        "Check storage monitoring and capacity alerting systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.4": {
     id: "8.4",
@@ -2120,7 +2964,21 @@ export class SafeguardManager {
       "potentially OS dependent"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["time synchronization", "synchronized", "time sources", "configure", "standardize"]
+    keywords: ["time synchronization", "synchronized", "time sources", "configure", "standardize"],
+    systemPrompt: {
+      role: "time_synchronization_expert",
+      context: "You are evaluating time synchronization solutions against CIS Control 8.4 requirements for standardized time synchronization across enterprise assets.",
+      objective: "Determine if a vendor solution provides comprehensive time synchronization capabilities for enterprise assets.",
+      guidelines: [
+        "Verify time synchronization standardization across enterprise assets",
+        "Confirm configuration of at least two synchronized time sources",
+        "Validate enterprise asset coverage where supported",
+        "Assess secure configuration policy and process integration",
+        "Review OS-dependent time synchronization capabilities",
+        "Check time source reliability and redundancy features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.5": {
     id: "8.5",
@@ -2151,7 +3009,21 @@ export class SafeguardManager {
       "potentially OS dependent"
     ],
     relatedSafeguards: ["8.1", "1.1", "3.2"],
-    keywords: ["detailed audit logging", "sensitive data", "forensic investigation", "event source", "timestamp"]
+    keywords: ["detailed audit logging", "sensitive data", "forensic investigation", "event source", "timestamp"],
+    systemPrompt: {
+      role: "detailed_audit_logging_expert",
+      context: "You are evaluating detailed audit logging solutions against CIS Control 8.5 requirements for comprehensive audit logging of enterprise assets containing sensitive data.",
+      objective: "Determine if a vendor solution provides detailed audit logging capabilities for forensic investigation support.",
+      guidelines: [
+        "Verify detailed audit logging configuration for sensitive data assets",
+        "Confirm inclusion of event source, date, username, timestamp details",
+        "Validate source and destination address logging capabilities",
+        "Assess forensic investigation support and log detail completeness",
+        "Review log management tool integration and policy compliance",
+        "Check OS-dependent logging capabilities and platform coverage"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.6": {
     id: "8.6",
@@ -2178,7 +3050,21 @@ export class SafeguardManager {
       "potentially OS dependent"
     ],
     relatedSafeguards: ["8.1", "4.9"],
-    keywords: ["DNS query", "audit logs", "collect", "DNS", "query logs"]
+    keywords: ["DNS query", "audit logs", "collect", "DNS", "query logs"],
+    systemPrompt: {
+      role: "dns_audit_logging_expert",
+      context: "You are evaluating DNS audit logging solutions against CIS Control 8.6 requirements for DNS query audit log collection.",
+      objective: "Determine if a vendor solution provides comprehensive DNS query audit logging capabilities for enterprise assets.",
+      guidelines: [
+        "Verify DNS query audit log collection capabilities",
+        "Confirm enterprise asset coverage where appropriate and supported",
+        "Validate log management tool integration for DNS logging",
+        "Assess secure configuration policy and process compliance",
+        "Review OS-dependent DNS logging capabilities",
+        "Check DNS query logging completeness and accuracy"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.7": {
     id: "8.7",
@@ -2205,7 +3091,21 @@ export class SafeguardManager {
       "potentially OS dependent"
     ],
     relatedSafeguards: ["8.1"],
-    keywords: ["URL request", "audit logs", "collect", "URL", "web logs"]
+    keywords: ["URL request", "audit logs", "collect", "URL", "web logs"],
+    systemPrompt: {
+      role: "url_request_audit_logging_expert",
+      context: "You are evaluating URL request audit logging solutions against CIS Control 8.7 requirements for URL request audit log collection.",
+      objective: "Determine if a vendor solution provides comprehensive URL request audit logging capabilities for enterprise assets.",
+      guidelines: [
+        "Verify URL request audit log collection capabilities",
+        "Confirm enterprise asset coverage where appropriate and supported",
+        "Validate web traffic logging and URL request capture",
+        "Assess log management tool integration for web logs",
+        "Review secure configuration policy and process compliance",
+        "Check OS-dependent URL logging capabilities and browser coverage"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.8": {
     id: "8.8",
@@ -2231,7 +3131,21 @@ export class SafeguardManager {
       "OS dependent"
     ],
     relatedSafeguards: ["8.1"],
-    keywords: ["command-line", "audit logs", "PowerShell", "BASH", "terminal", "administrative"]
+    keywords: ["command-line", "audit logs", "PowerShell", "BASH", "terminal", "administrative"],
+    systemPrompt: {
+      role: "command_line_audit_logging_expert",
+      context: "You are evaluating command-line audit logging solutions against CIS Control 8.8 requirements for command-line audit log collection.",
+      objective: "Determine if a vendor solution provides comprehensive command-line audit logging capabilities including PowerShell, BASH, and remote terminals.",
+      guidelines: [
+        "Verify command-line audit log collection capabilities",
+        "Confirm PowerShell, BASH, and remote terminal logging coverage",
+        "Validate administrative terminal session logging",
+        "Assess log management tool integration for command logs",
+        "Review secure configuration policy and OS-dependent capabilities",
+        "Check command execution tracking and security monitoring"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.9": {
     id: "8.9",
@@ -2259,7 +3173,21 @@ export class SafeguardManager {
       "OS dependent"
     ],
     relatedSafeguards: ["8.1", "8.3", "12.5", "13.1"],
-    keywords: ["centralize", "audit logs", "collection", "retention", "SIEM", "log sources"]
+    keywords: ["centralize", "audit logs", "collection", "retention", "SIEM", "log sources"],
+    systemPrompt: {
+      role: "centralized_audit_logging_expert",
+      context: "You are evaluating centralized audit logging solutions against CIS Control 8.9 requirements for centralized audit log collection and retention.",
+      objective: "Determine if a vendor solution provides comprehensive centralized audit log collection and retention capabilities for enterprise assets.",
+      guidelines: [
+        "Verify centralized audit log collection capabilities across enterprise assets",
+        "Confirm compliance with documented audit log management processes",
+        "Validate SIEM tool integration and multiple log source support",
+        "Assess log analytics and centralization tool capabilities",
+        "Review scalability and enterprise-wide log aggregation",
+        "Check OS-dependent log collection and centralization features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.10": {
     id: "8.10",
@@ -2282,7 +3210,21 @@ export class SafeguardManager {
       "log analytics and centralization tool"
     ],
     relatedSafeguards: ["8.1", "8.3"],
-    keywords: ["retain", "audit logs", "90 days", "retention", "minimum"]
+    keywords: ["retain", "audit logs", "90 days", "retention", "minimum"],
+    systemPrompt: {
+      role: "audit_log_retention_expert",
+      context: "You are evaluating audit log retention solutions against CIS Control 8.10 requirements for 90-day minimum audit log retention.",
+      objective: "Determine if a vendor solution provides adequate audit log retention capabilities for enterprise assets with minimum 90-day retention.",
+      guidelines: [
+        "Verify audit log retention capabilities for minimum 90 days",
+        "Confirm enterprise asset coverage for retention policies",
+        "Validate log analytics and centralization tool retention features",
+        "Assess automated retention management and policy enforcement",
+        "Review storage optimization and archival capabilities",
+        "Check compliance monitoring and retention reporting features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.11": {
     id: "8.11",
@@ -2308,7 +3250,21 @@ export class SafeguardManager {
       "log analytics and centralization tool"
     ],
     relatedSafeguards: ["8.1", "8.12"],
-    keywords: ["audit log reviews", "anomalies", "abnormal events", "threat", "weekly", "reviews"]
+    keywords: ["audit log reviews", "anomalies", "abnormal events", "threat", "weekly", "reviews"],
+    systemPrompt: {
+      role: "audit_log_review_expert",
+      context: "You are evaluating audit log review solutions against CIS Control 8.11 requirements for weekly audit log reviews to detect anomalies and threats.",
+      objective: "Determine if a vendor solution provides comprehensive audit log review capabilities for anomaly and threat detection.",
+      guidelines: [
+        "Verify audit log review capabilities for anomaly detection",
+        "Confirm weekly or more frequent review scheduling",
+        "Validate abnormal event detection and potential threat identification",
+        "Assess log analytics and automated review capabilities",
+        "Review threat detection algorithms and alert mechanisms",
+        "Check review workflow integration and analyst productivity tools"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "8.12": {
     id: "8.12",
@@ -2335,7 +3291,21 @@ export class SafeguardManager {
       "secure configuration policy/process"
     ],
     relatedSafeguards: ["8.1", "8.11", "15.1"],
-    keywords: ["service provider logs", "authentication", "authorization", "data creation", "disposal", "user management"]
+    keywords: ["service provider logs", "authentication", "authorization", "data creation", "disposal", "user management"],
+    systemPrompt: {
+      role: "service_provider_log_collection_expert",
+      context: "You are evaluating service provider log collection solutions against CIS Control 8.12 requirements for collecting service provider logs where supported.",
+      objective: "Determine if a vendor solution provides comprehensive service provider log collection capabilities including authentication, authorization, and data events.",
+      guidelines: [
+        "Verify service provider log collection capabilities where supported",
+        "Confirm authentication and authorization event logging",
+        "Validate data creation, disposal, and user management event capture",
+        "Assess log analytics and centralization tool integration",
+        "Review secure configuration policy and process compliance",
+        "Check third-party service provider log aggregation and API integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "10.1": {
     id: "10.1",
@@ -2370,7 +3340,21 @@ export class SafeguardManager {
       "security software management"
     ],
     relatedSafeguards: ["4.1", "10.2", "10.4", "10.6", "10.7", "13.5"],
-    keywords: ["deploy", "maintain", "anti-malware", "software", "enterprise", "assets", "endpoint", "protection"]
+    keywords: ["deploy", "maintain", "anti-malware", "software", "enterprise", "assets", "endpoint", "protection"],
+    systemPrompt: {
+      role: "endpoint_security_anti_malware_expert",
+      context: "You are evaluating anti-malware solutions against CIS Control 10.1 requirements for deploying and maintaining anti-malware software on all enterprise assets.",
+      objective: "Determine if a vendor solution provides comprehensive anti-malware software deployment and maintenance capabilities across all enterprise assets.",
+      guidelines: [
+        "Verify anti-malware software deployment capabilities and coverage",
+        "Confirm maintenance and update management for anti-malware software",
+        "Validate comprehensive enterprise asset protection and coverage",
+        "Assess malware detection capabilities and effectiveness",
+        "Review endpoint protection platform integration and management",
+        "Check security software management and centralized administration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "10.2": {
     id: "10.2",
@@ -2404,7 +3388,21 @@ export class SafeguardManager {
       "update scheduling tools"
     ],
     relatedSafeguards: ["10.1"],
-    keywords: ["configure", "automatic", "updates", "signature", "files", "anti-malware", "enterprise", "assets"]
+    keywords: ["configure", "automatic", "updates", "signature", "files", "anti-malware", "enterprise", "assets"],
+    systemPrompt: {
+      role: "anti_malware_signature_management_expert",
+      context: "You are evaluating anti-malware signature update solutions against CIS Control 10.2 requirements for configuring automatic updates for anti-malware signature files on all enterprise assets.",
+      objective: "Determine if a vendor solution provides comprehensive automatic anti-malware signature update capabilities across all enterprise assets.",
+      guidelines: [
+        "Verify automatic update configuration capabilities and reliability",
+        "Confirm anti-malware signature file management and distribution",
+        "Validate comprehensive enterprise asset coverage for updates",
+        "Assess signature currency maintenance and update frequency",
+        "Review centralized update management and scheduling systems",
+        "Check signature distribution mechanisms and update verification"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "10.3": {
     id: "10.3", 
@@ -2439,7 +3437,21 @@ export class SafeguardManager {
       "secure configuration policy/process"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["disable", "autorun", "autoplay", "auto-execute", "removable", "media", "configuration"]
+    keywords: ["disable", "autorun", "autoplay", "auto-execute", "removable", "media", "configuration"],
+    systemPrompt: {
+      role: "removable_media_security_expert",
+      context: "You are evaluating removable media security solutions against CIS Control 10.3 requirements for disabling autorun and autoplay auto-execute functionality for removable media.",
+      objective: "Determine if a vendor solution provides comprehensive autorun and autoplay disabling capabilities to prevent auto-execute functionality on removable media.",
+      guidelines: [
+        "Verify autorun functionality disabling capabilities and enforcement",
+        "Confirm autoplay functionality disabling and auto-execute prevention",
+        "Validate comprehensive removable media security controls",
+        "Assess configuration management and policy enforcement tools",
+        "Review group policy settings and registry modification capabilities",
+        "Check secure configuration policy implementation and process management"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "10.4": {
     id: "10.4",
@@ -2473,7 +3485,21 @@ export class SafeguardManager {
       "automated threat detection"
     ],
     relatedSafeguards: ["10.1"],
-    keywords: ["configure", "anti-malware", "software", "automatically", "scan", "removable", "media"]
+    keywords: ["configure", "anti-malware", "software", "automatically", "scan", "removable", "media"],
+    systemPrompt: {
+      role: "anti_malware_scanning_configuration_expert",
+      context: "You are evaluating anti-malware scanning solutions against CIS Control 10.4 requirements for configuring anti-malware software to automatically scan removable media.",
+      objective: "Determine if a vendor solution provides comprehensive anti-malware configuration capabilities for automatic removable media scanning.",
+      guidelines: [
+        "Verify anti-malware software configuration capabilities for removable media",
+        "Confirm automatic scanning configuration and policy enforcement",
+        "Validate comprehensive removable media protection and malware detection",
+        "Assess scanning policy management and automated threat detection",
+        "Review endpoint scanning policies and media scanning tools integration",
+        "Check anti-malware software configuration policy and process effectiveness"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "10.5": {
     id: "10.5",
@@ -2509,7 +3535,21 @@ export class SafeguardManager {
       "configuration management tool"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["enable", "anti-exploitation", "features", "enterprise", "assets", "software", "DEP", "WDEG", "SIP", "gatekeeper"]
+    keywords: ["enable", "anti-exploitation", "features", "enterprise", "assets", "software", "DEP", "WDEG", "SIP", "gatekeeper"],
+    systemPrompt: {
+      role: "anti_exploitation_security_expert",
+      context: "You are evaluating anti-exploitation solutions against CIS Control 10.5 requirements for enabling anti-exploitation features on enterprise assets and software, including DEP, WDEG, SIP, and Gatekeeper.",
+      objective: "Determine if a vendor solution provides comprehensive anti-exploitation feature enablement capabilities across enterprise assets and software platforms.",
+      guidelines: [
+        "Verify anti-exploitation feature enablement capabilities and coverage",
+        "Confirm enterprise asset and software protection implementation",
+        "Validate exploit prevention mechanisms and effectiveness",
+        "Assess platform-specific anti-exploitation features (DEP, WDEG, SIP, Gatekeeper)",
+        "Review configuration management tools and security policy enforcement",
+        "Check compatibility and implementation feasibility across different platforms"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "10.6": {
     id: "10.6",
@@ -2541,7 +3581,21 @@ export class SafeguardManager {
       "enterprise security tools"
     ],
     relatedSafeguards: ["10.1"],
-    keywords: ["centrally", "manage", "anti-malware", "software", "centralized", "management"]
+    keywords: ["centrally", "manage", "anti-malware", "software", "centralized", "management"],
+    systemPrompt: {
+      role: "centralized_anti_malware_management_expert",
+      context: "You are evaluating centralized anti-malware management solutions against CIS Control 10.6 requirements for centrally managing anti-malware software across the enterprise.",
+      objective: "Determine if a vendor solution provides comprehensive centralized anti-malware software management capabilities with centralized control and governance.",
+      guidelines: [
+        "Verify centralized anti-malware management capabilities and infrastructure",
+        "Confirm centralized management process implementation and effectiveness",
+        "Validate anti-malware software governance and policy enforcement",
+        "Assess management infrastructure scalability and reliability",
+        "Review centralized management platforms and security management consoles",
+        "Check enterprise security tools integration and centralized control features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "10.7": {
     id: "10.7",
@@ -2574,7 +3628,21 @@ export class SafeguardManager {
       "machine learning security"
     ],
     relatedSafeguards: ["10.1"],
-    keywords: ["use", "behavior-based", "anti-malware", "software", "behavioral", "analysis", "advanced", "detection"]
+    keywords: ["use", "behavior-based", "anti-malware", "software", "behavioral", "analysis", "advanced", "detection"],
+    systemPrompt: {
+      role: "behavioral_anti_malware_analysis_expert",
+      context: "You are evaluating behavior-based anti-malware solutions against CIS Control 10.7 requirements for using behavior-based anti-malware software with advanced threat detection capabilities.",
+      objective: "Determine if a vendor solution provides comprehensive behavior-based anti-malware software capabilities with behavioral analysis and dynamic threat identification.",
+      guidelines: [
+        "Verify behavior-based anti-malware software implementation and effectiveness",
+        "Confirm behavioral analysis capabilities and advanced threat detection",
+        "Validate dynamic threat identification and behavior-based protection",
+        "Assess advanced malware detection accuracy and false positive management",
+        "Review behavioral analysis tools and machine learning security integration",
+        "Check advanced endpoint detection capabilities and threat response mechanisms"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "11.1": {
     id: "11.1",
@@ -2613,7 +3681,21 @@ export class SafeguardManager {
       "backup and recovery strategy"
     ],
     relatedSafeguards: ["3.2", "3.4", "3.5", "3.8", "11.2", "11.3", "11.4", "11.5"],
-    keywords: ["establish", "maintain", "documented", "data", "recovery", "process", "backup", "prioritization"]
+    keywords: ["establish", "maintain", "documented", "data", "recovery", "process", "backup", "prioritization"],
+    systemPrompt: {
+      role: "data_recovery_governance_expert",
+      context: "You are evaluating data recovery governance solutions against CIS Control 11.1 requirements for establishing and maintaining a documented data recovery process with scope, prioritization, and backup security considerations.",
+      objective: "Determine if a vendor solution provides comprehensive data recovery process documentation, governance, and management capabilities including annual reviews and change management.",
+      guidelines: [
+        "Verify documented data recovery process establishment and maintenance",
+        "Confirm scope of data recovery activities and recovery prioritization",
+        "Validate security of backup data and protection mechanisms",
+        "Assess annual documentation review and update processes",
+        "Review business continuity documentation and recovery procedures",
+        "Check change management for significant enterprise changes impacting recovery"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "11.2": {
     id: "11.2", 
@@ -2650,7 +3732,21 @@ export class SafeguardManager {
       "enterprise backup solutions"
     ],
     relatedSafeguards: ["1.1", "2.1", "11.1"],
-    keywords: ["perform", "automated", "backups", "enterprise", "assets", "weekly", "frequency", "sensitivity"]
+    keywords: ["perform", "automated", "backups", "enterprise", "assets", "weekly", "frequency", "sensitivity"],
+    systemPrompt: {
+      role: "automated_backup_systems_expert",
+      context: "You are evaluating automated backup solutions against CIS Control 11.2 requirements for performing automated backups of in-scope enterprise assets with weekly or more frequent schedules based on data sensitivity.",
+      objective: "Determine if a vendor solution provides comprehensive automated backup capabilities with appropriate frequency scheduling and enterprise asset coverage.",
+      guidelines: [
+        "Verify automated backup performance and enterprise asset coverage",
+        "Confirm backup frequency requirements (weekly or more frequent)",
+        "Validate data sensitivity-based backup scheduling and prioritization",
+        "Assess in-scope enterprise asset identification and backup coverage",
+        "Review backup scheduling software and automated backup system reliability",
+        "Check enterprise backup solution scalability and management features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "11.3": {
     id: "11.3",
@@ -2686,7 +3782,21 @@ export class SafeguardManager {
       "data separation technologies"
     ],
     relatedSafeguards: ["3.3", "3.10", "3.11", "11.1"],
-    keywords: ["protect", "recovery", "data", "equivalent", "controls", "encryption", "separation", "requirements"]
+    keywords: ["protect", "recovery", "data", "equivalent", "controls", "encryption", "separation", "requirements"],
+    systemPrompt: {
+      role: "backup_data_protection_expert",
+      context: "You are evaluating backup data protection solutions against CIS Control 11.3 requirements for protecting recovery data with equivalent controls to the original data, including encryption or data separation based on requirements.",
+      objective: "Determine if a vendor solution provides comprehensive recovery data protection capabilities with equivalent controls, encryption, and data separation mechanisms.",
+      guidelines: [
+        "Verify recovery data protection implementation and equivalent controls",
+        "Confirm original data protection parity and control equivalence",
+        "Validate encryption capabilities for backup data protection",
+        "Assess data separation technologies and implementation options",
+        "Review backup encryption systems and secure backup storage solutions",
+        "Check requirements-based implementation flexibility and compliance"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "11.4": {
     id: "11.4",
@@ -2725,7 +3835,21 @@ export class SafeguardManager {
       "version controlling backup destinations"
     ],
     relatedSafeguards: ["11.1"],
-    keywords: ["establish", "maintain", "isolated", "instance", "recovery", "data", "offline", "cloud", "off-site"]
+    keywords: ["establish", "maintain", "isolated", "instance", "recovery", "data", "offline", "cloud", "off-site"],
+    systemPrompt: {
+      role: "isolated_backup_recovery_expert",
+      context: "You are evaluating isolated backup recovery solutions against CIS Control 11.4 requirements for establishing and maintaining an isolated instance of recovery data with version controlling backup destinations through offline, cloud, or off-site systems.",
+      objective: "Determine if a vendor solution provides comprehensive isolated recovery data capabilities with backup destination control and implementation flexibility.",
+      guidelines: [
+        "Verify isolated instance of recovery data establishment and maintenance",
+        "Confirm version controlling backup destinations and destination management",
+        "Validate offline, cloud, and off-site implementation options",
+        "Assess recovery data isolation effectiveness and security",
+        "Review backup destination control mechanisms and flexibility",
+        "Check off-site storage solutions and cloud backup service integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "11.5": {
     id: "11.5",
@@ -2760,7 +3884,21 @@ export class SafeguardManager {
       "backup validation systems"
     ],
     relatedSafeguards: ["11.1"],
-    keywords: ["test", "backup", "recovery", "quarterly", "frequently", "sampling", "enterprise", "assets"]
+    keywords: ["test", "backup", "recovery", "quarterly", "frequently", "sampling", "enterprise", "assets"],
+    systemPrompt: {
+      role: "backup_recovery_testing_expert",
+      context: "You are evaluating backup recovery testing solutions against CIS Control 11.5 requirements for testing backup recovery quarterly or more frequently for a sampling of in-scope enterprise assets.",
+      objective: "Determine if a vendor solution provides comprehensive backup recovery testing capabilities with appropriate frequency and enterprise asset sampling.",
+      guidelines: [
+        "Verify backup recovery testing implementation and quarterly frequency",
+        "Confirm in-scope enterprise asset sampling and selection methods",
+        "Validate recovery validation processes and testing effectiveness",
+        "Assess testing frequency management and scheduling capabilities",
+        "Review recovery testing procedures and backup validation systems",
+        "Check data recovery testing automation and reporting features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "12.1": {
     id: "12.1",
@@ -2798,7 +3936,21 @@ export class SafeguardManager {
       "network-as-a-service platforms"
     ],
     relatedSafeguards: ["4.2", "7.3"],
-    keywords: ["ensure", "network", "infrastructure", "up-to-date", "software", "versions", "monthly", "NaaS"]
+    keywords: ["ensure", "network", "infrastructure", "up-to-date", "software", "versions", "monthly", "NaaS"],
+    systemPrompt: {
+      role: "network_infrastructure_management_expert",
+      context: "You are evaluating network infrastructure management solutions against CIS Control 12.1 requirements for ensuring network infrastructure is kept up-to-date with latest stable software releases and supported NaaS offerings.",
+      objective: "Determine if a vendor solution provides comprehensive network infrastructure update management with monthly software version reviews and support verification.",
+      guidelines: [
+        "Verify network infrastructure up-to-date maintenance capabilities",
+        "Confirm latest stable software release management and deployment",
+        "Validate currently supported network-as-a-service offering utilization",
+        "Assess monthly software version review processes and frequency",
+        "Review automated patching tools and network management systems",
+        "Check software support verification and maintenance tracking"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "12.2": {
     id: "12.2",
@@ -2837,7 +3989,21 @@ export class SafeguardManager {
       "network architecture tools"
     ],
     relatedSafeguards: ["3.3", "3.10", "4.2", "12.4", "13.3", "13.4", "13.6", "13.8", "13.9", "13.10"],
-    keywords: ["establish", "maintain", "secure", "network", "architecture", "segmentation", "least", "privilege", "availability"]
+    keywords: ["establish", "maintain", "secure", "network", "architecture", "segmentation", "least", "privilege", "availability"],
+    systemPrompt: {
+      role: "network_architecture_security_expert",
+      context: "You are evaluating secure network architecture solutions against CIS Control 12.2 requirements for designing and maintaining secure network architecture with segmentation, least privilege, and availability considerations.",
+      objective: "Determine if a vendor solution provides comprehensive secure network architecture capabilities including segmentation, least privilege implementation, and availability management.",
+      guidelines: [
+        "Verify secure network architecture design and maintenance capabilities",
+        "Confirm network segmentation implementation and effectiveness",
+        "Validate least privilege network access controls and enforcement",
+        "Assess availability management and resilience features",
+        "Review network architecture documentation, policy, and design components",
+        "Check secure network management tools and architecture frameworks"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "12.3": {
     id: "12.3",
@@ -2873,7 +4039,21 @@ export class SafeguardManager {
       "secure protocol implementations"
     ],
     relatedSafeguards: ["4.2", "12.6"],
-    keywords: ["securely", "manage", "network", "infrastructure", "version-controlled", "SSH", "HTTPS", "protocols"]
+    keywords: ["securely", "manage", "network", "infrastructure", "version-controlled", "SSH", "HTTPS", "protocols"],
+    systemPrompt: {
+      role: "network_infrastructure_security_management_expert",
+      context: "You are evaluating network infrastructure security management solutions against CIS Control 12.3 requirements for securely managing network infrastructure with version-controlled infrastructure-as-code and secure network protocols like SSH and HTTPS.",
+      objective: "Determine if a vendor solution provides comprehensive secure network infrastructure management capabilities including infrastructure-as-code and secure protocol implementation.",
+      guidelines: [
+        "Verify secure network infrastructure management capabilities and practices",
+        "Confirm version-controlled infrastructure-as-code implementation and management",
+        "Validate secure network protocol usage (SSH, HTTPS) and enforcement",
+        "Assess infrastructure security controls and management frameworks",
+        "Review network management and monitoring tools integration",
+        "Check secure protocol implementation and infrastructure automation"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "12.4": {
     id: "12.4",
@@ -2910,7 +4090,21 @@ export class SafeguardManager {
       "architecture visualization tools"
     ],
     relatedSafeguards: ["3.8", "4.2", "12.2"],
-    keywords: ["establish", "maintain", "architecture", "diagrams", "documentation", "annually", "enterprise", "changes"]
+    keywords: ["establish", "maintain", "architecture", "diagrams", "documentation", "annually", "enterprise", "changes"],
+    systemPrompt: {
+      role: "network_architecture_documentation_expert",
+      context: "You are evaluating network architecture documentation solutions against CIS Control 12.4 requirements for establishing and maintaining architecture diagrams and network system documentation with annual reviews and change management.",
+      objective: "Determine if a vendor solution provides comprehensive network architecture documentation capabilities including diagramming, documentation management, and regular updates.",
+      guidelines: [
+        "Verify architecture diagram establishment and maintenance capabilities",
+        "Confirm network system documentation management and organization",
+        "Validate annual documentation review and update processes",
+        "Assess change management for significant enterprise changes",
+        "Review network architecture diagramming tools and visualization systems",
+        "Check documentation management systems and version control features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "12.5": {
     id: "12.5",
@@ -2945,7 +4139,21 @@ export class SafeguardManager {
       "centralized authentication systems"
     ],
     relatedSafeguards: ["4.2", "5.6", "6.7", "8.9", "12.6", "12.7"],
-    keywords: ["centralize", "network", "AAA", "authentication", "authorization", "auditing"]
+    keywords: ["centralize", "network", "AAA", "authentication", "authorization", "auditing"],
+    systemPrompt: {
+      role: "network_aaa_centralization_expert",
+      context: "You are evaluating network AAA centralization solutions against CIS Control 12.5 requirements for centralizing network authentication, authorization, and auditing (AAA) functions.",
+      objective: "Determine if a vendor solution provides comprehensive centralized network AAA capabilities with authentication, authorization, and auditing integration.",
+      guidelines: [
+        "Verify centralized network AAA implementation and effectiveness",
+        "Confirm network authentication centralization and management",
+        "Validate authorization controls and centralized access management",
+        "Assess auditing capabilities and centralized logging integration",
+        "Review AAA servers and centralized authentication systems",
+        "Check identity and access management tool integration and AAA functionality"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "12.6": {
     id: "12.6",
@@ -2981,7 +4189,21 @@ export class SafeguardManager {
       "secure protocol implementations"
     ],
     relatedSafeguards: ["12.3", "12.5"],
-    keywords: ["use", "secure", "network", "management", "communication", "protocols", "802.1X", "WPA2", "enterprise"]
+    keywords: ["use", "secure", "network", "management", "communication", "protocols", "802.1X", "WPA2", "enterprise"],
+    systemPrompt: {
+      role: "secure_network_protocol_expert",
+      context: "You are evaluating secure network management and communication protocol solutions against CIS Control 12.6 requirements for implementing enterprise-grade secure protocols.",
+      objective: "Determine if a vendor solution provides comprehensive secure network management and communication protocol capabilities including 802.1X and WPA2 Enterprise or greater.",
+      guidelines: [
+        "Verify secure network management protocol implementation",
+        "Confirm secure communication protocol deployment (802.1X, WPA2 Enterprise+)",
+        "Validate enterprise-grade security protocol capabilities",
+        "Assess secure protocol implementation and configuration",
+        "Review network security policy and process integration",
+        "Check wireless security and authentication system compatibility"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "12.7": {
     id: "12.7",
@@ -3017,7 +4239,21 @@ export class SafeguardManager {
       "AAA integration systems"
     ],
     relatedSafeguards: ["6.4", "12.5"],
-    keywords: ["require", "users", "authenticate", "enterprise-managed", "VPN", "authentication", "services", "devices"]
+    keywords: ["require", "users", "authenticate", "enterprise-managed", "VPN", "authentication", "services", "devices"],
+    systemPrompt: {
+      role: "remote_access_vpn_expert",
+      context: "You are evaluating remote access VPN and AAA integration solutions against CIS Control 12.7 requirements for ensuring remote devices utilize enterprise-managed VPN and authentication.",
+      objective: "Determine if a vendor solution provides comprehensive remote device VPN requirements and AAA infrastructure integration for enterprise resource access.",
+      guidelines: [
+        "Verify enterprise-managed VPN deployment and user authentication requirements",
+        "Confirm AAA infrastructure integration and authentication services",
+        "Validate remote device access control and enterprise resource protection",
+        "Assess VPN and authentication service integration capabilities",
+        "Review secure network management policy and VPN tool compatibility",
+        "Check end-user device authentication and access control systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "12.8": {
     id: "12.8",
@@ -3055,7 +4291,21 @@ export class SafeguardManager {
       "administrative isolation systems"
     ],
     relatedSafeguards: ["1.1", "5.1"],
-    keywords: ["establish", "maintain", "dedicated", "computing", "resources", "administrative", "work", "segmented", "SAW"]
+    keywords: ["establish", "maintain", "dedicated", "computing", "resources", "administrative", "work", "segmented", "SAW"],
+    systemPrompt: {
+      role: "secure_admin_workstation_expert",
+      context: "You are evaluating secure administrative workstation (SAW) solutions against CIS Control 12.8 requirements for establishing dedicated computing resources for administrative work.",
+      objective: "Determine if a vendor solution provides comprehensive dedicated computing resources for administrative tasks with proper network segmentation and internet access restrictions.",
+      guidelines: [
+        "Verify dedicated computing resource establishment and maintenance for administrative work",
+        "Confirm administrative task isolation and access separation capabilities",
+        "Validate network segmentation from enterprise primary network",
+        "Assess internet access restriction and administrative isolation systems",
+        "Review secure network management policy and SAW implementation",
+        "Check administrative workstation security and separation tools"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
 
   // Control 13: Network Monitoring and Defense
@@ -3092,7 +4342,21 @@ export class SafeguardManager {
       "event correlation engines"
     ],
     relatedSafeguards: ["8.1", "8.2", "8.11", "13.2", "13.3", "13.11"],
-    keywords: ["centralize", "security", "event", "alerting", "log", "correlation", "analysis", "exploitation"]
+    keywords: ["centralize", "security", "event", "alerting", "log", "correlation", "analysis", "exploitation"],
+    systemPrompt: {
+      role: "security_event_alerting_expert",
+      context: "You are evaluating security event alerting and correlation solutions against CIS Control 13.1 requirements for centralizing security event alerting across enterprise assets.",
+      objective: "Determine if a vendor solution provides comprehensive centralized security event alerting with log correlation and analysis capabilities for detecting active exploitation attempts.",
+      guidelines: [
+        "Verify centralized security event alerting across all enterprise assets",
+        "Confirm log correlation and analysis capabilities",
+        "Validate active exploitation attempt detection and monitoring",
+        "Assess SIEM/SOAR integration and event management systems",
+        "Review security information correlation and automated response",
+        "Check enterprise-wide security event coverage and alerting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.2": {
     id: "13.2", 
@@ -3124,7 +4388,21 @@ export class SafeguardManager {
       "behavioral analysis tools"
     ],
     relatedSafeguards: ["1.1", "13.1", "13.3", "13.7"],
-    keywords: ["deploy", "host-based", "intrusion", "detection", "solution", "enterprise", "assets"]
+    keywords: ["deploy", "host-based", "intrusion", "detection", "solution", "enterprise", "assets"],
+    systemPrompt: {
+      role: "host_intrusion_detection_expert",
+      context: "You are evaluating host-based intrusion detection solutions against CIS Control 13.2 requirements for deploying HIDS on enterprise assets where technically feasible.",
+      objective: "Determine if a vendor solution provides comprehensive host-based intrusion detection capabilities for enterprise asset deployment and protection.",
+      guidelines: [
+        "Verify host-based intrusion detection solution deployment capabilities",
+        "Confirm enterprise asset coverage where technically feasible",
+        "Validate HIDS/EDR functionality and behavioral analysis",
+        "Assess technical feasibility assessment and deployment planning",
+        "Review host-based security monitoring and detection capabilities",
+        "Check endpoint protection and response integration systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.3": {
     id: "13.3",
@@ -3156,7 +4434,21 @@ export class SafeguardManager {
       "industry-specific threat feeds"
     ],
     relatedSafeguards: ["13.1", "13.2", "13.8"],
-    keywords: ["deploy", "network", "intrusion", "detection", "solution", "ruleset", "threats", "industry"]
+    keywords: ["deploy", "network", "intrusion", "detection", "solution", "ruleset", "threats", "industry"],
+    systemPrompt: {
+      role: "network_intrusion_detection_expert",
+      context: "You are evaluating network intrusion detection solutions against CIS Control 13.3 requirements for deploying NIDS with industry-specific threat-tuned rulesets.",
+      objective: "Determine if a vendor solution provides comprehensive network intrusion detection with threat rulesets tuned for the enterprise's industry sector.",
+      guidelines: [
+        "Verify network intrusion detection solution deployment capabilities",
+        "Confirm threat-tuned rulesets for industry-specific threats",
+        "Validate industry sector threat focus and intelligence integration",
+        "Assess NIDS configuration and threat feed integration",
+        "Review network security monitoring and threat detection capabilities",
+        "Check industry-specific threat intelligence and rule customization"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.4": {
     id: "13.4",
@@ -3186,7 +4478,21 @@ export class SafeguardManager {
       "software-defined perimeter"
     ],
     relatedSafeguards: ["12.2", "12.3", "13.9"],
-    keywords: ["perform", "traffic", "filtering", "network", "segments", "technically", "feasible"]
+    keywords: ["perform", "traffic", "filtering", "network", "segments", "technically", "feasible"],
+    systemPrompt: {
+      role: "network_traffic_filtering_expert",
+      context: "You are evaluating network traffic filtering solutions against CIS Control 13.4 requirements for performing traffic filtering between network segments where technically feasible.",
+      objective: "Determine if a vendor solution provides comprehensive traffic filtering capabilities between network segments with technical feasibility assessment.",
+      guidelines: [
+        "Verify traffic filtering capabilities between network segments",
+        "Confirm network segmentation controls and micro-segmentation",
+        "Validate technical feasibility assessment for filtering implementation",
+        "Assess network firewall and access control capabilities",
+        "Review software-defined perimeter and network access control",
+        "Check network security architecture and segmentation tools"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.5": {
     id: "13.5",
@@ -3221,7 +4527,21 @@ export class SafeguardManager {
       "posture assessment tools"
     ],
     relatedSafeguards: ["6.1", "10.1", "10.7", "12.1", "13.2"],
-    keywords: ["manage", "access", "control", "remote", "assets", "connecting", "enterprise", "networks"]
+    keywords: ["manage", "access", "control", "remote", "assets", "connecting", "enterprise", "networks"],
+    systemPrompt: {
+      role: "remote_access_control_expert",
+      context: "You are evaluating remote access control solutions against CIS Control 13.5 requirements for managing access control for assets remotely connecting to enterprise networks based on security posture.",
+      objective: "Determine if a vendor solution provides comprehensive remote asset access control based on security posture including anti-malware, patches, firewalls, and intrusion detection/prevention.",
+      guidelines: [
+        "Verify remote asset access control management capabilities",
+        "Confirm security posture-based access determination (anti-malware, patches, firewall, IDS/IPS)",
+        "Validate network access control (NAC) and zero trust capabilities",
+        "Assess device compliance checking and posture assessment tools",
+        "Review remote connection management and enterprise network protection",
+        "Check up-to-date security control verification and access enforcement"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.6": {
     id: "13.6",
@@ -3252,7 +4572,21 @@ export class SafeguardManager {
       "traffic analysis platforms"
     ],
     relatedSafeguards: ["8.5", "13.1", "13.3"],
-    keywords: ["collect", "network", "traffic", "flow", "logs", "review", "alert"]
+    keywords: ["collect", "network", "traffic", "flow", "logs", "review", "alert"],
+    systemPrompt: {
+      role: "network_traffic_monitoring_expert",
+      context: "You are evaluating network traffic flow monitoring solutions against CIS Control 13.6 requirements for collecting network traffic flow logs and traffic for review and alerting.",
+      objective: "Determine if a vendor solution provides comprehensive network traffic flow log collection and monitoring capabilities for review and alerting purposes.",
+      guidelines: [
+        "Verify network traffic flow log collection capabilities",
+        "Confirm network traffic monitoring and capture systems",
+        "Validate review and alerting capabilities for traffic analysis",
+        "Assess network flow analyzers and packet capture systems",
+        "Review traffic analysis platforms and monitoring tools",
+        "Check network security monitoring and flow-based detection"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.7": {
     id: "13.7",
@@ -3284,7 +4618,21 @@ export class SafeguardManager {
       "automated threat response"
     ],
     relatedSafeguards: ["13.2", "13.8"],
-    keywords: ["deploy", "host-based", "intrusion", "prevention", "solution", "enterprise", "assets"]
+    keywords: ["deploy", "host-based", "intrusion", "prevention", "solution", "enterprise", "assets"],
+    systemPrompt: {
+      role: "host_intrusion_prevention_expert",
+      context: "You are evaluating host-based intrusion prevention solutions against CIS Control 13.7 requirements for deploying HIPS on enterprise assets where technically feasible.",
+      objective: "Determine if a vendor solution provides comprehensive host-based intrusion prevention capabilities for enterprise asset deployment and automated threat response.",
+      guidelines: [
+        "Verify host-based intrusion prevention solution deployment capabilities",
+        "Confirm enterprise asset coverage where technically feasible",
+        "Validate HIPS/EPP functionality and behavioral blocking systems",
+        "Assess automated threat response and prevention capabilities",
+        "Review endpoint protection platforms and response automation",
+        "Check real-time threat prevention and blocking systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.8": {
     id: "13.8",
@@ -3315,7 +4663,21 @@ export class SafeguardManager {
       "real-time threat mitigation"
     ],
     relatedSafeguards: ["13.3", "13.7"],
-    keywords: ["deploy", "network", "intrusion", "prevention", "solution", "block", "malicious", "real-time"]
+    keywords: ["deploy", "network", "intrusion", "prevention", "solution", "block", "malicious", "real-time"],
+    systemPrompt: {
+      role: "network_intrusion_prevention_expert",
+      context: "You are evaluating network intrusion prevention solutions against CIS Control 13.8 requirements for deploying NIPS to block malicious network traffic in real-time.",
+      objective: "Determine if a vendor solution provides comprehensive network intrusion prevention capabilities for real-time malicious traffic blocking and automated threat mitigation.",
+      guidelines: [
+        "Verify network intrusion prevention solution deployment capabilities",
+        "Confirm real-time malicious traffic blocking and response",
+        "Validate NIPS functionality and inline security appliances",
+        "Assess automated blocking systems and threat mitigation",
+        "Review real-time threat response and prevention capabilities",
+        "Check network-based attack prevention and blocking efficiency"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.9": {
     id: "13.9",
@@ -3346,7 +4708,21 @@ export class SafeguardManager {
       "port-based network access control"
     ],
     relatedSafeguards: ["12.7", "13.4"],
-    keywords: ["deploy", "port-level", "access", "control", "802.1x", "network", "protocols", "certificates"]
+    keywords: ["deploy", "port-level", "access", "control", "802.1x", "network", "protocols", "certificates"],
+    systemPrompt: {
+      role: "port_access_control_expert",
+      context: "You are evaluating port-level access control solutions against CIS Control 13.9 requirements for deploying 802.1x or similar network access control protocols for port-level access control.",
+      objective: "Determine if a vendor solution provides comprehensive port-level access control capabilities using 802.1x or similar network access control protocols including certificate-based authentication.",
+      guidelines: [
+        "Verify port-level access control deployment capabilities",
+        "Confirm 802.1x implementation and network access control protocols",
+        "Validate certificate-based authentication and similar protocols",
+        "Assess network access control systems and port-based authentication",
+        "Review 802.1x infrastructure and certificate management",
+        "Check port-based network access control and authentication systems"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.10": {
     id: "13.10",
@@ -3377,7 +4753,21 @@ export class SafeguardManager {
       "application-aware filtering"
     ],
     relatedSafeguards: ["13.4", "16.11"],
-    keywords: ["perform", "application", "layer", "filtering", "protect", "network-based", "attacks"]
+    keywords: ["perform", "application", "layer", "filtering", "protect", "network-based", "attacks"],
+    systemPrompt: {
+      role: "application_layer_filtering_expert",
+      context: "You are evaluating application layer filtering solutions against CIS Control 13.10 requirements for performing application layer filtering to protect against enterprise's most common network-based attacks.",
+      objective: "Determine if a vendor solution provides comprehensive application layer filtering capabilities to protect against common network-based attacks specific to the enterprise environment.",
+      guidelines: [
+        "Verify application layer filtering capabilities and deployment",
+        "Confirm protection against enterprise's most common network-based attacks",
+        "Validate web application firewalls and application layer gateways",
+        "Assess deep packet inspection and application-aware filtering",
+        "Review enterprise-specific threat focus and attack prevention",
+        "Check application layer security and network-based attack mitigation"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "13.11": {
     id: "13.11",
@@ -3407,7 +4797,21 @@ export class SafeguardManager {
       "false positive reduction"
     ],
     relatedSafeguards: ["13.1", "8.11"],
-    keywords: ["tune", "security", "event", "alerting", "thresholds", "monthly", "frequently"]
+    keywords: ["tune", "security", "event", "alerting", "thresholds", "monthly", "frequently"],
+    systemPrompt: {
+      role: "security_alert_tuning_expert",
+      context: "You are evaluating security event alerting threshold tuning solutions against CIS Control 13.11 requirements for tuning security event alerting thresholds monthly or more frequently.",
+      objective: "Determine if a vendor solution provides comprehensive security event alerting threshold tuning capabilities with monthly or more frequent optimization cycles.",
+      guidelines: [
+        "Verify security event alerting threshold tuning capabilities",
+        "Confirm monthly or more frequent tuning frequency and processes",
+        "Validate SIEM tuning processes and threshold optimization tools",
+        "Assess alert management platforms and false positive reduction",
+        "Review threshold optimization and alerting efficiency",
+        "Check automated tuning capabilities and performance monitoring"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
 
   // Control 9: Email and Web Browser Protections
@@ -3443,7 +4847,21 @@ export class SafeguardManager {
       "automated patch management"
     ],
     relatedSafeguards: ["2.1", "4.1", "7.4"],
-    keywords: ["ensure", "fully", "supported", "browsers", "email", "clients", "latest", "version", "vendor"]
+    keywords: ["ensure", "fully", "supported", "browsers", "email", "clients", "latest", "version", "vendor"],
+    systemPrompt: {
+      role: "browser_email_client_security_expert",
+      context: "You are evaluating browser and email client security solutions against CIS Control 9.1 requirements for ensuring only fully supported, latest versions are used.",
+      objective: "Determine if a vendor solution provides comprehensive browser and email client version management and execution control.",
+      guidelines: [
+        "Verify enforcement of fully supported browsers and email clients only",
+        "Confirm latest vendor version requirement and update management",
+        "Validate execution restriction and application allowlisting capabilities",
+        "Assess enterprise software asset management tool integration",
+        "Review automated patch management for browsers and email clients",
+        "Check software inventory and compliance monitoring features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "9.2": {
     id: "9.2",
@@ -3478,7 +4896,21 @@ export class SafeguardManager {
       "cloud-based DNS filtering"
     ],
     relatedSafeguards: ["4.1", "4.9"],
-    keywords: ["use", "DNS", "filtering", "services", "end-user", "devices", "block", "malicious", "domains"]
+    keywords: ["use", "DNS", "filtering", "services", "end-user", "devices", "block", "malicious", "domains"],
+    systemPrompt: {
+      role: "dns_filtering_security_expert",
+      context: "You are evaluating DNS filtering solutions against CIS Control 9.2 requirements for DNS filtering services to block malicious domains.",
+      objective: "Determine if a vendor solution provides comprehensive DNS filtering capabilities for all end-user devices to block malicious domains.",
+      guidelines: [
+        "Verify DNS filtering service deployment for all end-user devices",
+        "Confirm malicious domain blocking capabilities and coverage",
+        "Validate remote and on-premise asset inclusion",
+        "Assess DNS filtering service effectiveness and accuracy",
+        "Review secure DNS server configuration and cloud-based filtering",
+        "Check DNS security platform integration and management features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "9.3": {
     id: "9.3",
@@ -3514,7 +4946,21 @@ export class SafeguardManager {
       "web content filtering"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["maintain", "enforce", "network-based", "URL", "filters", "limit", "malicious", "unapproved", "websites"]
+    keywords: ["maintain", "enforce", "network-based", "URL", "filters", "limit", "malicious", "unapproved", "websites"],
+    systemPrompt: {
+      role: "network_security_filtering_expert",
+      context: "You are evaluating network-based URL filtering solutions against CIS Control 9.3 requirements for network-based URL filters to limit enterprise asset connections to malicious or unapproved websites.",
+      objective: "Determine if a vendor solution provides comprehensive network-based URL filtering capabilities to enforce connection limits for all enterprise assets.",
+      guidelines: [
+        "Verify network-based URL filter implementation and enforcement",
+        "Confirm malicious and unapproved website blocking capabilities",
+        "Validate coverage for all enterprise assets in the filtering system",
+        "Assess category-based, reputation-based, and block list filtering methods",
+        "Review filter update mechanisms and management processes",
+        "Check network-level enforcement and bypass prevention"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "9.4": {
     id: "9.4",
@@ -3551,7 +4997,21 @@ export class SafeguardManager {
       "extension management platforms"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["restrict", "unauthorized", "unnecessary", "browser", "email", "plugins", "extensions", "add-on"]
+    keywords: ["restrict", "unauthorized", "unnecessary", "browser", "email", "plugins", "extensions", "add-on"],
+    systemPrompt: {
+      role: "browser_security_management_expert",
+      context: "You are evaluating browser and email client extension management solutions against CIS Control 9.4 requirements for restricting unauthorized or unnecessary plugins, extensions, and add-on applications.",
+      objective: "Determine if a vendor solution provides comprehensive browser and email client extension restriction capabilities through uninstalling or disabling mechanisms.",
+      guidelines: [
+        "Verify browser plugin and extension restriction capabilities",
+        "Confirm email client plugin and extension management",
+        "Validate unauthorized and unnecessary application identification",
+        "Assess uninstalling and disabling mechanisms and enforcement",
+        "Review configuration management and policy enforcement tools",
+        "Check browser management system integration and compliance monitoring"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "9.5": {
     id: "9.5",
@@ -3589,7 +5049,21 @@ export class SafeguardManager {
       "DKIM signature management"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["implement", "DMARC", "policy", "verification", "SPF", "DKIM", "spoofed", "modified", "emails"]
+    keywords: ["implement", "DMARC", "policy", "verification", "SPF", "DKIM", "spoofed", "modified", "emails"],
+    systemPrompt: {
+      role: "email_authentication_security_expert",
+      context: "You are evaluating email authentication solutions against CIS Control 9.5 requirements for implementing DMARC policy and verification, including SPF and DKIM standards to prevent spoofed or modified emails.",
+      objective: "Determine if a vendor solution provides comprehensive DMARC, SPF, and DKIM implementation capabilities to protect against email spoofing and modification from valid domains.",
+      guidelines: [
+        "Verify DMARC policy implementation and verification capabilities",
+        "Confirm SPF (Sender Policy Framework) standard implementation",
+        "Validate DKIM (DomainKeys Identified Mail) standard implementation",
+        "Assess spoofed and modified email detection and prevention",
+        "Review DMARC management tools and email authentication services",
+        "Check SPF record management and DKIM signature management integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "9.6": {
     id: "9.6",
@@ -3618,7 +5092,21 @@ export class SafeguardManager {
       "email content filtering"
     ],
     relatedSafeguards: ["4.1"],
-    keywords: ["block", "unnecessary", "file", "types", "email", "gateway", "enterprise"]
+    keywords: ["block", "unnecessary", "file", "types", "email", "gateway", "enterprise"],
+    systemPrompt: {
+      role: "email_gateway_security_expert",
+      context: "You are evaluating email gateway security solutions against CIS Control 9.6 requirements for blocking unnecessary file types attempting to enter the enterprise's email gateway.",
+      objective: "Determine if a vendor solution provides comprehensive email gateway file type blocking capabilities to prevent unnecessary file types from entering the enterprise.",
+      guidelines: [
+        "Verify email gateway file type blocking capabilities and coverage",
+        "Confirm unnecessary file type identification and filtering mechanisms",
+        "Validate comprehensive email gateway protection and security controls",
+        "Assess file type blocking system effectiveness and accuracy",
+        "Review email security tools and content filtering integration",
+        "Check email gateway filtering policies and management features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "9.7": {
     id: "9.7",
@@ -3651,7 +5139,21 @@ export class SafeguardManager {
       "email sandboxing solutions"
     ],
     relatedSafeguards: ["4.1", "10.1"],
-    keywords: ["deploy", "maintain", "email", "server", "anti-malware", "protections", "attachment", "scanning", "sandboxing"]
+    keywords: ["deploy", "maintain", "email", "server", "anti-malware", "protections", "attachment", "scanning", "sandboxing"],
+    systemPrompt: {
+      role: "email_security_anti_malware_expert",
+      context: "You are evaluating email server anti-malware solutions against CIS Control 9.7 requirements for deploying and maintaining email server anti-malware protections including attachment scanning and sandboxing.",
+      objective: "Determine if a vendor solution provides comprehensive email server anti-malware protection capabilities with attachment scanning and sandboxing features.",
+      guidelines: [
+        "Verify email server anti-malware protection deployment and maintenance",
+        "Confirm attachment scanning capabilities and effectiveness",
+        "Validate sandboxing capabilities and threat isolation",
+        "Assess comprehensive email security protection coverage",
+        "Review anti-malware platform integration and management",
+        "Check email sandboxing solution effectiveness and threat detection"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
 
   // Control 14: Security Awareness and Skills Training
@@ -3691,7 +5193,21 @@ export class SafeguardManager {
       "learning management systems"
     ],
     relatedSafeguards: ["14.2", "14.3", "14.4", "14.5", "14.6", "14.7", "14.8", "14.9"],
-    keywords: ["establish", "maintain", "security", "awareness", "program", "educate", "workforce", "training", "annually"]
+    keywords: ["establish", "maintain", "security", "awareness", "program", "educate", "workforce", "training", "annually"],
+    systemPrompt: {
+      role: "security_awareness_program_expert",
+      context: "You are evaluating security awareness program solutions against CIS Control 14.1 requirements for establishing and maintaining comprehensive security awareness programs with annual training and content updates.",
+      objective: "Determine if a vendor solution provides comprehensive security awareness program establishment and maintenance capabilities including workforce education, training delivery, and content management.",
+      guidelines: [
+        "Verify security awareness program establishment and maintenance capabilities",
+        "Confirm workforce education on secure interaction with enterprise assets and data",
+        "Validate training delivery at hire and minimum annually",
+        "Assess content review and update processes annually or when enterprise changes occur",
+        "Review learning management systems and training documentation capabilities",
+        "Check security training and awareness tools integration and policy management"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "14.2": {
     id: "14.2",
@@ -3726,7 +5242,21 @@ export class SafeguardManager {
       "security awareness modules"
     ],
     relatedSafeguards: ["14.1"],
-    keywords: ["train", "workforce", "recognize", "social", "engineering", "attacks", "phishing", "BEC", "pretexting", "tailgating"]
+    keywords: ["train", "workforce", "recognize", "social", "engineering", "attacks", "phishing", "BEC", "pretexting", "tailgating"],
+    systemPrompt: {
+      role: "social_engineering_awareness_expert",
+      context: "You are evaluating social engineering awareness training solutions against CIS Control 14.2 requirements for training workforce members to recognize various social engineering attacks.",
+      objective: "Determine if a vendor solution provides comprehensive social engineering awareness training covering phishing, business email compromise, pretexting, and tailgating attack recognition.",
+      guidelines: [
+        "Verify social engineering attack recognition training capabilities",
+        "Confirm phishing awareness and business email compromise (BEC) training",
+        "Validate pretexting and tailgating attack awareness modules",
+        "Assess phishing simulation platforms and interactive training tools",
+        "Review security awareness modules and attack scenario training",
+        "Check social engineering awareness training effectiveness and measurement"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "14.3": {
     id: "14.3",
@@ -3759,7 +5289,21 @@ export class SafeguardManager {
       "MFA awareness programs"
     ],
     relatedSafeguards: ["14.1", "6.2", "6.3"],
-    keywords: ["train", "workforce", "authentication", "best", "practices", "MFA", "password", "composition", "credential", "management"]
+    keywords: ["train", "workforce", "authentication", "best", "practices", "MFA", "password", "composition", "credential", "management"],
+    systemPrompt: {
+      role: "authentication_training_expert",
+      context: "You are evaluating authentication best practices training solutions against CIS Control 14.3 requirements for training workforce members on MFA, password composition, and credential management.",
+      objective: "Determine if a vendor solution provides comprehensive authentication best practices training covering MFA, password security, and credential management education.",
+      guidelines: [
+        "Verify authentication best practices training program capabilities",
+        "Confirm multi-factor authentication (MFA) training and awareness",
+        "Validate password composition and security training modules",
+        "Assess credential management training and best practices education",
+        "Review authentication training modules and MFA awareness programs",
+        "Check password security training effectiveness and user engagement"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "14.4": {
     id: "14.4",
@@ -3800,7 +5344,21 @@ export class SafeguardManager {
       "data classification training"
     ],
     relatedSafeguards: ["14.1", "3.1", "3.2"],
-    keywords: ["train", "workforce", "data", "handling", "best", "practices", "store", "transfer", "archive", "destroy", "sensitive", "clear", "screen", "desk"]
+    keywords: ["train", "workforce", "data", "handling", "best", "practices", "store", "transfer", "archive", "destroy", "sensitive", "clear", "screen", "desk"],
+    systemPrompt: {
+      role: "data_handling_training_expert",
+      context: "You are evaluating data handling best practices training solutions against CIS Control 14.4 requirements for training workforce on sensitive data identification, storage, transfer, archival, destruction, and clear screen/desk practices.",
+      objective: "Determine if a vendor solution provides comprehensive data handling training covering sensitive data lifecycle management and workspace security best practices.",
+      guidelines: [
+        "Verify data handling best practices training and sensitive data identification",
+        "Confirm secure data storage, transfer, archive, and destruction training",
+        "Validate clear screen and desk best practices including screen locking",
+        "Assess whiteboard erasing and secure data storage training modules",
+        "Review data classification training and clean desk policy education",
+        "Check data handling training effectiveness and workspace security awareness"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "14.5": {
     id: "14.5",
@@ -3833,7 +5391,21 @@ export class SafeguardManager {
       "data sharing awareness programs"
     ],
     relatedSafeguards: ["14.1", "3.3"],
-    keywords: ["train", "workforce", "unintentional", "data", "exposure", "mis-delivery", "losing", "portable", "device", "publishing", "unintended", "audiences"]
+    keywords: ["train", "workforce", "unintentional", "data", "exposure", "mis-delivery", "losing", "portable", "device", "publishing", "unintended", "audiences"],
+    systemPrompt: {
+      role: "data_exposure_awareness_expert",
+      context: "You are evaluating unintentional data exposure awareness training solutions against CIS Control 14.5 requirements for training workforce on causes and prevention of unintentional data exposure.",
+      objective: "Determine if a vendor solution provides comprehensive training on unintentional data exposure causes including mis-delivery, portable device loss, and unintended data publication.",
+      guidelines: [
+        "Verify unintentional data exposure awareness training coverage",
+        "Confirm mis-delivery prevention and sensitive data handling training",
+        "Validate portable device security awareness and loss prevention training",
+        "Assess data publication controls and unintended audience protection",
+        "Review data loss prevention training and device security awareness",
+        "Check data sharing awareness programs and exposure prevention education"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "14.6": {
     id: "14.6",
@@ -3864,7 +5436,21 @@ export class SafeguardManager {
       "incident reporting tools"
     ],
     relatedSafeguards: ["14.1", "17.3"],
-    keywords: ["train", "workforce", "recognizing", "reporting", "security", "incidents", "potential", "incident"]
+    keywords: ["train", "workforce", "recognizing", "reporting", "security", "incidents", "potential", "incident"],
+    systemPrompt: {
+      role: "incident_recognition_training_expert",
+      context: "You are evaluating security incident recognition and reporting training solutions against CIS Control 14.6 requirements for training workforce to recognize potential incidents and report them.",
+      objective: "Determine if a vendor solution provides comprehensive security incident recognition training and effective incident reporting procedures for workforce members.",
+      guidelines: [
+        "Verify security incident recognition training capabilities and coverage",
+        "Confirm potential incident identification and awareness training",
+        "Validate incident reporting procedures and training effectiveness",
+        "Assess incident response training and security awareness programs",
+        "Review incident reporting tools and notification procedures",
+        "Check security incident awareness and response training integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "14.7": {
     id: "14.7",
@@ -3901,7 +5487,21 @@ export class SafeguardManager {
       "automated system monitoring training"
     ],
     relatedSafeguards: ["14.1", "7.3", "7.4"],
-    keywords: ["train", "workforce", "identify", "report", "enterprise", "assets", "missing", "security", "updates", "patches", "automated", "processes"]
+    keywords: ["train", "workforce", "identify", "report", "enterprise", "assets", "missing", "security", "updates", "patches", "automated", "processes"],
+    systemPrompt: {
+      role: "security_update_awareness_expert",
+      context: "You are evaluating security update awareness training solutions against CIS Control 14.7 requirements for training workforce to identify and report missing security updates and automated process failures.",
+      objective: "Determine if a vendor solution provides comprehensive training on security update verification, patch identification, and automated process failure reporting to IT personnel.",
+      guidelines: [
+        "Verify security update verification training and out-of-date patch identification",
+        "Confirm automated process and tool failure reporting training",
+        "Validate IT personnel notification procedures and reporting mechanisms",
+        "Assess patch management awareness training and system monitoring education",
+        "Review automated system monitoring training and failure detection",
+        "Check IT support reporting procedures and escalation training"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "14.8": {
     id: "14.8",
@@ -3937,7 +5537,21 @@ export class SafeguardManager {
       "home network configuration guides"
     ],
     relatedSafeguards: ["14.1", "12.1"],
-    keywords: ["train", "workforce", "dangers", "connecting", "transmitting", "enterprise", "data", "insecure", "networks", "remote", "workers", "home", "network"]
+    keywords: ["train", "workforce", "dangers", "connecting", "transmitting", "enterprise", "data", "insecure", "networks", "remote", "workers", "home", "network"],
+    systemPrompt: {
+      role: "network_security_awareness_expert",
+      context: "You are evaluating network security awareness training solutions against CIS Control 14.8 requirements for training workforce on dangers of insecure networks and remote work security including home network configuration.",
+      objective: "Determine if a vendor solution provides comprehensive training on insecure network dangers, secure connection practices, and remote worker home network security configuration.",
+      guidelines: [
+        "Verify training on dangers of connecting to and transmitting data over insecure networks",
+        "Confirm enterprise data transmission security and secure connection practices",
+        "Validate remote worker training and home network security configuration guidance",
+        "Assess network security awareness training and remote work security education",
+        "Review home network configuration guides and insecure network identification",
+        "Check enterprise activity security and remote infrastructure protection training"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "14.9": {
     id: "14.9",
@@ -3971,7 +5585,21 @@ export class SafeguardManager {
       "professional development programs"
     ],
     relatedSafeguards: ["14.1", "16.9"],
-    keywords: ["conduct", "role-specific", "security", "awareness", "skills", "training", "IT", "professionals", "OWASP", "developers", "high-profile", "roles"]
+    keywords: ["conduct", "role-specific", "security", "awareness", "skills", "training", "IT", "professionals", "OWASP", "developers", "high-profile", "roles"],
+    systemPrompt: {
+      role: "role_specific_training_expert",
+      context: "You are evaluating role-specific security awareness and skills training solutions against CIS Control 14.9 requirements for conducting specialized training including secure system administration, OWASP Top 10, and advanced social engineering awareness.",
+      objective: "Determine if a vendor solution provides comprehensive role-specific security training including IT professional courses, developer vulnerability training, and high-profile role security awareness.",
+      guidelines: [
+        "Verify role-specific security awareness and skills training capabilities",
+        "Confirm secure system administration courses for IT professionals",
+        "Validate OWASP Top 10 vulnerability awareness and prevention training for developers",
+        "Assess advanced social engineering awareness training for high-profile roles",
+        "Review specialized security courses and professional development programs",
+        "Check role-based training program customization and effectiveness measurement"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
 
   // Control 15: Service Provider Management
@@ -4009,7 +5637,21 @@ export class SafeguardManager {
       "supplier relationship management tools"
     ],
     relatedSafeguards: ["2.1", "8.12", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7"],
-    keywords: ["establish", "maintain", "inventory", "service", "providers", "classification", "enterprise", "contact", "review", "annually"]
+    keywords: ["establish", "maintain", "inventory", "service", "providers", "classification", "enterprise", "contact", "review", "annually"],
+    systemPrompt: {
+      role: "service_provider_inventory_expert",
+      context: "You are evaluating service provider inventory management solutions against CIS Control 15.1 requirements for establishing and maintaining comprehensive inventories of service providers with classifications and enterprise contacts.",
+      objective: "Determine if a vendor solution provides comprehensive service provider inventory capabilities including classification systems, contact management, and annual review processes.",
+      guidelines: [
+        "Verify service provider inventory establishment and maintenance capabilities",
+        "Confirm comprehensive service provider listing and classification systems",
+        "Validate enterprise contact designation and management for each provider",
+        "Assess annual review processes and enterprise change impact assessment",
+        "Review third-party risk management tools and vendor inventory systems",
+        "Check service provider management platform integration and supplier relationship management"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "15.2": {
     id: "15.2",
@@ -4050,7 +5692,21 @@ export class SafeguardManager {
       "supplier governance documentation"
     ],
     relatedSafeguards: ["15.1", "15.3", "15.4", "15.5", "15.6", "15.7"],
-    keywords: ["establish", "maintain", "service", "provider", "management", "policy", "classification", "inventory", "assessment", "monitoring", "decommissioning"]
+    keywords: ["establish", "maintain", "service", "provider", "management", "policy", "classification", "inventory", "assessment", "monitoring", "decommissioning"],
+    systemPrompt: {
+      role: "service_provider_policy_expert",
+      context: "You are evaluating service provider management policy solutions against CIS Control 15.2 requirements for establishing and maintaining comprehensive policies covering classification, inventory, assessment, monitoring, and decommissioning.",
+      objective: "Determine if a vendor solution provides comprehensive service provider management policy capabilities including all lifecycle processes and annual review requirements.",
+      guidelines: [
+        "Verify service provider management policy establishment and maintenance",
+        "Confirm policy coverage of classification, inventory, assessment, monitoring, and decommissioning",
+        "Validate annual policy review and enterprise change impact assessment",
+        "Assess third-party risk management frameworks and policy documentation",
+        "Review vendor management policy templates and supplier governance",
+        "Check policy implementation and lifecycle process integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "15.3": {
     id: "15.3",
@@ -4089,7 +5745,21 @@ export class SafeguardManager {
       "regulatory compliance matrices"
     ],
     relatedSafeguards: ["15.1", "15.2"],
-    keywords: ["classify", "service", "providers", "data", "sensitivity", "volume", "availability", "regulations", "risk", "classifications"]
+    keywords: ["classify", "service", "providers", "data", "sensitivity", "volume", "availability", "regulations", "risk", "classifications"],
+    systemPrompt: {
+      role: "service_provider_classification_expert",
+      context: "You are evaluating service provider classification solutions against CIS Control 15.3 requirements for classifying service providers based on data sensitivity, volume, availability, regulations, and risk factors.",
+      objective: "Determine if a vendor solution provides comprehensive service provider classification capabilities including risk-based criteria, data sensitivity assessment, and regulatory compliance classification.",
+      guidelines: [
+        "Verify service provider classification system implementation",
+        "Confirm risk-based classification criteria including data sensitivity and volume",
+        "Validate availability requirements and regulatory compliance classification",
+        "Assess inherent and mitigated risk classification capabilities",
+        "Review classification framework annual updates and enterprise change management",
+        "Check data sensitivity classification schemes and regulatory compliance matrices"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "15.4": {
     id: "15.4",
@@ -4127,7 +5797,21 @@ export class SafeguardManager {
       "security requirement checklists"
     ],
     relatedSafeguards: ["15.1", "15.2"],
-    keywords: ["ensure", "service", "provider", "contracts", "include", "security", "requirements", "incident", "breach", "notification", "encryption", "disposal"]
+    keywords: ["ensure", "service", "provider", "contracts", "include", "security", "requirements", "incident", "breach", "notification", "encryption", "disposal"],
+    systemPrompt: {
+      role: "service_provider_contract_security_expert",
+      context: "You are evaluating service provider contract security management solutions against CIS Control 15.4 requirements for ensuring contracts include comprehensive security requirements consistent with enterprise policies.",
+      objective: "Determine if a vendor solution provides comprehensive contract security requirement capabilities including incident notification, data encryption, disposal commitments, and annual review processes.",
+      guidelines: [
+        "Verify service provider contract security requirement inclusion and management",
+        "Confirm minimum security program requirements and incident/breach notification",
+        "Validate data encryption requirements and data disposal commitments",
+        "Assess consistency with enterprise service provider management policy",
+        "Review annual contract review processes and security requirement compliance",
+        "Check contract management systems and security requirement checklists"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "15.5": {
     id: "15.5",
@@ -4165,7 +5849,21 @@ export class SafeguardManager {
       "compliance monitoring systems"
     ],
     relatedSafeguards: ["15.1", "15.2"],
-    keywords: ["assess", "service", "providers", "SOC", "PCI", "questionnaires", "rigorous", "processes", "reassess", "annually", "contracts"]
+    keywords: ["assess", "service", "providers", "SOC", "PCI", "questionnaires", "rigorous", "processes", "reassess", "annually", "contracts"],
+    systemPrompt: {
+      role: "service_provider_assessment_expert",
+      context: "You are evaluating service provider assessment solutions against CIS Control 15.5 requirements for conducting rigorous assessments including SOC 2, PCI AoC, customized questionnaires, and annual reassessments.",
+      objective: "Determine if a vendor solution provides comprehensive service provider assessment capabilities including standardized reports, customized questionnaires, and classification-based assessment scoping.",
+      guidelines: [
+        "Verify service provider assessment processes consistent with enterprise policy",
+        "Confirm standardized assessment report reviews (SOC 2, PCI AoC)",
+        "Validate customized questionnaire capabilities and rigorous assessment methodologies",
+        "Assess classification-based assessment scoping and annual reassessment processes",
+        "Review third-party risk management tools and compliance monitoring systems",
+        "Check assessment questionnaire platforms and new/renewed contract triggers"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "15.6": {
     id: "15.6",
@@ -4198,7 +5896,21 @@ export class SafeguardManager {
       "compliance monitoring platforms"
     ],
     relatedSafeguards: ["15.1", "15.2"],
-    keywords: ["monitor", "service", "providers", "periodic", "reassessment", "compliance", "release", "notes", "dark", "web", "monitoring"]
+    keywords: ["monitor", "service", "providers", "periodic", "reassessment", "compliance", "release", "notes", "dark", "web", "monitoring"],
+    systemPrompt: {
+      role: "service_provider_monitoring_expert",
+      context: "You are evaluating service provider monitoring solutions against CIS Control 15.6 requirements for monitoring service providers including periodic reassessment, release notes monitoring, and dark web monitoring.",
+      objective: "Determine if a vendor solution provides comprehensive service provider monitoring capabilities including compliance reassessment, release notes tracking, and dark web monitoring services.",
+      guidelines: [
+        "Verify service provider monitoring processes consistent with enterprise policy",
+        "Confirm periodic compliance reassessment and service provider monitoring",
+        "Validate service provider release notes monitoring and tracking",
+        "Assess dark web monitoring services and threat intelligence integration",
+        "Review third-party risk management tools and compliance monitoring platforms",
+        "Check continuous monitoring capabilities and policy compliance tracking"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "15.7": {
     id: "15.7",
@@ -4230,7 +5942,21 @@ export class SafeguardManager {
       "secure decommissioning checklists"
     ],
     relatedSafeguards: ["15.1", "15.2"],
-    keywords: ["securely", "decommission", "service", "providers", "account", "deactivation", "data", "flows", "disposal", "enterprise", "data"]
+    keywords: ["securely", "decommission", "service", "providers", "account", "deactivation", "data", "flows", "disposal", "enterprise", "data"],
+    systemPrompt: {
+      role: "service_provider_decommissioning_expert",
+      context: "You are evaluating service provider decommissioning solutions against CIS Control 15.7 requirements for securely decommissioning service providers including account deactivation, data flow termination, and secure data disposal.",
+      objective: "Determine if a vendor solution provides comprehensive secure service provider decommissioning capabilities including user/service account management, data flow control, and enterprise data disposal.",
+      guidelines: [
+        "Verify secure service provider decommissioning processes and procedures",
+        "Confirm user and service account deactivation capabilities",
+        "Validate data flow termination and enterprise data disposal processes",
+        "Assess secure decommissioning checklists and account management",
+        "Review data destruction procedures and secure disposal verification",
+        "Check decommissioning policy compliance and process automation"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
 
   // Control 16: Application Software Security
@@ -4271,7 +5997,21 @@ export class SafeguardManager {
       "security training programs for developers"
     ],
     relatedSafeguards: ["16.2", "16.3", "16.4", "16.5", "16.6", "16.7", "16.8", "16.9", "16.10", "16.11", "16.12", "16.13", "16.14"],
-    keywords: ["establish", "maintain", "secure", "application", "development", "process", "design", "standards", "coding", "practices", "training"]
+    keywords: ["establish", "maintain", "secure", "application", "development", "process", "design", "standards", "coding", "practices", "training"],
+    systemPrompt: {
+      role: "secure_development_process_expert",
+      context: "You are evaluating secure application development process solutions against CIS Control 16.1 requirements for establishing comprehensive secure development lifecycles including design standards, coding practices, training, and security testing.",
+      objective: "Determine if a vendor solution provides comprehensive secure application development process capabilities including design standards, secure coding, developer training, vulnerability management, third-party code security, and testing procedures.",
+      guidelines: [
+        "Verify secure application development process establishment and maintenance",
+        "Confirm secure application design standards and secure coding practices",
+        "Validate developer training programs and vulnerability management integration",
+        "Assess third-party code security and application security testing procedures",
+        "Review SDLC frameworks and application security policies",
+        "Check annual documentation updates and enterprise change impact assessment"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.2": {
     id: "16.2",
@@ -4314,7 +6054,21 @@ export class SafeguardManager {
       "incident response tools"
     ],
     relatedSafeguards: ["16.1", "16.3", "16.6"],
-    keywords: ["establish", "maintain", "process", "accept", "address", "software", "vulnerabilities", "external", "entities", "report", "vulnerability", "handling", "policy"]
+    keywords: ["establish", "maintain", "process", "accept", "address", "software", "vulnerabilities", "external", "entities", "report", "vulnerability", "handling", "policy"],
+    systemPrompt: {
+      role: "vulnerability_disclosure_process_expert",
+      context: "You are evaluating vulnerability disclosure and handling process solutions against CIS Control 16.2 requirements for accepting and addressing software vulnerability reports including external reporting mechanisms and comprehensive tracking systems.",
+      objective: "Determine if a vendor solution provides comprehensive vulnerability disclosure process capabilities including external reporting, vulnerability handling policy, tracking systems, and metrics for identification, analysis, and remediation timing.",
+      guidelines: [
+        "Verify vulnerability disclosure process establishment for internal and external reporting",
+        "Confirm vulnerability handling policy including intake, assignment, remediation, and testing",
+        "Validate vulnerability tracking system with severity ratings and timing metrics",
+        "Assess external entity reporting mechanisms and stakeholder expectation management",
+        "Review vulnerability disclosure platforms and bug bounty program integration",
+        "Check annual documentation updates and responsible party designation"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.3": {
     id: "16.3",
@@ -4342,7 +6096,21 @@ export class SafeguardManager {
       "systematic vulnerability review processes"
     ],
     relatedSafeguards: ["16.1", "16.2"],
-    keywords: ["perform", "root", "cause", "analysis", "security", "vulnerabilities", "reviewing", "evaluating", "underlying", "issues", "code"]
+    keywords: ["perform", "root", "cause", "analysis", "security", "vulnerabilities", "reviewing", "evaluating", "underlying", "issues", "code"],
+    systemPrompt: {
+      role: "vulnerability_root_cause_analysis_expert",
+      context: "You are evaluating vulnerability root cause analysis solutions against CIS Control 16.3 requirements for performing systematic root cause analysis on security vulnerabilities to address underlying issues in code.",
+      objective: "Determine if a vendor solution provides comprehensive root cause analysis capabilities for security vulnerabilities including evaluation of underlying issues and systematic vulnerability review processes.",
+      guidelines: [
+        "Verify root cause analysis capabilities for security vulnerabilities",
+        "Confirm systematic evaluation of underlying issues that create vulnerabilities",
+        "Validate development team movement beyond individual vulnerability fixes",
+        "Assess code analysis tools and vulnerability assessment platform integration",
+        "Review development team training on root cause analysis methodologies",
+        "Check systematic vulnerability review processes and pattern identification"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.4": {
     id: "16.4",
@@ -4378,7 +6146,21 @@ export class SafeguardManager {
       "automated inventory tracking tools"
     ],
     relatedSafeguards: ["16.1", "16.5"],
-    keywords: ["establish", "manage", "inventory", "third-party", "software", "components", "bill", "materials", "risks", "monthly", "evaluation"]
+    keywords: ["establish", "manage", "inventory", "third-party", "software", "components", "bill", "materials", "risks", "monthly", "evaluation"],
+    systemPrompt: {
+      role: "third_party_component_inventory_expert",
+      context: "You are evaluating third-party software component inventory management solutions against CIS Control 16.4 requirements for maintaining bill of materials, risk assessment, and monthly component validation.",
+      objective: "Determine if a vendor solution provides comprehensive third-party component inventory capabilities including bill of materials management, risk assessment, monthly evaluation, and component support validation.",
+      guidelines: [
+        "Verify third-party component inventory establishment and bill of materials management",
+        "Confirm risk assessment for each third-party component",
+        "Validate monthly evaluation processes for component changes and updates",
+        "Assess component support validation and software composition analysis",
+        "Review dependency management systems and component vulnerability databases",
+        "Check automated inventory tracking tools and future use component planning"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.5": {
     id: "16.5",
@@ -4411,7 +6193,21 @@ export class SafeguardManager {
       "component security assessment processes"
     ],
     relatedSafeguards: ["16.1", "16.4", "16.11", "7.1"],
-    keywords: ["use", "up-to-date", "trusted", "third-party", "software", "components", "established", "proven", "frameworks", "libraries", "adequate", "security"]
+    keywords: ["use", "up-to-date", "trusted", "third-party", "software", "components", "established", "proven", "frameworks", "libraries", "adequate", "security"],
+    systemPrompt: {
+      role: "trusted_component_security_expert",
+      context: "You are evaluating trusted third-party software component solutions against CIS Control 16.5 requirements for using up-to-date, trusted components from established sources with adequate security and vulnerability evaluation.",
+      objective: "Determine if a vendor solution provides comprehensive trusted third-party component capabilities including up-to-date components, trusted sources, vulnerability evaluation, and proven framework selection.",
+      guidelines: [
+        "Verify up-to-date and trusted third-party software component usage",
+        "Confirm established and proven frameworks with adequate security",
+        "Validate trusted source acquisition and vulnerability evaluation before use",
+        "Assess software composition analysis and component security assessment",
+        "Review trusted software repositories and vulnerability scanning integration",
+        "Check component security validation and source verification processes"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.6": {
     id: "16.6",
@@ -4445,7 +6241,21 @@ export class SafeguardManager {
       "prioritization workflows"
     ],
     relatedSafeguards: ["16.1", "16.2"],
-    keywords: ["establish", "maintain", "severity", "rating", "system", "process", "application", "vulnerabilities", "prioritizing", "triaging", "risk", "management"]
+    keywords: ["establish", "maintain", "severity", "rating", "system", "process", "application", "vulnerabilities", "prioritizing", "triaging", "risk", "management"],
+    systemPrompt: {
+      role: "vulnerability_severity_rating_expert",
+      context: "You are evaluating vulnerability severity rating system solutions against CIS Control 16.6 requirements for establishing systematic vulnerability prioritization, triaging, and risk management with minimum security acceptability levels.",
+      objective: "Determine if a vendor solution provides comprehensive vulnerability severity rating capabilities including prioritization systems, triaging workflows, risk management, and minimum security acceptability standards.",
+      guidelines: [
+        "Verify vulnerability severity rating system establishment and maintenance",
+        "Confirm systematic vulnerability prioritization and triaging capabilities",
+        "Validate minimum security acceptability levels for code/application releases",
+        "Assess risk management improvement and severe bug prioritization",
+        "Review CVSS scoring systems and vulnerability management platforms",
+        "Check annual system updates and prioritization workflow effectiveness"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.7": {
     id: "16.7",
@@ -4482,7 +6292,21 @@ export class SafeguardManager {
       "automated configuration management"
     ],
     relatedSafeguards: ["16.1"],
-    keywords: ["use", "standard", "hardening", "configuration", "templates", "application", "infrastructure", "servers", "databases", "web", "servers", "cloud", "containers", "PaaS", "SaaS"]
+    keywords: ["use", "standard", "hardening", "configuration", "templates", "application", "infrastructure", "servers", "databases", "web", "servers", "cloud", "containers", "PaaS", "SaaS"],
+    systemPrompt: {
+      role: "infrastructure_hardening_template_expert",
+      context: "You are evaluating infrastructure hardening configuration template solutions against CIS Control 16.7 requirements for using standard industry-recommended hardening templates for application infrastructure including servers, databases, web servers, cloud containers, PaaS, and SaaS components.",
+      objective: "Determine if a vendor solution provides comprehensive infrastructure hardening template capabilities including industry-recommended configurations for servers, databases, cloud components, and configuration hardening protection.",
+      guidelines: [
+        "Verify standard industry-recommended hardening configuration template usage",
+        "Confirm application infrastructure component coverage (servers, databases, web servers)",
+        "Validate cloud containers, PaaS, and SaaS component hardening templates",
+        "Assess configuration hardening protection against in-house software weakening",
+        "Review configuration baseline tools and infrastructure as code (IaC) templates",
+        "Check automated configuration management and security hardening guide integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.8": {
     id: "16.8",
@@ -4510,7 +6334,21 @@ export class SafeguardManager {
       "deployment pipeline controls"
     ],
     relatedSafeguards: ["16.1"],
-    keywords: ["maintain", "separate", "environments", "production", "non-production", "systems"]
+    keywords: ["maintain", "separate", "environments", "production", "non-production", "systems"],
+    systemPrompt: {
+      role: "environment_separation_expert",
+      context: "You are evaluating environment separation solutions against CIS Control 16.8 requirements for maintaining separate environments for production and non-production systems.",
+      objective: "Determine if a vendor solution provides comprehensive environment separation capabilities including production and non-production system isolation with proper access controls and deployment controls.",
+      guidelines: [
+        "Verify separate environment maintenance for production and non-production systems",
+        "Confirm environment isolation technologies and network segmentation",
+        "Validate access control systems and deployment pipeline controls",
+        "Assess environment separation enforcement and security boundaries",
+        "Review environment isolation technologies and segregation mechanisms",
+        "Check production system protection and non-production environment management"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.9": {
     id: "16.9",
@@ -4546,7 +6384,21 @@ export class SafeguardManager {
       "hands-on security workshops"
     ],
     relatedSafeguards: ["16.1", "14.1", "14.9"],
-    keywords: ["train", "developers", "application", "security", "concepts", "secure", "coding", "software", "development", "personnel", "training", "annually"]
+    keywords: ["train", "developers", "application", "security", "concepts", "secure", "coding", "software", "development", "personnel", "training", "annually"],
+    systemPrompt: {
+      role: "developer_security_training_expert",
+      context: "You are evaluating developer security training solutions against CIS Control 16.9 requirements for training all software development personnel in secure coding, application security principles, and building a security culture.",
+      objective: "Determine if a vendor solution provides comprehensive developer security training including secure coding for specific environments, annual training programs, and security culture development within development teams.",
+      guidelines: [
+        "Verify comprehensive secure coding training for all software development personnel",
+        "Confirm training specific to development environment and responsibilities",
+        "Validate annual training programs and security principle education",
+        "Assess security culture building and development team security promotion",
+        "Review secure coding training programs and developer security certifications",
+        "Check hands-on security workshops and application security standard practices training"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.10": {
     id: "16.10",
@@ -4584,7 +6436,21 @@ export class SafeguardManager {
       "security design patterns"
     ],
     relatedSafeguards: ["16.1"],
-    keywords: ["apply", "secure", "design", "principles", "application", "architectures", "least", "privilege", "mediation", "validate", "never", "trust", "user", "input"]
+    keywords: ["apply", "secure", "design", "principles", "application", "architectures", "least", "privilege", "mediation", "validate", "never", "trust", "user", "input"],
+    systemPrompt: {
+      role: "secure_architecture_design_expert",
+      context: "You are evaluating secure application architecture design solutions against CIS Control 16.10 requirements for applying secure design principles including least privilege, input validation, and attack surface minimization.",
+      objective: "Determine if a vendor solution provides comprehensive secure design principle capabilities including least privilege enforcement, user input validation, explicit error checking, and application infrastructure attack surface minimization.",
+      guidelines: [
+        "Verify secure design principle application in application architectures",
+        "Confirm least privilege implementation and operation validation mediation",
+        "Validate 'never trust user input' principle and explicit error checking",
+        "Assess input validation for size, data type, and acceptable ranges/formats",
+        "Review attack surface minimization including port/service management and default account removal",
+        "Check secure architecture frameworks and security design pattern integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.11": {
     id: "16.11",
@@ -4622,7 +6488,21 @@ export class SafeguardManager {
       "operating system security features"
     ],
     relatedSafeguards: ["16.1", "16.5"],
-    keywords: ["leverage", "vetted", "modules", "services", "application", "security", "components", "identity", "management", "encryption", "auditing", "logging", "platform", "features"]
+    keywords: ["leverage", "vetted", "modules", "services", "application", "security", "components", "identity", "management", "encryption", "auditing", "logging", "platform", "features"],
+    systemPrompt: {
+      role: "vetted_security_module_expert",
+      context: "You are evaluating vetted security module and service solutions against CIS Control 16.11 requirements for leveraging established security components including identity management, encryption, auditing, logging, and platform security features.",
+      objective: "Determine if a vendor solution provides comprehensive vetted security module capabilities including identity management, encryption, auditing/logging, platform security features, and standardized cryptographic algorithms.",
+      guidelines: [
+        "Verify vetted modules and services for application security components",
+        "Confirm identity management, encryption, auditing, and logging capabilities",
+        "Validate platform security features and critical security function integration",
+        "Assess standardized, accepted, and extensively reviewed encryption algorithms",
+        "Review established security libraries and cryptographic modules",
+        "Check operating system security feature utilization and secure audit log mechanisms"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.12": {
     id: "16.12",
@@ -4652,7 +6532,21 @@ export class SafeguardManager {
       "interactive application security testing (IAST)"
     ],
     relatedSafeguards: ["16.1"],
-    keywords: ["implement", "code-level", "security", "checks", "static", "dynamic", "analysis", "tools", "application", "life", "cycle", "secure", "coding", "practices"]
+    keywords: ["implement", "code-level", "security", "checks", "static", "dynamic", "analysis", "tools", "application", "life", "cycle", "secure", "coding", "practices"],
+    systemPrompt: {
+      role: "code_security_analysis_expert",
+      context: "You are evaluating code-level security analysis solutions against CIS Control 16.12 requirements for implementing static and dynamic analysis tools within application lifecycles to verify secure coding practices.",
+      objective: "Determine if a vendor solution provides comprehensive code-level security checking capabilities including static analysis, dynamic analysis, and secure coding practice verification within application development lifecycles.",
+      guidelines: [
+        "Verify static and dynamic analysis tool implementation in application lifecycle",
+        "Confirm secure coding practices verification and compliance checking",
+        "Validate SAST, DAST, and IAST capabilities and integration",
+        "Assess code analysis tool effectiveness and lifecycle integration",
+        "Review application security testing automation and continuous security",
+        "Check secure coding standard enforcement and development process integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.13": {
     id: "16.13",
@@ -4685,7 +6579,21 @@ export class SafeguardManager {
       "skilled penetration testers"
     ],
     relatedSafeguards: ["16.1"],
-    keywords: ["conduct", "application", "penetration", "testing", "critical", "applications", "authenticated", "business", "logic", "vulnerabilities", "manual", "manipulation"]
+    keywords: ["conduct", "application", "penetration", "testing", "critical", "applications", "authenticated", "business", "logic", "vulnerabilities", "manual", "manipulation"],
+    systemPrompt: {
+      role: "application_penetration_testing_expert",
+      context: "You are evaluating application penetration testing solutions against CIS Control 16.13 requirements for conducting penetration testing including authenticated testing for critical applications and business logic vulnerability identification.",
+      objective: "Determine if a vendor solution provides comprehensive application penetration testing capabilities including authenticated testing, business logic vulnerability discovery, and manual application manipulation for critical applications.",
+      guidelines: [
+        "Verify application penetration testing capabilities and methodologies",
+        "Confirm authenticated penetration testing for critical applications",
+        "Validate business logic vulnerability identification and manual manipulation testing",
+        "Assess authenticated and unauthenticated user testing approaches",
+        "Review penetration testing frameworks and skilled tester capabilities",
+        "Check testing effectiveness beyond code scanning and automated security testing"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "16.14": {
     id: "16.14",
@@ -4722,7 +6630,21 @@ export class SafeguardManager {
       "security architecture documentation"
     ],
     relatedSafeguards: ["16.1"],
-    keywords: ["conduct", "threat", "modeling", "identifying", "addressing", "application", "security", "design", "flaws", "specially", "trained", "individuals", "entry", "point", "access", "level"]
+    keywords: ["conduct", "threat", "modeling", "identifying", "addressing", "application", "security", "design", "flaws", "specially", "trained", "individuals", "entry", "point", "access", "level"],
+    systemPrompt: {
+      role: "threat_modeling_expert",
+      context: "You are evaluating threat modeling solutions against CIS Control 16.14 requirements for conducting threat modeling to identify and address application security design flaws before code creation through specially trained individuals.",
+      objective: "Determine if a vendor solution provides comprehensive threat modeling capabilities including design flaw identification, security risk assessment for entry points/access levels, and structured application/architecture/infrastructure mapping.",
+      guidelines: [
+        "Verify threat modeling process implementation and design flaw identification",
+        "Confirm specially trained individual capabilities and application design evaluation",
+        "Validate security risk assessment for each entry point and access level",
+        "Assess structured mapping of application, architecture, and infrastructure",
+        "Review threat modeling frameworks and security design review processes",
+        "Check threat modeling tools and security architecture documentation integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
 
   // Control 17: Incident Response Management
@@ -4758,7 +6680,21 @@ export class SafeguardManager {
       "documentation templates"
     ],
     relatedSafeguards: ["17.4"],
-    keywords: ["designate", "personnel", "manage", "incident", "handling", "key", "person", "backup", "coordination", "documentation", "response", "recovery"]
+    keywords: ["designate", "personnel", "manage", "incident", "handling", "key", "person", "backup", "coordination", "documentation", "response", "recovery"],
+    systemPrompt: {
+      role: "incident_management_personnel_expert",
+      context: "You are evaluating incident management personnel designation solutions against CIS Control 17.1 requirements for designating key personnel and backups to manage enterprise incident handling processes with coordination and documentation responsibilities.",
+      objective: "Determine if a vendor solution provides comprehensive incident management personnel capabilities including key person designation, backup personnel, coordination and documentation systems, and annual review processes.",
+      guidelines: [
+        "Verify key person and backup designation for incident handling management",
+        "Confirm coordination and documentation of incident response and recovery efforts",
+        "Validate management personnel responsibilities and incident handling process oversight",
+        "Assess internal employees, service providers, or hybrid approach support",
+        "Review annual personnel review and enterprise change impact assessment",
+        "Check incident response team structures and coordination tools integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "17.2": {
     id: "17.2",
@@ -4790,7 +6726,21 @@ export class SafeguardManager {
       "contact information distribution methods"
     ],
     relatedSafeguards: ["17.3", "17.4"],
-    keywords: ["establish", "maintain", "contact", "information", "reporting", "security", "incidents", "workforce", "members", "communication", "methods"]
+    keywords: ["establish", "maintain", "contact", "information", "reporting", "security", "incidents", "workforce", "members", "communication", "methods"],
+    systemPrompt: {
+      role: "incident_contact_information_expert",
+      context: "You are evaluating incident contact information management solutions against CIS Control 17.2 requirements for establishing and maintaining comprehensive contact information for reporting security incidents with multiple communication methods.",
+      objective: "Determine if a vendor solution provides comprehensive incident contact information capabilities including workforce-accessible contact methods, regular updates, and resilient communication systems for compromised environments.",
+      guidelines: [
+        "Verify incident contact information establishment and maintenance for security incident reporting",
+        "Confirm workforce member accessibility and various contact method availability",
+        "Validate regular contact information updates and communication method diversity",
+        "Assess contact method availability during compromised primary communication systems",
+        "Review incident reporting hotlines and emergency contact list management",
+        "Check multiple communication channels and contact information distribution methods"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "17.3": {
     id: "17.3",
@@ -4824,7 +6774,21 @@ export class SafeguardManager {
       "process communication methods"
     ],
     relatedSafeguards: ["17.2", "17.4", "14.6"],
-    keywords: ["establish", "maintain", "enterprise", "process", "reporting", "incidents", "documented", "timeframe", "personnel", "mechanism", "minimum", "information"]
+    keywords: ["establish", "maintain", "enterprise", "process", "reporting", "incidents", "documented", "timeframe", "personnel", "mechanism", "minimum", "information"],
+    systemPrompt: {
+      role: "incident_reporting_process_expert",
+      context: "You are evaluating incident reporting process solutions against CIS Control 17.3 requirements for establishing documented enterprise processes including reporting timeframes, personnel, mechanisms, and minimum information requirements.",
+      objective: "Determine if a vendor solution provides comprehensive incident reporting process capabilities including documented procedures, workforce accessibility, reporting requirements, and annual review processes.",
+      guidelines: [
+        "Verify documented enterprise process establishment for workforce incident reporting",
+        "Confirm reporting timeframe, personnel designation, and reporting mechanism definition",
+        "Validate minimum information requirements and process workforce accessibility",
+        "Assess annual process review and enterprise change impact assessment",
+        "Review incident reporting procedures and workforce training material integration",
+        "Check reporting forms, templates, and process communication methods"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "17.4": {
     id: "17.4",
@@ -4855,7 +6819,21 @@ export class SafeguardManager {
       "communication protocols"
     ],
     relatedSafeguards: ["17.1", "17.3", "17.5", "17.6", "17.7", "17.8", "17.9"],
-    keywords: ["establish", "maintain", "incident", "response", "process", "documented", "roles", "responsibilities", "compliance", "requirements", "communication", "plan"]
+    keywords: ["establish", "maintain", "incident", "response", "process", "documented", "roles", "responsibilities", "compliance", "requirements", "communication", "plan"],
+    systemPrompt: {
+      role: "incident_response_process_expert",
+      context: "You are evaluating incident response process solutions against CIS Control 17.4 requirements for establishing documented incident response processes addressing roles, responsibilities, compliance requirements, and communication plans.",
+      objective: "Determine if a vendor solution provides comprehensive incident response process capabilities including documentation, role definition, compliance integration, communication planning, and annual review processes.",
+      guidelines: [
+        "Verify documented incident response process establishment and maintenance",
+        "Confirm roles and responsibilities definition and compliance requirements integration",
+        "Validate communication plan development and incident response coordination",
+        "Assess annual process review and enterprise change impact assessment",
+        "Review incident response playbooks and process documentation templates",
+        "Check compliance frameworks and communication protocol integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "17.5": {
     id: "17.5",
@@ -4889,7 +6867,21 @@ export class SafeguardManager {
       "cross-functional team coordination"
     ],
     relatedSafeguards: ["17.4"],
-    keywords: ["assign", "key", "roles", "responsibilities", "incident", "response", "legal", "IT", "information", "security", "facilities", "public", "relations", "human", "resources", "responders", "analysts"]
+    keywords: ["assign", "key", "roles", "responsibilities", "incident", "response", "legal", "IT", "information", "security", "facilities", "public", "relations", "human", "resources", "responders", "analysts"],
+    systemPrompt: {
+      role: "incident_response_role_assignment_expert",
+      context: "You are evaluating incident response role assignment solutions against CIS Control 17.5 requirements for assigning key roles and responsibilities including legal, IT, information security, facilities, public relations, human resources, incident responders, and analysts.",
+      objective: "Determine if a vendor solution provides comprehensive incident response role assignment capabilities including cross-functional team coordination, responsibility definition, and annual role review processes.",
+      guidelines: [
+        "Verify key role and responsibility assignment for incident response teams",
+        "Confirm cross-functional staff inclusion (legal, IT, security, facilities, PR, HR, responders, analysts)",
+        "Validate incident response team structure and role definition",
+        "Assess annual role review and enterprise change impact assessment",
+        "Review responsibility matrices and cross-functional team coordination",
+        "Check incident response team structures and role definition template integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "17.6": {
     id: "17.6",
@@ -4922,7 +6914,21 @@ export class SafeguardManager {
       "notification systems"
     ],
     relatedSafeguards: ["17.4"],
-    keywords: ["define", "mechanisms", "communicating", "incident", "response", "primary", "secondary", "communicate", "report", "security", "incident", "phone", "calls", "emails", "secure", "chat"]
+    keywords: ["define", "mechanisms", "communicating", "incident", "response", "primary", "secondary", "communicate", "report", "security", "incident", "phone", "calls", "emails", "secure", "chat"],
+    systemPrompt: {
+      role: "incident_communication_mechanism_expert",
+      context: "You are evaluating incident communication mechanism solutions against CIS Control 17.6 requirements for defining primary and secondary communication mechanisms during security incidents including resilient communication methods.",
+      objective: "Determine if a vendor solution provides comprehensive incident communication mechanism capabilities including primary/secondary methods, resilient communication systems, and annual mechanism review processes.",
+      guidelines: [
+        "Verify primary and secondary communication mechanism definition for incident response",
+        "Confirm diverse communication methods (phone calls, emails, secure chat, notification letters)",
+        "Validate communication method resilience during security incidents",
+        "Assess backup communication method availability when primary systems are compromised",
+        "Review secure messaging systems and notification system integration",
+        "Check annual mechanism review and enterprise change impact assessment"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "17.7": {
     id: "17.7",
@@ -4955,7 +6961,21 @@ export class SafeguardManager {
       "testing schedules and protocols"
     ],
     relatedSafeguards: ["17.4"],
-    keywords: ["conduct", "routine", "incident", "response", "exercises", "plan", "scenarios", "key", "personnel", "real-world", "incidents", "test", "communication", "channels", "decision-making", "workflows"]
+    keywords: ["conduct", "routine", "incident", "response", "exercises", "plan", "scenarios", "key", "personnel", "real-world", "incidents", "test", "communication", "channels", "decision-making", "workflows"],
+    systemPrompt: {
+      role: "incident_response_exercise_expert",
+      context: "You are evaluating incident response exercise solutions against CIS Control 17.7 requirements for conducting routine exercises and scenarios for key personnel to test communication channels, decision-making, and workflows.",
+      objective: "Determine if a vendor solution provides comprehensive incident response exercise capabilities including routine exercises, scenario planning, personnel training, and annual testing programs for real-world incident preparation.",
+      guidelines: [
+        "Verify routine incident response exercise planning and execution for key personnel",
+        "Confirm scenario development and real-world incident preparation capabilities",
+        "Validate communication channel, decision-making, and workflow testing",
+        "Assess annual testing requirements and exercise frequency management",
+        "Review tabletop exercises and simulation scenario planning frameworks",
+        "Check exercise testing schedules and protocol integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "17.8": {
     id: "17.8",
@@ -4984,7 +7004,21 @@ export class SafeguardManager {
       "review meeting processes"
     ],
     relatedSafeguards: ["17.4"],
-    keywords: ["conduct", "post-incident", "reviews", "prevent", "incident", "recurrence", "identifying", "lessons", "learned", "follow-up", "action"]
+    keywords: ["conduct", "post-incident", "reviews", "prevent", "incident", "recurrence", "identifying", "lessons", "learned", "follow-up", "action"],
+    systemPrompt: {
+      role: "post_incident_review_expert",
+      context: "You are evaluating post-incident review solutions against CIS Control 17.8 requirements for conducting post-incident reviews to prevent recurrence through lessons learned identification and follow-up actions.",
+      objective: "Determine if a vendor solution provides comprehensive post-incident review capabilities including incident recurrence prevention, lessons learned documentation, and follow-up action management.",
+      guidelines: [
+        "Verify post-incident review process implementation and execution",
+        "Confirm incident recurrence prevention and lessons learned identification",
+        "Validate follow-up action planning and implementation tracking",
+        "Assess post-incident review documentation and improvement processes",
+        "Review lessons learned documentation and improvement action plan integration",
+        "Check review meeting processes and continuous improvement capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "17.9": {
     id: "17.9",
@@ -5017,7 +7051,21 @@ export class SafeguardManager {
       "incident categorization tools"
     ],
     relatedSafeguards: ["17.4"],
-    keywords: ["establish", "maintain", "security", "incident", "thresholds", "differentiating", "incident", "event", "abnormal", "activity", "vulnerability", "weakness", "data", "breach", "privacy"]
+    keywords: ["establish", "maintain", "security", "incident", "thresholds", "differentiating", "incident", "event", "abnormal", "activity", "vulnerability", "weakness", "data", "breach", "privacy"],
+    systemPrompt: {
+      role: "incident_threshold_classification_expert",
+      context: "You are evaluating security incident threshold and classification solutions against CIS Control 17.9 requirements for establishing incident thresholds including incident/event differentiation and classification criteria.",
+      objective: "Determine if a vendor solution provides comprehensive security incident threshold capabilities including incident/event differentiation, classification criteria, and annual threshold review processes.",
+      guidelines: [
+        "Verify security incident threshold establishment and maintenance",
+        "Confirm incident and event differentiation and classification criteria",
+        "Validate incident classification including abnormal activity, vulnerabilities, weaknesses, data breaches, privacy incidents",
+        "Assess annual threshold review and enterprise change impact assessment",
+        "Review incident classification frameworks and threshold definition templates",
+        "Check severity rating systems and incident categorization tool integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
 
   // Control 18: Penetration Testing
@@ -5057,7 +7105,21 @@ export class SafeguardManager {
       "testing frequency schedules"
     ],
     relatedSafeguards: ["18.2", "18.3", "18.4", "18.5"],
-    keywords: ["establish", "maintain", "penetration", "testing", "program", "scope", "network", "web", "application", "API", "hosted", "services", "frequency", "limitations", "remediation"]
+    keywords: ["establish", "maintain", "penetration", "testing", "program", "scope", "network", "web", "application", "API", "hosted", "services", "frequency", "limitations", "remediation"],
+    systemPrompt: {
+      role: "penetration_testing_program_expert",
+      context: "You are evaluating penetration testing program solutions against CIS Control 18.1 requirements for establishing comprehensive programs appropriate to enterprise size, complexity, industry, and maturity with defined scope, frequency, limitations, and remediation procedures.",
+      objective: "Determine if a vendor solution provides comprehensive penetration testing program capabilities including program establishment, scope definition, frequency management, limitation setting, and remediation procedures.",
+      guidelines: [
+        "Verify penetration testing program establishment appropriate to enterprise characteristics",
+        "Confirm comprehensive scope including network, web application, API, hosted services, physical premises",
+        "Validate frequency requirements and limitation management (acceptable hours, excluded attacks)",
+        "Assess point of contact information and remediation procedure integration",
+        "Review penetration testing frameworks and program documentation templates",
+        "Check retrospective requirements and scope definition guideline integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "18.2": {
     id: "18.2",
@@ -5092,7 +7154,21 @@ export class SafeguardManager {
       "clear box and opaque box methodologies"
     ],
     relatedSafeguards: ["18.1", "18.3", "18.4"],
-    keywords: ["perform", "periodic", "external", "penetration", "tests", "annually", "enterprise", "environmental", "reconnaissance", "exploitable", "information", "qualified", "party", "clear", "box", "opaque", "box"]
+    keywords: ["perform", "periodic", "external", "penetration", "tests", "annually", "enterprise", "environmental", "reconnaissance", "exploitable", "information", "qualified", "party", "clear", "box", "opaque", "box"],
+    systemPrompt: {
+      role: "external_penetration_testing_expert",
+      context: "You are evaluating external penetration testing solutions against CIS Control 18.2 requirements for performing periodic external penetration tests including enterprise and environmental reconnaissance with qualified party execution and clear/opaque box methodologies.",
+      objective: "Determine if a vendor solution provides comprehensive external penetration testing capabilities including annual testing, reconnaissance, exploitable information detection, qualified party execution, and clear/opaque box methodologies.",
+      guidelines: [
+        "Verify periodic external penetration testing based on program requirements (minimum annually)",
+        "Confirm enterprise and environmental reconnaissance capabilities for exploitable information detection",
+        "Validate qualified party requirements and specialized skills/experience verification",
+        "Assess clear box and opaque box testing methodology support",
+        "Review external penetration testing services and reconnaissance tool integration",
+        "Check qualified penetration testing vendor capabilities and methodology frameworks"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "18.3": {
     id: "18.3",
@@ -5123,7 +7199,21 @@ export class SafeguardManager {
       "impact assessment methodologies"
     ],
     relatedSafeguards: ["18.1", "18.2", "18.5"],
-    keywords: ["remediate", "penetration", "test", "findings", "documented", "vulnerability", "remediation", "process", "timeline", "level", "effort", "impact", "prioritization"]
+    keywords: ["remediate", "penetration", "test", "findings", "documented", "vulnerability", "remediation", "process", "timeline", "level", "effort", "impact", "prioritization"],
+    systemPrompt: {
+      role: "penetration_test_remediation_expert",
+      context: "You are evaluating penetration test finding remediation solutions against CIS Control 18.3 requirements for remediating findings based on documented vulnerability remediation processes with timeline, effort, impact, and prioritization assessment.",
+      objective: "Determine if a vendor solution provides comprehensive penetration test finding remediation capabilities including documented processes, timeline determination, effort assessment, impact analysis, and finding prioritization.",
+      guidelines: [
+        "Verify penetration test finding remediation based on documented vulnerability processes",
+        "Confirm timeline determination and level of effort assessment capabilities",
+        "Validate impact assessment and finding prioritization frameworks",
+        "Assess vulnerability remediation workflow integration and tracking systems",
+        "Review finding prioritization frameworks and remediation tracking systems",
+        "Check impact assessment methodologies and remediation process compliance"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "18.4": {
     id: "18.4",
@@ -5153,7 +7243,21 @@ export class SafeguardManager {
       "technique analysis methodologies"
     ],
     relatedSafeguards: ["18.1", "18.2", "18.5"],
-    keywords: ["validate", "security", "measures", "penetration", "test", "modify", "rulesets", "capabilities", "detect", "techniques", "testing"]
+    keywords: ["validate", "security", "measures", "penetration", "test", "modify", "rulesets", "capabilities", "detect", "techniques", "testing"],
+    systemPrompt: {
+      role: "security_measure_validation_expert",
+      context: "You are evaluating security measure validation solutions against CIS Control 18.4 requirements for validating security measures after penetration tests and modifying rulesets/capabilities to detect testing techniques.",
+      objective: "Determine if a vendor solution provides comprehensive security measure validation capabilities including post-test validation, ruleset modification, capability enhancement, and technique detection improvement.",
+      guidelines: [
+        "Verify security measure validation after each penetration test",
+        "Confirm ruleset and capability modification for technique detection improvement",
+        "Validate detection enhancement for techniques used during penetration testing",
+        "Assess security control validation frameworks and detection rule tuning",
+        "Review capability enhancement procedures and technique analysis methodologies",
+        "Check security measure effectiveness and penetration test technique integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   },
   "18.5": {
     id: "18.5",
@@ -5182,7 +7286,21 @@ export class SafeguardManager {
       "internal security assessment frameworks"
     ],
     relatedSafeguards: ["18.1", "18.3", "18.4"],
-    keywords: ["perform", "periodic", "internal", "penetration", "tests", "program", "requirements", "annually", "clear", "box", "opaque", "box"]
+    keywords: ["perform", "periodic", "internal", "penetration", "tests", "program", "requirements", "annually", "clear", "box", "opaque", "box"],
+    systemPrompt: {
+      role: "internal_penetration_testing_expert",
+      context: "You are evaluating internal penetration testing solutions against CIS Control 18.5 requirements for performing periodic internal penetration tests based on program requirements with annual frequency and clear/opaque box methodologies.",
+      objective: "Determine if a vendor solution provides comprehensive internal penetration testing capabilities including periodic testing, program requirements compliance, annual frequency, and clear/opaque box approaches.",
+      guidelines: [
+        "Verify periodic internal penetration testing based on program requirements (minimum annually)",
+        "Confirm annual testing frequency and program requirements compliance",
+        "Validate clear box and opaque box testing methodology support",
+        "Assess internal penetration testing tools and methodology integration",
+        "Review internal testing methodologies and security assessment frameworks",
+        "Check internal penetration testing capability and approach effectiveness"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
   }
 };
   }
