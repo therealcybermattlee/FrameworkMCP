@@ -3,7 +3,7 @@
   "info": {
     "title": "Framework MCP API - Pure Data Provider",
     "description": "Microsoft Copilot-compatible API providing authoritative CIS Controls Framework v8.1 data (153 safeguards). Pure Data Provider architecture empowers LLMs with structured safeguards data and AI-driven systemPrompts for sophisticated, context-aware vendor capability analysis and n8n workflow automation.",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "contact": {
       "name": "Framework MCP Support",
       "url": "https://github.com/therealcybermattlee/FrameworkMCP"
@@ -314,7 +314,7 @@
           },
           "version": {
             "type": "string",
-            "example": "1.5.0"
+            "example": "1.5.1"
           },
           "timestamp": {
             "type": "string",
@@ -359,7 +359,7 @@
           },
           "version": {
             "type": "string",
-            "example": "1.5.0"
+            "example": "1.5.1"
           },
           "description": {
             "type": "string",
