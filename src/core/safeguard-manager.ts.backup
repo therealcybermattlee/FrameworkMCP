@@ -251,6 +251,157 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
+  "5.1": {
+    id: "5.1",
+    title: "Establish and Maintain an Inventory of Accounts",
+    description: "Establish and maintain an inventory of all accounts managed in the enterprise. The inventory must include both user and administrator accounts. The inventory, at a minimum, should contain the person's name, username, start/stop dates, and department. Validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently.",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Identify"],
+    governanceElements: [ // Orange - MUST be met
+      "Establish and maintain an inventory of all accounts managed in the enterprise",
+      "The inventory must include both user and administrator accounts",
+      "At a minimum, should contain the person's name, username, start/stop dates, and department",
+      "Validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "Inventory of Accounts"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Establish",
+      "Maintain",
+      "Validate that all active accounts are authorized",
+      "Recurring schedule",
+      "Must Include",
+      "At a minimum",
+      "Minimum Quarterly",
+      "More Frequently",
+      "User Accounts",
+      "Administrator Accounts",
+      "Name",
+      "Username",
+      "Start Stop Dates",
+      "Department"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Account and Access Control Management",
+      "Identity and Access Management Tool"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "5.2", "5.3", "5.4", "5.5", "5.6", "6.1", "6.2", "6.7", "12.8"],
+    systemPrompt: {
+      role: "account_inventory_specialist",
+      context: "You are evaluating account management solutions against CIS Control 5.1 requirements for comprehensive account inventory and validation.",
+      objective: "Determine if a vendor solution provides complete account inventory management with quarterly validation processes.",
+      guidelines: [
+        "Verify comprehensive account inventory for all user and administrator accounts",
+        "Confirm tracking of required metadata (name, username, start/stop dates, department)",
+        "Validate quarterly account authorization review processes",
+        "Assess automated account discovery and lifecycle management",
+        "Review unauthorized account detection and remediation",
+        "Check compliance reporting and audit trail capabilities"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+  "6.3": {
+    id: "6.3", 
+    title: "Require MFA for Externally-Exposed Applications",
+    description: "Require all externally-exposed enterprise or third-party applications to enforce MFA, where supported. Enforcing MFA through a directory service or SSO provider is a satisfactory implementation of this Safeguard.",
+    implementationGroup: "IG1",
+    assetType: ["users"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "Require",
+      "Account and Access Control Management",
+      "Multi-Factor Authentication Tool"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "all externally-exposed enterprise or third-party applications to enforce MFA",
+      "where supported"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "ALL Externally Exposed Applications",
+      "Enforce",
+      "Where supported"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Enforcing MFA through a directory service or SSO provider is a satisfactory implementation of this Safeguard",
+      "Directory service",
+      "SSO Provider",
+      "Account and Access Control Management",
+      "Multi-Factor Authentication Tool"
+    ],
+    relatedSafeguards: ["2.1", "4.1"],
+    systemPrompt: {
+      role: "multi_factor_authentication_expert",
+      context: "You are evaluating multi-factor authentication solutions against CIS Control 6.3 requirements for externally-exposed application protection.",
+      objective: "Determine if a vendor solution provides comprehensive MFA enforcement for externally-exposed enterprise and third-party applications.",
+      guidelines: [
+        "Verify MFA enforcement for all externally-exposed applications",
+        "Confirm support for enterprise and third-party application integration",
+        "Validate directory service and SSO provider MFA implementation",
+        "Assess MFA method variety and adaptive authentication",
+        "Review policy-based MFA enforcement and exception handling",
+        "Check compliance monitoring and MFA adoption reporting"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+  "7.1": {
+    id: "7.1",
+    title: "Establish and Maintain a Vulnerability Management Process",
+    description: "Establish and maintain a documented vulnerability management process for enterprise assets",
+    implementationGroup: "IG1",
+    assetType: ["documentation"],
+    securityFunction: ["Govern"],
+    governanceElements: [ // Orange - MUST be met
+      "establish documented process",
+      "maintain vulnerability management process",
+      "review and update documentation annually",
+      "update when significant enterprise changes occur",
+      "vulnerability management policy"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "vulnerability management process",
+      "enterprise assets scope",
+      "documented procedures",
+      "vulnerability identification",
+      "vulnerability assessment"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "vulnerability scanning procedures",
+      "risk assessment criteria", 
+      "remediation prioritization",
+      "patch management integration",
+      "vulnerability tracking",
+      "reporting requirements",
+      "roles and responsibilities",
+      "escalation procedures"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "vulnerability scanning tools",
+      "patch management systems",
+      "vulnerability databases",
+      "CVSS scoring",
+      "automated scanning",
+      "vulnerability management platforms"
+    ],
+    relatedSafeguards: ["1.1", "2.1", "7.2", "7.3", "7.4", "7.5", "7.6", "7.7"],
+    systemPrompt: {
+      role: "vulnerability_management_process_expert",
+      context: "You are evaluating vulnerability management solutions against CIS Control 7.1 requirements for establishing documented vulnerability management processes.",
+      objective: "Determine if a vendor solution provides comprehensive vulnerability management process establishment and maintenance capabilities.",
+      guidelines: [
+        "Verify documented vulnerability management process creation",
+        "Confirm process maintenance and annual review capabilities",
+        "Validate enterprise asset scope coverage and procedures",
+        "Assess vulnerability identification and assessment workflows",
+        "Review process update mechanisms for enterprise changes",
+        "Check policy integration and governance framework alignment"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
   "1.2": {
     id: "1.2",
     title: "Address Unauthorized Assets",
@@ -1760,58 +1911,6 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
-  "5.1": {
-    id: "5.1",
-    title: "Establish and Maintain an Inventory of Accounts",
-    description: "Establish and maintain an inventory of all accounts managed in the enterprise. The inventory must include both user and administrator accounts. The inventory, at a minimum, should contain the person's name, username, start/stop dates, and department. Validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently.",
-    implementationGroup: "IG1",
-    assetType: ["users"],
-    securityFunction: ["Identify"],
-    governanceElements: [ // Orange - MUST be met
-      "Establish and maintain an inventory of all accounts managed in the enterprise",
-      "The inventory must include both user and administrator accounts",
-      "At a minimum, should contain the person's name, username, start/stop dates, and department",
-      "Validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "Inventory of Accounts"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Establish",
-      "Maintain",
-      "Validate that all active accounts are authorized",
-      "Recurring schedule",
-      "Must Include",
-      "At a minimum",
-      "Minimum Quarterly",
-      "More Frequently",
-      "User Accounts",
-      "Administrator Accounts",
-      "Name",
-      "Username",
-      "Start Stop Dates",
-      "Department"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Identity and Access Management Tool"
-    ],
-    relatedSafeguards: ["1.1", "2.1", "5.2", "5.3", "5.4", "5.5", "5.6", "6.1", "6.2", "6.7", "12.8"],
-    systemPrompt: {
-      role: "account_inventory_specialist",
-      context: "You are evaluating account management solutions against CIS Control 5.1 requirements for comprehensive account inventory and validation.",
-      objective: "Determine if a vendor solution provides complete account inventory management with quarterly validation processes.",
-      guidelines: [
-        "Verify comprehensive account inventory for all user and administrator accounts",
-        "Confirm tracking of required metadata (name, username, start/stop dates, department)",
-        "Validate quarterly account authorization review processes",
-        "Assess automated account discovery and lifecycle management",
-        "Review unauthorized account detection and remediation",
-        "Check compliance reporting and audit trail capabilities"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
   "5.2": {
     id: "5.2",
     title: "Use Unique Passwords",
@@ -2121,50 +2220,6 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
-  "6.3": {
-    id: "6.3", 
-    title: "Require MFA for Externally-Exposed Applications",
-    description: "Require all externally-exposed enterprise or third-party applications to enforce MFA, where supported. Enforcing MFA through a directory service or SSO provider is a satisfactory implementation of this Safeguard.",
-    implementationGroup: "IG1",
-    assetType: ["users"],
-    securityFunction: ["Protect"],
-    governanceElements: [ // Orange - MUST be met
-      "Require",
-      "Account and Access Control Management",
-      "Multi-Factor Authentication Tool"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "all externally-exposed enterprise or third-party applications to enforce MFA",
-      "where supported"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "ALL Externally Exposed Applications",
-      "Enforce",
-      "Where supported"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "Enforcing MFA through a directory service or SSO provider is a satisfactory implementation of this Safeguard",
-      "Directory service",
-      "SSO Provider",
-      "Account and Access Control Management",
-      "Multi-Factor Authentication Tool"
-    ],
-    relatedSafeguards: ["2.1", "4.1"],
-    systemPrompt: {
-      role: "multi_factor_authentication_expert",
-      context: "You are evaluating multi-factor authentication solutions against CIS Control 6.3 requirements for externally-exposed application protection.",
-      objective: "Determine if a vendor solution provides comprehensive MFA enforcement for externally-exposed enterprise and third-party applications.",
-      guidelines: [
-        "Verify MFA enforcement for all externally-exposed applications",
-        "Confirm support for enterprise and third-party application integration",
-        "Validate directory service and SSO provider MFA implementation",
-        "Assess MFA method variety and adaptive authentication",
-        "Review policy-based MFA enforcement and exception handling",
-        "Check compliance monitoring and MFA adoption reporting"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
   "6.4": {
     id: "6.4",
     title: "Require MFA for Remote Network Access",
@@ -2389,61 +2444,6 @@ export class SafeguardManager {
         "Assess access control review and validation features",
         "Review privilege authorization and least privilege enforcement",
         "Check annual review processes and compliance reporting"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
-  "7.1": {
-    id: "7.1",
-    title: "Establish and Maintain a Vulnerability Management Process",
-    description: "Establish and maintain a documented vulnerability management process for enterprise assets",
-    implementationGroup: "IG1",
-    assetType: ["documentation"],
-    securityFunction: ["Govern"],
-    governanceElements: [ // Orange - MUST be met
-      "establish documented process",
-      "maintain vulnerability management process",
-      "review and update documentation annually",
-      "update when significant enterprise changes occur",
-      "vulnerability management policy"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "vulnerability management process",
-      "enterprise assets scope",
-      "documented procedures",
-      "vulnerability identification",
-      "vulnerability assessment"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "vulnerability scanning procedures",
-      "risk assessment criteria", 
-      "remediation prioritization",
-      "patch management integration",
-      "vulnerability tracking",
-      "reporting requirements",
-      "roles and responsibilities",
-      "escalation procedures"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "vulnerability scanning tools",
-      "patch management systems",
-      "vulnerability databases",
-      "CVSS scoring",
-      "automated scanning",
-      "vulnerability management platforms"
-    ],
-    relatedSafeguards: ["1.1", "2.1", "7.2", "7.3", "7.4", "7.5", "7.6", "7.7"],
-    systemPrompt: {
-      role: "vulnerability_management_process_expert",
-      context: "You are evaluating vulnerability management solutions against CIS Control 7.1 requirements for establishing documented vulnerability management processes.",
-      objective: "Determine if a vendor solution provides comprehensive vulnerability management process establishment and maintenance capabilities.",
-      guidelines: [
-        "Verify documented vulnerability management process creation",
-        "Confirm process maintenance and annual review capabilities",
-        "Validate enterprise asset scope coverage and procedures",
-        "Assess vulnerability identification and assessment workflows",
-        "Review process update mechanisms for enterprise changes",
-        "Check policy integration and governance framework alignment"
       ],
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
@@ -3232,339 +3232,6 @@ export class SafeguardManager {
         "Assess log analytics and centralization tool integration",
         "Review secure configuration policy and process compliance",
         "Check third-party service provider log aggregation and API integration"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
-  "9.1": {
-    id: "9.1",
-    title: "Ensure Use of Only Fully Supported Browsers and Email Clients",
-    description: "Ensure only fully supported browsers and email clients are allowed to execute in the enterprise, only using the latest version of browsers and email clients provided through the vendor",
-    implementationGroup: "IG1",
-    assetType: ["applications"],
-    securityFunction: ["Protect"],
-    governanceElements: [ // Orange - MUST be met
-      "ensure only fully supported browsers and email clients are allowed to execute",
-      "only using the latest version provided through the vendor"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "fully supported browsers only",
-      "fully supported email clients only", 
-      "latest vendor versions only",
-      "execution restriction enforcement"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "ensure only fully supported",
-      "browsers and email clients",
-      "are allowed to execute",
-      "in the enterprise",
-      "only using the latest version",
-      "provided through the vendor"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "enterprise and software asset management tools",
-      "application allowlisting",
-      "software inventory systems",
-      "automated patch management"
-    ],
-    relatedSafeguards: ["2.1", "4.1", "7.4"],
-    systemPrompt: {
-      role: "browser_email_client_security_expert",
-      context: "You are evaluating browser and email client security solutions against CIS Control 9.1 requirements for ensuring only fully supported, latest versions are used.",
-      objective: "Determine if a vendor solution provides comprehensive browser and email client version management and execution control.",
-      guidelines: [
-        "Verify enforcement of fully supported browsers and email clients only",
-        "Confirm latest vendor version requirement and update management",
-        "Validate execution restriction and application allowlisting capabilities",
-        "Assess enterprise software asset management tool integration",
-        "Review automated patch management for browsers and email clients",
-        "Check software inventory and compliance monitoring features"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
-  "9.2": {
-    id: "9.2",
-    title: "Use DNS Filtering Services",
-    description: "Use DNS filtering services on all end-user devices, including remote and on-premise assets, to block access to known malicious domains",
-    implementationGroup: "IG1",
-    assetType: ["devices", "network"],
-    securityFunction: ["Protect"],
-    governanceElements: [ // Orange - MUST be met
-      "use DNS filtering services on all end-user devices",
-      "including remote and on-premise assets",
-      "to block access to known malicious domains"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "DNS filtering services deployment",
-      "all end-user device coverage",
-      "malicious domain blocking",
-      "remote and on-premise asset inclusion"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "use DNS filtering services",
-      "on all end-user devices", 
-      "including remote assets",
-      "including on-premise assets",
-      "to block access",
-      "to known malicious domains"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "DNS filtering services",
-      "secure DNS servers",
-      "DNS security platforms",
-      "cloud-based DNS filtering"
-    ],
-    relatedSafeguards: ["4.1", "4.9"],
-    systemPrompt: {
-      role: "dns_filtering_security_expert",
-      context: "You are evaluating DNS filtering solutions against CIS Control 9.2 requirements for DNS filtering services to block malicious domains.",
-      objective: "Determine if a vendor solution provides comprehensive DNS filtering capabilities for all end-user devices to block malicious domains.",
-      guidelines: [
-        "Verify DNS filtering service deployment for all end-user devices",
-        "Confirm malicious domain blocking capabilities and coverage",
-        "Validate remote and on-premise asset inclusion",
-        "Assess DNS filtering service effectiveness and accuracy",
-        "Review secure DNS server configuration and cloud-based filtering",
-        "Check DNS security platform integration and management features"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
-  "9.3": {
-    id: "9.3",
-    title: "Maintain and Enforce Network-Based URL Filters",
-    description: "Enforce and update network-based URL filters to limit an enterprise asset from connecting to potentially malicious or unapproved websites. Example implementations include category-based filtering, reputation-based filtering, or through the use of block lists. Enforce filters for all enterprise assets",
-    implementationGroup: "IG2",
-    assetType: ["network"],
-    securityFunction: ["Protect"],
-    governanceElements: [ // Orange - MUST be met
-      "enforce and update network-based URL filters",
-      "to limit enterprise asset from connecting to potentially malicious or unapproved websites",
-      "enforce filters for all enterprise assets"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "network-based URL filters",
-      "enterprise asset connection limiting",
-      "malicious website blocking",
-      "unapproved website blocking"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "enforce network-based URL filters",
-      "update network-based URL filters",
-      "limit enterprise asset from connecting",
-      "to potentially malicious websites",
-      "to unapproved websites",
-      "enforce filters for all enterprise assets"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "URL filtering tools",
-      "category-based filtering",
-      "reputation-based filtering", 
-      "block lists",
-      "web content filtering"
-    ],
-    relatedSafeguards: ["4.1"],
-    systemPrompt: {
-      role: "network_security_filtering_expert",
-      context: "You are evaluating network-based URL filtering solutions against CIS Control 9.3 requirements for network-based URL filters to limit enterprise asset connections to malicious or unapproved websites.",
-      objective: "Determine if a vendor solution provides comprehensive network-based URL filtering capabilities to enforce connection limits for all enterprise assets.",
-      guidelines: [
-        "Verify network-based URL filter implementation and enforcement",
-        "Confirm malicious and unapproved website blocking capabilities",
-        "Validate coverage for all enterprise assets in the filtering system",
-        "Assess category-based, reputation-based, and block list filtering methods",
-        "Review filter update mechanisms and management processes",
-        "Check network-level enforcement and bypass prevention"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
-  "9.4": {
-    id: "9.4",
-    title: "Restrict Unnecessary or Unauthorized Browser and Email Client Extensions",
-    description: "Restrict, either through uninstalling or disabling, any unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
-    implementationGroup: "IG2",
-    assetType: ["applications"],
-    securityFunction: ["Protect"],
-    governanceElements: [ // Orange - MUST be met
-      "restrict unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
-      "either through uninstalling or disabling"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "browser plugin restrictions",
-      "email client plugin restrictions",
-      "browser extension restrictions",
-      "add-on application restrictions"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "restrict through uninstalling or disabling",
-      "unauthorized browser plugins",
-      "unnecessary browser plugins",
-      "unauthorized email client plugins",
-      "unnecessary email client plugins",
-      "unauthorized browser extensions",
-      "unnecessary browser extensions",
-      "unauthorized add-on applications",
-      "unnecessary add-on applications"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "configuration management tools",
-      "browser management systems",
-      "application control policies",
-      "extension management platforms"
-    ],
-    relatedSafeguards: ["4.1"],
-    systemPrompt: {
-      role: "browser_security_management_expert",
-      context: "You are evaluating browser and email client extension management solutions against CIS Control 9.4 requirements for restricting unauthorized or unnecessary plugins, extensions, and add-on applications.",
-      objective: "Determine if a vendor solution provides comprehensive browser and email client extension restriction capabilities through uninstalling or disabling mechanisms.",
-      guidelines: [
-        "Verify browser plugin and extension restriction capabilities",
-        "Confirm email client plugin and extension management",
-        "Validate unauthorized and unnecessary application identification",
-        "Assess uninstalling and disabling mechanisms and enforcement",
-        "Review configuration management and policy enforcement tools",
-        "Check browser management system integration and compliance monitoring"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
-  "9.5": {
-    id: "9.5",
-    title: "Implement DMARC",
-    description: "To lower the chance of spoofed or modified emails from valid domains, implement DMARC policy and verification, starting with implementing the Sender Policy Framework (SPF) and the DomainKeys Identified Mail (DKIM) standards",
-    implementationGroup: "IG2",
-    assetType: ["network"],
-    securityFunction: ["Protect"],
-    governanceElements: [ // Orange - MUST be met
-      "implement DMARC policy and verification",
-      "to lower the chance of spoofed or modified emails from valid domains",
-      "starting with implementing SPF and DKIM standards"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "DMARC policy implementation",
-      "DMARC verification implementation",
-      "SPF standard implementation",
-      "DKIM standard implementation"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "implement DMARC policy",
-      "implement DMARC verification",
-      "to lower the chance of spoofed emails",
-      "to lower the chance of modified emails",
-      "from valid domains",
-      "starting with implementing SPF",
-      "starting with implementing DKIM",
-      "Sender Policy Framework standards",
-      "DomainKeys Identified Mail standards"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "DMARC management tools",
-      "email authentication services",
-      "SPF record management",
-      "DKIM signature management"
-    ],
-    relatedSafeguards: ["4.1"],
-    systemPrompt: {
-      role: "email_authentication_security_expert",
-      context: "You are evaluating email authentication solutions against CIS Control 9.5 requirements for implementing DMARC policy and verification, including SPF and DKIM standards to prevent spoofed or modified emails.",
-      objective: "Determine if a vendor solution provides comprehensive DMARC, SPF, and DKIM implementation capabilities to protect against email spoofing and modification from valid domains.",
-      guidelines: [
-        "Verify DMARC policy implementation and verification capabilities",
-        "Confirm SPF (Sender Policy Framework) standard implementation",
-        "Validate DKIM (DomainKeys Identified Mail) standard implementation",
-        "Assess spoofed and modified email detection and prevention",
-        "Review DMARC management tools and email authentication services",
-        "Check SPF record management and DKIM signature management integration"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
-  "9.6": {
-    id: "9.6",
-    title: "Block Unnecessary File Types",
-    description: "Block unnecessary file types attempting to enter the enterprise's email gateway",
-    implementationGroup: "IG2",
-    assetType: ["network"],
-    securityFunction: ["Protect"],
-    governanceElements: [ // Orange - MUST be met
-      "block unnecessary file types attempting to enter the enterprise's email gateway"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "unnecessary file type blocking",
-      "email gateway protection",
-      "file type filtering"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "block unnecessary file types",
-      "attempting to enter",
-      "the enterprise's email gateway"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "email security tools",
-      "email gateway filtering",
-      "file type blocking systems",
-      "email content filtering"
-    ],
-    relatedSafeguards: ["4.1"],
-    systemPrompt: {
-      role: "email_gateway_security_expert",
-      context: "You are evaluating email gateway security solutions against CIS Control 9.6 requirements for blocking unnecessary file types attempting to enter the enterprise's email gateway.",
-      objective: "Determine if a vendor solution provides comprehensive email gateway file type blocking capabilities to prevent unnecessary file types from entering the enterprise.",
-      guidelines: [
-        "Verify email gateway file type blocking capabilities and coverage",
-        "Confirm unnecessary file type identification and filtering mechanisms",
-        "Validate comprehensive email gateway protection and security controls",
-        "Assess file type blocking system effectiveness and accuracy",
-        "Review email security tools and content filtering integration",
-        "Check email gateway filtering policies and management features"
-      ],
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-    }
-  },
-  "9.7": {
-    id: "9.7",
-    title: "Deploy and Maintain Email Server Anti-Malware Protections",
-    description: "Deploy and maintain email server anti-malware protections, such as attachment scanning and/or sandboxing",
-    implementationGroup: "IG1",
-    assetType: ["network"],
-    securityFunction: ["Protect"],
-    governanceElements: [ // Orange - MUST be met
-      "deploy and maintain email server anti-malware protections",
-      "such as attachment scanning and/or sandboxing"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "email server anti-malware protections",
-      "attachment scanning capabilities",
-      "sandboxing capabilities",
-      "deployment and maintenance"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "deploy email server anti-malware protections",
-      "maintain email server anti-malware protections",
-      "such as attachment scanning",
-      "such as sandboxing",
-      "attachment scanning and/or sandboxing"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "email security tools",
-      "anti-malware platforms",
-      "attachment scanning systems",
-      "email sandboxing solutions"
-    ],
-    relatedSafeguards: ["4.1", "10.1"],
-    systemPrompt: {
-      role: "email_security_anti_malware_expert",
-      context: "You are evaluating email server anti-malware solutions against CIS Control 9.7 requirements for deploying and maintaining email server anti-malware protections including attachment scanning and sandboxing.",
-      objective: "Determine if a vendor solution provides comprehensive email server anti-malware protection capabilities with attachment scanning and sandboxing features.",
-      guidelines: [
-        "Verify email server anti-malware protection deployment and maintenance",
-        "Confirm attachment scanning capabilities and effectiveness",
-        "Validate sandboxing capabilities and threat isolation",
-        "Assess comprehensive email security protection coverage",
-        "Review anti-malware platform integration and management",
-        "Check email sandboxing solution effectiveness and threat detection"
       ],
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
@@ -4549,6 +4216,8 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
+
+  // Control 13: Network Monitoring and Defense
   "13.1": {
     id: "13.1",
     title: "Centralize Security Event Alerting",
@@ -5042,6 +4711,343 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
+
+  // Control 9: Email and Web Browser Protections
+  "9.1": {
+    id: "9.1",
+    title: "Ensure Use of Only Fully Supported Browsers and Email Clients",
+    description: "Ensure only fully supported browsers and email clients are allowed to execute in the enterprise, only using the latest version of browsers and email clients provided through the vendor",
+    implementationGroup: "IG1",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "ensure only fully supported browsers and email clients are allowed to execute",
+      "only using the latest version provided through the vendor"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "fully supported browsers only",
+      "fully supported email clients only", 
+      "latest vendor versions only",
+      "execution restriction enforcement"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "ensure only fully supported",
+      "browsers and email clients",
+      "are allowed to execute",
+      "in the enterprise",
+      "only using the latest version",
+      "provided through the vendor"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "enterprise and software asset management tools",
+      "application allowlisting",
+      "software inventory systems",
+      "automated patch management"
+    ],
+    relatedSafeguards: ["2.1", "4.1", "7.4"],
+    systemPrompt: {
+      role: "browser_email_client_security_expert",
+      context: "You are evaluating browser and email client security solutions against CIS Control 9.1 requirements for ensuring only fully supported, latest versions are used.",
+      objective: "Determine if a vendor solution provides comprehensive browser and email client version management and execution control.",
+      guidelines: [
+        "Verify enforcement of fully supported browsers and email clients only",
+        "Confirm latest vendor version requirement and update management",
+        "Validate execution restriction and application allowlisting capabilities",
+        "Assess enterprise software asset management tool integration",
+        "Review automated patch management for browsers and email clients",
+        "Check software inventory and compliance monitoring features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+  "9.2": {
+    id: "9.2",
+    title: "Use DNS Filtering Services",
+    description: "Use DNS filtering services on all end-user devices, including remote and on-premise assets, to block access to known malicious domains",
+    implementationGroup: "IG1",
+    assetType: ["devices", "network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "use DNS filtering services on all end-user devices",
+      "including remote and on-premise assets",
+      "to block access to known malicious domains"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "DNS filtering services deployment",
+      "all end-user device coverage",
+      "malicious domain blocking",
+      "remote and on-premise asset inclusion"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "use DNS filtering services",
+      "on all end-user devices", 
+      "including remote assets",
+      "including on-premise assets",
+      "to block access",
+      "to known malicious domains"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "DNS filtering services",
+      "secure DNS servers",
+      "DNS security platforms",
+      "cloud-based DNS filtering"
+    ],
+    relatedSafeguards: ["4.1", "4.9"],
+    systemPrompt: {
+      role: "dns_filtering_security_expert",
+      context: "You are evaluating DNS filtering solutions against CIS Control 9.2 requirements for DNS filtering services to block malicious domains.",
+      objective: "Determine if a vendor solution provides comprehensive DNS filtering capabilities for all end-user devices to block malicious domains.",
+      guidelines: [
+        "Verify DNS filtering service deployment for all end-user devices",
+        "Confirm malicious domain blocking capabilities and coverage",
+        "Validate remote and on-premise asset inclusion",
+        "Assess DNS filtering service effectiveness and accuracy",
+        "Review secure DNS server configuration and cloud-based filtering",
+        "Check DNS security platform integration and management features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+  "9.3": {
+    id: "9.3",
+    title: "Maintain and Enforce Network-Based URL Filters",
+    description: "Enforce and update network-based URL filters to limit an enterprise asset from connecting to potentially malicious or unapproved websites. Example implementations include category-based filtering, reputation-based filtering, or through the use of block lists. Enforce filters for all enterprise assets",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "enforce and update network-based URL filters",
+      "to limit enterprise asset from connecting to potentially malicious or unapproved websites",
+      "enforce filters for all enterprise assets"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "network-based URL filters",
+      "enterprise asset connection limiting",
+      "malicious website blocking",
+      "unapproved website blocking"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "enforce network-based URL filters",
+      "update network-based URL filters",
+      "limit enterprise asset from connecting",
+      "to potentially malicious websites",
+      "to unapproved websites",
+      "enforce filters for all enterprise assets"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "URL filtering tools",
+      "category-based filtering",
+      "reputation-based filtering", 
+      "block lists",
+      "web content filtering"
+    ],
+    relatedSafeguards: ["4.1"],
+    systemPrompt: {
+      role: "network_security_filtering_expert",
+      context: "You are evaluating network-based URL filtering solutions against CIS Control 9.3 requirements for network-based URL filters to limit enterprise asset connections to malicious or unapproved websites.",
+      objective: "Determine if a vendor solution provides comprehensive network-based URL filtering capabilities to enforce connection limits for all enterprise assets.",
+      guidelines: [
+        "Verify network-based URL filter implementation and enforcement",
+        "Confirm malicious and unapproved website blocking capabilities",
+        "Validate coverage for all enterprise assets in the filtering system",
+        "Assess category-based, reputation-based, and block list filtering methods",
+        "Review filter update mechanisms and management processes",
+        "Check network-level enforcement and bypass prevention"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+  "9.4": {
+    id: "9.4",
+    title: "Restrict Unnecessary or Unauthorized Browser and Email Client Extensions",
+    description: "Restrict, either through uninstalling or disabling, any unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
+    implementationGroup: "IG2",
+    assetType: ["applications"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "restrict unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
+      "either through uninstalling or disabling"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "browser plugin restrictions",
+      "email client plugin restrictions",
+      "browser extension restrictions",
+      "add-on application restrictions"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "restrict through uninstalling or disabling",
+      "unauthorized browser plugins",
+      "unnecessary browser plugins",
+      "unauthorized email client plugins",
+      "unnecessary email client plugins",
+      "unauthorized browser extensions",
+      "unnecessary browser extensions",
+      "unauthorized add-on applications",
+      "unnecessary add-on applications"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "configuration management tools",
+      "browser management systems",
+      "application control policies",
+      "extension management platforms"
+    ],
+    relatedSafeguards: ["4.1"],
+    systemPrompt: {
+      role: "browser_security_management_expert",
+      context: "You are evaluating browser and email client extension management solutions against CIS Control 9.4 requirements for restricting unauthorized or unnecessary plugins, extensions, and add-on applications.",
+      objective: "Determine if a vendor solution provides comprehensive browser and email client extension restriction capabilities through uninstalling or disabling mechanisms.",
+      guidelines: [
+        "Verify browser plugin and extension restriction capabilities",
+        "Confirm email client plugin and extension management",
+        "Validate unauthorized and unnecessary application identification",
+        "Assess uninstalling and disabling mechanisms and enforcement",
+        "Review configuration management and policy enforcement tools",
+        "Check browser management system integration and compliance monitoring"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+  "9.5": {
+    id: "9.5",
+    title: "Implement DMARC",
+    description: "To lower the chance of spoofed or modified emails from valid domains, implement DMARC policy and verification, starting with implementing the Sender Policy Framework (SPF) and the DomainKeys Identified Mail (DKIM) standards",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "implement DMARC policy and verification",
+      "to lower the chance of spoofed or modified emails from valid domains",
+      "starting with implementing SPF and DKIM standards"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "DMARC policy implementation",
+      "DMARC verification implementation",
+      "SPF standard implementation",
+      "DKIM standard implementation"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "implement DMARC policy",
+      "implement DMARC verification",
+      "to lower the chance of spoofed emails",
+      "to lower the chance of modified emails",
+      "from valid domains",
+      "starting with implementing SPF",
+      "starting with implementing DKIM",
+      "Sender Policy Framework standards",
+      "DomainKeys Identified Mail standards"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "DMARC management tools",
+      "email authentication services",
+      "SPF record management",
+      "DKIM signature management"
+    ],
+    relatedSafeguards: ["4.1"],
+    systemPrompt: {
+      role: "email_authentication_security_expert",
+      context: "You are evaluating email authentication solutions against CIS Control 9.5 requirements for implementing DMARC policy and verification, including SPF and DKIM standards to prevent spoofed or modified emails.",
+      objective: "Determine if a vendor solution provides comprehensive DMARC, SPF, and DKIM implementation capabilities to protect against email spoofing and modification from valid domains.",
+      guidelines: [
+        "Verify DMARC policy implementation and verification capabilities",
+        "Confirm SPF (Sender Policy Framework) standard implementation",
+        "Validate DKIM (DomainKeys Identified Mail) standard implementation",
+        "Assess spoofed and modified email detection and prevention",
+        "Review DMARC management tools and email authentication services",
+        "Check SPF record management and DKIM signature management integration"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+  "9.6": {
+    id: "9.6",
+    title: "Block Unnecessary File Types",
+    description: "Block unnecessary file types attempting to enter the enterprise's email gateway",
+    implementationGroup: "IG2",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "block unnecessary file types attempting to enter the enterprise's email gateway"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "unnecessary file type blocking",
+      "email gateway protection",
+      "file type filtering"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "block unnecessary file types",
+      "attempting to enter",
+      "the enterprise's email gateway"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "email security tools",
+      "email gateway filtering",
+      "file type blocking systems",
+      "email content filtering"
+    ],
+    relatedSafeguards: ["4.1"],
+    systemPrompt: {
+      role: "email_gateway_security_expert",
+      context: "You are evaluating email gateway security solutions against CIS Control 9.6 requirements for blocking unnecessary file types attempting to enter the enterprise's email gateway.",
+      objective: "Determine if a vendor solution provides comprehensive email gateway file type blocking capabilities to prevent unnecessary file types from entering the enterprise.",
+      guidelines: [
+        "Verify email gateway file type blocking capabilities and coverage",
+        "Confirm unnecessary file type identification and filtering mechanisms",
+        "Validate comprehensive email gateway protection and security controls",
+        "Assess file type blocking system effectiveness and accuracy",
+        "Review email security tools and content filtering integration",
+        "Check email gateway filtering policies and management features"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+  "9.7": {
+    id: "9.7",
+    title: "Deploy and Maintain Email Server Anti-Malware Protections",
+    description: "Deploy and maintain email server anti-malware protections, such as attachment scanning and/or sandboxing",
+    implementationGroup: "IG1",
+    assetType: ["network"],
+    securityFunction: ["Protect"],
+    governanceElements: [ // Orange - MUST be met
+      "deploy and maintain email server anti-malware protections",
+      "such as attachment scanning and/or sandboxing"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "email server anti-malware protections",
+      "attachment scanning capabilities",
+      "sandboxing capabilities",
+      "deployment and maintenance"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "deploy email server anti-malware protections",
+      "maintain email server anti-malware protections",
+      "such as attachment scanning",
+      "such as sandboxing",
+      "attachment scanning and/or sandboxing"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "email security tools",
+      "anti-malware platforms",
+      "attachment scanning systems",
+      "email sandboxing solutions"
+    ],
+    relatedSafeguards: ["4.1", "10.1"],
+    systemPrompt: {
+      role: "email_security_anti_malware_expert",
+      context: "You are evaluating email server anti-malware solutions against CIS Control 9.7 requirements for deploying and maintaining email server anti-malware protections including attachment scanning and sandboxing.",
+      objective: "Determine if a vendor solution provides comprehensive email server anti-malware protection capabilities with attachment scanning and sandboxing features.",
+      guidelines: [
+        "Verify email server anti-malware protection deployment and maintenance",
+        "Confirm attachment scanning capabilities and effectiveness",
+        "Validate sandboxing capabilities and threat isolation",
+        "Assess comprehensive email security protection coverage",
+        "Review anti-malware platform integration and management",
+        "Check email sandboxing solution effectiveness and threat detection"
+      ],
+      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+    }
+  },
+
+  // Control 14: Security Awareness and Skills Training
   "14.1": {
     id: "14.1",
     title: "Establish and Maintain a Security Awareness Program",
@@ -5477,6 +5483,8 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
+
+  // Control 15: Service Provider Management
   "15.1": {
     id: "15.1",
     title: "Establish and Maintain an Inventory of Service Providers",
@@ -5825,6 +5833,8 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
+
+  // Control 16: Application Software Security
   "16.1": {
     id: "16.1",
     title: "Establish and Maintain a Secure Application Development Process",
@@ -6497,6 +6507,8 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
+
+  // Control 17: Incident Response Management
   "17.1": {
     id: "17.1",
     title: "Designate Personnel to Manage Incident Handling",
@@ -6907,6 +6919,8 @@ export class SafeguardManager {
       outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
     }
   },
+
+  // Control 18: Penetration Testing
   "18.1": {
     id: "18.1",
     title: "Establish and Maintain a Penetration Testing Program",
