@@ -10647,8 +10647,7 @@ export class SafeguardManager {
     coreRequirements: [ // Green - The "what"
       "automatic updates configuration",
       "anti-malware signature files",
-      "enterprise assets coverage",
-      "signature currency maintenance"
+      "enterprise assets coverage"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "configure",
@@ -10657,10 +10656,7 @@ export class SafeguardManager {
       "all enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "automatic update systems",
-      "signature distribution mechanisms",
-      "centralized update management",
-      "update scheduling tools"
+      "anti-malware software can auto update potentially"
     ],
     relatedSafeguards: ["10.1"],
     systemPromptFull: {
@@ -10669,18 +10665,13 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-malware signature update solutions against CIS Control 10.2 requirements for configuring automatic updates for anti-malware signature files on all enterprise assets.",
 
-      objective: "Determine if a vendor solution provides comprehensive automatic anti-malware signature update capabilities across all enterprise assets.",
+      objective: "The vendor has taken an assessment and has been mapped to FULL by the mapping tool. Being mapped to FULL means that the vendor addresses each of the subtaxonomical elements in some way.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps meet the safeguard FULLY.",
 
       guidelines: [
-        "Verify automatic update configuration capabilities and reliability",
-        "Confirm anti-malware signature file management and distribution",
-        "Validate comprehensive enterprise asset coverage for updates",
-        "Assess signature currency maintenance and update frequency",
-        "Review centralized update management and scheduling systems",
-        "Check signature distribution mechanisms and update verification"
+        "Future Use"
       ],
 
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+      outputFormat: "Provide a structured assessment, confidence score, and evidence summary"
 
     },
 
@@ -10690,18 +10681,13 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-malware signature update solutions against CIS Control 10.2 requirements for configuring automatic updates for anti-malware signature files on all enterprise assets.",
 
-      objective: "Determine if a vendor solution provides comprehensive automatic anti-malware signature update capabilities across all enterprise assets.",
+      objective: "The vendor has taken an assessment and has been mapped to PARTIAL by the mapping tool. Being mapped to PARTIAL means that the vendor addresses some but not all of the subtaxonomical elements in some way.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps meet the safeguard PARTIALLY.",
 
-      guidelines: [
-        "Verify automatic update configuration capabilities and reliability",
-        "Confirm anti-malware signature file management and distribution",
-        "Validate comprehensive enterprise asset coverage for updates",
-        "Assess signature currency maintenance and update frequency",
-        "Review centralized update management and scheduling systems",
-        "Check signature distribution mechanisms and update verification"
+       guidelines: [
+        "Future Use"
       ],
 
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+      outputFormat: "Provide a structured assessment, confidence score, and evidence summary"
 
     },
 
@@ -10711,18 +10697,13 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-malware signature update solutions against CIS Control 10.2 requirements for configuring automatic updates for anti-malware signature files on all enterprise assets.",
 
-      objective: "Determine if a vendor solution provides comprehensive automatic anti-malware signature update capabilities across all enterprise assets.",
+      objective: "The vendor has taken an assessment and has been mapped to FACILITATES by the mapping tool. Being mapped to FACILIATES means that the vendors' product or service makes another tool or service, that actually implements the control, better faster or stronger.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps FACILITATE.",
 
-      guidelines: [
-        "Verify automatic update configuration capabilities and reliability",
-        "Confirm anti-malware signature file management and distribution",
-        "Validate comprehensive enterprise asset coverage for updates",
-        "Assess signature currency maintenance and update frequency",
-        "Review centralized update management and scheduling systems",
-        "Check signature distribution mechanisms and update verification"
+       guidelines: [
+        "Future Use"
       ],
 
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+      outputFormat: "Provide a structured assessment, confidence score, and evidence summary"
 
     },
 
@@ -10732,18 +10713,13 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-malware signature update solutions against CIS Control 10.2 requirements for configuring automatic updates for anti-malware signature files on all enterprise assets.",
 
-      objective: "Determine if a vendor solution provides comprehensive automatic anti-malware signature update capabilities across all enterprise assets.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
-      guidelines: [
-        "Verify automatic update configuration capabilities and reliability",
-        "Confirm anti-malware signature file management and distribution",
-        "Validate comprehensive enterprise asset coverage for updates",
-        "Assess signature currency maintenance and update frequency",
-        "Review centralized update management and scheduling systems",
-        "Check signature distribution mechanisms and update verification"
+       guidelines: [
+        "Future Use"
       ],
 
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+      outputFormat: "Provide a structured assessment, confidence score, and evidence summary"
 
     },
 
@@ -10753,18 +10729,13 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-malware signature update solutions against CIS Control 10.2 requirements for configuring automatic updates for anti-malware signature files on all enterprise assets.",
 
-      objective: "Determine if a vendor solution provides comprehensive automatic anti-malware signature update capabilities across all enterprise assets.",
+      objective: "The vendor has taken an assessment and has been mapped to VALIDATES by the mapping tool. Being mapped to VALIDATES means that the vendor helps coollect evidence that a safeguard is in place and working as specified. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps VALIDATE the safeguard.",
 
-      guidelines: [
-        "Verify automatic update configuration capabilities and reliability",
-        "Confirm anti-malware signature file management and distribution",
-        "Validate comprehensive enterprise asset coverage for updates",
-        "Assess signature currency maintenance and update frequency",
-        "Review centralized update management and scheduling systems",
-        "Check signature distribution mechanisms and update verification"
+       guidelines: [
+        "Future Use"
       ],
 
-      outputFormat: "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+      outputFormat: "Provide a structured assessment, confidence score, and evidence summary"
 
     }
   },
