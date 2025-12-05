@@ -44,12 +44,41 @@ export interface SafeguardElement {
   // Enhanced relationships - new optional field for rich relationship data
   enhancedRelationships?: SafeguardRelationship[];
 
-  systemPrompt?: {
+  // Capability-specific system prompts for different evaluation levels
+  systemPromptFull?: {
     role: string;           // e.g., "asset_inventory_expert", "access_control_specialist"
     context: string;        // Brief context about the safeguard for AI understanding
     objective: string;      // What the AI should accomplish
     guidelines: string[];   // Specific evaluation criteria and methods
     outputFormat: string;   // Expected response structure for n8n processing
+  };
+  systemPromptPartial?: {
+    role: string;
+    context: string;
+    objective: string;
+    guidelines: string[];
+    outputFormat: string;
+  };
+  systemPromptFacilitates?: {
+    role: string;
+    context: string;
+    objective: string;
+    guidelines: string[];
+    outputFormat: string;
+  };
+  systemPromptGovernance?: {
+    role: string;
+    context: string;
+    objective: string;
+    guidelines: string[];
+    outputFormat: string;
+  };
+  systemPromptValidates?: {
+    role: string;
+    context: string;
+    objective: string;
+    guidelines: string[];
+    outputFormat: string;
   };
 }
 

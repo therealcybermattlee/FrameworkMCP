@@ -3,7 +3,7 @@
   "info": {
     "title": "Framework MCP API - Pure Data Provider",
     "description": "Microsoft Copilot-compatible API providing authoritative CIS Controls Framework v8.1 data (153 safeguards). Pure Data Provider architecture empowers LLMs with structured safeguards data and AI-driven systemPrompts for sophisticated, context-aware vendor capability analysis and n8n workflow automation.",
-    "version": "1.5.3",
+    "version": "2.0.0",
     "contact": {
       "name": "Framework MCP Support",
       "url": "https://github.com/therealcybermattlee/FrameworkMCP"
@@ -67,7 +67,7 @@
     "/api/safeguards/{safeguardId}": {
       "get": {
         "summary": "Get Safeguard Details",
-        "description": "Get detailed information about a specific CIS safeguard including governance elements, core requirements, implementation suggestions, and AI-driven systemPrompt for n8n workflow integration",
+        "description": "Get detailed information about a specific CIS safeguard including governance elements, core requirements, implementation suggestions, and five capability-specific AI-driven system prompts for n8n workflow integration",
         "operationId": "getSafeguardDetails",
         "tags": ["Safeguards"],
         "parameters": [
@@ -256,40 +256,25 @@
             },
             "description": "Implementation methods and suggestions (Gray elements)"
           },
-          "systemPrompt": {
-            "type": "object",
-            "description": "AI-driven system prompt for n8n workflow automation and vendor analysis",
-            "properties": {
-              "role": {
-                "type": "string",
-                "description": "Expert role for the specific control type",
-                "example": "asset_inventory_expert"
-              },
-              "context": {
-                "type": "string",
-                "description": "Brief context about the safeguard for AI understanding",
-                "example": "You are evaluating enterprise asset inventory solutions against CIS Control 1.1 requirements"
-              },
-              "objective": {
-                "type": "string", 
-                "description": "What the AI should accomplish",
-                "example": "Determine if vendor solution provides complete asset inventory capabilities"
-              },
-              "guidelines": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "Specific evaluation criteria and methods",
-                "example": ["Verify coverage of all asset types", "Confirm data collection accuracy"]
-              },
-              "outputFormat": {
-                "type": "string",
-                "description": "Expected response structure for n8n processing",
-                "example": "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
-              }
-            },
-            "required": ["role", "context", "objective", "guidelines", "outputFormat"]
+          "systemPromptFull": {
+            "$ref": "#/components/schemas/SystemPromptStructure",
+            "description": "AI-driven system prompt for FULL capability evaluation"
+          },
+          "systemPromptPartial": {
+            "$ref": "#/components/schemas/SystemPromptStructure",
+            "description": "AI-driven system prompt for PARTIAL capability evaluation"
+          },
+          "systemPromptFacilitates": {
+            "$ref": "#/components/schemas/SystemPromptStructure",
+            "description": "AI-driven system prompt for FACILITATES capability evaluation"
+          },
+          "systemPromptGovernance": {
+            "$ref": "#/components/schemas/SystemPromptStructure",
+            "description": "AI-driven system prompt for GOVERNANCE capability evaluation"
+          },
+          "systemPromptValidates": {
+            "$ref": "#/components/schemas/SystemPromptStructure",
+            "description": "AI-driven system prompt for VALIDATES capability evaluation"
           }
         }
       },
@@ -405,6 +390,41 @@
             "format": "date-time"
           }
         }
+      },
+      "SystemPromptStructure": {
+        "type": "object",
+        "description": "AI-driven system prompt structure for vendor capability analysis",
+        "properties": {
+          "role": {
+            "type": "string",
+            "description": "Expert role for the specific control type",
+            "example": "asset_inventory_expert"
+          },
+          "context": {
+            "type": "string",
+            "description": "Brief context about the safeguard for AI understanding",
+            "example": "You are evaluating enterprise asset inventory solutions against CIS Control 1.1 requirements"
+          },
+          "objective": {
+            "type": "string",
+            "description": "What the AI should accomplish",
+            "example": "Determine if vendor solution provides complete asset inventory capabilities"
+          },
+          "guidelines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific evaluation criteria and methods",
+            "example": ["Verify coverage of all asset types", "Confirm data collection accuracy"]
+          },
+          "outputFormat": {
+            "type": "string",
+            "description": "Expected response structure for n8n processing",
+            "example": "Provide structured assessment with capability level (FULL/PARTIAL/FACILITATES/GOVERNANCE/VALIDATES), confidence score, and evidence summary"
+          }
+        },
+        "required": ["role", "context", "objective", "guidelines", "outputFormat"]
       }
     }
   },

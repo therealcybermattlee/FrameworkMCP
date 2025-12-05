@@ -7,6 +7,8 @@
 
 A Model Context Protocol (MCP) server providing **authoritative CIS Controls Framework data** to empower LLMs with sophisticated, context-aware vendor capability analysis. This Pure Data Provider architecture enables security professionals to perform flexible, intelligent assessment of vendor tool capabilities against specific CIS Control safeguards.
 
+> **🚨 Breaking Change in v2.0**: The API structure has changed from a single `systemPrompt` field to five capability-specific prompt fields. See [Migration Guide](docs/migration-v2.0.md) for upgrade instructions.
+
 ## 🎯 Purpose
 
 This MCP server empowers security teams to:

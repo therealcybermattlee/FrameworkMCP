@@ -68,9 +68,76 @@ export class FrameworkHttpServer {
       res.json({
         status: 'healthy',
         uptime: Math.round(process.uptime()),
-        version: '1.5.3',
+        version: '2.0.0',
         timestamp: new Date().toISOString()
       });
+    });
+
+    // Safeguards health check endpoint - validates data completeness
+    this.app.get('/api/health/safeguards', (req, res) => {
+      try {
+        const allSafeguards = this.safeguardManager.getAllSafeguards();
+        const safeguardIds = Object.keys(allSafeguards);
+
+        let totalValidated = 0;
+        let errors: string[] = [];
+        const expectedFields = [
+          'systemPromptFull',
+          'systemPromptPartial',
+          'systemPromptFacilitates',
+          'systemPromptGovernance',
+          'systemPromptValidates'
+        ];
+
+        for (const safeguardId of safeguardIds) {
+          const safeguard = allSafeguards[safeguardId];
+
+          // Check all five capability prompts exist and are complete
+          for (const field of expectedFields) {
+            const prompt = (safeguard as any)[field];
+            if (!prompt) {
+              errors.push(`${safeguardId}: Missing ${field}`);
+              continue;
+            }
+
+            if (!prompt.role || !prompt.context || !prompt.objective ||
+                !prompt.guidelines || !prompt.outputFormat) {
+              errors.push(`${safeguardId}.${field}: Incomplete structure`);
+            }
+          }
+
+          // Check deprecated field is gone
+          if ('systemPrompt' in safeguard) {
+            errors.push(`${safeguardId}: Deprecated systemPrompt field exists`);
+          }
+
+          totalValidated++;
+        }
+
+        res.json({
+          status: errors.length === 0 ? 'healthy' : 'unhealthy',
+          safeguards: {
+            total: totalValidated,
+            expected: 153,
+            complete: totalValidated === 153 && errors.length === 0
+          },
+          capabilityPrompts: {
+            expectedFields: expectedFields.length,
+            validatedFields: expectedFields.length
+          },
+          errors: errors.length,
+          errorDetails: errors.slice(0, 10), // Show first 10 errors only
+          timestamp: new Date().toISOString()
+        });
+
+      } catch (error) {
+        res.status(500).json({
+          status: 'error',
+          message: 'Failed to validate safeguards data',
+          error: error instanceof Error ? error.message : 'Unknown error',
+          timestamp: new Date().toISOString()
+        });
+      }
     });
 
 
@@ -117,7 +184,7 @@ export class FrameworkHttpServer {
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '1.5.3',
+        version: '2.0.0',
         description: 'Pure Data Provider serving authentic CIS Controls Framework data',
         endpoints: {
           'GET /api/safeguards': 'List all available CIS safeguards',
