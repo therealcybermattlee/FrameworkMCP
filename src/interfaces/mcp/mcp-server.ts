@@ -18,7 +18,7 @@ export class FrameworkMcpServer {
     this.server = new Server(
       {
         name: 'framework-analyzer',
-        version: '1.5.3',
+        version: '2.1.0',
       }
     );
 

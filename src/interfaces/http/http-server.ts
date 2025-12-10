@@ -68,7 +68,7 @@ export class FrameworkHttpServer {
       res.json({
         status: 'healthy',
         uptime: Math.round(process.uptime()),
-        version: '2.0.0',
+        version: '2.1.0',
         timestamp: new Date().toISOString()
       });
     });
@@ -184,7 +184,7 @@ export class FrameworkHttpServer {
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '2.0.0',
+        version: '2.1.0',
         description: 'Pure Data Provider serving authentic CIS Controls Framework data',
         endpoints: {
           'GET /api/safeguards': 'List all available CIS safeguards',
