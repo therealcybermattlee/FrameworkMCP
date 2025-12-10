@@ -11,7 +11,8 @@
     "start:http": "node dist/interfaces/http/http-server.js",
     "dev": "tsc && npm run start:mcp",
     "dev:http": "tsc && npm run start:http",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "standardize-prompts": "node scripts/standardize-prompts.js"
   },
   "bin": {
     "framework-mcp": "./dist/index.js"
@@ -28,6 +29,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^4.17.17",
     "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.0.0"
   },
   "keywords": [
