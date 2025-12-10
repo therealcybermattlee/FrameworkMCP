@@ -1,0 +1,201 @@
+openapi: 3.0.0
+info:
+  title: Framework MCP API - System Prompt Capability Split
+  version: 2.0.0
+  description: API contract showing the new capability-specific system prompt fields
+
+paths:
+  /api/safeguard/{safeguardId}:
+    get:
+      summary: Get safeguard details with capability-specific prompts
+      parameters:
+        - name: safeguardId
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9]+\.[0-9]+$'
+            example: "1.1"
+      responses:
+        '200':
+          description: Successful response with capability-specific prompts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SafeguardElement'
+        '400':
+          description: Invalid safeguard ID format
+        '404':
+          description: Safeguard not found
+
+  /api/safeguards:
+    get:
+      summary: List all safeguards with capability-specific prompts
+      responses:
+        '200':
+          description: Array of all safeguards
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SafeguardElement'
+
+components:
+  schemas:
+    SafeguardElement:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - implementationGroup
+        - assetType
+        - securityFunction
+        - governanceElements
+        - coreRequirements
+        - subTaxonomicalElements
+        - implementationSuggestions
+        - relatedSafeguards
+        - systemPromptFull
+        - systemPromptPartial
+        - systemPromptFacilitates
+        - systemPromptGovernance
+        - systemPromptValidates
+      properties:
+        id:
+          type: string
+          description: Safeguard identifier
+          example: "1.1"
+        title:
+          type: string
+          description: Safeguard title
+          example: "Establish and Maintain Detailed Enterprise Asset Inventory"
+        description:
+          type: string
+          description: Detailed safeguard description
+        implementationGroup:
+          type: string
+          enum: [IG1, IG2, IG3]
+          description: Implementation group classification
+        assetType:
+          type: array
+          items:
+            type: string
+          description: Asset types affected by this safeguard
+        securityFunction:
+          type: array
+          items:
+            type: string
+          description: Security functions addressed
+        governanceElements:
+          type: array
+          items:
+            type: string
+          description: Orange governance requirements
+        coreRequirements:
+          type: array
+          items:
+            type: string
+          description: Green core requirements
+        subTaxonomicalElements:
+          type: array
+          items:
+            type: string
+          description: Yellow sub-taxonomical elements
+        implementationSuggestions:
+          type: array
+          items:
+            type: string
+          description: Gray implementation suggestions
+        relatedSafeguards:
+          type: array
+          items:
+            type: string
+          description: Related safeguard IDs
+        systemPromptFull:
+          $ref: '#/components/schemas/SystemPromptStructure'
+          description: System prompt for FULL capability evaluation
+        systemPromptPartial:
+          $ref: '#/components/schemas/SystemPromptStructure'
+          description: System prompt for PARTIAL capability evaluation
+        systemPromptFacilitates:
+          $ref: '#/components/schemas/SystemPromptStructure'
+          description: System prompt for FACILITATES capability evaluation
+        systemPromptGovernance:
+          $ref: '#/components/schemas/SystemPromptStructure'
+          description: System prompt for GOVERNANCE capability evaluation
+        systemPromptValidates:
+          $ref: '#/components/schemas/SystemPromptStructure'
+          description: System prompt for VALIDATES capability evaluation
+        enhancedRelationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeguardRelationship'
+          description: Optional enhanced relationship data
+
+    SystemPromptStructure:
+      type: object
+      required:
+        - role
+        - context
+        - objective
+        - guidelines
+        - outputFormat
+      properties:
+        role:
+          type: string
+          description: AI role identifier
+          example: "asset_inventory_expert"
+        context:
+          type: string
+          description: Context about the safeguard for AI understanding
+          example: "Evaluating asset inventory capabilities"
+        objective:
+          type: string
+          description: What the AI should accomplish
+          example: "Assess vendor solution capabilities"
+        guidelines:
+          type: array
+          items:
+            type: string
+          description: Specific evaluation criteria and methods
+          example: ["Check for automated discovery", "Verify asset tracking"]
+        outputFormat:
+          type: string
+          description: Expected response structure
+          example: "structured JSON response"
+
+    SafeguardRelationship:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Target safeguard ID
+        type:
+          type: string
+          enum: [dependency, prerequisite, complement, supports, validates, governance, sequence]
+          description: Relationship type
+        strength:
+          type: string
+          enum: [critical, strong, moderate, weak]
+          description: Relationship importance
+        context:
+          type: string
+          description: Human-readable explanation
+        bidirectional:
+          type: boolean
+          description: Whether reverse relationship exists
+        controlGroup:
+          type: string
+          description: Optional CIS Control grouping
+
+    # Deprecated - for migration reference only
+    SafeguardElement_v1:
+      type: object
+      deprecated: true
+      description: "DEPRECATED - Old structure with single systemPrompt field"
+      properties:
+        systemPrompt:
+          $ref: '#/components/schemas/SystemPromptStructure'
+          description: "DEPRECATED - Use capability-specific fields instead"
