@@ -1,0 +1,67 @@
+# CI Security Scanning Contract
+# Feature: 003-security-fixes
+# Date: 2026-01-20
+#
+# This documents the security scanning step to be added to .github/workflows/ci.yml
+
+# Security audit job specification
+security-audit:
+  name: "Security Audit"
+  description: "Runs npm audit to check for known vulnerabilities in dependencies"
+
+  # When to run
+  triggers:
+    - push to main/develop branches
+    - pull requests to main
+
+  # Node.js version
+  node-version: "20.x"
+
+  # Steps
+  steps:
+    - name: "Checkout"
+      action: "actions/checkout@v4"
+
+    - name: "Setup Node.js"
+      action: "actions/setup-node@v4"
+      with:
+        node-version: "20.x"
+        cache: "npm"
+
+    - name: "Install dependencies"
+      run: "npm ci"
+
+    - name: "Run security audit"
+      run: "npm audit --audit-level=high"
+      description: |
+        Fails if any high or critical severity vulnerabilities are found.
+        Low and moderate vulnerabilities are reported but don't fail the build.
+
+  # Expected behavior
+  exit-codes:
+    0: "No high/critical vulnerabilities found"
+    1: "High/critical vulnerabilities found - build fails"
+
+  # Output format
+  output:
+    format: "table"
+    includes:
+      - package name
+      - severity level
+      - vulnerability title
+      - advisory URL
+      - fix available (yes/no)
+
+# Integration with existing CI
+integration:
+  workflow-file: ".github/workflows/ci.yml"
+  job-name: "security"
+
+  # Run before or after test job
+  depends-on: null  # Can run in parallel with test job
+
+  # Required for publish job
+  required-by: "publish"
+
+  # Failure handling
+  on-failure: "block"  # Block the build if audit fails

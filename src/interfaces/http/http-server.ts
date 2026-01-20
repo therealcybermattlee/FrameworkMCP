@@ -4,7 +4,9 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
+import rateLimit from 'express-rate-limit';
 import { SafeguardManager } from '../../core/safeguard-manager.js';
+import { RateLimitConfig, RateLimitErrorResponse } from '../../shared/types.js';
 
 interface ErrorResponse {
   error: string;
@@ -16,18 +18,54 @@ export class FrameworkHttpServer {
   private app: express.Application;
   private safeguardManager: SafeguardManager;
   private port: number;
+  private rateLimitConfig: RateLimitConfig;
 
   constructor(port: number = 8080) {
     this.app = express();
     this.safeguardManager = new SafeguardManager();
     this.port = port;
-    
+    this.rateLimitConfig = this.parseRateLimitConfig();
+
     this.setupMiddleware();
     this.setupRoutes();
     this.setupErrorHandling();
   }
 
+  private parseRateLimitConfig(): RateLimitConfig {
+    const skipIpsEnv = process.env.RATE_LIMIT_SKIP_IPS;
+    return {
+      windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000', 10),
+      max: parseInt(process.env.RATE_LIMIT_MAX || '100', 10),
+      skipIps: skipIpsEnv ? skipIpsEnv.split(',').map(ip => ip.trim()) : undefined
+    };
+  }
+
   private setupMiddleware(): void {
+    // Rate limiting middleware - must be before other middleware
+    const limiter = rateLimit({
+      windowMs: this.rateLimitConfig.windowMs,
+      max: this.rateLimitConfig.max,
+      standardHeaders: true,
+      legacyHeaders: false,
+      skip: (req) => {
+        if (this.rateLimitConfig.skipIps && req.ip) {
+          return this.rateLimitConfig.skipIps.includes(req.ip);
+        }
+        return false;
+      },
+      message: {
+        error: 'Too many requests',
+        retryAfter: 'See Retry-After header',
+        timestamp: new Date().toISOString()
+      },
+      handler: (req, res, _next, options) => {
+        console.log(`[Rate Limit] IP ${req.ip} exceeded limit`);
+        res.status(429).json(options.message);
+      }
+    });
+
+    this.app.use(limiter);
+
     // Security middleware
     this.app.use(helmet({
       contentSecurityPolicy: {
@@ -68,7 +106,7 @@ export class FrameworkHttpServer {
       res.json({
         status: 'healthy',
         uptime: Math.round(process.uptime()),
-        version: '2.1.1',
+        version: '2.2.0',
         timestamp: new Date().toISOString()
       });
     });
@@ -184,7 +222,7 @@ export class FrameworkHttpServer {
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '2.1.1',
+        version: '2.2.0',
         description: 'Pure Data Provider serving authentic CIS Controls Framework data',
         endpoints: {
           'GET /api/safeguards': 'List all available CIS safeguards',
@@ -235,7 +273,7 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v1.5.3 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v2.2.0 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);

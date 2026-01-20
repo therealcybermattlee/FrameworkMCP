@@ -1,0 +1,132 @@
+# Rate Limiting API Contract
+# Feature: 003-security-fixes
+# Date: 2026-01-20
+
+openapi: 3.0.3
+info:
+  title: Framework MCP API - Rate Limiting Extension
+  version: 2.2.0
+  description: |
+    Rate limiting contract for the Framework MCP HTTP API.
+    All endpoints return rate limit headers and may return 429 responses.
+
+components:
+  headers:
+    RateLimit-Limit:
+      description: Maximum number of requests allowed per window
+      schema:
+        type: integer
+        example: 100
+    RateLimit-Remaining:
+      description: Number of requests remaining in current window
+      schema:
+        type: integer
+        example: 95
+    RateLimit-Reset:
+      description: Unix timestamp when the rate limit window resets
+      schema:
+        type: integer
+        example: 1705750800
+    Retry-After:
+      description: Seconds until the client can retry (only on 429 responses)
+      schema:
+        type: integer
+        example: 60
+
+  schemas:
+    RateLimitErrorResponse:
+      type: object
+      required:
+        - error
+        - timestamp
+      properties:
+        error:
+          type: string
+          example: "Too many requests"
+          description: Error message indicating rate limit exceeded
+        retryAfter:
+          type: integer
+          example: 60
+          description: Seconds until rate limit resets
+        timestamp:
+          type: string
+          format: date-time
+          example: "2026-01-20T10:30:00.000Z"
+          description: ISO 8601 timestamp of the response
+
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded
+      headers:
+        RateLimit-Limit:
+          $ref: '#/components/headers/RateLimit-Limit'
+        RateLimit-Remaining:
+          $ref: '#/components/headers/RateLimit-Remaining'
+        RateLimit-Reset:
+          $ref: '#/components/headers/RateLimit-Reset'
+        Retry-After:
+          $ref: '#/components/headers/Retry-After'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RateLimitErrorResponse'
+          example:
+            error: "Too many requests"
+            retryAfter: 60
+            timestamp: "2026-01-20T10:30:00.000Z"
+
+    SuccessWithRateLimitHeaders:
+      description: Successful response with rate limit headers
+      headers:
+        RateLimit-Limit:
+          $ref: '#/components/headers/RateLimit-Limit'
+        RateLimit-Remaining:
+          $ref: '#/components/headers/RateLimit-Remaining'
+        RateLimit-Reset:
+          $ref: '#/components/headers/RateLimit-Reset'
+
+paths:
+  # All existing endpoints now include rate limiting
+  /api/safeguards:
+    get:
+      summary: List all safeguards (with rate limiting)
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessWithRateLimitHeaders'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /api/safeguards/{safeguardId}:
+    get:
+      summary: Get safeguard details (with rate limiting)
+      parameters:
+        - name: safeguardId
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9]+\.[0-9]+$'
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessWithRateLimitHeaders'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /health:
+    get:
+      summary: Health check (with rate limiting)
+      description: Health endpoint is also rate limited to prevent abuse
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessWithRateLimitHeaders'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /api:
+    get:
+      summary: API documentation (with rate limiting)
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessWithRateLimitHeaders'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'

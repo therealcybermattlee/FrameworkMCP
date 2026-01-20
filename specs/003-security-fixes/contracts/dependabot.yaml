@@ -1,0 +1,63 @@
+# Dependabot Configuration Contract
+# Feature: 003-security-fixes
+# Date: 2026-01-20
+#
+# This file documents the expected Dependabot configuration.
+# Actual implementation goes in .github/dependabot.yml
+
+version: 2
+updates:
+  # npm package updates
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Los_Angeles"
+
+    # Limit open PRs to avoid overwhelming maintainers
+    open-pull-requests-limit: 10
+
+    # Group security updates together
+    groups:
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+
+      # Group non-security minor/patch updates
+      minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
+    # Commit message format
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+
+    # Labels for PRs
+    labels:
+      - "dependencies"
+      - "automated"
+
+    # Reviewers for dependency PRs
+    # reviewers:
+    #   - "therealcybermattlee"
+
+    # Ignore certain packages (if needed)
+    # ignore:
+    #   - dependency-name: "example-package"
+    #     versions: ["4.x", "5.x"]
+
+  # GitHub Actions updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "ci"
+      - "dependencies"
+      - "automated"

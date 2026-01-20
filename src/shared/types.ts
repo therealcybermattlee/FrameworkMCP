@@ -315,3 +315,23 @@ export interface ValidationResult {
   errors: string[];
 }
 
+// Rate Limiting Types (v2.2.0+)
+
+/**
+ * Configuration for rate limiting middleware
+ */
+export interface RateLimitConfig {
+  windowMs: number;      // Time window in milliseconds
+  max: number;           // Maximum requests per window
+  skipIps?: string[];    // IP addresses to exempt from rate limiting
+}
+
+/**
+ * Error response returned when rate limit is exceeded
+ */
+export interface RateLimitErrorResponse {
+  error: string;         // Error message
+  retryAfter?: number;   // Seconds until rate limit resets
+  timestamp: string;     // ISO 8601 timestamp
+}
+
