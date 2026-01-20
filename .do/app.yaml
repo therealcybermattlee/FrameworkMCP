@@ -9,7 +9,7 @@ services:
   source_dir: /
   github:
     repo: therealcybermattlee/FrameworkMCP
-    branch: feature/dual-architecture-http-api
+    branch: main
     deploy_on_push: true
   
   # HTTP server configuration (NOT stdio)
