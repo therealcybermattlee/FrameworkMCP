@@ -5,8 +5,6 @@
 
 A Model Context Protocol (MCP) server providing **authoritative CIS Controls Framework data** for LLM-driven vendor capability analysis. Access all 153 CIS v8.1 safeguards through MCP or HTTP API.
 
-> **Breaking Change in v2.0**: The API now returns five capability-specific prompt fields instead of a single `systemPrompt`. See [Migration Guide](docs/migration-v2.0.md).
-
 ## Quick Start
 
 ### Install from npm
