@@ -726,23 +726,19 @@ export class SafeguardManager {
   "2.1": {
     id: "2.1",
     title: "Establish and Maintain a Software Inventory",
-    description: "Establish and maintain a detailed inventory of all licensed software installed on enterprise assets",
+    description: "Establish and maintain a detailed inventory of all licensed software installed on enterprise assets. The software inventory must document the title, publisher, initial install/use date, and business purpose for each entry; where appropriate, include the Uniform Resource Locator (URL), app store(s), version(s), deployment mechanism, decommission date, and number of licenses. Review and update the software inventory bi-annually, or more frequently.",
     implementationGroup: "IG1",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Establish and maintain a detailed inventory of all licensed software installed on enterprise assets",
-      "The software inventory must document the title, publisher, initial install/use date, and business purpose for each entry; where appropriate, include the Uniform Resource Locator (URL), app store(s), version(s), deployment mechanism, and decommission date",
-      "Review and update the software inventory bi-annually, or more frequently"
+      "Establish a Software Inventory",
+      "The software inventory must document the sub-taxonomical elements, where appropriate",
+      "Review and update the software inventory bi-annually, or more frequently - AKA Maintain"
     ],
     coreRequirements: [ // Green - The "what"
-      "Detailed inventory of all licensed software",
-      "Installed on enterprise Assets"
+      "Detailed inventory of all licensed software"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Establish",
-      "Maintain",
-      "Must Document",
       "Title",
       "Publisher",
       "Initial Install / Use Date",
@@ -751,10 +747,7 @@ export class SafeguardManager {
       "App Store(s)",
       "App Version(s)",
       "Deployment mechanism",
-      "Decomm. Date",
-      "Where appropriate",
-      "bi-annually",
-      "More Frequently"
+      "Decomm. Date"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -844,7 +837,7 @@ export class SafeguardManager {
     title: "Ensure That Only Currently Supported Software Is Designated as Authorized",
     description: "Ensure that only currently supported software is designated as authorized in the software inventory",
     implementationGroup: "IG1",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "Ensure that only currently supported software is designated as authorized in the software inventory for enterprise assets. If software is unsupported, yet necessary for the fulfillment of the enterprise's mission, document an exception detailing mitigating controls and residual risk acceptance. For any unsupported software without an exception documentation, designate as unauthorized. Review the software list to verify software support at least monthly, or more frequently."
@@ -854,15 +847,10 @@ export class SafeguardManager {
       "Authorized in the software inventory"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Ensure",
       "Determine if Authorized Software Is Currently Supported",
-      "If Unsupported",
       "Determine Necessity for Business",
-      "Document Exception detailing mitigating controls",
-      "Document Residual risk acceptance",
-      "Review the software list",
-      "Monthly",
-      "More frequently"
+      "Document Exception detailing mitigating controls IF Unsupported",
+      "Document Residual risk acceptance IF Unsupported"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -952,7 +940,7 @@ export class SafeguardManager {
     title: "Address Unauthorized Software",
     description: "Ensure that unauthorized software is either removed from use on enterprise assets or receives a documented exception. Review monthly, or more frequently.",
     implementationGroup: "IG1",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "Ensure",
@@ -964,9 +952,7 @@ export class SafeguardManager {
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Address Unauthorized Software",
       "Remove from use",
-      "Document Exception",
-      "Monthly",
-      "More Frequently"
+      "Document Exception"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1056,21 +1042,19 @@ export class SafeguardManager {
     title: "Utilize Automated Software Inventory Tools",
     description: "Utilize software inventory tools, when possible, throughout the enterprise to automate the discovery and documentation of installed software.",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "Utilize",
       "when possible"
     ],
     coreRequirements: [ // Green - The "what"
-      "software inventory tools",
-      "automate the discovery and documentation of installed software"
+      "software inventory tools"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Automate Discovery",
       "Automate Documentation",
-      "Installed Software",
-      "When possible"
+      "Installed Software"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1160,7 +1144,7 @@ export class SafeguardManager {
     title: "Allowlist Authorized Software",
     description: "Use technical controls, such as application allowlisting, to ensure that only authorized software can execute or be accessed. Reassess bi-annually, or more frequently.",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Use",
@@ -1172,13 +1156,9 @@ export class SafeguardManager {
       "only authorized software can execute or be accessed"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Allowlist Authorized Software",
       "Technical Controls",
-      "Execute",
-      "Accessed",
-      "Reassess",
-      "Bi-Annually",
-      "More Frequently"
+      "Allow software to Execute",
+      "Allow software to be Accessed"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Application Allowlisting"
@@ -1269,27 +1249,20 @@ export class SafeguardManager {
     title: "Allowlist Authorized Libraries",
     description: "Use technical controls to ensure that only authorized software libraries, such as specific .dll, .ocx, .so. files are allowed to load into a system process. Block unauthorized libraries from loading into a system process. Reassess bi-annually, or more frequently.",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Use",
       "Ensure",
-      "Block unauthorized libraries from loading into a system process",
       "Reassess bi-annually, or more frequently"
     ],
     coreRequirements: [ // Green - The "what"
-      "technical controls",
       "only authorized software libraries",
       "are allowed to load into a system process"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Only authorized software libraries",
-      "Are allowed to load into a system process",
       "Technical Controls",
-      "Block unauthorized libraries from loading into a system process",
-      "Reassess",
-      "Bi-Annually",
-      "More Frequently"
+      "Block unauthorized libraries from loading into a system process"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Specific .dll files",
@@ -1382,25 +1355,19 @@ export class SafeguardManager {
     title: "Allowlist Authorized Scripts",
     description: "Use technical controls, such as digital signatures and version control, to ensure that only authorized scripts, such as specific .ps1, .py, files are allowed to execute. Block unauthorized scripts from executing. Reassess bi-annually, or more frequently.",
     implementationGroup: "IG3",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Use",
       "Ensure",
-      "Block unauthorized scripts from executing",
       "Reassess bi-annually, or more frequently"
     ],
     coreRequirements: [ // Green - The "what"
-      "technical controls",
       "only authorized files are allowed to execute"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Only authorized files are allowed to execute",
       "Technical Controls",
       "Block unauthorized scripts from executing",
-      "Reassess",
-      "Bi-Annually",
-      "More Frequently"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Digital signatures",
@@ -1727,7 +1694,7 @@ export class SafeguardManager {
       "ACLS - \"aka\" Access Permissions",
       "Local",
       "Remote File Systems",
-      "Applications",
+      "Software",
       "Databases"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
@@ -2558,7 +2525,7 @@ export class SafeguardManager {
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Encrypt Sensitive Data At Rest",
       "Servers",
-      "Applications", 
+      "Software", 
       "Databases",
       "Storage Layer (server side) encryption",
       "Minimum Requirement"
@@ -2965,7 +2932,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Secure Configuration Process",
     description: "Establish and maintain a documented secure configuration process for enterprise assets (end-user devices, including portable and mobile; non-computing/IoT devices; and servers) and software (operating systems and applications). Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.",
     implementationGroup: "IG1",
-    assetType: ["end-user devices", "network devices", "IoT devices", "servers", "applications"],
+    assetType: ["end-user devices", "network devices", "IoT devices", "servers", "Software"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
@@ -2988,7 +2955,7 @@ export class SafeguardManager {
       "Non-computing/IoT devices",
       "Servers",
       "OS",
-      "Applications"
+      "Software"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Secure Configuration Policy / Process",
@@ -3507,7 +3474,7 @@ export class SafeguardManager {
     title: "Securely Manage Enterprise Assets and Software",
     description: "Securely manage enterprise assets and software. Example implementations include managing configuration through version-controlled- Infrastructure-as-Code (IaC) and accessing administrative interfaces over secure network protocols, such as Secure Shell (SSH) and Hypertext Transfer Protocol Secure (HTTPS). Do not use insecure management protocols, such as Telnet (Teletype Network) and HTTP, unless operationally essential.",
     implementationGroup: "IG1",
-    assetType: ["devices", "applications"],
+    assetType: ["devices", "Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Do not use insecure management protocols",
@@ -3614,7 +3581,7 @@ export class SafeguardManager {
     title: "Manage Default Accounts on Enterprise Assets and Software",
     description: "Manage default accounts on enterprise assets and software, such as root, administrator, and other pre-configured vendor accounts. Example implementations can include: disabling default accounts or making them unusable.",
     implementationGroup: "IG1",
-    assetType: ["devices", "applications", "users"],
+    assetType: ["devices", "Software", "users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Manage"
@@ -3721,7 +3688,7 @@ export class SafeguardManager {
     title: "Uninstall or Disable Unnecessary Services on Enterprise Assets and Software",
     description: "Uninstall or disable unnecessary services on enterprise assets and software, such as an unused file sharing service, web application module, or service function.",
     implementationGroup: "IG2",
-    assetType: ["devices", "applications"],
+    assetType: ["devices", "Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Uninstall",
@@ -5914,7 +5881,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Remediation Process",
     description: "Establish and maintain a remediation process and SLA for security vulnerabilities",
     implementationGroup: "IG1",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "establish remediation process",
@@ -6146,7 +6113,7 @@ export class SafeguardManager {
     title: "Perform Automated Application Patch Management",
     description: "Perform automated application patch management on enterprise assets",
     implementationGroup: "IG1",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "perform automated application patching",
@@ -6262,7 +6229,7 @@ export class SafeguardManager {
     title: "Perform Automated Vulnerability Scans of Internal Enterprise Assets",
     description: "Perform automated vulnerability scans of internal enterprise assets on a quarterly or more frequent basis",
     implementationGroup: "IG2",
-    assetType: ["devices", "applications"],
+    assetType: ["devices", "Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "perform automated vulnerability scans",
@@ -6378,7 +6345,7 @@ export class SafeguardManager {
     title: "Perform Automated Vulnerability Scans of Externally-Exposed Enterprise Assets",
     description: "Perform automated vulnerability scans of externally-exposed enterprise assets using either an internal or external vulnerability scanning service",
     implementationGroup: "IG2",
-    assetType: ["devices", "applications"],
+    assetType: ["devices", "Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "perform automated vulnerability scans",
@@ -6494,7 +6461,7 @@ export class SafeguardManager {
     title: "Remediate Detected Vulnerabilities",
     description: "Remediate detected vulnerabilities in software through processes and tooling on a monthly, or more frequent, basis",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "remediate detected vulnerabilities",
@@ -7872,7 +7839,7 @@ export class SafeguardManager {
     title: "Ensure Use of Only Fully Supported Browsers and Email Clients",
     description: "Ensure only fully supported browsers and email clients are allowed to execute in the enterprise, only using the latest version of browsers and email clients provided through the vendor",
     implementationGroup: "IG1",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "ensure only fully supported browsers and email clients are allowed to execute",
@@ -8211,7 +8178,7 @@ export class SafeguardManager {
     title: "Restrict Unnecessary or Unauthorized Browser and Email Client Extensions",
     description: "Restrict, either through uninstalling or disabling, any unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "restrict unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
@@ -11927,7 +11894,7 @@ export class SafeguardManager {
     title: "Perform Application Layer Filtering",
     description: "Perform application layer filtering to protect against the enterprise's most common network-based attacks",
     implementationGroup: "IG3",
-    assetType: ["network", "applications"],
+    assetType: ["network", "Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "perform application layer filtering",
@@ -13967,7 +13934,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Secure Application Development Process",
     description: "Establish and maintain a secure application development process. In the process, address such items as: secure application design standards, secure coding practices, developer training, vulnerability management, security of third-party code, and application security testing procedures. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain a secure application development process",
@@ -14084,7 +14051,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Process to Accept and Address Software Vulnerabilities",
     description: "Establish and maintain a process to accept and address reports of software vulnerabilities, including providing a means for external entities to report. The process is to include such items as: a vulnerability handling policy that identifies reporting process, responsible party for handling vulnerability reports, and a process for intake, assignment, remediation, and remediation testing. As part of the process, use a vulnerability tracking system that includes severity ratings, and metrics for measuring timing for identification, analysis, and remediation of vulnerabilities. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard. Third-party application developers need to consider this an externally-facing policy that helps to set expectations for outside stakeholders",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain a process to accept and address reports of software vulnerabilities",
@@ -14205,7 +14172,7 @@ export class SafeguardManager {
     title: "Perform Root Cause Analysis on Security Vulnerabilities",
     description: "Perform root cause analysis on security vulnerabilities. When reviewing vulnerabilities, root cause analysis is the task of evaluating underlying issues that create vulnerabilities in code, and allows development teams to move beyond just fixing individual vulnerabilities as they arise",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "perform root cause analysis on security vulnerabilities"
@@ -14311,7 +14278,7 @@ export class SafeguardManager {
     title: "Establish and Manage an Inventory of Third-Party Software Components",
     description: "Establish and manage an updated inventory of third-party components used in development, often referred to as a \"bill of materials,\" as well as components slated for future use. This inventory is to include any risks that each third-party component could pose. Evaluate the list at least monthly to identify any changes or updates to these components, and validate that the component is still supported",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "establish and manage an updated inventory of third-party components used in development",
@@ -14425,7 +14392,7 @@ export class SafeguardManager {
     title: "Use Up-to-Date and Trusted Third-Party Software Components",
     description: "Use up-to-date and trusted third-party software components. When possible, choose established and proven frameworks and libraries that provide adequate security. Acquire these components from trusted sources or evaluate the software for vulnerabilities before use",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "use up-to-date and trusted third-party software components"
@@ -14536,7 +14503,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Severity Rating System and Process for Application Vulnerabilities",
     description: "Establish and maintain a severity rating system and process for application vulnerabilities that facilitates prioritizing the order in which discovered vulnerabilities are fixed. This process includes setting a minimum level of security acceptability for releasing code or applications. Severity ratings bring a systematic way of triaging vulnerabilities that improves risk management and helps ensure the most severe bugs are fixed first. Review and update the system and process annually",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain a severity rating system and process for application vulnerabilities",
@@ -14648,7 +14615,7 @@ export class SafeguardManager {
     title: "Use Standard Hardening Configuration Templates for Application Infrastructure",
     description: "Use standard, industry-recommended hardening configuration templates for application infrastructure components. This includes underlying servers, databases, and web servers, and applies to cloud containers, Platform as a Service (PaaS) components, and SaaS components. Do not allow in-house developed software to weaken configuration hardening",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "use standard, industry-recommended hardening configuration templates for application infrastructure components",
@@ -14983,7 +14950,7 @@ export class SafeguardManager {
     title: "Apply Secure Design Principles in Application Architectures",
     description: "Apply secure design principles in application architectures. Secure design principles include the concept of least privilege and enforcing mediation to validate every operation that the user makes, promoting the concept of \"never trust user input.\" Examples include ensuring that explicit error checking is performed and documented for all input, including for size, data type, and acceptable ranges or formats. Secure design also means minimizing the application infrastructure attack surface, such as turning off unprotected ports and services, removing unnecessary programs and files, and renaming or removing default accounts",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "apply secure design principles in application architectures"
@@ -15099,7 +15066,7 @@ export class SafeguardManager {
     title: "Leverage Vetted Modules or Services for Application Security Components",
     description: "Leverage vetted modules or services for application security components, such as identity management, encryption, and auditing and logging. Using platform features in critical security functions will reduce developers' workload and minimize the likelihood of design or implementation errors. Modern operating systems provide effective mechanisms for identification, authentication, and authorization and make those mechanisms available to applications. Use only standardized, currently accepted, and extensively reviewed encryption algorithms. Operating systems also provide mechanisms to create and maintain secure audit logs",
     implementationGroup: "IG2",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "leverage vetted modules or services for application security components",
@@ -15215,7 +15182,7 @@ export class SafeguardManager {
     title: "Implement Code-Level Security Checks",
     description: "Apply static and dynamic analysis tools within the application life cycle to verify that secure coding practices are being followed",
     implementationGroup: "IG3",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "apply static and dynamic analysis tools within the application life cycle to verify that secure coding practices are being followed"
@@ -15323,7 +15290,7 @@ export class SafeguardManager {
     title: "Conduct Application Penetration Testing",
     description: "Conduct application penetration testing. For critical applications, authenticated penetration testing is better suited to finding business logic vulnerabilities than code scanning and automated security testing. Penetration testing relies on the skill of the tester to manually manipulate an application as an authenticated and unauthenticated user",
     implementationGroup: "IG3",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "conduct application penetration testing"
@@ -15434,7 +15401,7 @@ export class SafeguardManager {
     title: "Conduct Threat Modeling",
     description: "Conduct threat modeling. Threat modeling is the process of identifying and addressing application security design flaws within a design, before code is created. It is conducted through specially trained individuals who evaluate the application design and gauge security risks for each entry point and access level. The goal is to map out the application, architecture, and infrastructure in a structured way to understand its weaknesses",
     implementationGroup: "IG3",
-    assetType: ["applications"],
+    assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "conduct threat modeling"
