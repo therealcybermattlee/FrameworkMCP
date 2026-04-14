@@ -73,7 +73,18 @@ jobs:
     - name: Build
       run: npm run build
     
+    - name: Check if version exists on npm
+      id: version-check
+      run: |
+        PACKAGE_VERSION=$(node -p "require('./package.json').version")
+        if npm view framework-mcp@$PACKAGE_VERSION version 2>/dev/null; then
+          echo "exists=true" >> $GITHUB_OUTPUT
+        else
+          echo "exists=false" >> $GITHUB_OUTPUT
+        fi
+
     - name: Publish to npm
-      run: npm publish --if-present
+      if: steps.version-check.outputs.exists == 'false'
+      run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
