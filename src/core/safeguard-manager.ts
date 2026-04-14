@@ -197,18 +197,17 @@ export class SafeguardManager {
   "1.1": {
     id: "1.1",
     title: "Establish and Maintain a Detailed Enterprise Asset Inventory",
-    description: "Establish and maintain an accurate, detailed, and up-to-date inventory of all enterprise assets with the potential to store or process data",
+    description: "Establish and maintain an accurate, detailed, and up-to-date inventory of all enterprise assets with the potential to store or process data, to include: end-user devices (including portable and mobile), network devices, non-computing/IoT devices, and servers. Ensure the inventory records the network address (if static), hardware address, machine name, enterprise asset owner, department for each asset, and whether the asset has been approved to connect to the network. For mobile end-user devices, MDM type tools can support this process, where appropriate. This inventory includes assets connected to the infrastructure physically, virtually, remotely, and those within cloud environments. Additionally, it includes assets that are regularly connected to the enterprise’s network infrastructure, even if they are not under control of the enterprise. Review and update the inventory of all enterprise assets bi-annually, or more frequently.",
     implementationGroup: "IG1",
-    assetType: ["end-user devices", "network devices", "IoT devices", "servers"],
+    assetType: ["Devices"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Maintain", 
-      "Enterprise Asset Management Policy / Process",
       "Review and update the inventory of all enterprise assets bi-annually, or more frequently"
     ],
     coreRequirements: [ // Green - The "what" 
-      "accurate, detailed, and up-to-date inventory of all enterprise assets with the potential to store or process data"
+      "Asset inventory of all enterprise assets with the potential to store or process data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Network Address (IF STATIC)",
@@ -244,7 +243,7 @@ export class SafeguardManager {
 
       context: "You are evaluating enterprise asset inventory solutions against CIS Control 1.1 requirements for comprehensive asset tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to FULL by the mapping tool. Being mapped to FULL means that the vendor addresses each of the subtaxonomical elements in some way.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps meet the safeguard FULLY.",
+      objective: "The vendor has taken an assessment and has been mapped to FULL by the mapping tool. Being mapped to FULL means that the vendors tool IS an Asset Inventory Tool, and addresses each of the sub taxonomical elemnts of the safeguard.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps meet the end user meet this safeguard FULLY.",
 
       guidelines: [
         "Future Use"
@@ -260,7 +259,7 @@ export class SafeguardManager {
 
       context: "You are evaluating enterprise asset inventory solutions against CIS Control 1.1 requirements for comprehensive asset tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to PARTIAL by the mapping tool. Being mapped to PARTIAL means that the vendor addresses some but not all of the subtaxonomical elements in some way.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps meet the safeguard PARTIALLY.",
+      objective: "The vendor has taken an assessment and has been mapped to PARTIAL by the mapping tool. Being mapped to PARTIAL means that the vendors tool IS an Asset Inventory Tool, and addresses some but not all of the subtaxonomical elements in some way.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps meet the safeguard PARTIALLY.",
 
       guidelines: [
         "Future Use"
@@ -276,7 +275,7 @@ export class SafeguardManager {
 
       context: "You are evaluating enterprise asset inventory solutions against CIS Control 1.1 requirements for comprehensive asset tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to FACILITATES by the mapping tool. Being mapped to FACILIATES means that the vendors' product or service makes another tool or service, that actually implements the control, better faster or stronger.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps FACILITATE.",
+      objective: "The vendor has taken an assessment and has been mapped to FACILITATES by the mapping tool. Being mapped to FACILIATES means that the vendors' product or service is NOT an Asset inventory Tool itself, but makes another tool or service, that actually implements the control, better faster or stronger.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps FACILITATE.",
 
       guidelines: [
         "Future Use"
@@ -292,7 +291,7 @@ export class SafeguardManager {
 
       context: "You are evaluating enterprise asset inventory solutions against CIS Control 1.1 requirements for comprehensive asset tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -323,7 +322,7 @@ export class SafeguardManager {
     title: "Address Unauthorized Assets",
     description: "Ensure that a process exists to address unauthorized assets on a weekly basis",
     implementationGroup: "IG1",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "Ensure that a process exists to address unauthorized assets on a weekly basis"
@@ -332,8 +331,7 @@ export class SafeguardManager {
       "Address Unauthorized Assets"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "On a weekly basis",
-      "Ensure"
+      "Address Unauthorized Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "The enterprise may choose to remove the asset from the network, deny the asset from connecting remotely to the network, or quarantine the asset"
@@ -345,7 +343,7 @@ export class SafeguardManager {
 
       context: "You are evaluating solutions for addressing unauthorized assets against CIS Control 1.2 requirements for weekly remediation processes.",
 
-      objective: "The vendor has taken an assessment and has been mapped to FULL by the mapping tool. Being mapped to FULL means that the vendor addresses each of the subtaxonomical elements in some way.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps meet the safeguard FULLY.",
+      objective: "The vendor has taken an assessment and has been mapped to FULL by the mapping tool. Being mapped to FULL means that the vendor's tool or service Addresses Unauthorized Assets in some way.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps meet the safeguard FULLY.",
 
       guidelines: [
         "Future Use"
@@ -393,7 +391,7 @@ export class SafeguardManager {
 
       context: "You are evaluating solutions for addressing unauthorized assets against CIS Control 1.2 requirements for weekly remediation processes.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -424,10 +422,10 @@ export class SafeguardManager {
     title: "Utilize an Active Discovery Tool",
     description: "Utilize an active discovery tool to identify assets connected to the enterprise's network. Configure the active discovery tool to execute daily, or more frequently.",
     implementationGroup: "IG2",
-    assetType: ["network"],
+    assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "Utilize an active discovery tool to identify assets connected to the enterprise's network",
+      "Utilize an active discovery tool",
       "Configure the active discovery tool to execute daily, or more frequently"
     ],
     coreRequirements: [ // Green - The "what"
@@ -436,7 +434,6 @@ export class SafeguardManager {
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Utilize",
       "Configure",
-      "Execute daily",
       "Execute daily, or more frequently"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
@@ -496,7 +493,7 @@ export class SafeguardManager {
 
       context: "You are evaluating active discovery tools against CIS Control 1.3 requirements for daily network asset identification.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -527,7 +524,7 @@ export class SafeguardManager {
     title: "Use Dynamic Host Configuration Protocol (DHCP) Logging to Update Enterprise Asset Inventory",
     description: "Use DHCP logging on all DHCP servers or Internet Protocol (IP) address management tools to update the enterprise's asset inventory. Review and use logs to update the enterprise's asset inventory weekly, or more frequently.",
     implementationGroup: "IG2",
-    assetType: ["network"],
+    assetType: ["Devices"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "Use DHCP logging on all DHCP servers or Internet Protocol (IP) address management tools to update the enterprise's asset inventory",
@@ -535,14 +532,12 @@ export class SafeguardManager {
     ],
     coreRequirements: [ // Green - The "what"
       "DHCP Logging on all DHCP servers",
-      "IPAM"
+      "Or IPAM",
+      "This is an OR of the two above, but can be in conjunction"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Use",
       "Review and Use Logs",
-      "Update asset inventory",
-      "Weekly",
-      "More Frequently"
+      "Update asset inventory"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -601,7 +596,7 @@ export class SafeguardManager {
 
       context: "You are evaluating DHCP logging and IPAM solutions against CIS Control 1.4 requirements for network-based asset tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -632,7 +627,7 @@ export class SafeguardManager {
     title: "Use a Passive Asset Discovery Tool",
     description: "Use a passive discovery tool to identify assets connected to the enterprise's network. Review and use scans to update the enterprise's asset inventory at least weekly, or more frequently.",
     implementationGroup: "IG3",
-    assetType: ["network"],
+    assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "Use a passive discovery tool to identify assets connected to the enterprise's network",
@@ -642,11 +637,8 @@ export class SafeguardManager {
       "Passive Discovery Tool"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Use",
       "Review and Use scans",
-      "Update asset inventory",
-      "Weekly",
-      "More Frequently"
+      "Update asset inventory"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -705,7 +697,7 @@ export class SafeguardManager {
 
       context: "You are evaluating passive discovery tools against CIS Control 1.5 requirements for non-intrusive network asset identification.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -821,7 +813,7 @@ export class SafeguardManager {
 
       context: "You are evaluating software inventory solutions against CIS Control 2.1 requirements for comprehensive licensed software tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -929,7 +921,7 @@ export class SafeguardManager {
 
       context: "You are evaluating software lifecycle management solutions against CIS Control 2.2 requirements for ensuring only supported software is authorized.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1033,7 +1025,7 @@ export class SafeguardManager {
 
       context: "You are evaluating software remediation solutions against CIS Control 2.3 requirements for addressing unauthorized software on enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1137,7 +1129,7 @@ export class SafeguardManager {
 
       context: "You are evaluating automated software inventory tools against CIS Control 2.4 requirements for enterprise-wide software discovery and documentation.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1246,7 +1238,7 @@ export class SafeguardManager {
 
       context: "You are evaluating application allowlisting solutions against CIS Control 2.5 requirements for restricting software execution to authorized applications only.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1359,7 +1351,7 @@ export class SafeguardManager {
 
       context: "You are evaluating library allowlisting solutions against CIS Control 2.6 requirements for restricting software library loading to authorized libraries only.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1471,7 +1463,7 @@ export class SafeguardManager {
 
       context: "You are evaluating script allowlisting solutions against CIS Control 2.7 requirements for restricting script execution to authorized scripts only.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1582,7 +1574,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data management solutions against CIS Control 3.1 requirements for comprehensive data governance processes.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1689,7 +1681,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data inventory solutions against CIS Control 3.2 requirements for comprehensive data asset tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1795,7 +1787,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data access control solutions against CIS Control 3.3 requirements for need-to-know access management.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -1900,7 +1892,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data retention solutions against CIS Control 3.4 requirements for enterprise data lifecycle management.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2002,7 +1994,7 @@ export class SafeguardManager {
 
       context: "You are evaluating secure data disposal solutions against CIS Control 3.5 requirements for enterprise data destruction.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2105,7 +2097,7 @@ export class SafeguardManager {
 
       context: "You are evaluating endpoint encryption solutions against CIS Control 3.6 requirements for end-user device data protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2214,7 +2206,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data classification solutions against CIS Control 3.7 requirements for enterprise data sensitivity management.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2322,7 +2314,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data flow documentation solutions against CIS Control 3.8 requirements for enterprise data movement tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2421,7 +2413,7 @@ export class SafeguardManager {
 
       context: "You are evaluating removable media encryption solutions against CIS Control 3.9 requirements for portable storage protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2522,7 +2514,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data-in-transit encryption solutions against CIS Control 3.10 requirements for transmission protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2630,7 +2622,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data-at-rest encryption solutions against CIS Control 3.11 requirements for stored data protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2732,7 +2724,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data segmentation solutions against CIS Control 3.12 requirements for sensitivity-based data isolation.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2840,7 +2832,7 @@ export class SafeguardManager {
 
       context: "You are evaluating Data Loss Prevention solutions against CIS Control 3.13 requirements for automated sensitive data identification and protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -2942,7 +2934,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data access logging solutions against CIS Control 3.14 requirements for sensitive data activity monitoring.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3057,7 +3049,7 @@ export class SafeguardManager {
 
       context: "You are evaluating secure configuration management solutions against CIS Control 4.1 requirements for enterprise asset hardening.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3163,7 +3155,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network infrastructure configuration solutions against CIS Control 4.2 requirements for secure network device management.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3270,7 +3262,7 @@ export class SafeguardManager {
 
       context: "You are evaluating session management solutions against CIS Control 4.3 requirements for automatic session locking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3376,7 +3368,7 @@ export class SafeguardManager {
 
       context: "You are evaluating server firewall solutions against CIS Control 4.4 requirements for host-based server protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3484,7 +3476,7 @@ export class SafeguardManager {
 
       context: "You are evaluating endpoint firewall solutions against CIS Control 4.5 requirements for end-user device protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3591,7 +3583,7 @@ export class SafeguardManager {
 
       context: "You are evaluating secure administrative interface solutions against CIS Control 4.6 requirements for enterprise asset management.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3698,7 +3690,7 @@ export class SafeguardManager {
 
       context: "You are evaluating default account management solutions against CIS Control 4.7 requirements for vendor account security.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3804,7 +3796,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service management solutions against CIS Control 4.8 requirements for unnecessary service removal.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -3907,7 +3899,7 @@ export class SafeguardManager {
 
       context: "You are evaluating DNS security solutions against CIS Control 4.9 requirements for trusted DNS server configuration.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4016,7 +4008,7 @@ export class SafeguardManager {
 
       context: "You are evaluating device lockout solutions against CIS Control 4.10 requirements for failed authentication protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4120,7 +4112,7 @@ export class SafeguardManager {
 
       context: "You are evaluating remote wipe solutions against CIS Control 4.11 requirements for enterprise data protection on portable devices.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4228,7 +4220,7 @@ export class SafeguardManager {
 
       context: "You are evaluating mobile workspace separation solutions against CIS Control 4.12 requirements for enterprise and personal data isolation.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4345,7 +4337,7 @@ export class SafeguardManager {
 
       context: "You are evaluating account management solutions against CIS Control 5.1 requirements for comprehensive account inventory and validation.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4451,7 +4443,7 @@ export class SafeguardManager {
 
       context: "You are evaluating password management solutions against CIS Control 5.2 requirements for unique password enforcement.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4555,7 +4547,7 @@ export class SafeguardManager {
 
       context: "You are evaluating dormant account management solutions against CIS Control 5.3 requirements for inactive account cleanup.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4665,7 +4657,7 @@ export class SafeguardManager {
 
       context: "You are evaluating privileged access management solutions against CIS Control 5.4 requirements for administrator privilege restriction.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4778,7 +4770,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service account management solutions against CIS Control 5.5 requirements for service account inventory and oversight.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4882,7 +4874,7 @@ export class SafeguardManager {
 
       context: "You are evaluating centralized identity management solutions against CIS Control 5.6 requirements for directory service implementation.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -4993,7 +4985,7 @@ export class SafeguardManager {
 
       context: "You are evaluating access granting solutions against CIS Control 6.1 requirements for establishing documented access provisioning processes.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -5109,7 +5101,7 @@ export class SafeguardManager {
 
       context: "You are evaluating access revocation solutions against CIS Control 6.2 requirements for establishing documented access deprovisioning processes.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -5218,7 +5210,7 @@ export class SafeguardManager {
 
       context: "You are evaluating multi-factor authentication solutions against CIS Control 6.3 requirements for externally-exposed application protection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -5322,7 +5314,7 @@ export class SafeguardManager {
 
       context: "You are evaluating remote access security solutions against CIS Control 6.4 requirements for MFA on remote network access.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -5432,7 +5424,7 @@ export class SafeguardManager {
 
       context: "You are evaluating administrative access security solutions against CIS Control 6.5 requirements for MFA on administrative accounts.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -5543,7 +5535,7 @@ export class SafeguardManager {
 
       context: "You are evaluating authentication and authorization inventory solutions against CIS Control 6.6 requirements for comprehensive system tracking.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -5655,7 +5647,7 @@ export class SafeguardManager {
 
       context: "You are evaluating centralized access control solutions against CIS Control 6.7 requirements for directory service and SSO-based access management.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -5771,7 +5763,7 @@ export class SafeguardManager {
 
       context: "You are evaluating role-based access control solutions against CIS Control 6.8 requirements for defining, maintaining, and reviewing role-based permissions.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -5891,7 +5883,7 @@ export class SafeguardManager {
 
       context: "You are evaluating vulnerability management solutions against CIS Control 7.1 requirements for establishing documented vulnerability management processes.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6007,7 +5999,7 @@ export class SafeguardManager {
 
       context: "You are evaluating vulnerability remediation solutions against CIS Control 7.2 requirements for establishing remediation processes and SLAs.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6123,7 +6115,7 @@ export class SafeguardManager {
 
       context: "You are evaluating automated OS patch management solutions against CIS Control 7.3 requirements for automated operating system patching.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6239,7 +6231,7 @@ export class SafeguardManager {
 
       context: "You are evaluating automated application patch management solutions against CIS Control 7.4 requirements for automated application patching.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6355,7 +6347,7 @@ export class SafeguardManager {
 
       context: "You are evaluating internal vulnerability scanning solutions against CIS Control 7.5 requirements for automated vulnerability scanning of internal enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6471,7 +6463,7 @@ export class SafeguardManager {
 
       context: "You are evaluating external vulnerability scanning solutions against CIS Control 7.6 requirements for automated vulnerability scanning of externally-exposed enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6587,7 +6579,7 @@ export class SafeguardManager {
 
       context: "You are evaluating vulnerability remediation solutions against CIS Control 7.7 requirements for monthly remediation of detected vulnerabilities.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6697,7 +6689,7 @@ export class SafeguardManager {
 
       context: "You are evaluating audit log management solutions against CIS Control 8.1 requirements for establishing documented audit log management processes.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6800,7 +6792,7 @@ export class SafeguardManager {
 
       context: "You are evaluating audit log collection solutions against CIS Control 8.2 requirements for comprehensive audit log collection across enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -6904,7 +6896,7 @@ export class SafeguardManager {
 
       context: "You are evaluating audit log storage solutions against CIS Control 8.3 requirements for ensuring adequate audit log storage capacity.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7010,7 +7002,7 @@ export class SafeguardManager {
 
       context: "You are evaluating time synchronization solutions against CIS Control 8.4 requirements for standardized time synchronization across enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7119,7 +7111,7 @@ export class SafeguardManager {
 
       context: "You are evaluating detailed audit logging solutions against CIS Control 8.5 requirements for comprehensive audit logging of enterprise assets containing sensitive data.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7224,7 +7216,7 @@ export class SafeguardManager {
 
       context: "You are evaluating DNS audit logging solutions against CIS Control 8.6 requirements for DNS query audit log collection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7329,7 +7321,7 @@ export class SafeguardManager {
 
       context: "You are evaluating URL request audit logging solutions against CIS Control 8.7 requirements for URL request audit log collection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7433,7 +7425,7 @@ export class SafeguardManager {
 
       context: "You are evaluating command-line audit logging solutions against CIS Control 8.8 requirements for command-line audit log collection.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7539,7 +7531,7 @@ export class SafeguardManager {
 
       context: "You are evaluating centralized audit logging solutions against CIS Control 8.9 requirements for centralized audit log collection and retention.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7640,7 +7632,7 @@ export class SafeguardManager {
 
       context: "You are evaluating audit log retention solutions against CIS Control 8.10 requirements for 90-day minimum audit log retention.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7744,7 +7736,7 @@ export class SafeguardManager {
 
       context: "You are evaluating audit log review solutions against CIS Control 8.11 requirements for weekly audit log reviews to detect anomalies and threats.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7849,7 +7841,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service provider log collection solutions against CIS Control 8.12 requirements for collecting service provider logs where supported.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -7961,7 +7953,7 @@ export class SafeguardManager {
 
       context: "You are evaluating browser and email client security solutions against CIS Control 9.1 requirements for ensuring only fully supported, latest versions are used.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -8074,7 +8066,7 @@ export class SafeguardManager {
 
       context: "You are evaluating DNS filtering solutions against CIS Control 9.2 requirements for DNS filtering services to block malicious domains.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -8188,7 +8180,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network-based URL filtering solutions against CIS Control 9.3 requirements for network-based URL filters to limit enterprise asset connections to malicious or unapproved websites.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -8303,7 +8295,7 @@ export class SafeguardManager {
 
       context: "You are evaluating browser and email client extension management solutions against CIS Control 9.4 requirements for restricting unauthorized or unnecessary plugins, extensions, and add-on applications.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -8419,7 +8411,7 @@ export class SafeguardManager {
 
       context: "You are evaluating email authentication solutions against CIS Control 9.5 requirements for implementing DMARC policy and verification, including SPF and DKIM standards to prevent spoofed or modified emails.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -8526,7 +8518,7 @@ export class SafeguardManager {
 
       context: "You are evaluating email gateway security solutions against CIS Control 9.6 requirements for blocking unnecessary file types attempting to enter the enterprise's email gateway.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -8637,7 +8629,7 @@ export class SafeguardManager {
 
       context: "You are evaluating email server anti-malware solutions against CIS Control 9.7 requirements for deploying and maintaining email server anti-malware protections including attachment scanning and sandboxing.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -8750,7 +8742,7 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-malware solutions against CIS Control 10.1 requirements for deploying and maintaining anti-malware software on all enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -8858,7 +8850,7 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-malware signature update solutions against CIS Control 10.2 requirements for configuring automatic updates for anti-malware signature files on all enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
        guidelines: [
         "Future Use"
@@ -8971,7 +8963,7 @@ export class SafeguardManager {
 
       context: "You are evaluating removable media security solutions against CIS Control 10.3 requirements for disabling autorun and autoplay auto-execute functionality for removable media.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9083,7 +9075,7 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-malware scanning solutions against CIS Control 10.4 requirements for configuring anti-malware software to automatically scan removable media.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9197,7 +9189,7 @@ export class SafeguardManager {
 
       context: "You are evaluating anti-exploitation solutions against CIS Control 10.5 requirements for enabling anti-exploitation features on enterprise assets and software, including DEP, WDEG, SIP, and Gatekeeper.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9307,7 +9299,7 @@ export class SafeguardManager {
 
       context: "You are evaluating centralized anti-malware management solutions against CIS Control 10.6 requirements for centrally managing anti-malware software across the enterprise.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9418,7 +9410,7 @@ export class SafeguardManager {
 
       context: "You are evaluating behavior-based anti-malware solutions against CIS Control 10.7 requirements for using behavior-based anti-malware software with advanced threat detection capabilities.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9535,7 +9527,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data recovery governance solutions against CIS Control 11.1 requirements for establishing and maintaining a documented data recovery process with scope, prioritization, and backup security considerations.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9650,7 +9642,7 @@ export class SafeguardManager {
 
       context: "You are evaluating automated backup solutions against CIS Control 11.2 requirements for performing automated backups of in-scope enterprise assets with weekly or more frequent schedules based on data sensitivity.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9764,7 +9756,7 @@ export class SafeguardManager {
 
       context: "You are evaluating backup data protection solutions against CIS Control 11.3 requirements for protecting recovery data with equivalent controls to the original data, including encryption or data separation based on requirements.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9881,7 +9873,7 @@ export class SafeguardManager {
 
       context: "You are evaluating isolated backup recovery solutions against CIS Control 11.4 requirements for establishing and maintaining an isolated instance of recovery data with version controlling backup destinations through offline, cloud, or off-site systems.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -9994,7 +9986,7 @@ export class SafeguardManager {
 
       context: "You are evaluating backup recovery testing solutions against CIS Control 11.5 requirements for testing backup recovery quarterly or more frequently for a sampling of in-scope enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -10110,7 +10102,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network infrastructure management solutions against CIS Control 12.1 requirements for ensuring network infrastructure is kept up-to-date with latest stable software releases and supported NaaS offerings.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -10227,7 +10219,7 @@ export class SafeguardManager {
 
       context: "You are evaluating secure network architecture solutions against CIS Control 12.2 requirements for designing and maintaining secure network architecture with segmentation, least privilege, and availability considerations.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -10341,7 +10333,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network infrastructure security management solutions against CIS Control 12.3 requirements for securely managing network infrastructure with version-controlled infrastructure-as-code and secure network protocols like SSH and HTTPS.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -10456,7 +10448,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network architecture documentation solutions against CIS Control 12.4 requirements for establishing and maintaining architecture diagrams and network system documentation with annual reviews and change management.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -10569,7 +10561,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network AAA centralization solutions against CIS Control 12.5 requirements for centralizing network authentication, authorization, and auditing (AAA) functions.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -10683,7 +10675,7 @@ export class SafeguardManager {
 
       context: "You are evaluating secure network management and communication protocol solutions against CIS Control 12.6 requirements for implementing enterprise-grade secure protocols.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -10797,7 +10789,7 @@ export class SafeguardManager {
 
       context: "You are evaluating remote access VPN and AAA integration solutions against CIS Control 12.7 requirements for ensuring remote devices utilize enterprise-managed VPN and authentication.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -10913,7 +10905,7 @@ export class SafeguardManager {
 
       context: "You are evaluating secure administrative workstation (SAW) solutions against CIS Control 12.8 requirements for establishing dedicated computing resources for administrative work.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11026,7 +11018,7 @@ export class SafeguardManager {
 
       context: "You are evaluating security event alerting and correlation solutions against CIS Control 13.1 requirements for centralizing security event alerting across enterprise assets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11136,7 +11128,7 @@ export class SafeguardManager {
 
       context: "You are evaluating host-based intrusion detection solutions against CIS Control 13.2 requirements for deploying HIDS on enterprise assets where technically feasible.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11246,7 +11238,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network intrusion detection solutions against CIS Control 13.3 requirements for deploying NIDS with industry-specific threat-tuned rulesets.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11354,7 +11346,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network traffic filtering solutions against CIS Control 13.4 requirements for performing traffic filtering between network segments where technically feasible.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11467,7 +11459,7 @@ export class SafeguardManager {
 
       context: "You are evaluating remote access control solutions against CIS Control 13.5 requirements for managing access control for assets remotely connecting to enterprise networks based on security posture.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11576,7 +11568,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network traffic flow monitoring solutions against CIS Control 13.6 requirements for collecting network traffic flow logs and traffic for review and alerting.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11686,7 +11678,7 @@ export class SafeguardManager {
 
       context: "You are evaluating host-based intrusion prevention solutions against CIS Control 13.7 requirements for deploying HIPS on enterprise assets where technically feasible.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11795,7 +11787,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network intrusion prevention solutions against CIS Control 13.8 requirements for deploying NIPS to block malicious network traffic in real-time.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -11904,7 +11896,7 @@ export class SafeguardManager {
 
       context: "You are evaluating port-level access control solutions against CIS Control 13.9 requirements for deploying 802.1x or similar network access control protocols for port-level access control.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12013,7 +12005,7 @@ export class SafeguardManager {
 
       context: "You are evaluating application layer filtering solutions against CIS Control 13.10 requirements for performing application layer filtering to protect against enterprise's most common network-based attacks.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12121,7 +12113,7 @@ export class SafeguardManager {
 
       context: "You are evaluating security event alerting threshold tuning solutions against CIS Control 13.11 requirements for tuning security event alerting thresholds monthly or more frequently.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12237,7 +12229,7 @@ export class SafeguardManager {
 
       context: "You are evaluating security awareness program solutions against CIS Control 14.1 requirements for establishing and maintaining comprehensive security awareness programs with annual training and content updates.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12350,7 +12342,7 @@ export class SafeguardManager {
 
       context: "You are evaluating social engineering awareness training solutions against CIS Control 14.2 requirements for training workforce members to recognize various social engineering attacks.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12461,7 +12453,7 @@ export class SafeguardManager {
 
       context: "You are evaluating authentication best practices training solutions against CIS Control 14.3 requirements for training workforce members on MFA, password composition, and credential management.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12580,7 +12572,7 @@ export class SafeguardManager {
 
       context: "You are evaluating data handling best practices training solutions against CIS Control 14.4 requirements for training workforce on sensitive data identification, storage, transfer, archival, destruction, and clear screen/desk practices.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12691,7 +12683,7 @@ export class SafeguardManager {
 
       context: "You are evaluating unintentional data exposure awareness training solutions against CIS Control 14.5 requirements for training workforce on causes and prevention of unintentional data exposure.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12800,7 +12792,7 @@ export class SafeguardManager {
 
       context: "You are evaluating security incident recognition and reporting training solutions against CIS Control 14.6 requirements for training workforce to recognize potential incidents and report them.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -12915,7 +12907,7 @@ export class SafeguardManager {
 
       context: "You are evaluating security update awareness training solutions against CIS Control 14.7 requirements for training workforce to identify and report missing security updates and automated process failures.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13029,7 +13021,7 @@ export class SafeguardManager {
 
       context: "You are evaluating network security awareness training solutions against CIS Control 14.8 requirements for training workforce on dangers of insecure networks and remote work security including home network configuration.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13141,7 +13133,7 @@ export class SafeguardManager {
 
       context: "You are evaluating role-specific security awareness and skills training solutions against CIS Control 14.9 requirements for conducting specialized training including secure system administration, OWASP Top 10, and advanced social engineering awareness.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13255,7 +13247,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service provider inventory management solutions against CIS Control 15.1 requirements for establishing and maintaining comprehensive inventories of service providers with classifications and enterprise contacts.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13374,7 +13366,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service provider management policy solutions against CIS Control 15.2 requirements for establishing and maintaining comprehensive policies covering classification, inventory, assessment, monitoring, and decommissioning.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13491,7 +13483,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service provider classification solutions against CIS Control 15.3 requirements for classifying service providers based on data sensitivity, volume, availability, regulations, and risk factors.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13607,7 +13599,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service provider contract security management solutions against CIS Control 15.4 requirements for ensuring contracts include comprehensive security requirements consistent with enterprise policies.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13723,7 +13715,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service provider assessment solutions against CIS Control 15.5 requirements for conducting rigorous assessments including SOC 2, PCI AoC, customized questionnaires, and annual reassessments.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13834,7 +13826,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service provider monitoring solutions against CIS Control 15.6 requirements for monitoring service providers including periodic reassessment, release notes monitoring, and dark web monitoring.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -13944,7 +13936,7 @@ export class SafeguardManager {
 
       context: "You are evaluating service provider decommissioning solutions against CIS Control 15.7 requirements for securely decommissioning service providers including account deactivation, data flow termination, and secure data disposal.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14061,7 +14053,7 @@ export class SafeguardManager {
 
       context: "You are evaluating secure application development process solutions against CIS Control 16.1 requirements for establishing comprehensive secure development lifecycles including design standards, coding practices, training, and security testing.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14182,7 +14174,7 @@ export class SafeguardManager {
 
       context: "You are evaluating vulnerability disclosure and handling process solutions against CIS Control 16.2 requirements for accepting and addressing software vulnerability reports including external reporting mechanisms and comprehensive tracking systems.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14288,7 +14280,7 @@ export class SafeguardManager {
 
       context: "You are evaluating vulnerability root cause analysis solutions against CIS Control 16.3 requirements for performing systematic root cause analysis on security vulnerabilities to address underlying issues in code.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14402,7 +14394,7 @@ export class SafeguardManager {
 
       context: "You are evaluating third-party software component inventory management solutions against CIS Control 16.4 requirements for maintaining bill of materials, risk assessment, and monthly component validation.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14513,7 +14505,7 @@ export class SafeguardManager {
 
       context: "You are evaluating trusted third-party software component solutions against CIS Control 16.5 requirements for using up-to-date, trusted components from established sources with adequate security and vulnerability evaluation.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14625,7 +14617,7 @@ export class SafeguardManager {
 
       context: "You are evaluating vulnerability severity rating system solutions against CIS Control 16.6 requirements for establishing systematic vulnerability prioritization, triaging, and risk management with minimum security acceptability levels.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14740,7 +14732,7 @@ export class SafeguardManager {
 
       context: "You are evaluating infrastructure hardening configuration template solutions against CIS Control 16.7 requirements for using standard industry-recommended hardening templates for application infrastructure including servers, databases, web servers, cloud containers, PaaS, and SaaS components.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14846,7 +14838,7 @@ export class SafeguardManager {
 
       context: "You are evaluating environment separation solutions against CIS Control 16.8 requirements for maintaining separate environments for production and non-production systems.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -14960,7 +14952,7 @@ export class SafeguardManager {
 
       context: "You are evaluating developer security training solutions against CIS Control 16.9 requirements for training all software development personnel in secure coding, application security principles, and building a security culture.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15076,7 +15068,7 @@ export class SafeguardManager {
 
       context: "You are evaluating secure application architecture design solutions against CIS Control 16.10 requirements for applying secure design principles including least privilege, input validation, and attack surface minimization.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15192,7 +15184,7 @@ export class SafeguardManager {
 
       context: "You are evaluating vetted security module and service solutions against CIS Control 16.11 requirements for leveraging established security components including identity management, encryption, auditing, logging, and platform security features.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15300,7 +15292,7 @@ export class SafeguardManager {
 
       context: "You are evaluating code-level security analysis solutions against CIS Control 16.12 requirements for implementing static and dynamic analysis tools within application lifecycles to verify secure coding practices.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15411,7 +15403,7 @@ export class SafeguardManager {
 
       context: "You are evaluating application penetration testing solutions against CIS Control 16.13 requirements for conducting penetration testing including authenticated testing for critical applications and business logic vulnerability identification.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15526,7 +15518,7 @@ export class SafeguardManager {
 
       context: "You are evaluating threat modeling solutions against CIS Control 16.14 requirements for conducting threat modeling to identify and address application security design flaws before code creation through specially trained individuals.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15638,7 +15630,7 @@ export class SafeguardManager {
 
       context: "You are evaluating incident management personnel designation solutions against CIS Control 17.1 requirements for designating key personnel and backups to manage enterprise incident handling processes with coordination and documentation responsibilities.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15748,7 +15740,7 @@ export class SafeguardManager {
 
       context: "You are evaluating incident contact information management solutions against CIS Control 17.2 requirements for establishing and maintaining comprehensive contact information for reporting security incidents with multiple communication methods.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15860,7 +15852,7 @@ export class SafeguardManager {
 
       context: "You are evaluating incident reporting process solutions against CIS Control 17.3 requirements for establishing documented enterprise processes including reporting timeframes, personnel, mechanisms, and minimum information requirements.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -15969,7 +15961,7 @@ export class SafeguardManager {
 
       context: "You are evaluating incident response process solutions against CIS Control 17.4 requirements for establishing documented incident response processes addressing roles, responsibilities, compliance requirements, and communication plans.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16081,7 +16073,7 @@ export class SafeguardManager {
 
       context: "You are evaluating incident response role assignment solutions against CIS Control 17.5 requirements for assigning key roles and responsibilities including legal, IT, information security, facilities, public relations, human resources, incident responders, and analysts.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16192,7 +16184,7 @@ export class SafeguardManager {
 
       context: "You are evaluating incident communication mechanism solutions against CIS Control 17.6 requirements for defining primary and secondary communication mechanisms during security incidents including resilient communication methods.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16303,7 +16295,7 @@ export class SafeguardManager {
 
       context: "You are evaluating incident response exercise solutions against CIS Control 17.7 requirements for conducting routine exercises and scenarios for key personnel to test communication channels, decision-making, and workflows.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16410,7 +16402,7 @@ export class SafeguardManager {
 
       context: "You are evaluating post-incident review solutions against CIS Control 17.8 requirements for conducting post-incident reviews to prevent recurrence through lessons learned identification and follow-up actions.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16521,7 +16513,7 @@ export class SafeguardManager {
 
       context: "You are evaluating security incident threshold and classification solutions against CIS Control 17.9 requirements for establishing incident thresholds including incident/event differentiation and classification criteria.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16637,7 +16629,7 @@ export class SafeguardManager {
 
       context: "You are evaluating penetration testing program solutions against CIS Control 18.1 requirements for establishing comprehensive programs appropriate to enterprise size, complexity, industry, and maturity with defined scope, frequency, limitations, and remediation procedures.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16750,7 +16742,7 @@ export class SafeguardManager {
 
       context: "You are evaluating external penetration testing solutions against CIS Control 18.2 requirements for performing periodic external penetration tests including enterprise and environmental reconnaissance with qualified party execution and clear/opaque box methodologies.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16859,7 +16851,7 @@ export class SafeguardManager {
 
       context: "You are evaluating penetration test finding remediation solutions against CIS Control 18.3 requirements for remediating findings based on documented vulnerability remediation processes with timeline, effort, impact, and prioritization assessment.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -16967,7 +16959,7 @@ export class SafeguardManager {
 
       context: "You are evaluating security measure validation solutions against CIS Control 18.4 requirements for validating security measures after penetration tests and modifying rulesets/capabilities to detect testing techniques.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"
@@ -17074,7 +17066,7 @@ export class SafeguardManager {
 
       context: "You are evaluating internal penetration testing solutions against CIS Control 18.5 requirements for performing periodic internal penetration tests based on program requirements with annual frequency and clear/opaque box methodologies.",
 
-      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
+      objective: "The vendor has taken an assessment and has been mapped to GOVERNANCE by the mapping tool. Being mapped to GOVERNANCE means that the vendors tool or service helps an organization meet the Governance Elements of a safeguard. THIS IS USUALLY A GRC TOOL.  Assess whether their answer CLEARLY educates the end user about how the vendors' tool or service helps empower GOVERNANCE.",
 
       guidelines: [
         "Future Use"

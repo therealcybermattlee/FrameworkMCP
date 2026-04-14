@@ -18,7 +18,7 @@ export class FrameworkMcpServer {
     this.server = new Server(
       {
         name: 'framework-analyzer',
-        version: '2.2.0',
+        version: '2.2.1',
       }
     );
 
@@ -129,7 +129,7 @@ export class FrameworkMcpServer {
             safeguards,
             total: safeguards.length,
             framework: 'CIS Controls v8.1',
-            version: '2.2.0'
+            version: '2.2.1'
           }, null, 2),
         },
       ],
