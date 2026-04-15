@@ -101,7 +101,7 @@ export class FrameworkHttpServer {
   }
 
   private setupRoutes(): void {
-    // Health check endpoint (required for DigitalOcean App Services)
+    // Health check endpoint
     this.app.get('/health', (req, res) => {
       res.json({
         status: 'healthy',
@@ -231,7 +231,7 @@ export class FrameworkHttpServer {
           'GET /api': 'This documentation'
         },
         framework: 'CIS Controls v8.1 (153 safeguards)',
-        deployment: 'DigitalOcean App Services compatible'
+        deployment: 'Cloud-compatible HTTP API'
       });
     });
 
@@ -273,7 +273,7 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v2.2.0 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v2.4.3 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);

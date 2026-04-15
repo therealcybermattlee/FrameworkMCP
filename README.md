@@ -105,20 +105,12 @@ Each safeguard includes prompts for five assessment types:
 
 ## Cloud Deployment
 
-### DigitalOcean App Services
-```bash
-doctl apps create .do/app.yaml
-```
+The HTTP server is compatible with any cloud platform that supports Node.js.
 
-### Railway
-```bash
-railway login && railway up
-```
-
-### Render
 - **Build**: `npm install && npm run build`
 - **Start**: `npm run start:http`
-- **Port**: 8080
+- **Port**: 8080 (configurable via `PORT` env var)
+- **Health check**: `GET /health`
 
 ### Environment Variables
 

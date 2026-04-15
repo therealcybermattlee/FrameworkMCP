@@ -15,8 +15,8 @@
   },
   "servers": [
     {
-      "url": "https://your-deployment.ondigitalocean.app",
-      "description": "Production DigitalOcean App Services deployment"
+      "url": "https://your-deployment.example.com",
+      "description": "Production deployment"
     },
     {
       "url": "http://localhost:8080",
@@ -299,7 +299,7 @@
           },
           "version": {
             "type": "string",
-            "example": "1.5.3"
+            "example": "2.4.3"
           },
           "timestamp": {
             "type": "string",
@@ -344,7 +344,7 @@
           },
           "version": {
             "type": "string",
-            "example": "1.5.3"
+            "example": "2.4.3"
           },
           "description": {
             "type": "string",
@@ -370,7 +370,7 @@
           },
           "deployment": {
             "type": "string",
-            "example": "DigitalOcean App Services compatible"
+            "example": "Cloud-compatible HTTP API"
           }
         }
       },

@@ -153,7 +153,7 @@ export class FrameworkMcpServer {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
     
-    console.error('🤖 Framework MCP Server v2.2.0 running via stdio');
+    console.error('🤖 Framework MCP Server v2.4.3 running via stdio');
     console.error('📊 Pure Data Provider for CIS Controls v8.1');
   }
 }

@@ -1,6 +1,6 @@
 // Shared TypeScript types for dual architecture
 
-// Enhanced relationship type system for v1.5.4+
+// Enhanced relationship type system
 export type RelationshipType =
   | 'dependency'      // Must be implemented for this to work
   | 'prerequisite'    // Should be implemented first
@@ -315,7 +315,7 @@ export interface ValidationResult {
   errors: string[];
 }
 
-// Rate Limiting Types (v2.2.0+)
+// Rate Limiting Types
 
 /**
  * Configuration for rate limiting middleware

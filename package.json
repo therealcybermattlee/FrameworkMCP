@@ -1,7 +1,7 @@
 {
   "name": "framework-mcp",
   "version": "2.4.3",
-  "description": "Pure Data Provider architecture serving authentic CIS Controls Framework data via MCP and HTTP API. Empowers LLMs with authoritative safeguards data for analysis. Supports Microsoft Copilot custom connectors and DigitalOcean App Services deployment.",
+  "description": "Pure Data Provider architecture serving authentic CIS Controls Framework data via MCP and HTTP API. Empowers LLMs with authoritative safeguards data for analysis. Supports Microsoft Copilot custom connectors and cloud deployments.",
   "main": "dist/interfaces/http/http-server.js",
   "type": "module",
   "scripts": {
