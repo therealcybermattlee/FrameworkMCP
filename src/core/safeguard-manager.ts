@@ -1461,7 +1461,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Data Management Process",
     description: "Establish and maintain a documented data management process. In the process, address data sensitivity, data owner, handling of data, data retention limits, and disposal requirements, based on sensitivity and retention standards for the enterprise. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
@@ -1469,20 +1469,15 @@ export class SafeguardManager {
       "Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "documented data management process",
-      "address data sensitivity, data owner, handling of data, data retention limits, and disposal requirements, based on sensitivity and retention standards for the enterprise"
+      "documented data management process"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Documented Data management process",
       "Data Sensitivity",
       "Data Owner",
       "Data Handling",
       "Data Retention Limits",
       "Disposal Requirements",
-      "Retention Standards",
-      "Review and update documentation",
-      "Annually",
-      "When significant enterprise changes occur that could impact this Safeguard"
+      "Retention Standards"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1572,7 +1567,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Data Inventory",
     description: "Establish and maintain a data inventory based on the enterprise's data management process. Inventory sensitive data, at a minimum. Review and update inventory annually, at a minimum, with a priority on sensitive data.",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
@@ -1580,16 +1575,11 @@ export class SafeguardManager {
       "Review and update inventory annually, at a minimum, with a priority on sensitive data"
     ],
     coreRequirements: [ // Green - The "what"
-      "data inventory based on the enterprise's data management process",
-      "inventory sensitive data, at a minimum"
+      "data inventory"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Data Inventory",
       "Based on Data Management process",
-      "Sensitive Data at a Minimum",
-      "Review and update inventory",
-      "Annually, at a minimum",
-      "Priority on sensitive data"
+      "Sensitive Data at a Minimum"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1679,14 +1669,13 @@ export class SafeguardManager {
     title: "Configure Data Access Control Lists",
     description: "Configure data access control lists based on a user's need to know. Apply data access control lists, also known as access permissions, to local and remote file systems, databases, and applications.",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Configure",
-      "Apply data access control lists, also known as access permissions, to local and remote file systems, databases, and applications"
+      "Configure"
     ],
     coreRequirements: [ // Green - The "what"
-      "data access control lists based on a user's need to know"
+      "data access control lists"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Data Access control lists",
@@ -1785,7 +1774,7 @@ export class SafeguardManager {
     title: "Enforce Data Retention",
     description: "Retain data according to the enterprise's documented data management process. Data retention must include both minimum and maximum timelines.",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Retain",
@@ -1798,7 +1787,6 @@ export class SafeguardManager {
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Data Retention",
-      "Must Include",
       "Minimum Timelines",
       "Maximum timelines"
     ],
@@ -1890,19 +1878,17 @@ export class SafeguardManager {
     title: "Securely Dispose of Data",
     description: "Securely dispose of data as outlined in the enterprise's data management process. Ensure the disposal process and method are commensurate with the data sensitivity.",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Securely dispose of data",
+      "Disposal process and method are commensurate with the data sensitivity",
       "Ensure"
     ],
     coreRequirements: [ // Green - The "what"
-      "as outlined in the enterprise's data management process",
-      "the disposal process and method are commensurate with the data sensitivity"
+      "Securely Dispose of Data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Securely dispose of data",
-      "Disposal process and method are commensurate with the data sensitivity"
+      "Securely dispose of Data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1992,17 +1978,17 @@ export class SafeguardManager {
     title: "Encrypt Data on End-User Devices",
     description: "Encrypt data on end-user devices containing sensitive data. Example implementations can include: Windows BitLocker®, Apple FileVault®, Linux® dm-crypt.",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Encrypt"
     ],
     coreRequirements: [ // Green - The "what"
-      "data on end-user devices containing sensitive data"
+      "data on end-user devices"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Data on end-user devices",
-      "Sensitive data"
+      "that contain Sensitive data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Windows Bitlocker",
@@ -2095,7 +2081,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Data Classification Scheme",
     description: "Establish and maintain an overall data classification scheme for the enterprise. Enterprises may use labels, such as \"Sensitive,\" \"Confidential,\" and \"Public,\" and classify their data according to those labels. Review and update the classification scheme annually, or when significant enterprise changes occur that could impact this Safeguard.",
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
@@ -2103,15 +2089,10 @@ export class SafeguardManager {
       "Review and update the classification scheme annually, or when significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "overall data classification scheme for the enterprise",
-      "classify their data according to those labels"
+      "data classification scheme"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Data classification scheme",
-      "Classify their data according to labels",
-      "Review and update classification scheme",
-      "Annually",
-      "When significant enterprise changes occur that could impact this Safeguard"
+      "Classify their data according to labels"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Sensitive",
@@ -2204,27 +2185,19 @@ export class SafeguardManager {
     title: "Document Data Flows",
     description: "Document data flows. Data flow documentation includes service provider data flows and should be based on the enterprise's data management process. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.",
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Document data flows",
-      "Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard"
+      "Document data flows"
     ],
     coreRequirements: [ // Green - The "what"
-      "Data flow documentation includes service provider data flows and should be based on the enterprise's data management process"
+      "Document Data Flows"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Document data flows",
       "Enterprise Data Flows",
-      "Service Provider Data Flows",
-      "Review and update documentation",
-      "Annually",
-      "When significant enterprise changes occur that could impact this Safeguard"
+      "Service Provider Data Flows"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Data management systems",
-      "Data flow mapping tools",
-      "Service provider documentation"
     ],
     relatedSafeguards: ["3.1", "3.2", "3.7", "3.9", "3.10", "3.11"],
     systemPromptFull: {
@@ -2312,16 +2285,16 @@ export class SafeguardManager {
     title: "Encrypt Data on Removable Media",
     description: "Encrypt Data on Removable Media",
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Encrypt Data on Removable Media"
+      "Encrypt"
     ],
     coreRequirements: [ // Green - The "what"
+      "Encrypt Data on Removable Media"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Data on Removable Media",
-      "Maintain"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -2411,13 +2384,13 @@ export class SafeguardManager {
     title: "Encrypt Sensitive Data in Transit",
     description: "Encrypt sensitive data in transit. Example implementations can include: Transport Layer Security (TLS) and Open Secure Shell (OpenSSH).",
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Encrypt"
     ],
     coreRequirements: [ // Green - The "what"
-      "sensitive data in transit"
+      "Encrypt sensitive data in transit"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Sensitive data in transit"
@@ -2512,23 +2485,21 @@ export class SafeguardManager {
     title: "Encrypt Sensitive Data at Rest",
     description: "Encrypt sensitive data at rest on servers, applications, and databases. Storage-layer encryption, also known as server-side encryption, meets the minimum requirement of this Safeguard. Additional encryption methods may include application-layer encryption, also known as client-side encryption, where access to the data storage device(s) does not permit access to the plain-text data.",
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Encrypt",
-      "meets the minimum requirement of this Safeguard"
+      "Minimum Requirement"
     ],
     coreRequirements: [ // Green - The "what"
-      "sensitive data at rest on servers, applications, and databases",
-      "Storage-layer encryption, also known as server-side encryption"
+      "Encrypt sensitive data at rest"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Encrypt Sensitive Data At Rest",
+      "Sensitive Data At Rest",
       "Servers",
-      "Software", 
+      "Applications", 
       "Databases",
-      "Storage Layer (server side) encryption",
-      "Minimum Requirement"
+      "Storage Layer (server side) encryption"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Application layer (client-side) encryption",
@@ -2620,19 +2591,17 @@ export class SafeguardManager {
     title: "Segment Data Processing and Storage Based on Sensitivity",
     description: "Segment data processing and storage based on the sensitivity of the data. Do not process sensitive data on enterprise assets intended for lower sensitivity data.",
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Segment data processing and storage based on the sensitivity of the data",
       "Do not process sensitive data on enterprise assets intended for lower sensitivity data"
     ],
     coreRequirements: [ // Green - The "what"
+      "Segment Data Processing",
+      "Segment Data Storage",
+      "Based on Sensitivity"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Based on the sensitivity of data",
-      "Segment data processing (compute)",
-      "Segment Storage",
-      "Do not process sensitive data on enterprise assets intended for lower sensitivity data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -2722,17 +2691,15 @@ export class SafeguardManager {
     title: "Deploy a Data Loss Prevention Solution",
     description: "Implement an automated tool, such as a host-based Data Loss Prevention (DLP) tool to identify all sensitive data stored, processed, or transmitted through enterprise assets, including those located onsite or at a remote service provider, and update the enterprise's data inventory.",
     implementationGroup: "IG3",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Implement",
-      "Update Data Inventory"
+      "Implement"
     ],
     coreRequirements: [ // Green - The "what"
-      "automated tool to identify all sensitive data stored, processed, or transmitted through enterprise assets, including those located onsite or at a remote service provider"
+      "automated tool to identify all sensitive data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Automated DLP Tool",
       "Identify all sensitive Data",
       "Stored",
       "Processed",
@@ -2830,19 +2797,15 @@ export class SafeguardManager {
     title: "Log Sensitive Data Access",
     description: "Log sensitive data access, including modification and disposal.",
     implementationGroup: "IG3",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "Log"
     ],
     coreRequirements: [ // Green - The "what"
-      "sensitive data access, including modification and disposal"
+      "Log sensitive data access, including modification and disposal"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Sensitive Data access",
-      "Access",
-      "Modification",
-      "Disposal"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -4110,7 +4073,7 @@ export class SafeguardManager {
     title: "Separate Enterprise Workspaces on Mobile End-User Devices",
     description: "Ensure separate enterprise workspaces are used on mobile end-user devices, where supported. Example implementations include using an Apple® Configuration Profile or AndroidTM Work Profile to separate enterprise applications and data from personal applications and data.",
     implementationGroup: "IG3",
-    assetType: ["devices", "data"],
+    assetType: ["devices", "Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Ensure",
@@ -6577,7 +6540,7 @@ export class SafeguardManager {
     title: "Establish and Maintain an Audit Log Management Process",
     description: "Establish and maintain a documented audit log management process that defines the enterprise's logging requirements. At a minimum, address the collection, review, and retention of audit logs for enterprise assets. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.",
     implementationGroup: "IG1",
-    assetType: ["enterprise assets", "data"],
+    assetType: ["enterprise assets", "Data"],
     securityFunction: ["Govern"],
     governanceElements: [
       "establish and maintain",
@@ -6687,7 +6650,7 @@ export class SafeguardManager {
     title: "Collect Audit Logs",
     description: "Collect audit logs. Ensure that logging, per the enterprise's audit log management process, has been enabled across enterprise assets.",
     implementationGroup: "IG1",
-    assetType: ["enterprise assets", "data"],
+    assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"],
     governanceElements: [
       "per the enterprise's audit log management process"
@@ -6790,7 +6753,7 @@ export class SafeguardManager {
     title: "Ensure Adequate Audit Log Storage", 
     description: "Ensure that logging destinations maintain adequate storage to comply with the enterprise's audit log management process.",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [
       "comply with the enterprise's audit log management process"
@@ -6894,7 +6857,7 @@ export class SafeguardManager {
     title: "Standardize Time Synchronization",
     description: "Standardize time synchronization. Configure at least two synchronized time sources across enterprise assets, where supported.",
     implementationGroup: "IG2", 
-    assetType: ["enterprise assets", "data"],
+    assetType: ["enterprise assets", "Data"],
     securityFunction: ["Protect"],
     governanceElements: [
       "standardize time synchronization"
@@ -7000,7 +6963,7 @@ export class SafeguardManager {
     title: "Collect Detailed Audit Logs",
     description: "Configure detailed audit logging for enterprise assets containing sensitive data. Include event source, date, username, timestamp, source addresses, destination addresses, and other useful elements that could assist in a forensic investigation.",
     implementationGroup: "IG2",
-    assetType: ["enterprise assets", "data"],
+    assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"], 
     governanceElements: [
       "configure detailed audit logging"
@@ -7109,7 +7072,7 @@ export class SafeguardManager {
     title: "Collect DNS Query Audit Logs", 
     description: "Collect DNS query audit logs on enterprise assets, where appropriate and supported.",
     implementationGroup: "IG2",
-    assetType: ["enterprise assets", "data"],
+    assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"],
     governanceElements: [
       "where appropriate and supported"
@@ -7214,7 +7177,7 @@ export class SafeguardManager {
     title: "Collect URL Request Audit Logs",
     description: "Collect URL request audit logs on enterprise assets, where appropriate and supported.",
     implementationGroup: "IG2",
-    assetType: ["enterprise assets", "data"],
+    assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"],
     governanceElements: [
       "where appropriate and supported"
@@ -7319,7 +7282,7 @@ export class SafeguardManager {
     title: "Collect Command-Line Audit Logs",
     description: "Collect command-line audit logs. Example implementations include collecting audit logs from PowerShell®, BASH™, and remote administrative terminals.",
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Detect"],
     governanceElements: [
       "collect command-line audit logs"
@@ -7423,7 +7386,7 @@ export class SafeguardManager {
     title: "Centralize Audit Logs",
     description: "Centralize, to the extent possible, audit log collection and retention across enterprise assets in accordance with the documented audit log management process. Example implementations include leveraging a SIEM tool to centralize multiple log sources.",
     implementationGroup: "IG2",
-    assetType: ["enterprise assets", "data"],
+    assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"], 
     governanceElements: [
       "in accordance with documented audit log management process",
@@ -7529,7 +7492,7 @@ export class SafeguardManager {
     title: "Retain Audit Logs", 
     description: "Retain audit logs across enterprise assets for a minimum of 90 days.",
     implementationGroup: "IG2",
-    assetType: ["enterprise assets", "data"],
+    assetType: ["enterprise assets", "Data"],
     securityFunction: ["Protect"],
     governanceElements: [
       "minimum of 90 days"
@@ -7630,7 +7593,7 @@ export class SafeguardManager {
     title: "Conduct Audit Log Reviews",
     description: "Conduct reviews of audit logs to detect anomalies or abnormal events that could indicate a potential threat. Conduct reviews on a weekly, or more frequent, basis.",
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Detect"],
     governanceElements: [
       "conduct reviews on a weekly, or more frequent, basis"
@@ -7734,7 +7697,7 @@ export class SafeguardManager {
     title: "Collect Service Provider Logs",
     description: "Collect service provider logs, where supported. Example implementations include collecting authentication and authorization events, data creation and disposal events, and user management events.",
     implementationGroup: "IG3",
-    assetType: ["data"], 
+    assetType: ["Data"], 
     securityFunction: ["Detect"],
     governanceElements: [
       "where supported"
@@ -9408,7 +9371,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Data Recovery Process",
     description: "Establish and maintain a documented data recovery process. In the process, address the scope of data recovery activities, recovery prioritization, and the security of backup data. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "establish documented data recovery process",
@@ -9525,7 +9488,7 @@ export class SafeguardManager {
     title: "Perform Automated Backups",
     description: "Perform automated backups of in-scope enterprise assets. Run backups weekly, or more frequently, based on the sensitivity of the data",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
       "perform automated backups",
@@ -9640,7 +9603,7 @@ export class SafeguardManager {
     title: "Protect Recovery Data", 
     description: "Protect recovery data with equivalent controls to the original data. Reference encryption or data separation, based on requirements",
     implementationGroup: "IG1",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "protect recovery data",
@@ -9754,7 +9717,7 @@ export class SafeguardManager {
     title: "Establish and Maintain an Isolated Instance of Recovery Data",
     description: "Establish and maintain an isolated instance of recovery data. Example implementations include version controlling backup destinations through offline, cloud, or off-site systems or services",
     implementationGroup: "IG1", 
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
       "establish isolated instance of recovery data",
@@ -9871,7 +9834,7 @@ export class SafeguardManager {
     title: "Test Data Recovery",
     description: "Test backup recovery quarterly, or more frequently, for a sampling of in-scope enterprise assets", 
     implementationGroup: "IG2",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
       "test backup recovery quarterly or more frequently",
@@ -13713,7 +13676,7 @@ export class SafeguardManager {
     title: "Monitor Service Providers",
     description: "Monitor service providers consistent with the enterprise's service provider management policy. Monitoring may include periodic reassessment of service provider compliance, monitoring service provider release notes, and dark web monitoring",
     implementationGroup: "IG3",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "monitor service providers consistent with enterprise's service provider management policy",
@@ -13824,7 +13787,7 @@ export class SafeguardManager {
     title: "Securely Decommission Service Providers",
     description: "Securely decommission service providers. Example considerations include user and service account deactivation, termination of data flows, and secure disposal of enterprise data within service provider systems",
     implementationGroup: "IG3",
-    assetType: ["data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "securely decommission service providers",
