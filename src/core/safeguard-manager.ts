@@ -2895,19 +2895,17 @@ export class SafeguardManager {
     title: "Establish and Maintain a Secure Configuration Process",
     description: "Establish and maintain a documented secure configuration process for enterprise assets (end-user devices, including portable and mobile; non-computing/IoT devices; and servers) and software (operating systems and applications). Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.",
     implementationGroup: "IG1",
-    assetType: ["end-user devices", "network devices", "IoT devices", "servers", "Software"],
+    assetType: ["Docuemntation"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Maintain",
-      "Documented Secure Configuration Process",
       "Review and update documentation",
       "Annually",
       "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "documented secure configuration process for enterprise assets",
-      "documented secure configuration process for software"
+      "documented secure configuration process"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Enterprise assets",
@@ -2917,12 +2915,9 @@ export class SafeguardManager {
       "Portable",
       "Non-computing/IoT devices",
       "Servers",
-      "OS",
-      "Software"
+      "OS"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Secure Configuration Policy / Process",
-      "Configuration Management Tool"
     ],
     relatedSafeguards: ["1.1", "2.1", "4.2", "4.3", "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "4.10", "4.11", "4.12"],
     systemPromptFull: {
@@ -3010,25 +3005,22 @@ export class SafeguardManager {
     title: "Establish and Maintain a Secure Configuration Process for Network Infrastructure",
     description: "Establish and maintain a documented secure configuration process for network devices. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.",
     implementationGroup: "IG1",
-    assetType: ["network devices"],
+    assetType: ["Documentation"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Maintain",
-      "Documented Secure Network Configuration Process",
       "Review and update documentation",
       "Annually",
       "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "documented secure configuration process for network devices"
+      "documented secure configuration process"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Network devices"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Secure Configuration Policy / Process",
-      "Configuration Management Tool"
     ],
     relatedSafeguards: ["1.1", "2.1", "3.10", "4.1", "6.4", "8.1", "12.1", "12.2", "12.3", "12.4", "12.5", "13.3", "13.4", "13.6", "13.8", "13.9", "13.10"],
     systemPromptFull: {
@@ -3116,7 +3108,7 @@ export class SafeguardManager {
     title: "Configure Automatic Session Locking on Enterprise Assets",
     description: "Configure automatic session locking on enterprise assets after a defined period of inactivity. For general purpose operating systems, the period Must Not Exceed 15 minutes. For mobile end-user devices, the period must not exceed 2 minutes.",
     implementationGroup: "IG1",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Configure",
@@ -3124,18 +3116,14 @@ export class SafeguardManager {
       "Period must not exceed for 2 Minutes"
     ],
     coreRequirements: [ // Green - The "what"
-      "automatic session locking on enterprise assets after a defined period of inactivity",
-      "general purpose operating systems",
-      "mobile end-user devices"
+      "automatic session locking on enterprise assets"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Automatic Session Locking",
       "Period of inactivity",
       "General Purpose OSs",
       "Mobile end-user devices"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
     systemPromptFull: {
@@ -3223,7 +3211,7 @@ export class SafeguardManager {
     title: "Implement and Manage a Firewall on Servers",
     description: "Implement and manage a firewall on servers, where supported. Example implementations include a virtual firewall, operating system firewall, or a third-party firewall agent.",
     implementationGroup: "IG1",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Implement",
@@ -3240,8 +3228,6 @@ export class SafeguardManager {
       "Virtual Firewall",
       "OS Firewall", 
       "Third Party Firewall",
-      "Firewall",
-      "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
     systemPromptFull: {
@@ -3329,21 +3315,18 @@ export class SafeguardManager {
     title: "Implement and Manage a Firewall on End-User Devices",
     description: "Implement and manage a host-based firewall or port-filtering tool on end-user devices, with a default-deny rule that drops all traffic except those services and ports that are explicitly allowed.",
     implementationGroup: "IG1",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Implement",
-      "Manage",
-      "Default deny rule that drops all traffic",
-      "Except Explicitly Allowed"
+      "Manage"
     ],
     coreRequirements: [ // Green - The "what"
       "host-based firewall or port-filtering tool on end-user devices"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Host-based Firewall",
-      "Port Filtering Tool",
-      "End User Devices",
+      "Default Deny Rule that drops all traffic",
+      "Except Explicitly Allowed",
       "Services",
       "Ports"
     ],
@@ -3437,7 +3420,7 @@ export class SafeguardManager {
     title: "Securely Manage Enterprise Assets and Software",
     description: "Securely manage enterprise assets and software. Example implementations include managing configuration through version-controlled- Infrastructure-as-Code (IaC) and accessing administrative interfaces over secure network protocols, such as Secure Shell (SSH) and Hypertext Transfer Protocol Secure (HTTPS). Do not use insecure management protocols, such as Telnet (Teletype Network) and HTTP, unless operationally essential.",
     implementationGroup: "IG1",
-    assetType: ["devices", "Software"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Do not use insecure management protocols",
@@ -3447,16 +3430,14 @@ export class SafeguardManager {
       "Securely manage enterprise assets and software"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Securely manage enterprise assets and software"
+      "Securely manage enterprise assets and software",
+      "Do not use insecure management protocols unless operationally essential"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Manage configuration through version-controlled Infrastructure-as-Code (IaC)",
       "Accessing administrative interfaces over secure network protocols",
-      "SSH",
-      "HTTPS",
-      "Telnet (Teletype Network)",
-      "HTTP",
-      "Configuration Management Tool"
+      "SSH instead of TELNET",
+      "HTTPS instead of HTTP",
     ],
     relatedSafeguards: ["4.1", "12.3"],
     systemPromptFull: {
@@ -3544,26 +3525,22 @@ export class SafeguardManager {
     title: "Manage Default Accounts on Enterprise Assets and Software",
     description: "Manage default accounts on enterprise assets and software, such as root, administrator, and other pre-configured vendor accounts. Example implementations can include: disabling default accounts or making them unusable.",
     implementationGroup: "IG1",
-    assetType: ["devices", "Software", "users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Manage"
     ],
     coreRequirements: [ // Green - The "what"
-      "default accounts on enterprise assets and software"
+      "default accounts"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Default accounts",
       "Enterprise assets",
-      "Software",
-      "Root",
-      "Administrator",
-      "Other pre-configured vendor accounts"
+      "Software"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Disabling",
-      "Unusable",
-      "Configuration Management Tool"
+      "Disabling them",
+      "making them Unusable",
+      "Root, Administrator, or other pre-configured vendor accounts"
     ],
     relatedSafeguards: ["4.1"],
     systemPromptFull: {
@@ -3651,25 +3628,23 @@ export class SafeguardManager {
     title: "Uninstall or Disable Unnecessary Services on Enterprise Assets and Software",
     description: "Uninstall or disable unnecessary services on enterprise assets and software, such as an unused file sharing service, web application module, or service function.",
     implementationGroup: "IG2",
-    assetType: ["devices", "Software"],
+    assetType: ["Devices", "Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Uninstall",
       "Disable"
     ],
     coreRequirements: [ // Green - The "what"
-      "unnecessary services on enterprise assets and software"
+      "unnecessary services"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Unnecessary Services",
       "Enterprise assets",
-      "Software",
-      "Unused file sharing service",
-      "Web application module",
-      "Service function"
+      "Software"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Configuration Management Tool"
+      "Unused File Sharing Services",
+      "Web Application Module",
+      "Service Function"
     ],
     relatedSafeguards: ["4.1"],
     systemPromptFull: {
@@ -3757,22 +3732,20 @@ export class SafeguardManager {
     title: "Configure Trusted DNS Servers on Enterprise Assets",
     description: "Configure trusted DNS servers on enterprise assets. Example implementations include: configuring assets to use enterprise-controlled DNS servers and/or reputable externally accessible DNS servers.",
     implementationGroup: "IG2",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Configure"
     ],
     coreRequirements: [ // Green - The "what"
-      "trusted DNS servers on enterprise assets"
+      "trusted DNS servers"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Trusted DNS Servers",
       "Enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Configuring assets to use enterprise-controlled DNS servers",
-      "Reputable externally accessible DNS servers",
-      "Configuration Management Tool"
+      "Reputable externally accessible DNS servers"
     ],
     relatedSafeguards: ["4.1", "8.6", "9.2"],
     systemPromptFull: {
@@ -3860,7 +3833,7 @@ export class SafeguardManager {
     title: "Enforce Automatic Device Lockout on Portable End-User Devices",
     description: "Enforce automatic device lockout following a predetermined threshold of local failed authentication attempts on portable end-user devices, where supported. For laptops, do not allow more than 20 failed authentication attempts; for tablets and smartphones, no more than 10 failed authentication attempts. Example implementations include Microsoft® InTune Device Lock and Apple® Configuration Profile maxFailedAttempts.",
     implementationGroup: "IG2",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Enforce",
@@ -3869,14 +3842,13 @@ export class SafeguardManager {
       "No more than 10 Failed Authentication Attempts"
     ],
     coreRequirements: [ // Green - The "what"
-      "automatic device lockout following a predetermined threshold of local failed authentication attempts on portable end-user devices"
+      "automatic device lockout"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Automatic Device Lockout",
-      "Predetermined threshold of local failed authentication attempts",
-      "Portable end-user devices",
-      "Laptops",
-      "Tablets and smartphones"
+      "After a Predetermined threshold of local failed authentication attempts",
+      "On Portable end-user devices",
+      "Such as Laptops",
+      "Such as Tablets and smartphones"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Microsoft® InTune Device Lock",
@@ -3969,23 +3941,21 @@ export class SafeguardManager {
     title: "Enforce Remote Wipe Capability on Portable End-User Devices",
     description: "Remotely wipe enterprise data from enterprise-owned portable end-user devices when deemed appropriate such as lost or stolen devices, or when an individual no longer supports the enterprise.",
     implementationGroup: "IG2",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "When deemed appropriate"
     ],
     coreRequirements: [ // Green - The "what"
-      "Remotely wipe enterprise data from enterprise-owned portable end-user devices"
+      "Remotely wipe enterprise data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Remotely Wipe enterprise data",
-      "Portable end-user devices",
+      "Portable end-user devices"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
       "Lost devices",
       "Stolen devices",
       "When an individual no longer supports the enterprise"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"],
     systemPromptFull: {
@@ -4073,7 +4043,7 @@ export class SafeguardManager {
     title: "Separate Enterprise Workspaces on Mobile End-User Devices",
     description: "Ensure separate enterprise workspaces are used on mobile end-user devices, where supported. Example implementations include using an Apple® Configuration Profile or AndroidTM Work Profile to separate enterprise applications and data from personal applications and data.",
     implementationGroup: "IG3",
-    assetType: ["devices", "Data"],
+    assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Ensure",
@@ -4083,17 +4053,12 @@ export class SafeguardManager {
       "separate enterprise workspaces are used on mobile end-user devices"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Separate enterprise workspaces",
-      "On Mobile Devices",
-      "Enterprise Applications",
-      "Enterprise Data",
-      "Personal Applications",
-      "Personal Data"
+      "Enterprise Applications and Enterprise Data",
+      "Seperate from Personal Applications and Personal Data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Apple® Configuration Profile",
-      "AndroidTM Work Profile",
-      "Configuration Management Tool"
+      "AndroidTM Work Profile"
     ],
     relatedSafeguards: ["4.1"],
     systemPromptFull: {
@@ -4181,7 +4146,7 @@ export class SafeguardManager {
     title: "Establish and Maintain an Inventory of Accounts",
     description: "Establish and maintain an inventory of all accounts managed in the enterprise. The inventory must include both user and administrator accounts. The inventory, at a minimum, should contain the person's name, username, start/stop dates, and department. Validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "Establish and maintain an inventory of all accounts managed in the enterprise",
@@ -4298,7 +4263,7 @@ export class SafeguardManager {
     title: "Use Unique Passwords",
     description: "Use unique passwords for all enterprise assets. Best practice implementation includes, at a minimum, an 8-character password for accounts using Multi-Factor Authentication (MFA) and a 14-character password for accounts not using MFA.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Use unique passwords for all enterprise assets",
@@ -4404,7 +4369,7 @@ export class SafeguardManager {
     title: "Disable Dormant Accounts",
     description: "Delete or disable any dormant accounts after a period of 45 days of inactivity, where supported.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Delete or disable any dormant accounts after a period of 45 days of inactivity, where supported"
@@ -4508,7 +4473,7 @@ export class SafeguardManager {
     title: "Restrict Administrator Privileges to Dedicated Administrator Accounts",
     description: "Restrict administrator privileges to dedicated administrator accounts on enterprise assets. Conduct general computing activities, such as internet browsing, email, and productivity suite use, from the user's primary, non-privileged account.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Restrict administrator privileges to dedicated administrator accounts on enterprise assets",
@@ -4618,7 +4583,7 @@ export class SafeguardManager {
     title: "Establish and Maintain an Inventory of Service Accounts",
     description: "Establish and maintain an inventory of service accounts. The inventory, at a minimum, must contain department owner, review date, and purpose. Perform service account reviews to validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently.",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "Establish and maintain an inventory of service accounts",
@@ -4731,7 +4696,7 @@ export class SafeguardManager {
     title: "Centralize Account Management",
     description: "Centralize account management through a directory or identity service.",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Centralize account management through a directory or identity service"
@@ -4835,7 +4800,7 @@ export class SafeguardManager {
     title: "Establish an Access Granting Process",
     description: "Establish and follow a documented process, preferably automated, for granting access to enterprise assets upon new hire or role change of a user.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
@@ -4946,7 +4911,7 @@ export class SafeguardManager {
     title: "Establish an Access Revoking Process",
     description: "Establish and follow a process, preferably automated, for revoking access to enterprise assets, through disabling accounts immediately upon termination, rights revocation, or role change of a user. Disabling accounts, instead of deleting accounts, may be necessary to preserve audit trails.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
@@ -5062,7 +5027,7 @@ export class SafeguardManager {
     title: "Require MFA for Externally-Exposed Applications",
     description: "Require all externally-exposed enterprise or third-party applications to enforce MFA, where supported. Enforcing MFA through a directory service or SSO provider is a satisfactory implementation of this Safeguard.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Require",
@@ -5171,7 +5136,7 @@ export class SafeguardManager {
     title: "Require MFA for Remote Network Access",
     description: "Require MFA for remote network access.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Require",
@@ -5275,7 +5240,7 @@ export class SafeguardManager {
     title: "Require MFA for Administrative Access",
     description: "Require MFA for all administrative access accounts, where supported, on all enterprise assets, whether managed on-site or through a service provider.",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Require",
@@ -5496,7 +5461,7 @@ export class SafeguardManager {
     title: "Centralize Access Control",
     description: "Centralize access control for all enterprise assets through a directory service or SSO provider, where supported.",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Centralize",
@@ -5608,7 +5573,7 @@ export class SafeguardManager {
     title: "Define and Maintain Role-Based Access Control",
     description: "Define and maintain role-based access control, through determining and documenting the access rights necessary for each role within the enterprise to successfully carry out its assigned duties. Perform access control reviews of enterprise assets to validate that all privileges are authorized, on a recurring schedule at a minimum annually, or more frequently.",
     implementationGroup: "IG3",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Define",
@@ -5960,7 +5925,7 @@ export class SafeguardManager {
     title: "Perform Automated Operating System Patch Management",
     description: "Perform automated operating system patch management on enterprise assets",
     implementationGroup: "IG1",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "perform automated OS patch management",
@@ -6192,7 +6157,7 @@ export class SafeguardManager {
     title: "Perform Automated Vulnerability Scans of Internal Enterprise Assets",
     description: "Perform automated vulnerability scans of internal enterprise assets on a quarterly or more frequent basis",
     implementationGroup: "IG2",
-    assetType: ["devices", "Software"],
+    assetType: ["Devices", "Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "perform automated vulnerability scans",
@@ -6308,7 +6273,7 @@ export class SafeguardManager {
     title: "Perform Automated Vulnerability Scans of Externally-Exposed Enterprise Assets",
     description: "Perform automated vulnerability scans of externally-exposed enterprise assets using either an internal or external vulnerability scanning service",
     implementationGroup: "IG2",
-    assetType: ["devices", "Software"],
+    assetType: ["Devices", "Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "perform automated vulnerability scans",
@@ -7914,7 +7879,7 @@ export class SafeguardManager {
     title: "Use DNS Filtering Services",
     description: "Use DNS filtering services on all end-user devices, including remote and on-premise assets, to block access to known malicious domains",
     implementationGroup: "IG1",
-    assetType: ["devices", "network"],
+    assetType: ["Devices", "network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "use DNS filtering services on all end-user devices",
@@ -8590,7 +8555,7 @@ export class SafeguardManager {
     title: "Deploy and Maintain Anti-Malware Software",
     description: "Deploy and maintain anti-malware software on all enterprise assets",
     implementationGroup: "IG1",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "deploy anti-malware software",
@@ -8703,7 +8668,7 @@ export class SafeguardManager {
     title: "Configure Automatic Anti-Malware Signature Updates",
     description: "Configure automatic updates for anti-malware signature files on all enterprise assets",
     implementationGroup: "IG1",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "configure automatic updates",
@@ -8811,7 +8776,7 @@ export class SafeguardManager {
     title: "Disable Autorun and Autoplay for Removable Media",
     description: "Disable autorun and autoplay auto-execute functionality for removable media",
     implementationGroup: "IG1",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "disable autorun functionality",
@@ -8924,7 +8889,7 @@ export class SafeguardManager {
     title: "Configure Automatic Anti-Malware Scanning of Removable Media", 
     description: "Configure anti-malware software to automatically scan removable media",
     implementationGroup: "IG2",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "configure anti-malware software",
@@ -9036,7 +9001,7 @@ export class SafeguardManager {
     title: "Enable Anti-Exploitation Features",
     description: "Enable anti-exploitation features on enterprise assets and software, where possible, such as Microsoft® Data Execution Prevention (DEP), Windows® Defender Exploit Guard (WDEG), or Apple® System Integrity Protection (SIP) and Gatekeeper™",
     implementationGroup: "IG2", 
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "enable anti-exploitation features",
@@ -9150,7 +9115,7 @@ export class SafeguardManager {
     title: "Centrally Manage Anti-Malware Software", 
     description: "Centrally manage anti-malware software",
     implementationGroup: "IG2",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "centrally manage anti-malware",
@@ -9260,7 +9225,7 @@ export class SafeguardManager {
     title: "Use Behavior-Based Anti-Malware Software",
     description: "Use behavior-based anti-malware software", 
     implementationGroup: "IG2",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "use behavior-based anti-malware",
@@ -10636,7 +10601,7 @@ export class SafeguardManager {
     title: "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise's AAA Infrastructure",
     description: "Require users to authenticate to enterprise-managed VPN and authentication services prior to accessing enterprise resources on end-user devices",
     implementationGroup: "IG2",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "require users to authenticate to enterprise-managed VPN",
@@ -10750,7 +10715,7 @@ export class SafeguardManager {
     title: "Establish and Maintain Dedicated Computing Resources for All Administrative Work",
     description: "Establish and maintain dedicated computing resources, either physically or logically separated, for all administrative tasks or tasks requiring administrative access. The computing resources should be segmented from the enterprise's primary network and not be allowed internet access",
     implementationGroup: "IG3",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "establish dedicated computing resources for administrative work",
@@ -10866,7 +10831,7 @@ export class SafeguardManager {
     title: "Centralize Security Event Alerting",
     description: "Centralize security event alerting across enterprise assets for log correlation and analysis. Security event alerting includes, at a minimum, active exploitation attempts of enterprise assets",
     implementationGroup: "IG2",
-    assetType: ["network", "devices"],
+    assetType: ["network", "Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "centralize security event alerting across enterprise assets",
@@ -10979,7 +10944,7 @@ export class SafeguardManager {
     title: "Deploy a Host-Based Intrusion Detection Solution",
     description: "Deploy a host-based intrusion detection solution on enterprise assets, where technically feasible",
     implementationGroup: "IG2",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "deploy host-based intrusion detection solution",
@@ -11307,7 +11272,7 @@ export class SafeguardManager {
     title: "Manage Access Control for Remote Assets",
     description: "Manage access control for assets remotely connecting to enterprise networks. Determine amount of access to the enterprise network based on: up-to-date anti-malware software, up-to date system patches, up-to-date host-based firewall, and up-to-date host-based intrusion detection or intrusion prevention system",
     implementationGroup: "IG2",
-    assetType: ["devices", "network"],
+    assetType: ["Devices", "network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "manage access control for assets remotely connecting to enterprise networks",
@@ -11529,7 +11494,7 @@ export class SafeguardManager {
     title: "Deploy a Host-Based Intrusion Prevention Solution",
     description: "Deploy a host-based intrusion prevention solution on enterprise assets, where technically feasible",
     implementationGroup: "IG3",
-    assetType: ["devices"],
+    assetType: ["Devices"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "deploy host-based intrusion prevention solution",
@@ -11966,7 +11931,7 @@ export class SafeguardManager {
     title: "Tune Security Event Alerting Thresholds",
     description: "Tune security event alerting thresholds monthly, or more frequently",
     implementationGroup: "IG3",
-    assetType: ["network", "devices"],
+    assetType: ["network", "Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
       "tune security event alerting thresholds",
@@ -12074,7 +12039,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Security Awareness Program",
     description: "Establish and maintain a security awareness program. The purpose of a security awareness program is to educate the enterprise's workforce on how to interact with enterprise assets and data in a secure manner. Conduct training at hire and, at a minimum, annually. Review and update content annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain a security awareness program",
@@ -12190,7 +12155,7 @@ export class SafeguardManager {
     title: "Train Workforce Members to Recognize Social Engineering Attacks",
     description: "Train workforce members to recognize social engineering attacks, such as phishing, business email compromise (BEC), pretexting, and tailgating",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "train workforce members to recognize social engineering attacks",
@@ -12303,7 +12268,7 @@ export class SafeguardManager {
     title: "Train Workforce Members on Authentication Best Practices",
     description: "Train workforce members on authentication best practices. Example topics include MFA, password composition, and credential management",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "train workforce members on authentication best practices",
@@ -12414,7 +12379,7 @@ export class SafeguardManager {
     title: "Train Workforce on Data Handling Best Practices",
     description: "Train workforce members on how to identify and properly store, transfer, archive, and destroy sensitive data. This also includes training workforce members on clear screen and desk best practices, such as locking their screen when they step away from their enterprise asset, erasing physical and virtual whiteboards at the end of meetings, and storing data and assets securely",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "train workforce members on how to identify and properly store, transfer, archive, and destroy sensitive data",
@@ -12533,7 +12498,7 @@ export class SafeguardManager {
     title: "Train Workforce Members on Causes of Unintentional Data Exposure",
     description: "Train workforce members to be aware of causes for unintentional data exposure. Example topics include mis-delivery of sensitive data, losing a portable end-user device, or publishing data to unintended audiences",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "train workforce members to be aware of causes for unintentional data exposure",
@@ -12644,7 +12609,7 @@ export class SafeguardManager {
     title: "Train Workforce Members on Recognizing and Reporting Security Incidents",
     description: "Train workforce members to be able to recognize a potential incident and be able to report such an incident",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "train workforce members to be able to recognize a potential incident",
@@ -12753,7 +12718,7 @@ export class SafeguardManager {
     title: "Train Workforce on How to Identify and Report if Their Enterprise Assets are Missing Security Updates",
     description: "Train workforce to understand how to verify and report out-of-date software patches or any failures in automated processes and tools. Part of this training should include notifying IT personnel of any failures in automated processes and tools",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "train workforce to understand how to verify and report out-of-date software patches",
@@ -12868,7 +12833,7 @@ export class SafeguardManager {
     title: "Train Workforce on the Dangers of Connecting to and Transmitting Enterprise Data Over Insecure Networks",
     description: "Train workforce members on the dangers of connecting to, and transmitting data over, insecure networks for enterprise activities. If the enterprise has remote workers, training must include guidance to ensure that all users securely configure their home network infrastructure",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "train workforce members on dangers of connecting to and transmitting data over insecure networks",
@@ -12982,7 +12947,7 @@ export class SafeguardManager {
     title: "Conduct Role-Specific Security Awareness and Skills Training",
     description: "Conduct role-specific security awareness and skills training. Example implementations include secure system administration courses for IT professionals, OWASP Top 10 vulnerability awareness and prevention training for web application developers, and advanced social engineering awareness training for high-profile roles",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "conduct role-specific security awareness and skills training",
@@ -13094,7 +13059,7 @@ export class SafeguardManager {
     title: "Establish and Maintain an Inventory of Service Providers",
     description: "Establish and maintain an inventory of service providers. The inventory is to list all known service providers, include classification(s), and designate an enterprise contact for each service provider. Review and update the inventory annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain an inventory of service providers",
@@ -13208,7 +13173,7 @@ export class SafeguardManager {
     title: "Establish and Maintain a Service Provider Management Policy",
     description: "Establish and maintain a service provider management policy. Ensure the policy addresses the classification, inventory, assessment, monitoring, and decommissioning of service providers. Review and update the policy annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain a service provider management policy",
@@ -13327,7 +13292,7 @@ export class SafeguardManager {
     title: "Classify Service Providers",
     description: "Classify service providers. Classification consideration may include one or more characteristics, such as data sensitivity, data volume, availability requirements, applicable regulations, inherent risk, and mitigated risk. Update and review classifications annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "classify service providers",
@@ -13444,7 +13409,7 @@ export class SafeguardManager {
     title: "Ensure Service Provider Contracts Include Security Requirements",
     description: "Ensure service provider contracts include security requirements. Example requirements may include minimum security program requirements, security incident and/or data breach notification and response, data encryption requirements, and data disposal commitments. These security requirements must be consistent with the enterprise's service provider management policy. Review service provider contracts annually to ensure contracts are not missing security requirements",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "ensure service provider contracts include security requirements",
@@ -13560,7 +13525,7 @@ export class SafeguardManager {
     title: "Assess Service Providers",
     description: "Assess service providers consistent with the enterprise's service provider management policy. Assessment scope may vary based on classification(s), and may include review of standardized assessment reports, such as Service Organization Control 2 (SOC 2) and Payment Card Industry (PCI) Attestation of Compliance (AoC), customized questionnaires, or other appropriately rigorous processes. Reassess service providers annually, at a minimum, or with new and renewed contracts",
     implementationGroup: "IG3",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "assess service providers consistent with enterprise's service provider management policy",
@@ -14799,7 +14764,7 @@ export class SafeguardManager {
     title: "Train Developers in Application Security Concepts and Secure Coding",
     description: "Ensure that all software development personnel receive training in writing secure code for their specific development environment and responsibilities. Training can include general security principles and application security standard practices. Conduct training at least annually and design in a way to promote security within the development team, and build a culture of security among the developers",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "ensure that all software development personnel receive training in writing secure code",
@@ -15479,7 +15444,7 @@ export class SafeguardManager {
     title: "Designate Personnel to Manage Incident Handling",
     description: "Designate one key person, and at least one backup, who will manage the enterprise's incident handling process. Management personnel are responsible for the coordination and documentation of incident response and recovery efforts and can consist of employees internal to the enterprise, service providers, or a hybrid approach. If using a service provider, designate at least one person internal to the enterprise to oversee any third-party work. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "designate one key person and at least one backup who will manage the enterprise's incident handling process",
@@ -15591,7 +15556,7 @@ export class SafeguardManager {
     title: "Establish and Maintain Contact Information for Reporting Security Incidents",
     description: "Establish and maintain contact information for reporting security incidents. This information must be available to all workforce members and should include various contact methods (e.g., phone, email) and be regularly updated. Consider the availability of these contact methods in different circumstances, such as when primary communication systems are compromised",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain contact information for reporting security incidents",
@@ -15701,7 +15666,7 @@ export class SafeguardManager {
     title: "Establish and Maintain an Enterprise Process for Reporting Incidents",
     description: "Establish and maintain an documented enterprise process for the workforce to report security incidents. The process includes reporting timeframe, personnel to report to, mechanism for reporting, and the minimum information to be reported. Ensure the process is publicly available to all of the workforce. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG1",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain a documented enterprise process for the workforce to report security incidents",
@@ -15813,7 +15778,7 @@ export class SafeguardManager {
     title: "Establish and Maintain an Incident Response Process",
     description: "Establish and maintain a documented incident response process that addresses roles and responsibilities, compliance requirements, and a communication plan. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain a documented incident response process",
@@ -15922,7 +15887,7 @@ export class SafeguardManager {
     title: "Assign Key Roles and Responsibilities",
     description: "Assign key roles and responsibilities for incident response, including staff from legal, IT, information security, facilities, public relations, human resources, incident responders, and analysts. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "assign key roles and responsibilities for incident response",
@@ -16034,7 +15999,7 @@ export class SafeguardManager {
     title: "Define Mechanisms for Communicating During Incident Response",
     description: "Determine which primary and secondary mechanisms will be used to communicate and report during a security incident. Mechanisms can include phone calls, emails, secure chat or notification letters. Keep in mind that certain mechanisms, such as emails, can be affected during a security incident. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "determine which primary and secondary mechanisms will be used to communicate and report during a security incident",
@@ -16145,7 +16110,7 @@ export class SafeguardManager {
     title: "Conduct Routine Incident Response Exercises",
     description: "Plan and conduct routine incident response exercises and scenarios for key personnel involved in the incident response process to prepare for responding to real-world incidents. Exercises need to test communication channels, decision-making, and workflows. Conduct testing on an annual basis, at a minimum",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
       "plan and conduct routine incident response exercises and scenarios for key personnel involved in the incident response process",
@@ -16256,7 +16221,7 @@ export class SafeguardManager {
     title: "Conduct Post-Incident Reviews",
     description: "Conduct post-incident reviews. Post-incident reviews help prevent incident recurrence through identifying lessons learned and follow-up action",
     implementationGroup: "IG2",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
       "conduct post-incident reviews"
@@ -16363,7 +16328,7 @@ export class SafeguardManager {
     title: "Establish and Maintain Security Incident Thresholds",
     description: "Establish and maintain security incident thresholds, including, at a minimum, differentiating between an incident and an event. Examples can include: abnormal activity, security vulnerability, security weakness, data breach, privacy incident, etc. Review annually, or when significant enterprise changes occur that could impact this Safeguard",
     implementationGroup: "IG3",
-    assetType: ["users"],
+    assetType: ["Users"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
       "establish and maintain security incident thresholds",

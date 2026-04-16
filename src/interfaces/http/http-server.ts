@@ -106,7 +106,7 @@ export class FrameworkHttpServer {
       res.json({
         status: 'healthy',
         uptime: Math.round(process.uptime()),
-        version: '2.4.3',
+        version: '2.4.4',
         timestamp: new Date().toISOString()
       });
     });
@@ -222,7 +222,7 @@ export class FrameworkHttpServer {
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '2.4.3',
+        version: '2.4.4',
         description: 'Pure Data Provider serving authentic CIS Controls Framework data',
         endpoints: {
           'GET /api/safeguards': 'List all available CIS safeguards',
@@ -273,7 +273,7 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v2.4.3 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v2.4.4 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);

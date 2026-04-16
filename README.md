@@ -97,9 +97,9 @@ Each safeguard includes prompts for five assessment types:
 
 | Role | Field | Use Case |
 |------|-------|----------|
-| **Full** | `systemPromptFull` | Vendor claims complete implementation |
-| **Partial** | `systemPromptPartial` | Vendor provides limited features |
-| **Facilitates** | `systemPromptFacilitates` | Tool enables others to implement |
+| **Full** | `systemPromptFull` | Vendors features have mapped to all the sub taxonomical elements of the safeguard but FULL does not mean it completely does all asset classes, software types, etc, only that it does it for A particular Asset Class |
+| **Partial** | `systemPromptPartial` | Vendors features have mapped to some of the sub taxonomical elements of the safeguard but are missing one or another, As with full PARTIAL does not mean they cover all asset classes, software types, only that it does it for a particular Asset Class |
+| **Facilitates** | `systemPromptFacilitates` | Tool empowers others to implement, better, faster, more completely, usually with data |
 | **Governance** | `systemPromptGovernance` | Policy/process/oversight capabilities |
 | **Validates** | `systemPromptValidates` | Audit/evidence/reporting capabilities |
 
