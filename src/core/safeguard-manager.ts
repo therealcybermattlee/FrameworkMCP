@@ -4149,33 +4149,23 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Establish and maintain an inventory of all accounts managed in the enterprise",
-      "The inventory must include both user and administrator accounts",
-      "At a minimum, should contain the person's name, username, start/stop dates, and department",
+      "Establish and maintain",
+      "Must include",
       "Validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "Inventory of Accounts"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Establish",
-      "Maintain",
-      "Validate that all active accounts are authorized",
-      "Recurring schedule",
-      "Must Include",
-      "At a minimum",
-      "Minimum Quarterly",
-      "More Frequently",
       "User Accounts",
       "Administrator Accounts",
+      "Service Accounts",
       "Name",
       "Username",
       "Start Stop Dates",
       "Department"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["1.1", "2.1", "5.2", "5.3", "5.4", "5.5", "5.6", "6.1", "6.2", "6.7", "12.8"],
     systemPromptFull: {
@@ -4266,22 +4256,16 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Use unique passwords for all enterprise assets",
-      "Best practice implementation includes, at a minimum, an 8-character password for accounts using Multi-Factor Authentication (MFA) and a 14-character password for accounts not using MFA"
+      "Use",
+      "At a minimum, an 8-character password for accounts using Multi-Factor Authentication (MFA) and a 14-character password for accounts not using MFA"
     ],
     coreRequirements: [ // Green - The "what"
       "Unique Passwords"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Use",
-      "At a minimum",
-      "All Enterprise Assets",
-      "8-character password for accounts using MFA",
-      "14-character password for accounts not using MFA"
+      "All Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Password Management Tool"
     ],
     relatedSafeguards: ["5.1"],
     systemPromptFull: {
@@ -4372,7 +4356,8 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Delete or disable any dormant accounts after a period of 45 days of inactivity, where supported"
+      "after a period of 45 days of inactivity", 
+      "where supported"
     ],
     coreRequirements: [ // Green - The "what"
       "Dormant Accounts"
@@ -4384,8 +4369,6 @@ export class SafeguardManager {
       "Where Supported"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["5.1"],
     systemPromptFull: {
@@ -4476,22 +4459,18 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Restrict administrator privileges to dedicated administrator accounts on enterprise assets",
-      "Conduct general computing activities, such as internet browsing, email, and productivity suite use, from the user's primary, non-privileged account"
+      "Restrict"
     ],
     coreRequirements: [ // Green - The "what"
       "Administrator Privileges",
       "Dedicated Admin Accounts"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Restrict",
       "Enterprise assets",
       "User's primary, non-privileged account",
       "General Computing Activities"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Identity and Access Management Tool",
       "Such as",
       "Internet browsing",
       "Email",
@@ -4586,29 +4565,20 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Establish and maintain an inventory of service accounts",
-      "The inventory, at a minimum, must contain department owner, review date, and purpose",
-      "Perform service account reviews to validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently"
+      "Establish and maintain",
+      "at a minimum, must contain",
+      "Perform service account reviews to validate that all active accounts are authorized",
+      "recurring schedule at a minimum quarterly, or more frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "Inventory of Service Accounts"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Establish",
-      "Maintain",
-      "At a Minimum Must Contain",
-      "Perform service account reviews to validate that all active accounts are authorized",
-      "On a recurring schedule",
       "Department Owner",
       "Review date",
-      "Purpose",
-      "At a minimum quarterly",
-      "More frequently",
-      "Or"
+      "Purpose"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["5.1"],
     systemPromptFull: {
@@ -4699,20 +4669,16 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "Centralize account management through a directory or identity service"
+      "Centralize"
     ],
     coreRequirements: [ // Green - The "what"
       "Account Management"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Centralize",
       "Directory Service",
-      "Identity Service",
-      "Or"
+      "Identity Service"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["5.1", "6.6", "6.7", "12.5"],
     systemPromptFull: {
