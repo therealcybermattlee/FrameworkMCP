@@ -299,7 +299,7 @@
           },
           "version": {
             "type": "string",
-            "example": "2.4.5"
+            "example": "2.4.6"
           },
           "timestamp": {
             "type": "string",
@@ -344,7 +344,7 @@
           },
           "version": {
             "type": "string",
-            "example": "2.4.5"
+            "example": "2.4.6"
           },
           "description": {
             "type": "string",

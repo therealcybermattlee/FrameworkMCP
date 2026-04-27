@@ -4363,10 +4363,7 @@ export class SafeguardManager {
       "Dormant Accounts"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Disable",
-      "Delete",
-      "Period of 45 days of inactivity",
-      "Where Supported"
+      "Dormant Accounts"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -4766,30 +4763,22 @@ export class SafeguardManager {
     title: "Establish an Access Granting Process",
     description: "Establish and follow a documented process, preferably automated, for granting access to enterprise assets upon new hire or role change of a user.",
     implementationGroup: "IG1",
-    assetType: ["Users"],
+    assetType: ["Documentation"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
-      "Follow",
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process",
-      "Documentation"
+      "Follow"
     ],
     coreRequirements: [ // Green - The "what"
       "documented process",
       "granting access to enterprise assets"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "preferably automated",
       "upon new hire",
       "role change of a user",
-      "New Hire",
-      "Role Change",
       "Enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process"
     ],
     relatedSafeguards: ["5.1", "6.7", "6.8"],
     systemPromptFull: {
@@ -4877,25 +4866,17 @@ export class SafeguardManager {
     title: "Establish an Access Revoking Process",
     description: "Establish and follow a process, preferably automated, for revoking access to enterprise assets, through disabling accounts immediately upon termination, rights revocation, or role change of a user. Disabling accounts, instead of deleting accounts, may be necessary to preserve audit trails.",
     implementationGroup: "IG1",
-    assetType: ["Users"],
+    assetType: ["Documentation"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Follow",
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process",
-      "Documentation"
+      "Disabling Accounts, instead of Deleting accounts, may be necessary to preserve audit trails"
     ],
     coreRequirements: [ // Green - The "what"
-      "process",
-      "revoking access to enterprise assets",
-      "disabling accounts immediately"
+      "Access Revoking Process"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "preferably automated",
-      "upon termination",
-      "rights revocation",
-      "role change of a user",
       "Role Change",
       "Termination",
       "Rights revocation",
@@ -4903,9 +4884,7 @@ export class SafeguardManager {
       "Disabling accounts immediately"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Disabling accounts, instead of deleting accounts, may be necessary to preserve audit trails",
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process"
+      "Preferably Automated"
     ],
     relatedSafeguards: ["5.1", "6.7"],
     systemPromptFull: {
@@ -4997,24 +4976,18 @@ export class SafeguardManager {
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Require",
-      "Account and Access Control Management",
-      "Multi-Factor Authentication Tool"
+      "Enforce",
+      "Where Supported"
     ],
     coreRequirements: [ // Green - The "what"
       "all externally-exposed enterprise or third-party applications to enforce MFA",
-      "where supported"
+      "MFA - Multi Factor Authentication"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "ALL Externally Exposed Applications",
-      "Enforce",
-      "Where supported"
+      "MFA for all externally exposed enterprise or third-party applications"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Enforcing MFA through a directory service or SSO provider is a satisfactory implementation of this Safeguard",
-      "Directory service",
-      "SSO Provider",
-      "Account and Access Control Management",
-      "Multi-Factor Authentication Tool"
+      "Enforcing MFA through a directory service or SSO provider is a satisfactory implementation of this Safeguard"
     ],
     relatedSafeguards: ["2.1", "4.1"],
     systemPromptFull: {
@@ -5105,20 +5078,15 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Require",
-      "Account and Access Control Management",
-      "Multi-Factor Authentication Tool"
+      "Require"
     ],
     coreRequirements: [ // Green - The "what"
-      "MFA",
-      "remote network access"
+      "MFA for remote network access"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Remote Network Access"
+      "MFA for Remote Network Access"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Multi-Factor Authentication Tool"
     ],
     relatedSafeguards: ["4.2", "12.7"],
     systemPromptFull: {
@@ -5210,25 +5178,17 @@ export class SafeguardManager {
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Require",
-      "Account and Access Control Management",
-      "Multi-Factor Authentication Tool"
+      "Where Supported"
     ],
     coreRequirements: [ // Green - The "what"
-      "MFA",
-      "all administrative access accounts",
-      "all enterprise assets"
+      "MFA on all administrative access accounts"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "where supported",
       "All Admin Access Accounts",
       "All enterprise assets",
-      "Onsite Management",
-      "Service Provider",
-      "Or"
+      "Onsite Management accounts or Service Provider Admin Accounts"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Multi-Factor Authentication Tool"
     ],
     relatedSafeguards: ["4.1"],
     systemPromptFull: {
@@ -5316,30 +5276,22 @@ export class SafeguardManager {
     title: "Establish and Maintain an Inventory of Authentication and Authorization Systems",
     description: "Establish and maintain an inventory of the enterprise's authentication and authorization systems, including those hosted on-site or at a remote service provider. Review and update the inventory, at a minimum, annually, or more frequently.",
     implementationGroup: "IG2",
-    assetType: ["software"],
+    assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "maintain",
-      "Review and update",
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process"
+      "Review and update inventory",
+      "At a minimum, monthly or more frequenlty"
     ],
     coreRequirements: [ // Green - The "what"
       "inventory of the enterprise's authentication and authorization systems"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "including those hosted on-site or at a remote service provider",
-      "at a minimum, annually, or more frequently",
-      "Hosted on-site",
-      "Remote Service Provider",
-      "Or",
-      "At a minimum Annually",
-      "More frequently"
+      "hosted on-site",
+      "hosted at a remote service provider"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process"
     ],
     relatedSafeguards: ["1.1", "2.1", "3.3", "5.6", "6.7"],
     systemPromptFull: {
@@ -5431,27 +5383,17 @@ export class SafeguardManager {
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Centralize",
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process",
-      "Identity and Access Management Tool"
+      "Where Supported"
     ],
     coreRequirements: [ // Green - The "what"
-      "access control",
-      "all enterprise assets"
+      "access control"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "through a directory service or SSO provider",
-      "where supported",
-      "Directory Service",
-      "SSO Provider",
-      "Or",
-      "All enterprise assets",
-      "Where Supported"
+      "Directory Service or SSO Provider",
+      "All enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process",
-      "Identity and Access Management Tool"
     ],
     relatedSafeguards: ["4.1", "5.1", "5.6", "6.1", "6.2", "6.6", "12.5", "12.7"],
     systemPromptFull: {
@@ -5544,30 +5486,21 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Define",
       "maintain",
-      "Perform access control reviews of enterprise assets to validate that all privileges are authorized, on a recurring schedule at a minimum annually, or more frequently",
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process",
-      "Identity and Access management Tool"
+      "Necessary",
+      "Perform access control reviews of enterprise assets to validate that all privileges are authorized, on a recurring schedule",
+      "At a mimimum Annually, or more Frequently"
     ],
     coreRequirements: [ // Green - The "what"
-      "role-based access control",
-      "determining and documenting the access rights necessary for each role within the enterprise to successfully carry out its assigned duties"
+      "role-based access control"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Access rights",
       "Each Role",
-      "Necessary",
-      "Successfully carry out its assigned duties",
+      "Neccesary to Successfully carry out its assigned duties",
       "Determining",
-      "Documenting",
-      "At a minimum Annually",
-      "More frequently",
-      "Or"
+      "Documenting"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Account and Access Control Management",
-      "Account and Credential Management Policy/Process",
-      "Identity and Access management Tool"
     ],
     relatedSafeguards: ["3.3", "4.1", "6.1"],
     systemPromptFull: {
