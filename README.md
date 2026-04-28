@@ -93,15 +93,15 @@ curl http://localhost:8080/api/safeguards/5.1?include_examples=true
 
 ## The 5 Capability Roles
 
-Each safeguard includes prompts for five assessment types:
+Each safeguard can be assessed against five capability types:
 
-| Role | Field | Use Case |
-|------|-------|----------|
-| **Full** | `systemPromptFull` | Vendors features have mapped to all the sub taxonomical elements of the safeguard but FULL does not mean it completely does all asset classes, software types, etc, only that it does it for A particular Asset Class |
-| **Partial** | `systemPromptPartial` | Vendors features have mapped to some of the sub taxonomical elements of the safeguard but are missing one or another, As with full PARTIAL does not mean they cover all asset classes, software types, only that it does it for a particular Asset Class |
-| **Facilitates** | `systemPromptFacilitates` | Tool empowers others to implement, better, faster, more completely, usually with data |
-| **Governance** | `systemPromptGovernance` | Policy/process/oversight capabilities |
-| **Validates** | `systemPromptValidates` | Audit/evidence/reporting capabilities |
+| Role | Description |
+|------|-------------|
+| **Full** | Vendor features map to all sub-taxonomical elements of the safeguard for a particular asset class |
+| **Partial** | Vendor features map to some but not all sub-taxonomical elements for a particular asset class |
+| **Facilitates** | Tool empowers others to implement better, faster, or more completely, usually with data |
+| **Governance** | Policy/process/oversight capabilities |
+| **Validates** | Audit/evidence/reporting capabilities |
 
 ## Cloud Deployment
 

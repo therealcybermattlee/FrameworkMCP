@@ -1,6 +1,6 @@
 {
   "name": "framework-mcp",
-  "version": "2.4.6",
+  "version": "2.5.6",
   "description": "Pure Data Provider architecture serving authentic CIS Controls Framework data via MCP and HTTP API. Empowers LLMs with authoritative safeguards data for analysis. Supports Microsoft Copilot custom connectors and cloud deployments.",
   "main": "dist/interfaces/http/http-server.js",
   "type": "module",
@@ -11,8 +11,7 @@
     "start:http": "node dist/interfaces/http/http-server.js",
     "dev": "tsc && npm run start:mcp",
     "dev:http": "tsc && npm run start:http",
-    "prepare": "npm run build",
-    "standardize-prompts": "node scripts/standardize-prompts.js"
+    "prepare": "npm run build"
   },
   "bin": {
     "framework-mcp": "./dist/index.js"

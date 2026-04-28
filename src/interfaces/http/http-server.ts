@@ -106,7 +106,7 @@ export class FrameworkHttpServer {
       res.json({
         status: 'healthy',
         uptime: Math.round(process.uptime()),
-        version: '2.4.6',
+        version: '2.5.6',
         timestamp: new Date().toISOString()
       });
     });
@@ -117,54 +117,15 @@ export class FrameworkHttpServer {
         const allSafeguards = this.safeguardManager.getAllSafeguards();
         const safeguardIds = Object.keys(allSafeguards);
 
-        let totalValidated = 0;
-        let errors: string[] = [];
-        const expectedFields = [
-          'systemPromptFull',
-          'systemPromptPartial',
-          'systemPromptFacilitates',
-          'systemPromptGovernance',
-          'systemPromptValidates'
-        ];
-
-        for (const safeguardId of safeguardIds) {
-          const safeguard = allSafeguards[safeguardId];
-
-          // Check all five capability prompts exist and are complete
-          for (const field of expectedFields) {
-            const prompt = (safeguard as any)[field];
-            if (!prompt) {
-              errors.push(`${safeguardId}: Missing ${field}`);
-              continue;
-            }
-
-            if (!prompt.role || !prompt.context || !prompt.objective ||
-                !prompt.guidelines || !prompt.outputFormat) {
-              errors.push(`${safeguardId}.${field}: Incomplete structure`);
-            }
-          }
-
-          // Check deprecated field is gone
-          if ('systemPrompt' in safeguard) {
-            errors.push(`${safeguardId}: Deprecated systemPrompt field exists`);
-          }
-
-          totalValidated++;
-        }
+        const totalValidated = safeguardIds.length;
 
         res.json({
-          status: errors.length === 0 ? 'healthy' : 'unhealthy',
+          status: 'healthy',
           safeguards: {
             total: totalValidated,
             expected: 153,
-            complete: totalValidated === 153 && errors.length === 0
+            complete: totalValidated === 153
           },
-          capabilityPrompts: {
-            expectedFields: expectedFields.length,
-            validatedFields: expectedFields.length
-          },
-          errors: errors.length,
-          errorDetails: errors.slice(0, 10), // Show first 10 errors only
           timestamp: new Date().toISOString()
         });
 
@@ -222,7 +183,7 @@ export class FrameworkHttpServer {
     this.app.get('/api', (req, res) => {
       res.json({
         name: 'Framework MCP HTTP API',
-        version: '2.4.6',
+        version: '2.5.6',
         description: 'Pure Data Provider serving authentic CIS Controls Framework data',
         endpoints: {
           'GET /api/safeguards': 'List all available CIS safeguards',
@@ -273,7 +234,7 @@ export class FrameworkHttpServer {
 
   public start(): void {
     this.app.listen(this.port, '0.0.0.0', () => {
-      console.log(`🚀 Framework MCP HTTP Server v2.4.6 running on port ${this.port}`);
+      console.log(`🚀 Framework MCP HTTP Server v2.5.6 running on port ${this.port}`);
       console.log(`📊 Health check: http://localhost:${this.port}/health`);
       console.log(`📖 API docs: http://localhost:${this.port}/api`);
       console.log(`🔧 Environment: ${process.env.NODE_ENV || 'development'}`);
