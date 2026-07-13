@@ -1667,7 +1667,7 @@ export class SafeguardManager {
     title: "Establish and Maintain an Audit Log Management Process",
     description: "Establish and maintain a documented audit log management process that defines the enterprise's logging requirements. At a minimum, address the collection, review, and retention of audit logs for enterprise assets. Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard.",
     implementationGroup: "IG1",
-    assetType: ["enterprise assets", "Data"],
+    assetType: ["Documentation"],
     securityFunction: ["Govern"],
     governanceElements: [
       "establish and maintain",
@@ -1697,7 +1697,7 @@ export class SafeguardManager {
     title: "Collect Audit Logs",
     description: "Collect audit logs. Ensure that logging, per the enterprise's audit log management process, has been enabled across enterprise assets.",
     implementationGroup: "IG1",
-    assetType: ["enterprise assets", "Data"],
+    assetType: ["Data"],
     securityFunction: ["Detect"],
     governanceElements: [
       "per the enterprise's audit log management process"
@@ -2001,7 +2001,7 @@ export class SafeguardManager {
     title: "Use DNS Filtering Services",
     description: "Use DNS filtering services on all end-user devices, including remote and on-premise assets, to block access to known malicious domains",
     implementationGroup: "IG1",
-    assetType: ["Devices", "network"],
+    assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "use DNS filtering services on all end-user devices",
@@ -2165,7 +2165,7 @@ export class SafeguardManager {
     id: "9.7",
     title: "Deploy and Maintain Email Server Anti-Malware Protections",
     description: "Deploy and maintain email server anti-malware protections, such as attachment scanning and/or sandboxing",
-    implementationGroup: "IG1",
+    implementationGroup: "IG3",
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
