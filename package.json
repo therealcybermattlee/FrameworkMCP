@@ -3,7 +3,14 @@
   "version": "2.6.0",
   "description": "Pure Data Provider architecture serving authentic CIS Controls Framework data via MCP and HTTP API. Empowers LLMs with authoritative safeguards data for analysis. Supports Microsoft Copilot custom connectors and cloud deployments.",
   "main": "dist/interfaces/http/http-server.js",
+  "types": "dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist/",
+    "swagger.json",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/interfaces/http/http-server.js",

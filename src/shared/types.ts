@@ -1,13 +1,17 @@
 // Shared TypeScript types for dual architecture
 
-// Enhanced relationship type system
+// Enhanced relationship type system.
+//
+// Describes how one safeguard relates to another -- NOT how a vendor tool
+// relates to a safeguard. The former 'validates' and 'governance' members were
+// removed with the capability-role taxonomy: even on this different axis, the
+// words invite the compliance misreading the taxonomy retirement exists to
+// prevent. Do not reintroduce them.
 export type RelationshipType =
   | 'dependency'      // Must be implemented for this to work
   | 'prerequisite'    // Should be implemented first
   | 'complement'      // Work together synergistically
   | 'supports'        // Enhanced by this safeguard
-  | 'validates'       // Provides evidence/validation
-  | 'governance'      // Provides oversight/policy
   | 'sequence';       // Part of logical implementation sequence
 
 export type RelationshipStrength =
@@ -109,15 +113,6 @@ export interface VendorProfile {
   isGrcOrPolicyService: boolean;
 }
 
-
-export interface PerformanceMetrics {
-  uptime: number;
-  totalRequests: number;
-  errorCount: number;
-  requestCounts: Map<string, number>;
-  executionTimes: Map<string, number[]>;
-  lastStatsLog: number;
-}
 
 export interface CacheEntry<T> {
   data: T;

@@ -3,14 +3,14 @@
   "info": {
     "title": "Framework MCP API - Pure Data Provider",
     "description": "Microsoft Copilot-compatible API providing authoritative CIS Controls Framework v8.1 data (153 safeguards). Pure Data Provider architecture empowers LLMs with structured safeguards data for sophisticated, context-aware vendor capability analysis.",
-    "version": "2.0.0",
+    "version": "2.6.0",
     "contact": {
       "name": "Framework MCP Support",
       "url": "https://github.com/therealcybermattlee/FrameworkMCP"
     },
     "license": {
-      "name": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
+      "name": "CC-BY-4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
     }
   },
   "servers": [
@@ -127,26 +127,6 @@
         }
       }
     },
-    "/api/metrics": {
-      "get": {
-        "summary": "Performance Metrics",
-        "description": "Get API performance metrics and usage statistics",
-        "operationId": "getMetrics",
-        "tags": ["Monitoring"],
-        "responses": {
-          "200": {
-            "description": "Performance metrics",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/MetricsResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api": {
       "get": {
         "summary": "API Documentation",
@@ -175,23 +155,10 @@
         "properties": {
           "safeguards": {
             "type": "array",
+            "description": "Safeguard IDs. Call /api/safeguards/{safeguardId} for details.",
             "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "example": "1.1"
-                },
-                "title": {
-                  "type": "string",
-                  "example": "Establish and Maintain Detailed Enterprise Asset Inventory"
-                },
-                "implementationGroup": {
-                  "type": "string",
-                  "enum": ["IG1", "IG2", "IG3"],
-                  "example": "IG1"
-                }
-              }
+              "type": "string",
+              "example": "1.1"
             }
           },
           "total": {
@@ -280,34 +247,6 @@
           "version": {
             "type": "string",
             "example": "2.6.0"
-          },
-          "timestamp": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "MetricsResponse": {
-        "type": "object",
-        "properties": {
-          "uptime_seconds": {
-            "type": "integer"
-          },
-          "total_requests": {
-            "type": "integer"
-          },
-          "error_count": {
-            "type": "integer"
-          },
-          "error_rate": {
-            "type": "string",
-            "example": "0.5%"
-          },
-          "request_counts": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "integer"
-            }
           },
           "timestamp": {
             "type": "string",
