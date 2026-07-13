@@ -45,26 +45,68 @@ export interface SafeguardElement {
   enhancedRelationships?: SafeguardRelationship[];
 }
 
-export interface VendorAnalysis {
+/**
+ * How many of a safeguard's taxonomical elements a tool addresses.
+ *
+ * This is deliberately NOT a statement about whether the safeguard is met.
+ * 'all' means the tool addresses every taxonomical element of the safeguard --
+ * it does NOT mean the enterprise is covered, compliant, or done. Estate
+ * coverage depends on asset inventory, deployment footprint, and licensing,
+ * none of which are assessable from a vendor response. See ScopeLimits.
+ */
+export type ElementsAddressed = 'all' | 'some' | 'none';
+
+/**
+ * What this framework explicitly CANNOT determine from a vendor response.
+ * Carried alongside every assessment so that element completeness is never
+ * mistaken for estate coverage.
+ */
+export interface ScopeLimits {
+  /** Asset types the vendor claims to support. */
+  vendorStatedAssetTypes: string[];
+  /** Asset types CIS assigns to this safeguard. */
+  safeguardAssetTypes: string[];
+  /** Human-readable statement of what remains unassessed. */
+  note: string;
+}
+
+/**
+ * Assessment of a single tool against a single safeguard.
+ *
+ * Unit of analysis is one tool in isolation. Satisfying a safeguard is a
+ * portfolio property: it typically requires multiple tools across asset types.
+ * This shape cannot express that, and must not be read as if it does.
+ */
+export interface VendorAssessment {
   vendor: string;
   safeguardId: string;
   safeguardTitle: string;
-  // Primary capability categorization - what role does this tool play?
-  capability: 'full' | 'partial' | 'facilitates' | 'governance' | 'validates';
-  // Detailed capability breakdown
-  capabilities: {
-    full: boolean;        // Directly implements the core safeguard functionality
-    partial: boolean;     // Implements limited aspects of the safeguard
-    facilitates: boolean; // Enhances or enables safeguard implementation by others
-    governance: boolean;  // Provides policy, process, and oversight capabilities
-    validates: boolean;   // Provides evidence, audit, and validation reporting
+
+  /** Axis 1 -- assessable from a vendor response. */
+  elementsAddressed: ElementsAddressed;
+  elementsAddressedDetail: {
+    coreRequirements: string[];
+    subTaxonomicalElements: string[];
+    /** Elements the tool does NOT address. Often the most useful field here. */
+    notAddressed: string[];
   };
+
+  /** Axis 2 -- NOT assessable from a vendor response; stated, not guessed. */
+  scopeLimits: ScopeLimits;
+
   confidence: number;
   reasoning: string;
   evidence: string[];
-  // Capability-focused descriptions (replaces element coverage scoring)
-  toolCapabilityDescription: string;  // What type of tool this is and its role
-  recommendedUse: string;             // How practitioners should use this tool
+}
+
+/**
+ * Tool-level attribute, evaluated once per vendor -- not per safeguard.
+ * Replaces the former GOVERNANCE capability role.
+ */
+export interface VendorProfile {
+  vendor: string;
+  /** Is this tool or service a GRC or policy service? */
+  isGrcOrPolicyService: boolean;
 }
 
 
@@ -81,15 +123,6 @@ export interface CacheEntry<T> {
   data: T;
   timestamp: number;
 }
-
-export interface QualityAssessment {
-  quality: 'excellent' | 'good' | 'fair' | 'poor';
-  confidence: number;
-  evidence: string[];
-  gaps: string[];
-}
-
-export type CapabilityType = 'full' | 'partial' | 'facilitates' | 'governance' | 'validates';
 
 // Utility functions for enhanced relationship system
 

@@ -4,6 +4,13 @@ echo "🔍 Framework MCP Documentation Validation"
 echo "========================================"
 echo
 
+# Every failed check must increment FAILURES and the script must exit non-zero.
+# (A previous version printed an unconditional "Ready for Release!" summary
+# regardless of what failed -- do not reintroduce that.)
+FAILURES=0
+pass() { echo "✅ $1"; }
+fail() { echo "❌ $1"; FAILURES=$((FAILURES + 1)); }
+
 # Check if we're in the right directory
 if [ ! -f "package.json" ]; then
     echo "❌ Error: Run this script from the Framework MCP root directory"
@@ -12,30 +19,27 @@ fi
 
 # Build the project
 echo "📦 Building project..."
-npm run build
-if [ $? -ne 0 ]; then
+if ! npm run build; then
     echo "❌ Build failed"
     exit 1
 fi
-echo "✅ Build successful"
+pass "Build successful"
 echo
 
-# Test HTTP server startup  
+# Test HTTP server startup
 echo "🚀 Testing HTTP server startup..."
 PORT=9004 node dist/interfaces/http/http-server.js &
 SERVER_PID=$!
+trap 'kill $SERVER_PID 2>/dev/null' EXIT
 sleep 5
 
 # Test health endpoint
 echo "🏥 Testing health endpoint..."
 HEALTH=$(curl -s http://localhost:9004/health 2>/dev/null)
 if echo "$HEALTH" | jq -e '.status == "healthy"' > /dev/null 2>&1; then
-    echo "✅ Health endpoint working"
-    VERSION=$(echo "$HEALTH" | jq -r '.version')
-    echo "   Version: $VERSION"
+    pass "Health endpoint working (version: $(echo "$HEALTH" | jq -r '.version'))"
 else
-    echo "❌ Health endpoint failed"
-    kill $SERVER_PID 2>/dev/null
+    echo "❌ Health endpoint failed -- cannot continue"
     exit 1
 fi
 
@@ -43,108 +47,85 @@ fi
 echo
 echo "🔧 Testing API endpoints..."
 
-# Test safeguards list
 SAFEGUARDS=$(curl -s http://localhost:9004/api/safeguards 2>/dev/null)
 TOTAL=$(echo "$SAFEGUARDS" | jq -r '.total' 2>/dev/null)
 if [ "$TOTAL" = "153" ]; then
-    echo "✅ Safeguards endpoint: $TOTAL safeguards"
+    pass "Safeguards endpoint: $TOTAL safeguards"
 else
-    echo "❌ Safeguards endpoint failed (expected 153, got $TOTAL)"
+    fail "Safeguards endpoint failed (expected 153, got $TOTAL)"
 fi
 
-# Test safeguard details
 DETAILS=$(curl -s http://localhost:9004/api/safeguards/1.1 2>/dev/null)
 TITLE=$(echo "$DETAILS" | jq -r '.title' 2>/dev/null)
 if [[ "$TITLE" == "Establish and Maintain"* ]]; then
-    echo "✅ Safeguard details endpoint working"
+    pass "Safeguard details endpoint working"
 else
-    echo "❌ Safeguard details endpoint failed"
+    fail "Safeguard details endpoint failed"
 fi
 
-# Test validate vendor mapping
-VALIDATION=$(curl -s -X POST http://localhost:9004/api/validate-vendor-mapping \
-    -H "Content-Type: application/json" \
-    -d '{"vendor_name":"Test Vendor","safeguard_id":"1.1","claimed_capability":"facilitates","supporting_text":"Our tool enhances existing asset management systems with additional discovery capabilities and detailed reporting features."}' 2>/dev/null)
-VALIDATION_STATUS=$(echo "$VALIDATION" | jq -r '.validation_status' 2>/dev/null)
-if [ "$VALIDATION_STATUS" != "null" ] && [ "$VALIDATION_STATUS" != "" ]; then
-    echo "✅ Validate vendor mapping endpoint working"
-else
-    echo "❌ Validate vendor mapping endpoint failed"
-fi
+# Regression guard: the analysis endpoints were removed at v1.4.0 (Pure Data
+# Provider architecture). They must stay gone -- assert they 404.
+for DEAD_ROUTE in /api/validate-vendor-mapping /api/analyze-vendor-response /api/validate-coverage-claim; do
+    CODE=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:9004${DEAD_ROUTE}" 2>/dev/null)
+    if [ "$CODE" = "404" ]; then
+        pass "Removed endpoint ${DEAD_ROUTE} correctly returns 404"
+    else
+        fail "Removed endpoint ${DEAD_ROUTE} is reachable (HTTP ${CODE})"
+    fi
+done
 
-# Test analyze vendor response
-ANALYSIS=$(curl -s -X POST http://localhost:9004/api/analyze-vendor-response \
-    -H "Content-Type: application/json" \
-    -d '{"vendor_name":"ServiceNow CMDB","safeguard_id":"1.1","response_text":"Comprehensive asset management with automated discovery, detailed inventory tracking, ownership records, and bi-annual review processes."}' 2>/dev/null)
-CAPABILITY=$(echo "$ANALYSIS" | jq -r '.determined_capability' 2>/dev/null)
-if [ "$CAPABILITY" != "null" ] && [ "$CAPABILITY" != "" ]; then
-    echo "✅ Analyze vendor response endpoint working"
-else
-    echo "❌ Analyze vendor response endpoint failed"  
-fi
-
-# Test deprecated endpoint removal
-DEPRECATED=$(curl -s http://localhost:9004/api/validate-coverage-claim 2>/dev/null)
-if echo "$DEPRECATED" | jq -e '.error' > /dev/null 2>&1; then
-    echo "✅ Deprecated validate-coverage-claim endpoint properly removed"
-else
-    echo "❌ Deprecated endpoint still accessible"
-fi
-
-# Cleanup
 kill $SERVER_PID 2>/dev/null
 echo
 
 # Documentation consistency checks
 echo "📚 Checking documentation consistency..."
 
-# Check tool count consistency
-README_TOOLS=$(grep -c "validate_vendor_mapping\|analyze_vendor_response\|get_safeguard_details\|list_available_safeguards" README.md)
-CLAUDE_TOOLS=$(grep -c "validate_vendor_mapping\|analyze_vendor_response\|get_safeguard_details\|list_available_safeguards" CLAUDE.md)
-COPILOT_TOOLS=$(grep -c "validate_vendor_mapping\|analyze_vendor_response\|get_safeguard_details\|list_available_safeguards" COPILOT_INTEGRATION.md)
+# The server exposes exactly two MCP tools. README must document both.
+for TOOL in get_safeguard_details list_available_safeguards; do
+    if grep -q "$TOOL" README.md; then
+        pass "README documents $TOOL"
+    else
+        fail "README is missing $TOOL"
+    fi
+done
 
-if [ "$README_TOOLS" -ge 4 ] && [ "$CLAUDE_TOOLS" -ge 4 ] && [ "$COPILOT_TOOLS" -ge 4 ]; then
-    echo "✅ All documentation references 4 tools consistently"
+# Regression guard: the retired capability-role taxonomy (FULL / PARTIAL /
+# FACILITATES / GOVERNANCE / VALIDATES) must not creep back. Note that
+# 'governanceElements' (CIS orange elements) and securityFunction 'Govern' are
+# authentic CIS data and are intentionally NOT matched here.
+if grep -riE '\b(facilitates|validates)\b|capability role|5 capability' README.md > /dev/null 2>&1; then
+    fail "Retired capability-role taxonomy found in README.md:"
+    grep -rinE '\b(facilitates|validates)\b|capability role|5 capability' README.md
 else
-    echo "❌ Tool count inconsistency: README($README_TOOLS), CLAUDE($CLAUDE_TOOLS), COPILOT($COPILOT_TOOLS)"
+    pass "No retired capability-role taxonomy in README.md"
 fi
 
-# Check version consistency
-VERSION_FILES=("package.json" "swagger.json" "CLAUDE.md" "COPILOT_INTEGRATION.md" "DEPLOYMENT_GUIDE.md")
-VERSION_ISSUES=()
+# Check version consistency. The version is DERIVED from package.json -- never
+# hardcode it here, or this check silently rots at the last release's number.
+EXPECTED_VERSION=$(jq -r '.version' package.json)
+echo "   Expected version (from package.json): $EXPECTED_VERSION"
 
-for file in "${VERSION_FILES[@]}"; do
-    if [ -f "$file" ]; then
-        if ! grep -q "1.4.0" "$file"; then
-            VERSION_ISSUES+=("$file")
-        fi
+VERSION_ISSUES=()
+for file in "swagger.json" "src/interfaces/mcp/mcp-server.ts" "src/interfaces/http/http-server.ts"; do
+    if [ -f "$file" ] && ! grep -q "$EXPECTED_VERSION" "$file"; then
+        VERSION_ISSUES+=("$file")
     fi
 done
 
 if [ ${#VERSION_ISSUES[@]} -eq 0 ]; then
-    echo "✅ Version 1.4.0 consistent across all files"
+    pass "Version $EXPECTED_VERSION consistent across all files"
 else
-    echo "❌ Version inconsistency in: ${VERSION_ISSUES[*]}"
-fi
-
-# Check for deprecated references
-DEPRECATED_FILES=$(grep -l "validate_coverage_claim" *.md 2>/dev/null || true)
-if [ -z "$DEPRECATED_FILES" ]; then
-    echo "✅ No deprecated validate_coverage_claim references in documentation"
-else
-    echo "❌ Deprecated references found in: $DEPRECATED_FILES"
+    fail "Version drift -- these files do not mention $EXPECTED_VERSION: ${VERSION_ISSUES[*]}"
 fi
 
 # Summary
 echo
 echo "📊 VALIDATION SUMMARY"
 echo "===================="
-echo "✅ Build: Successful"
-echo "✅ HTTP Server: Working"  
-echo "✅ All 4 API Endpoints: Functional"
-echo "✅ 153 CIS Safeguards: Available"
-echo "✅ Documentation: Consistent"
-echo "✅ Version 1.4.0: Aligned"
-echo "✅ Architecture: Clean (4 tools)"
-echo
-echo "🎉 Framework MCP v1.4.0 Ready for Release!"
+if [ "$FAILURES" -eq 0 ]; then
+    echo "🎉 Framework MCP v${EXPECTED_VERSION}: all checks passed"
+    exit 0
+else
+    echo "❌ Framework MCP v${EXPECTED_VERSION}: ${FAILURES} check(s) failed -- see above"
+    exit 1
+fi

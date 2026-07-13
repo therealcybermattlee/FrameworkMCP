@@ -63,7 +63,7 @@ npm run start:http
 
 | Tool | Description |
 |------|-------------|
-| `get_safeguard_details` | Get detailed safeguard breakdown with capability-specific prompts |
+| `get_safeguard_details` | Get detailed safeguard breakdown (governance elements, core requirements, sub-taxonomical elements, implementation suggestions) |
 | `list_available_safeguards` | List all 153 CIS safeguards |
 
 ### HTTP Endpoints
@@ -91,17 +91,42 @@ curl http://localhost:8080/api/safeguards/1.1
 curl http://localhost:8080/api/safeguards/5.1?include_examples=true
 ```
 
-## The 5 Capability Roles
+## Assessing a Tool Against a Safeguard
 
-Each safeguard can be assessed against five capability types:
+> **This framework assesses one tool in isolation against one safeguard.**
+> Satisfying a safeguard is a *portfolio* property — it typically takes several
+> tools across several asset types. No verdict below means a safeguard is met,
+> covered, or compliant.
 
-| Role | Description |
+### Element completeness — what this framework *can* assess
+
+A tool is assessed on how many of the safeguard's **taxonomical elements** it addresses:
+
+| `elementsAddressed` | Meaning |
 |------|-------------|
-| **Full** | Vendor features map to all sub-taxonomical elements of the safeguard for a particular asset class |
-| **Partial** | Vendor features map to some but not all sub-taxonomical elements for a particular asset class |
-| **Facilitates** | Tool empowers others to implement better, faster, or more completely, usually with data |
-| **Governance** | Policy/process/oversight capabilities |
-| **Validates** | Audit/evidence/reporting capabilities |
+| **`all`** | The tool addresses every taxonomical element of the safeguard |
+| **`some`** | The tool addresses some, but not all, taxonomical elements |
+| **`none`** | The tool addresses no taxonomical elements of this safeguard |
+
+The companion `notAddressed` list — which elements the tool *doesn't* reach — is
+often more useful than the verdict itself, because it names what you still need.
+
+### Estate scope — what this framework *cannot* assess
+
+`elementsAddressed: "all"` is **not** estate coverage. A tool that addresses every
+element of safeguard 9.2 still only protects the devices it is actually deployed on.
+Whether *your* estate is protected depends on your asset inventory, deployment
+footprint, and licensing — none of which are visible in a vendor response. Every
+assessment therefore carries a `scopeLimits` block stating what remains unassessed.
+
+Deliberately absent vocabulary: *meets, satisfies, covers, achieves, compliant.*
+Each of those terminates the sentence and implies the practitioner is finished.
+
+### GRC / policy services
+
+Whether a tool is a GRC or policy service is a **single yes/no question asked once
+per tool** (`isGrcOrPolicyService`), not a per-safeguard classification — it is a
+property of the product, not of its relationship to any one safeguard.
 
 ## Cloud Deployment
 

@@ -67,7 +67,7 @@
     "/api/safeguards/{safeguardId}": {
       "get": {
         "summary": "Get Safeguard Details",
-        "description": "Get detailed information about a specific CIS safeguard including governance elements, core requirements, implementation suggestions, and five capability-specific AI-driven system prompts for n8n workflow integration",
+        "description": "Get detailed information about a specific CIS safeguard including governance elements, core requirements, sub-taxonomical elements, and implementation suggestions",
         "operationId": "getSafeguardDetails",
         "tags": ["Safeguards"],
         "parameters": [
@@ -279,7 +279,7 @@
           },
           "version": {
             "type": "string",
-            "example": "2.5.7"
+            "example": "2.6.0"
           },
           "timestamp": {
             "type": "string",
@@ -324,7 +324,7 @@
           },
           "version": {
             "type": "string",
-            "example": "2.5.7"
+            "example": "2.6.0"
           },
           "description": {
             "type": "string",
@@ -336,13 +336,6 @@
               "type": "string"
             },
             "description": "Available API endpoints and their descriptions"
-          },
-          "capabilities": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Supported capability types"
           },
           "framework": {
             "type": "string",
