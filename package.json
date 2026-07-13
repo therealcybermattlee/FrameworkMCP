@@ -18,6 +18,7 @@
     "start:http": "node dist/interfaces/http/http-server.js",
     "dev": "tsc && npm run start:mcp",
     "dev:http": "tsc && npm run start:http",
+    "test": "bash scripts/validate-documentation.sh",
     "prepare": "npm run build"
   },
   "bin": {

@@ -118,6 +118,29 @@ else
     fail "Version drift -- these files do not mention $EXPECTED_VERSION: ${VERSION_ISSUES[*]}"
 fi
 
+# Packaging guard. The `files` field in package.json is the only thing keeping
+# dev tooling (.claude/, .github/, .specify/, .mcp.json) out of the published
+# npm tarball -- without it, npm falls back to .gitignore and ships the whole
+# repo. Assert the tarball stays clean and still contains its entry points.
+echo
+echo "📦 Checking npm tarball contents..."
+PACK_FILES=$(npm pack --dry-run --json 2>/dev/null | jq -r '.[0].files[].path')
+
+if echo "$PACK_FILES" | grep -qE '^\.|specify|claude|github|^\.do/'; then
+    fail "Dev config would be published to npm (check the \"files\" field in package.json):"
+    echo "$PACK_FILES" | grep -E '^\.|specify|claude|github|^\.do/' | sed 's/^/     /'
+else
+    pass "npm tarball contains no dev config ($(echo "$PACK_FILES" | wc -l | tr -d ' ') files)"
+fi
+
+for ENTRY in "dist/index.js" "dist/interfaces/http/http-server.js"; do
+    if echo "$PACK_FILES" | grep -qx "$ENTRY"; then
+        pass "npm tarball contains $ENTRY"
+    else
+        fail "npm tarball is MISSING entry point $ENTRY"
+    fi
+done
+
 # Summary
 echo
 echo "📊 VALIDATION SUMMARY"
