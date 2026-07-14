@@ -90,15 +90,27 @@ for TOOL in get_safeguard_details list_available_safeguards; do
 done
 
 # Regression guard: the retired capability-role taxonomy (FULL / PARTIAL /
-# FACILITATES / GOVERNANCE / VALIDATES) must not creep back. Note that
-# 'governanceElements' (CIS orange elements) and securityFunction 'Govern' are
-# authentic CIS data and are intentionally NOT matched here.
-if grep -riE '\b(facilitates|validates)\b|capability role|5 capability' README.md > /dev/null 2>&1; then
-    fail "Retired capability-role taxonomy found in README.md:"
-    grep -rinE '\b(facilitates|validates)\b|capability role|5 capability' README.md
-else
-    pass "No retired capability-role taxonomy in README.md"
-fi
+# FACILITATES / GOVERNANCE / VALIDATES) must not creep back.
+#
+# Scope note -- this scans every PUBLISHED surface, not just README.md. An
+# earlier version scanned README.md alone, which is exactly how the retired
+# vocabulary survived in package.json's `keywords` ("vendor-analysis",
+# "capability-assessment") and shipped to the public npm page for every release
+# through v2.6.0. The npm page is documentation. Guard it like documentation.
+#
+# Deliberately NOT scanned: src/core/safeguard-manager.ts. It carries authentic
+# CIS text -- safeguard 16.1's description contains the word "facilitates".
+# That is FRAMEWORK DATA, not our copy. Never rewrite CIS's words to fit our
+# style guide, and never add that file here.
+RETIRED_TAXONOMY='\b(facilitates|validates)\b|capability.role|capability.assessment|vendor.analysis|5 capability'
+for DOC in README.md package.json swagger.json; do
+    if grep -riE "$RETIRED_TAXONOMY" "$DOC" > /dev/null 2>&1; then
+        fail "Retired capability-role taxonomy found in ${DOC}:"
+        grep -rinE "$RETIRED_TAXONOMY" "$DOC" | sed 's/^/     /'
+    else
+        pass "No retired capability-role taxonomy in ${DOC}"
+    fi
+done
 
 # Check version consistency. The version is DERIVED from package.json -- never
 # hardcode it here, or this check silently rots at the last release's number.
