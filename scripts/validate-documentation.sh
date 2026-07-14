@@ -153,6 +153,31 @@ for ENTRY in "dist/index.js" "dist/interfaces/http/http-server.js"; do
     fi
 done
 
+# Entry-point truthfulness. `types` and `main` must describe the SAME module.
+#
+# Through v2.6.1 they did not: `types` pointed at dist/index.d.ts (which
+# declares SafeguardManager) while `main` pointed at the HTTP server, which
+# exports only FrameworkHttpServer. So
+#     import { SafeguardManager } from 'framework-mcp'
+# type-checked cleanly and threw at runtime -- the worst failure mode a package
+# can have, because the compiler actively vouches for the broken call.
+#
+# Assert against the RESOLVED `main`, not a hardcoded path, so this keeps
+# working if the entry point moves again.
+echo
+echo "🔗 Checking that runtime exports match the declared types..."
+MAIN_ENTRY=$(jq -r '.main' package.json)
+EXPECTED_EXPORTS="FrameworkMcpServer FrameworkHttpServer SafeguardManager"
+ACTUAL_EXPORTS=$(node -e "import('./${MAIN_ENTRY}').then(m => console.log(Object.keys(m).join(' ')))" 2>/dev/null)
+
+for SYM in $EXPECTED_EXPORTS; do
+    if echo "$ACTUAL_EXPORTS" | grep -qw "$SYM"; then
+        pass "main (${MAIN_ENTRY}) exports $SYM"
+    else
+        fail "main (${MAIN_ENTRY}) does NOT export $SYM, but index.d.ts declares it -- consumers get a clean type-check and a runtime TypeError"
+    fi
+done
+
 # Summary
 echo
 echo "📊 VALIDATION SUMMARY"
