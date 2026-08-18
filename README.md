@@ -68,9 +68,11 @@ npm run dev:worker   # local Worker via wrangler dev
 npm run deploy       # wrangler deploy (needs `npx wrangler login`)
 ```
 
-Pushes to `main` deploy automatically via `.github/workflows/deploy.yml`
-(requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets).
-CORS origins and rate limits are configured in `wrangler.jsonc`.
+Production deploys use Cloudflare's Git integration (Workers Builds): the
+Worker is connected to this GitHub repository in the Cloudflare dashboard,
+and every push to `main` is cloned, built, and deployed by Cloudflare
+directly. Non-`main` branches get preview deployments. No deploy tokens
+live in GitHub. CORS origins and rate limits are configured in `wrangler.jsonc`.
 
 ## API Reference
 
