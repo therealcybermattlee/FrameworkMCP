@@ -1,6 +1,6 @@
 {
   "name": "framework-mcp",
-  "version": "2.7.1",
+  "version": "3.0.0",
   "description": "Pure Data Provider architecture serving authentic CIS Controls Framework data via MCP and HTTP API. Empowers LLMs with authoritative safeguards data for analysis. Supports Microsoft Copilot custom connectors and cloud deployments.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,8 @@
     "dist/",
     "swagger.json",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsc",
@@ -18,11 +19,12 @@
     "start:http": "node dist/interfaces/http/http-server.js",
     "dev": "tsc && npm run start:mcp",
     "dev:http": "tsc && npm run start:http",
-    "test": "node scripts/verify-cis-text.mjs && bash scripts/validate-documentation.sh",
+    "test": "node scripts/verify-cis-text.mjs && node scripts/verify-cis-elements.mjs && bash scripts/validate-documentation.sh",
     "verify:cis": "node scripts/verify-cis-text.mjs",
     "prepare": "npm run build",
     "dev:worker": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "verify:elements": "node scripts/verify-cis-elements.mjs"
   },
   "bin": {
     "framework-mcp": "./dist/index.js"

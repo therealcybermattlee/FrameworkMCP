@@ -74,6 +74,19 @@ and every push to `main` is cloned, built, and deployed by Cloudflare
 directly. Non-`main` branches get preview deployments. No deploy tokens
 live in GitHub. CORS origins and rate limits are configured in `wrangler.jsonc`.
 
+## Element provenance
+
+Every safeguard's four element buckets (`governanceElements`, `coreRequirements`,
+`subTaxonomicalElements`, `implementationSuggestions`) are transcribed
+element-for-element from the colour-coded shapes in the
+[CIS v8.1 Safeguard Visualisations](https://frameworkmaps.org/assets/CISv8.1-Visualisations-2025-5_MattLee.pdf)
+(orange hexagon, green box, yellow parallelogram, gray trapezoid respectively).
+Titles and descriptions are verbatim CIS v8.1.2 text. Both are enforced by
+`npm test` (`scripts/verify-cis-text.mjs`, `scripts/verify-cis-elements.mjs`)
+against the canonical files in `data/`. Element strings are a public contract:
+any change to them is released as a major version with a per-safeguard record
+in [CHANGELOG.md](CHANGELOG.md).
+
 ## API Reference
 
 ### MCP Tools

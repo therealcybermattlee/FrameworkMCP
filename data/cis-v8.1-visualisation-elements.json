@@ -1,0 +1,2806 @@
+{
+ "source": "CIS v8.1 Safeguard Visualisations (community project, 2025), https://frameworkmaps.org/assets/CISv8.1-Visualisations-2025-5_MattLee.pdf. Elements are the colour-coded shapes on each safeguard's page: orange hexagon -> governanceElements, green rounded box -> coreRequirements, yellow parallelogram -> subTaxonomicalElements, gray trapezoid contents -> implementationSuggestions.",
+ "rules": [
+  "Text is taken verbatim from the shape (whitespace collapsed, trailing period dropped, line-wrap hyphen artifacts joined).",
+  "Salmon/red 'do not' octagons and numeric threshold shapes are recorded under governanceElements (thresholds/restrictions are governance by definition).",
+  "Blue 'called-out tool' triangles take the bucket of the box that contains them.",
+  "Excluded as informational, not elements: title oval, highlighted description banner, related-safeguard circles, conditional diamonds (Or/And/If), pink OS-dependent stars, and the top-right IG / security-function / asset-type / Cost-of-Cyber-Defense boxes.",
+  "Where an existing element already matched a PDF shape (case/punctuation-insensitive), the existing string was kept verbatim to avoid downstream churn.",
+  "PDF typos corrected: 'Enteprise Assets' (7.3) -> 'Enterprise Assets'; '\"Seperate\" enterprise workspaces' (4.12) -> 'Separate enterprise workspaces'; a stray 'impact this Safeguard' tail was trimmed from the 15.4 review hexagon.",
+  "17.2 has no page in the PDF; its elements are reconciled against the official CIS v8.1.2 text only."
+ ],
+ "safeguards": {
+  "1.1": {
+   "pdfPage": 13,
+   "governanceElements": [
+    "Review and update the inventory of all enterprise assets",
+    "Establish",
+    "Up-to-date",
+    "more frequently",
+    "bi-annually",
+    "Maintain",
+    "Ensure"
+   ],
+   "coreRequirements": [
+    "Asset Inventory"
+   ],
+   "subTaxonomicalElements": [
+    "Connected to Infrastructure",
+    "Potential to store or process data",
+    "Remotely",
+    "Virtually",
+    "Physically",
+    "End-User Devices",
+    "IOT Devices",
+    "Network Devices",
+    "Servers",
+    "Detailed",
+    "Accurate",
+    "Mobile",
+    "Portable",
+    "Those within cloud environments",
+    "Regularly Connected Devices - NOT Under Control of Enterprise",
+    "Machine Name",
+    "Network Address (IF STATIC)",
+    "Hardware Address",
+    "Enterprise asset owner",
+    "Department for each asset",
+    "Asset has been approved to connect to the network"
+   ],
+   "implementationSuggestions": [
+    "For mobile end-user devices, MDM type tools can support this process, where appropriate"
+   ]
+  },
+  "1.2": {
+   "pdfPage": 14,
+   "governanceElements": [
+    "Ensure",
+    "On a weekly basis"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Remove the asset from the network",
+    "Deny the Asset from connecting remotely to the network",
+    "Quarantine the asset"
+   ]
+  },
+  "1.3": {
+   "pdfPage": 15,
+   "governanceElements": [
+    "Utilize",
+    "Configure",
+    "Execute daily",
+    "Execute daily, or more frequently"
+   ],
+   "coreRequirements": [
+    "Active discovery tool"
+   ],
+   "subTaxonomicalElements": [
+    "Identify Assets Connected To Network"
+   ],
+   "implementationSuggestions": []
+  },
+  "1.4": {
+   "pdfPage": 16,
+   "governanceElements": [
+    "Use",
+    "Review and Use Logs",
+    "Update asset inventory",
+    "Weekly",
+    "More Frequently"
+   ],
+   "coreRequirements": [
+    "IPAM Tool",
+    "DHCP Logging on all DHCP servers",
+    "IPAM"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "1.5": {
+   "pdfPage": 17,
+   "governanceElements": [
+    "Use",
+    "Review and Use scans",
+    "Update asset inventory",
+    "Weekly",
+    "More Frequently"
+   ],
+   "coreRequirements": [
+    "Passive Discovery Tool"
+   ],
+   "subTaxonomicalElements": [
+    "Identify Assets Connected To Network"
+   ],
+   "implementationSuggestions": []
+  },
+  "2.1": {
+   "pdfPage": 19,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update software inventory",
+    "bi-annually",
+    "More Frequently",
+    "Must Document",
+    "Where appropriate"
+   ],
+   "coreRequirements": [
+    "Detailed inventory of all licensed software"
+   ],
+   "subTaxonomicalElements": [
+    "Installed* on enterprise Assets",
+    "Business Purpose",
+    "Title",
+    "Publisher",
+    "Initial Install / Use Date",
+    "Decomm. Date",
+    "Deployment mechanism",
+    "URL",
+    "App Store(s)",
+    "App Version(s)"
+   ],
+   "implementationSuggestions": []
+  },
+  "2.2": {
+   "pdfPage": 20,
+   "governanceElements": [
+    "Ensure",
+    "Review the software list",
+    "Monthly",
+    "More frequently",
+    "Unsupported"
+   ],
+   "coreRequirements": [
+    "Currently supported software",
+    "Authorized in the software inventory"
+   ],
+   "subTaxonomicalElements": [
+    "Document Exception detailing mitigating controls",
+    "Determine if Authorized Software Is Currently Supported",
+    "Determine Necessity for Business",
+    "Document Residual risk acceptance"
+   ],
+   "implementationSuggestions": []
+  },
+  "2.3": {
+   "pdfPage": 21,
+   "governanceElements": [
+    "Ensure",
+    "Review",
+    "Monthly",
+    "More Frequently"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [
+    "Document Exception",
+    "Remove from use"
+   ],
+   "implementationSuggestions": []
+  },
+  "2.4": {
+   "pdfPage": 22,
+   "governanceElements": [
+    "Utilize",
+    "when possible"
+   ],
+   "coreRequirements": [
+    "software inventory tools"
+   ],
+   "subTaxonomicalElements": [
+    "Automate Discovery",
+    "Automate Documentation",
+    "Installed Software"
+   ],
+   "implementationSuggestions": []
+  },
+  "2.5": {
+   "pdfPage": 23,
+   "governanceElements": [
+    "Use",
+    "Ensure",
+    "Reassess",
+    "Bi-Annually",
+    "More Frequently"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [
+    "technical controls",
+    "Accessed",
+    "Execute"
+   ],
+   "implementationSuggestions": [
+    "Application Allowlisting"
+   ]
+  },
+  "2.6": {
+   "pdfPage": 24,
+   "governanceElements": [
+    "Use",
+    "Ensure",
+    "Reassess",
+    "Bi-Annually",
+    "More Frequently"
+   ],
+   "coreRequirements": [
+    "only authorized software libraries",
+    "are allowed to load into a system process"
+   ],
+   "subTaxonomicalElements": [
+    "Technical Controls",
+    "Block unauthorized libraries from loading into a system process"
+   ],
+   "implementationSuggestions": [
+    "Specific .so files",
+    "Specific .dll files",
+    "Specific .ocx files"
+   ]
+  },
+  "2.7": {
+   "pdfPage": 25,
+   "governanceElements": [
+    "Use",
+    "Ensure",
+    "Reassess",
+    "Bi-Annually",
+    "More Frequently"
+   ],
+   "coreRequirements": [
+    "only authorized files are allowed to execute"
+   ],
+   "subTaxonomicalElements": [
+    "Technical Controls",
+    "Block unauthorized scripts from executing"
+   ],
+   "implementationSuggestions": [
+    "Specific .ps1 files",
+    "Specific .py files",
+    "Digital signatures",
+    "Version control"
+   ]
+  },
+  "3.1": {
+   "pdfPage": 27,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update documentation",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "documented data management process"
+   ],
+   "subTaxonomicalElements": [
+    "Data Sensitivity",
+    "Data Owner",
+    "Retention Standards",
+    "Data Retention Limits",
+    "Disposal Requirements",
+    "Data Handling"
+   ],
+   "implementationSuggestions": []
+  },
+  "3.2": {
+   "pdfPage": 28,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Annually, at a minimum",
+    "Review and update inventory",
+    "Priority on sensitive data"
+   ],
+   "coreRequirements": [
+    "data inventory"
+   ],
+   "subTaxonomicalElements": [
+    "Based on Data Management process",
+    "Sensitive Data at a Minimum"
+   ],
+   "implementationSuggestions": []
+  },
+  "3.3": {
+   "pdfPage": 29,
+   "governanceElements": [
+    "Configure"
+   ],
+   "coreRequirements": [
+    "data access control lists"
+   ],
+   "subTaxonomicalElements": [
+    "ACLS - \"aka\" Access Permissions",
+    "Based on \"Need to Know\"",
+    "Local",
+    "Remote File Systems",
+    "Applications",
+    "Databases"
+   ],
+   "implementationSuggestions": []
+  },
+  "3.4": {
+   "pdfPage": 30,
+   "governanceElements": [
+    "Retain",
+    "Enforce",
+    "Must Include"
+   ],
+   "coreRequirements": [
+    "Data retention"
+   ],
+   "subTaxonomicalElements": [
+    "Minimum Timelines",
+    "Maximum timelines"
+   ],
+   "implementationSuggestions": []
+  },
+  "3.5": {
+   "pdfPage": 31,
+   "governanceElements": [
+    "Ensure",
+    "Disposal process and method are commensurate with the data sensitivity"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "3.6": {
+   "pdfPage": 32,
+   "governanceElements": [
+    "Encrypt"
+   ],
+   "coreRequirements": [
+    "data on end-user devices"
+   ],
+   "subTaxonomicalElements": [
+    "Sensitive data"
+   ],
+   "implementationSuggestions": [
+    "Windows Bitlocker",
+    "Apple FileVault",
+    "Linux dm-crypt"
+   ]
+  },
+  "3.7": {
+   "pdfPage": 33,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update classification scheme",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "data classification scheme"
+   ],
+   "subTaxonomicalElements": [
+    "Classify their data according to labels"
+   ],
+   "implementationSuggestions": [
+    "Sensitive",
+    "Confidential",
+    "Public"
+   ]
+  },
+  "3.8": {
+   "pdfPage": 34,
+   "governanceElements": [
+    "Review and update documentation",
+    "When significant enterprise changes occur that could impact this Safeguard",
+    "Annually"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [
+    "Enterprise Data Flows",
+    "Service Provider Data Flows"
+   ],
+   "implementationSuggestions": []
+  },
+  "3.9": {
+   "pdfPage": 35,
+   "governanceElements": [
+    "Maintain"
+   ],
+   "coreRequirements": [
+    "Data on Removable Media"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "3.10": {
+   "pdfPage": 36,
+   "governanceElements": [
+    "Encrypt"
+   ],
+   "coreRequirements": [
+    "Sensitive data in transit"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "TLS",
+    "OpenSSH"
+   ]
+  },
+  "3.11": {
+   "pdfPage": 37,
+   "governanceElements": [
+    "Encrypt",
+    "Minimum Requirement"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [
+    "Servers",
+    "Applications",
+    "Databases",
+    "Storage Layer (server side) encryption"
+   ],
+   "implementationSuggestions": [
+    "Application layer (client-side) encryption",
+    "Where access to the data storage device(s) does not permit access to the plain-text data"
+   ]
+  },
+  "3.12": {
+   "pdfPage": 38,
+   "governanceElements": [
+    "Do not process sensitive data on enterprise assets intended for lower sensitivity data"
+   ],
+   "coreRequirements": [
+    "Based on the sensitivity of data",
+    "Segment data processing (compute)",
+    "Segment Storage"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "3.13": {
+   "pdfPage": 39,
+   "governanceElements": [
+    "Implement"
+   ],
+   "coreRequirements": [
+    "Automated DLP Tool",
+    "Identify all sensitive Data"
+   ],
+   "subTaxonomicalElements": [
+    "Stored",
+    "Processed",
+    "Transmitte d",
+    "Update Data Inventory",
+    "Remote Service Provider",
+    "Onsite Data"
+   ],
+   "implementationSuggestions": [
+    "Host-based Data loss Prevention (DLP) tool"
+   ]
+  },
+  "3.14": {
+   "pdfPage": 40,
+   "governanceElements": [
+    "Log"
+   ],
+   "coreRequirements": [
+    "Sensitive Data access",
+    "Access",
+    "Modification",
+    "Disposal"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "4.1": {
+   "pdfPage": 42,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update documentati on",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "documented secure configuration process"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise assets",
+    "Software",
+    "OS",
+    "Applications",
+    "End-user devices",
+    "Non-computing/I oT devices",
+    "Servers",
+    "Mobile",
+    "Portable"
+   ],
+   "implementationSuggestions": []
+  },
+  "4.2": {
+   "pdfPage": 43,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update documentation",
+    "When significant enterprise changes occur that could impact this Safeguard",
+    "Annually"
+   ],
+   "coreRequirements": [
+    "Documented Secure Network Configuration Process"
+   ],
+   "subTaxonomicalElements": [
+    "Network devices"
+   ],
+   "implementationSuggestions": []
+  },
+  "4.3": {
+   "pdfPage": 44,
+   "governanceElements": [
+    "Configure",
+    "Period must not exceed for 15 Minutes",
+    "Period must not exceed for 2 Minutes"
+   ],
+   "coreRequirements": [
+    "Automatic Session Locking"
+   ],
+   "subTaxonomicalElements": [
+    "Period of inactivity",
+    "General Purpose OS's",
+    "Mobile end-user devices"
+   ],
+   "implementationSuggestions": []
+  },
+  "4.4": {
+   "pdfPage": 45,
+   "governanceElements": [
+    "Implement",
+    "Manage",
+    "Where Supported"
+   ],
+   "coreRequirements": [
+    "Server Firewall"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Virtual Firewall",
+    "OS Firewall",
+    "Third Party Firewall"
+   ]
+  },
+  "4.5": {
+   "pdfPage": 46,
+   "governanceElements": [
+    "Implement",
+    "Manage"
+   ],
+   "coreRequirements": [
+    "Port Host-Filtering based Tool Firewall",
+    "End User Devices"
+   ],
+   "subTaxonomicalElements": [
+    "Default Deny Rule that drops all traffic",
+    "Except Explicitly Allowed",
+    "Services",
+    "Ports"
+   ],
+   "implementationSuggestions": []
+  },
+  "4.6": {
+   "pdfPage": 47,
+   "governanceElements": [
+    "Do not use insecure management protocols"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [
+    "Unless operationally essential"
+   ],
+   "implementationSuggestions": [
+    "Manage configuration through version-controlled Infrastructure-as-Code (IaC)",
+    "Accessing administrative interfaces over secure network protocols",
+    "Telnet (Teletype Network)",
+    "HTTP",
+    "SSH",
+    "HTTPS"
+   ]
+  },
+  "4.7": {
+   "pdfPage": 48,
+   "governanceElements": [
+    "Manage"
+   ],
+   "coreRequirements": [
+    "default accounts"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise assets",
+    "Software"
+   ],
+   "implementationSuggestions": [
+    "Disabling",
+    "Unusable",
+    "Root",
+    "Administrator",
+    "Other pre-configured vendor accounts"
+   ]
+  },
+  "4.8": {
+   "pdfPage": 49,
+   "governanceElements": [
+    "Uninstall",
+    "Disable"
+   ],
+   "coreRequirements": [
+    "unnecessary services"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise assets",
+    "Software"
+   ],
+   "implementationSuggestions": [
+    "Unused file sharing service",
+    "Web Application Module",
+    "Service Function"
+   ]
+  },
+  "4.9": {
+   "pdfPage": 50,
+   "governanceElements": [
+    "Configure"
+   ],
+   "coreRequirements": [
+    "trusted DNS servers"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise assets"
+   ],
+   "implementationSuggestions": [
+    "Configuring assets to use enterprise-controlled DNS servers",
+    "Reputable externally accessible DNS servers"
+   ]
+  },
+  "4.10": {
+   "pdfPage": 51,
+   "governanceElements": [
+    "Enforce",
+    "Where supported",
+    "Do not allow more than 20 Failed Authentication Attempts",
+    "No more than 10 Failed Authentication Attempts"
+   ],
+   "coreRequirements": [
+    "automatic device lockout"
+   ],
+   "subTaxonomicalElements": [
+    "Predetermined threshold of local failed authentication attempts",
+    "Portable end-user devices",
+    "Laptops",
+    "Tablets and smartphones"
+   ],
+   "implementationSuggestions": [
+    "Microsoft® InTune Device Lock",
+    "Apple® Configuration Profile maxFailedAttempts"
+   ]
+  },
+  "4.11": {
+   "pdfPage": 52,
+   "governanceElements": [
+    "When deemed appropriate"
+   ],
+   "coreRequirements": [
+    "Remotely wipe enterprise data"
+   ],
+   "subTaxonomicalElements": [
+    "Portable end-user devices"
+   ],
+   "implementationSuggestions": [
+    "Lost devices",
+    "Stolen devices",
+    "When an individual no longer supports the enterprise"
+   ]
+  },
+  "4.12": {
+   "pdfPage": 53,
+   "governanceElements": [
+    "Ensure",
+    "Where Supported"
+   ],
+   "coreRequirements": [
+    "Separate enterprise workspaces",
+    "On Mobile Devices",
+    "Separate"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise Data",
+    "Enterprise Applications",
+    "Personal Data",
+    "Personal Applications"
+   ],
+   "implementationSuggestions": [
+    "Apple® Configuration Profile",
+    "AndroidTM Work Profile"
+   ]
+  },
+  "5.1": {
+   "pdfPage": 55,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Validate that all active accounts are authorized",
+    "Recurring schedule",
+    "Must include",
+    "Minimum Quarterly",
+    "More Frequently"
+   ],
+   "coreRequirements": [
+    "Inventory of Accounts"
+   ],
+   "subTaxonomicalElements": [
+    "User Accounts",
+    "Administrator Accounts",
+    "Name",
+    "Username",
+    "Start Stop Dates",
+    "Department"
+   ],
+   "implementationSuggestions": []
+  },
+  "5.2": {
+   "pdfPage": 56,
+   "governanceElements": [
+    "Use",
+    "At a minimum",
+    "8-character password for accounts using MFA",
+    "14-character password for accounts not using MFA"
+   ],
+   "coreRequirements": [
+    "Unique Passwords"
+   ],
+   "subTaxonomicalElements": [
+    "All Enterprise Assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "5.3": {
+   "pdfPage": 57,
+   "governanceElements": [
+    "Disable",
+    "Delete",
+    "Period of 45 days of inactivity",
+    "where supported"
+   ],
+   "coreRequirements": [
+    "Dormant Accounts"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "5.4": {
+   "pdfPage": 58,
+   "governanceElements": [
+    "Restrict"
+   ],
+   "coreRequirements": [
+    "Administrator Privileges",
+    "Dedicated Admin Accounts"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise assets",
+    "User's primary, non-privileged account",
+    "General Computing Activities"
+   ],
+   "implementationSuggestions": [
+    "Internet browsing",
+    "Email",
+    "Productivity suite use"
+   ]
+  },
+  "5.5": {
+   "pdfPage": 59,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Perform service account reviews to validate that all active accounts are authorized",
+    "at a minimum, must contain",
+    "On a recurring schedule",
+    "At a minimum quarterly",
+    "More frequently"
+   ],
+   "coreRequirements": [
+    "Inventory of Service Accounts"
+   ],
+   "subTaxonomicalElements": [
+    "Department Owner",
+    "Review date",
+    "Purpose"
+   ],
+   "implementationSuggestions": []
+  },
+  "5.6": {
+   "pdfPage": 60,
+   "governanceElements": [
+    "Centralize"
+   ],
+   "coreRequirements": [
+    "Account Management"
+   ],
+   "subTaxonomicalElements": [
+    "Directory Service",
+    "Identity Service"
+   ],
+   "implementationSuggestions": []
+  },
+  "6.1": {
+   "pdfPage": 62,
+   "governanceElements": [
+    "Establish",
+    "Follow"
+   ],
+   "coreRequirements": [
+    "Documented Access Granting Process"
+   ],
+   "subTaxonomicalElements": [
+    "New Hire",
+    "Role Change",
+    "Enterprise assets"
+   ],
+   "implementationSuggestions": [
+    "Preferably automated"
+   ]
+  },
+  "6.2": {
+   "pdfPage": 63,
+   "governanceElements": [
+    "Establish",
+    "Follow",
+    "Disabling Accounts, instead of Deleting accounts, may be necessary to preserve audit trails"
+   ],
+   "coreRequirements": [
+    "Access Revoking Process"
+   ],
+   "subTaxonomicalElements": [
+    "Role Change",
+    "Termination",
+    "Enterprise assets",
+    "Rights revocation",
+    "Disabling accounts immediately"
+   ],
+   "implementationSuggestions": [
+    "Preferably Automated"
+   ]
+  },
+  "6.3": {
+   "pdfPage": 64,
+   "governanceElements": [
+    "Require",
+    "Enforce",
+    "Where Supported"
+   ],
+   "coreRequirements": [
+    "MFA",
+    "ALL Externally Exposed Applications"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Enforcing MFA Through",
+    "Directory service",
+    "SSO Provider"
+   ]
+  },
+  "6.4": {
+   "pdfPage": 65,
+   "governanceElements": [
+    "Require"
+   ],
+   "coreRequirements": [
+    "MFA",
+    "Remote Network Access"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "6.5": {
+   "pdfPage": 66,
+   "governanceElements": [
+    "Require",
+    "Where Supported"
+   ],
+   "coreRequirements": [
+    "All Admin Access Accounts",
+    "MFA"
+   ],
+   "subTaxonomicalElements": [
+    "Onsite Management",
+    "Service Provider",
+    "All enterprise assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "6.6": {
+   "pdfPage": 67,
+   "governanceElements": [
+    "Establish",
+    "maintain",
+    "Review and update inventory",
+    "At a minimum Annually",
+    "More frequently"
+   ],
+   "coreRequirements": [
+    "inventory of the enterprise's authentication and authorization systems"
+   ],
+   "subTaxonomicalElements": [
+    "hosted on-site",
+    "Remote Service Provider"
+   ],
+   "implementationSuggestions": []
+  },
+  "6.7": {
+   "pdfPage": 68,
+   "governanceElements": [
+    "Centralize",
+    "Where Supported"
+   ],
+   "coreRequirements": [
+    "access control"
+   ],
+   "subTaxonomicalElements": [
+    "Directory Service",
+    "SSO Provider",
+    "All enterprise assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "6.8": {
+   "pdfPage": 69,
+   "governanceElements": [
+    "Define",
+    "maintain",
+    "Perform access control reviews of enterprise assets to validate that all privileges are authorized, on a recurring schedule",
+    "At a minimum Annually",
+    "More frequently",
+    "Necessary"
+   ],
+   "coreRequirements": [
+    "role-based access control"
+   ],
+   "subTaxonomicalElements": [
+    "Determining",
+    "Documenting",
+    "Access rights",
+    "Each Role",
+    "carry out its assigned duties"
+   ],
+   "implementationSuggestions": [
+    "Identity and Access management Tool"
+   ]
+  },
+  "7.1": {
+   "pdfPage": 71,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update documentation",
+    "When significant enterprise changes occur that could impact this Safeguard",
+    "Annually"
+   ],
+   "coreRequirements": [
+    "vulnerability management process",
+    "documented"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "7.2": {
+   "pdfPage": 72,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Reviews",
+    "Monthly",
+    "More frequent"
+   ],
+   "coreRequirements": [
+    "remediation process",
+    "Documented",
+    "Risk based Remediation strategy"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "7.3": {
+   "pdfPage": 73,
+   "governanceElements": [
+    "Perform",
+    "Monthly",
+    "More frequent"
+   ],
+   "coreRequirements": [
+    "Patch Management",
+    "Automated"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise Assets",
+    "Operating System Updates"
+   ],
+   "implementationSuggestions": []
+  },
+  "7.4": {
+   "pdfPage": 74,
+   "governanceElements": [
+    "Perform",
+    "Monthly",
+    "More frequent"
+   ],
+   "coreRequirements": [
+    "Patch Management",
+    "Automated"
+   ],
+   "subTaxonomicalElements": [
+    "Application Updates",
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "7.5": {
+   "pdfPage": 75,
+   "governanceElements": [
+    "Perform",
+    "Quarterly",
+    "More frequent"
+   ],
+   "coreRequirements": [
+    "Vulnerability Scans",
+    "Automated",
+    "Internal Assets"
+   ],
+   "subTaxonomicalElements": [
+    "Authenticated",
+    "Unauthenticated",
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "7.6": {
+   "pdfPage": 76,
+   "governanceElements": [
+    "Perform",
+    "Perform scans",
+    "Monthly",
+    "More frequent"
+   ],
+   "coreRequirements": [
+    "Vulnerability Scans",
+    "Automated",
+    "Externally Exposed"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "7.7": {
+   "pdfPage": 77,
+   "governanceElements": [
+    "Remediate",
+    "Monthly",
+    "More frequent",
+    "Through"
+   ],
+   "coreRequirements": [
+    "Vulnerability Remediation Process"
+   ],
+   "subTaxonomicalElements": [
+    "Software",
+    "Processes",
+    "Tooling"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.1": {
+   "pdfPage": 79,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update documentation",
+    "when significant enterprise changes occur that could impact this Safeguard",
+    "annually",
+    "minimum"
+   ],
+   "coreRequirements": [
+    "documented audit log management process"
+   ],
+   "subTaxonomicalElements": [
+    "enterprise assets",
+    "Audit logs",
+    "enterprise's logging requirements",
+    "collection",
+    "review",
+    "retention"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.2": {
+   "pdfPage": 80,
+   "governanceElements": [
+    "Collect",
+    "per the enterprise's audit log management process"
+   ],
+   "coreRequirements": [
+    "Audit Logs"
+   ],
+   "subTaxonomicalElements": [
+    "Logging",
+    "enabled",
+    "enterprise assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.3": {
+   "pdfPage": 81,
+   "governanceElements": [
+    "Ensure",
+    "maintain",
+    "comply",
+    "The Enterprise's audit log management process"
+   ],
+   "coreRequirements": [
+    "Adequate Storage (for Logs)"
+   ],
+   "subTaxonomicalElements": [
+    "logging destinations"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.4": {
+   "pdfPage": 82,
+   "governanceElements": [
+    "Standardize",
+    "Configure",
+    "at least two",
+    "where supported"
+   ],
+   "coreRequirements": [
+    "Time Syncronization"
+   ],
+   "subTaxonomicalElements": [
+    "enterprise assets",
+    "time sources",
+    "synchronized"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.5": {
+   "pdfPage": 83,
+   "governanceElements": [
+    "Configure"
+   ],
+   "coreRequirements": [
+    "Detailed Audit Logs",
+    "enterprise assets containing sensitive data"
+   ],
+   "subTaxonomicalElements": [
+    "Could Assist in a Forensic Investigation",
+    "event source",
+    "date",
+    "username",
+    "timestamp",
+    "source addresses",
+    "destination addresses",
+    "other useful elements"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.6": {
+   "pdfPage": 84,
+   "governanceElements": [
+    "where appropriate",
+    "Collect",
+    "where supported"
+   ],
+   "coreRequirements": [
+    "DNS query logs"
+   ],
+   "subTaxonomicalElements": [
+    "enterprise assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.7": {
+   "pdfPage": 85,
+   "governanceElements": [
+    "where appropriate",
+    "Collect",
+    "where supported"
+   ],
+   "coreRequirements": [
+    "URL request audit logs"
+   ],
+   "subTaxonomicalElements": [
+    "enterprise assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.8": {
+   "pdfPage": 86,
+   "governanceElements": [
+    "Collect"
+   ],
+   "coreRequirements": [
+    "command-line audit logs"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Collecting Audit Logs From:",
+    "PowerShell",
+    "BASHTM",
+    "remote administrative terminals"
+   ]
+  },
+  "8.9": {
+   "pdfPage": 87,
+   "governanceElements": [
+    "Centralize",
+    "to the extent possible"
+   ],
+   "coreRequirements": [
+    "audit log collection",
+    "audit log retention"
+   ],
+   "subTaxonomicalElements": [
+    "enterprise assets",
+    "in accordance with documented audit log management process"
+   ],
+   "implementationSuggestions": [
+    "Leveraging a SIEM tool to centralize multiple log sources"
+   ]
+  },
+  "8.10": {
+   "pdfPage": 88,
+   "governanceElements": [
+    "Retain",
+    "minimum of 90 days"
+   ],
+   "coreRequirements": [
+    "Audit Logs"
+   ],
+   "subTaxonomicalElements": [
+    "enterprise assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.11": {
+   "pdfPage": 89,
+   "governanceElements": [
+    "Conduct Reviews",
+    "weekly",
+    "more frequent"
+   ],
+   "coreRequirements": [
+    "Review Audit Logs"
+   ],
+   "subTaxonomicalElements": [
+    "Could Indicate a potential threat",
+    "anomalies",
+    "abnormal events"
+   ],
+   "implementationSuggestions": []
+  },
+  "8.12": {
+   "pdfPage": 90,
+   "governanceElements": [
+    "Collect",
+    "where supported"
+   ],
+   "coreRequirements": [
+    "Service provider logs"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Collecting authentication events",
+    "Collecting authorization events",
+    "data creation events",
+    "disposal events",
+    "user management events"
+   ]
+  },
+  "9.1": {
+   "pdfPage": 92,
+   "governanceElements": [
+    "Ensure",
+    "only using the latest version provided through the vendor"
+   ],
+   "coreRequirements": [
+    "Only Fully Supported",
+    "Browsers",
+    "Email Clients"
+   ],
+   "subTaxonomicalElements": [
+    "Allowed to execute"
+   ],
+   "implementationSuggestions": []
+  },
+  "9.2": {
+   "pdfPage": 93,
+   "governanceElements": [
+    "Use"
+   ],
+   "coreRequirements": [
+    "DNS Filtering Service"
+   ],
+   "subTaxonomicalElements": [
+    "All End-user devices",
+    "Remote assets",
+    "On-premise assets",
+    "Block Access to Known Malicious Domains"
+   ],
+   "implementationSuggestions": []
+  },
+  "9.3": {
+   "pdfPage": 94,
+   "governanceElements": [
+    "Enforce",
+    "Update",
+    "Enforce Filters"
+   ],
+   "coreRequirements": [
+    "network-based URL filters"
+   ],
+   "subTaxonomicalElements": [
+    "Limit enterprise Asset from connecting to",
+    "Unapproved Websites",
+    "Potentially Malicious Websites"
+   ],
+   "implementationSuggestions": [
+    "block lists",
+    "reputation-based filtering",
+    "Category based methods"
+   ]
+  },
+  "9.4": {
+   "pdfPage": 95,
+   "governanceElements": [
+    "Restrict"
+   ],
+   "coreRequirements": [
+    "Uninstalling",
+    "Disabling",
+    "Unauthorized",
+    "Unnecessary"
+   ],
+   "subTaxonomicalElements": [
+    "Browser Client Plugins",
+    "Email Client Plugins",
+    "Browser Extensions",
+    "Browser / Email Client Add-on applications"
+   ],
+   "implementationSuggestions": []
+  },
+  "9.5": {
+   "pdfPage": 96,
+   "governanceElements": [
+    "Implement",
+    "Implement Verification",
+    "Standards"
+   ],
+   "coreRequirements": [
+    "DMARC policy"
+   ],
+   "subTaxonomicalElements": [
+    "Sender Policy Framework (SPF)",
+    "DomainKeys Identified Mail (DKIM)",
+    "to lower the chance of spoofed or modified emails from valid domains"
+   ],
+   "implementationSuggestions": []
+  },
+  "9.6": {
+   "pdfPage": 97,
+   "governanceElements": [
+    "Block"
+   ],
+   "coreRequirements": [
+    "Unnecessary file types",
+    "At the Email Gateway"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "9.7": {
+   "pdfPage": 98,
+   "governanceElements": [
+    "Deploy",
+    "Maintain"
+   ],
+   "coreRequirements": [
+    "email server anti-malware protections"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Attachment Scanning",
+    "Sandboxing"
+   ]
+  },
+  "10.1": {
+   "pdfPage": 100,
+   "governanceElements": [
+    "deploy",
+    "maintain"
+   ],
+   "coreRequirements": [
+    "anti-malware software"
+   ],
+   "subTaxonomicalElements": [
+    "all enterprise assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "10.2": {
+   "pdfPage": 101,
+   "governanceElements": [
+    "configure"
+   ],
+   "coreRequirements": [
+    "automatic updates",
+    "anti-malware signature files"
+   ],
+   "subTaxonomicalElements": [
+    "all enterprise assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "10.3": {
+   "pdfPage": 102,
+   "governanceElements": [
+    "disable"
+   ],
+   "coreRequirements": [
+    "Auto Run",
+    "autoplay",
+    "Auto-execute"
+   ],
+   "subTaxonomicalElements": [
+    "removable media"
+   ],
+   "implementationSuggestions": []
+  },
+  "10.4": {
+   "pdfPage": 103,
+   "governanceElements": [
+    "configure"
+   ],
+   "coreRequirements": [
+    "anti-malware software",
+    "automatically scan"
+   ],
+   "subTaxonomicalElements": [
+    "removable media"
+   ],
+   "implementationSuggestions": []
+  },
+  "10.5": {
+   "pdfPage": 104,
+   "governanceElements": [
+    "enable",
+    "where possible"
+   ],
+   "coreRequirements": [
+    "anti-exploitation features"
+   ],
+   "subTaxonomicalElements": [
+    "enterprise assets",
+    "software"
+   ],
+   "implementationSuggestions": [
+    "Microsoft® Data Execution Prevention (DEP)",
+    "Windows® Defender Exploit Guard (WDEG)",
+    "Apple® System Integrity Protection (SIP)",
+    "GatekeeperTM"
+   ]
+  },
+  "10.6": {
+   "pdfPage": 105,
+   "governanceElements": [
+    "centrally manage"
+   ],
+   "coreRequirements": [
+    "anti-malware software"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "10.7": {
+   "pdfPage": 106,
+   "governanceElements": [
+    "use"
+   ],
+   "coreRequirements": [
+    "anti-malware software",
+    "behavior-based"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "11.1": {
+   "pdfPage": 108,
+   "governanceElements": [
+    "establish",
+    "maintain",
+    "review and update documentation",
+    "when significant enterprise changes occur that could impact this Safeguard",
+    "annually"
+   ],
+   "coreRequirements": [
+    "documented data recovery process"
+   ],
+   "subTaxonomicalElements": [
+    "scope of data recovery activities",
+    "recovery prioritization",
+    "security of backup data"
+   ],
+   "implementationSuggestions": []
+  },
+  "11.2": {
+   "pdfPage": 109,
+   "governanceElements": [
+    "perform",
+    "run backups",
+    "weekly",
+    "more frequently",
+    "Based on Sensitivity"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [
+    "Scope",
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "11.3": {
+   "pdfPage": 110,
+   "governanceElements": [
+    "protect",
+    "based on requirements",
+    "reference encryption",
+    "data separation"
+   ],
+   "coreRequirements": [
+    "recovery data"
+   ],
+   "subTaxonomicalElements": [
+    "equivalent controls to original data"
+   ],
+   "implementationSuggestions": []
+  },
+  "11.4": {
+   "pdfPage": 111,
+   "governanceElements": [
+    "establish",
+    "maintain"
+   ],
+   "coreRequirements": [
+    "isolated instance of recovery data"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "version controlling backup destinations",
+    "offline",
+    "cloud",
+    "off-site systems",
+    "services"
+   ]
+  },
+  "11.5": {
+   "pdfPage": 112,
+   "governanceElements": [
+    "quarterly",
+    "more frequently"
+   ],
+   "coreRequirements": [
+    "test backup recovery"
+   ],
+   "subTaxonomicalElements": [
+    "sampling",
+    "In-Scope",
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "12.1": {
+   "pdfPage": 114,
+   "governanceElements": [
+    "ensure",
+    "Review software versions to verify software support",
+    "monthly",
+    "more frequently"
+   ],
+   "coreRequirements": [
+    "network infrastructure is kept up-to-date"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "running the latest stable release of software",
+    "using currently supported network-as-a-service (NaaS) offerings"
+   ]
+  },
+  "12.2": {
+   "pdfPage": 115,
+   "governanceElements": [
+    "design",
+    "maintain",
+    "must address",
+    "Minimum"
+   ],
+   "coreRequirements": [
+    "secure network architecture"
+   ],
+   "subTaxonomicalElements": [
+    "segmentation",
+    "POLP - Least Privilege",
+    "availability"
+   ],
+   "implementationSuggestions": [
+    "documentation",
+    "policy",
+    "design components"
+   ]
+  },
+  "12.3": {
+   "pdfPage": 116,
+   "governanceElements": [],
+   "coreRequirements": [
+    "secure network management"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "network management and monitoring tool",
+    "version-controlled infrastructure-as-code",
+    "Use of Secure Protocols",
+    "SSH",
+    "HTTPS"
+   ]
+  },
+  "12.4": {
+   "pdfPage": 117,
+   "governanceElements": [
+    "establish",
+    "maintain",
+    "review and update documentation",
+    "annually",
+    "when significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "Architecture Diagram(s)",
+    "network system documentation"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "network architecture diagramming tool"
+   ]
+  },
+  "12.5": {
+   "pdfPage": 118,
+   "governanceElements": [
+    "centralize"
+   ],
+   "coreRequirements": [
+    "network AAA"
+   ],
+   "subTaxonomicalElements": [
+    "authentication",
+    "authorization",
+    "auditing"
+   ],
+   "implementationSuggestions": []
+  },
+  "12.6": {
+   "pdfPage": 119,
+   "governanceElements": [
+    "use",
+    "greater"
+   ],
+   "coreRequirements": [
+    "secure network management",
+    "secure communication protocols"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "802.1X",
+    "WPA2 Enterprise"
+   ]
+  },
+  "12.7": {
+   "pdfPage": 120,
+   "governanceElements": [
+    "require",
+    "prior to accessing enterprise resources on end-user devices"
+   ],
+   "coreRequirements": [
+    "enterprise-managed VPN",
+    "authentication services",
+    "Users Required to Authenticate"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "12.8": {
+   "pdfPage": 121,
+   "governanceElements": [
+    "establish",
+    "maintain"
+   ],
+   "coreRequirements": [
+    "dedicated computing resources (SAW)",
+    "For all administrative tasks",
+    "tasks requiring administrative access"
+   ],
+   "subTaxonomicalElements": [
+    "segmented from primary network",
+    "No Internet",
+    "Physically",
+    "Logically"
+   ],
+   "implementationSuggestions": []
+  },
+  "13.1": {
+   "pdfPage": 123,
+   "governanceElements": [
+    "Centralize"
+   ],
+   "coreRequirements": [
+    "Security Event Alerting"
+   ],
+   "subTaxonomicalElements": [
+    "Log Correlation",
+    "Analysis",
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": [
+    "SIEM",
+    "Log Analytics Platform",
+    "Vendor-defined Event Correlation Alerts",
+    "Security-relevant correlation alerts"
+   ]
+  },
+  "13.2": {
+   "pdfPage": 124,
+   "governanceElements": [
+    "deploy",
+    "Where appropriate",
+    "Where supported"
+   ],
+   "coreRequirements": [
+    "host-based intrusion detection solution"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": []
+  },
+  "13.3": {
+   "pdfPage": 125,
+   "governanceElements": [
+    "deploy",
+    "Where Appropriate"
+   ],
+   "coreRequirements": [
+    "network intrusion detection solution"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": [
+    "Network Intrusion Detection System (NIDS)",
+    "Equivalent CSP Service"
+   ]
+  },
+  "13.4": {
+   "pdfPage": 126,
+   "governanceElements": [
+    "Perform",
+    "Where Appropriate"
+   ],
+   "coreRequirements": [
+    "traffic filtering between network segments"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "13.5": {
+   "pdfPage": 127,
+   "governanceElements": [
+    "Manage"
+   ],
+   "coreRequirements": [
+    "Access Control",
+    "Remote Assets"
+   ],
+   "subTaxonomicalElements": [
+    "Connecting to Enterprise Resources",
+    "Determine Amount of access Based on:",
+    "Anti Malware Software Installed",
+    "Up to date Anti Malware Signatures / Version",
+    "Up to Date OS",
+    "Up to date Applications",
+    "Compliant with Configuration Process"
+   ],
+   "implementationSuggestions": []
+  },
+  "13.6": {
+   "pdfPage": 128,
+   "governanceElements": [
+    "Collect"
+   ],
+   "coreRequirements": [
+    "Network Traffic Flow logs",
+    "Network Traffic"
+   ],
+   "subTaxonomicalElements": [
+    "Network Devices",
+    "Review",
+    "Alert"
+   ],
+   "implementationSuggestions": []
+  },
+  "13.7": {
+   "pdfPage": 129,
+   "governanceElements": [
+    "deploy",
+    "Where appropriate",
+    "Where supported"
+   ],
+   "coreRequirements": [
+    "Host-based Intrusion Prevention Solution (IPS)"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise Assets"
+   ],
+   "implementationSuggestions": [
+    "EDR",
+    "Host Based IPS Agent"
+   ]
+  },
+  "13.8": {
+   "pdfPage": 130,
+   "governanceElements": [
+    "deploy",
+    "Where Appropriate"
+   ],
+   "coreRequirements": [
+    "network intrusion prevention solution"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "13.9": {
+   "pdfPage": 131,
+   "governanceElements": [
+    "Deploy"
+   ],
+   "coreRequirements": [
+    "port-level access control"
+   ],
+   "subTaxonomicalElements": [
+    "802.1x",
+    "similar network access control protocols",
+    "User Authentication",
+    "Device Authentication"
+   ],
+   "implementationSuggestions": [
+    "Certificate Based"
+   ]
+  },
+  "13.10": {
+   "pdfPage": 132,
+   "governanceElements": [
+    "Perform"
+   ],
+   "coreRequirements": [
+    "application layer filtering"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Filtering Proxy",
+    "Application Layer Firewall",
+    "Gateway"
+   ]
+  },
+  "13.11": {
+   "pdfPage": 133,
+   "governanceElements": [
+    "Tune Alerts",
+    "monthly",
+    "More Frequently"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "14.1": {
+   "pdfPage": 135,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "conduct training at hire",
+    "Minimum, annually",
+    "Review and update Content",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "Security Awareness program",
+    "Educate the enterprise’s workforce on how to interact in a secure manner"
+   ],
+   "subTaxonomicalElements": [
+    "Enterprise Assets",
+    "Data"
+   ],
+   "implementationSuggestions": []
+  },
+  "14.2": {
+   "pdfPage": 136,
+   "governanceElements": [],
+   "coreRequirements": [
+    "Train workforce to recognize Social Engineering Attacks"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Phishing",
+    "Business Email Compromise (BEC)"
+   ]
+  },
+  "14.3": {
+   "pdfPage": 137,
+   "governanceElements": [],
+   "coreRequirements": [
+    "Train workforce on Authentication Best Practices"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "MFA",
+    "Password Composition",
+    "Credential Management"
+   ]
+  },
+  "14.4": {
+   "pdfPage": 138,
+   "governanceElements": [],
+   "coreRequirements": [
+    "train workforce members on how to",
+    "Identify",
+    "Transfer",
+    "Archive",
+    "Destroy",
+    "Properly Store",
+    "Sensitive Data"
+   ],
+   "subTaxonomicalElements": [
+    "Clear Screen",
+    "Clear Desk"
+   ],
+   "implementationSuggestions": [
+    "Locking their screen when they step away from their enterprise asset",
+    "Erase physical Whiteboards after meetings",
+    "Erase virtual Whiteboards after meetings",
+    "Storing Data Securely",
+    "Storing Assets Securely"
+   ]
+  },
+  "14.5": {
+   "pdfPage": 139,
+   "governanceElements": [],
+   "coreRequirements": [
+    "train workforce members to be aware of causes for unintentional data exposure"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Mis-Delivery of Sensitive Data",
+    "Losing a Portable End user Device",
+    "Publishing data to unintended Audiences"
+   ]
+  },
+  "14.6": {
+   "pdfPage": 140,
+   "governanceElements": [
+    "Be able to"
+   ],
+   "coreRequirements": [
+    "train workforce members",
+    "Recognize a potential Security Incident",
+    "Report such an incident"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "14.7": {
+   "pdfPage": 141,
+   "governanceElements": [],
+   "coreRequirements": [
+    "Train Workforce members on how to",
+    "Verify",
+    "Report",
+    "out-of-date software patches",
+    "Any failures in automated processes",
+    "Any failures in automated tools"
+   ],
+   "subTaxonomicalElements": [
+    "Training Should Include",
+    "Notifying IT personnel of any failures in automated processes",
+    "Notifying IT personnel of any failures in automated tools"
+   ],
+   "implementationSuggestions": []
+  },
+  "14.8": {
+   "pdfPage": 142,
+   "governanceElements": [
+    "Must Include"
+   ],
+   "coreRequirements": [
+    "Train workforce members on",
+    "The dangers of",
+    "connecting to insecure networks",
+    "transmitting data over insecure networks",
+    "Guidance to ensure that all users securely configure their home network infrastructure"
+   ],
+   "subTaxonomicalElements": [
+    "Remote Workers",
+    "Enterprise Activities"
+   ],
+   "implementationSuggestions": []
+  },
+  "14.9": {
+   "pdfPage": 143,
+   "governanceElements": [
+    "Conduct"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "IT Professionals",
+    "Web Developers",
+    "High-profile roles",
+    "Secure system administration courses",
+    "OWASP® Top 10 vulnerability awareness and prevention training",
+    "advanced social engineering awareness training for high-profile roles"
+   ]
+  },
+  "15.1": {
+   "pdfPage": 145,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update Content",
+    "Annually",
+    "when significant enterprise changes occur that could impact this safeguard"
+   ],
+   "coreRequirements": [
+    "Inventory of Service Providers"
+   ],
+   "subTaxonomicalElements": [
+    "list all known service providers",
+    "Classification(s)",
+    "designate an enterprise contact for each service provider"
+   ],
+   "implementationSuggestions": []
+  },
+  "15.2": {
+   "pdfPage": 146,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Ensure the policy addresses",
+    "Review and update Content",
+    "Annually",
+    "when significant enterprise changes occur that could impact this safeguard"
+   ],
+   "coreRequirements": [
+    "Service Provider Management Policy"
+   ],
+   "subTaxonomicalElements": [
+    "Classification(s)",
+    "Inventory",
+    "Assessment",
+    "Monitoring",
+    "Decommissioning of service providers"
+   ],
+   "implementationSuggestions": []
+  },
+  "15.3": {
+   "pdfPage": 147,
+   "governanceElements": [
+    "Update and Review Classifications",
+    "Classify",
+    "Annually",
+    "when significant enterprise changes occur that could impact this safeguard"
+   ],
+   "coreRequirements": [
+    "Service Providers"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "May Include",
+    "One Characteristic",
+    "More Characteristics",
+    "Data Sensitivity",
+    "Data volume",
+    "Availability requirements",
+    "Applicable regulations",
+    "Inherent Risk",
+    "Mitigated Risk"
+   ]
+  },
+  "15.4": {
+   "pdfPage": 148,
+   "governanceElements": [
+    "Ensure",
+    "Must",
+    "review service provider contracts annually to ensure contracts are not missing security requirements"
+   ],
+   "coreRequirements": [
+    "Service provider contracts include security requirements"
+   ],
+   "subTaxonomicalElements": [
+    "Include Security requirements Consistent with the enterprise's service provider management policy"
+   ],
+   "implementationSuggestions": [
+    "Contract Management",
+    "minimum security program requirements",
+    "security incident and/or data breach notification and response",
+    "data encryption requirements",
+    "data disposal commitments"
+   ]
+  },
+  "15.5": {
+   "pdfPage": 149,
+   "governanceElements": [
+    "Consistent with the enterprise's service provider management policy",
+    "Reassess service Providers",
+    "At a Minimum Annually",
+    "With new renewed contracts"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Third-Party Risk Management Tool",
+    "Review of Standardized Assesments",
+    "other appropriately rigorous processes",
+    "PCI-DSS (AoC)",
+    "SOC2",
+    "Customized questionnaire"
+   ]
+  },
+  "15.6": {
+   "pdfPage": 150,
+   "governanceElements": [
+    "consistent with enterprise's service provider management policy"
+   ],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Third-Party Risk Management Tool",
+    "Periodic reassessment of service provider compliance",
+    "Monitoring service provider notes",
+    "dark web monitoring"
+   ]
+  },
+  "15.7": {
+   "pdfPage": 151,
+   "governanceElements": [],
+   "coreRequirements": [],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "user and service account deactivation",
+    "termination of data flows",
+    "secure disposal of enterprise data within service provider systems"
+   ]
+  },
+  "16.1": {
+   "pdfPage": 153,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review and update documentation",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "secure application development process"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "secure application design standards",
+    "secure coding practices",
+    "developer training",
+    "vulnerability management",
+    "security of third-party code",
+    "Application security testing procedure"
+   ]
+  },
+  "16.2": {
+   "pdfPage": 154,
+   "governanceElements": [
+    "Review and update documentation",
+    "Establish",
+    "Maintain",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "process to accept and address software vulnerabilities"
+   ],
+   "subTaxonomicalElements": [
+    "Third Party Application Developer",
+    "Need to consider this an externally-facing policy that helps to set expectations for outside stakeholders",
+    "provide a means for external entities to report vulnerabilities",
+    "Vulnerability tracking system that includes",
+    "severity ratings",
+    "Metrics for measuring timing for",
+    "Identification of Vulnerabilities",
+    "Analysis of Vulnerabilities",
+    "Remediation of Vulnerabilites",
+    "Remediation",
+    "Assignment",
+    "Remediation testing"
+   ],
+   "implementationSuggestions": [
+    "vulnerability handling policy that identifies reporting process",
+    "responsible party for handling vulnerability reports",
+    "process for intake"
+   ]
+  },
+  "16.3": {
+   "pdfPage": 155,
+   "governanceElements": [
+    "Perform"
+   ],
+   "coreRequirements": [
+    "Root Cause Analysis on Vulnerabilities"
+   ],
+   "subTaxonomicalElements": [
+    "Reviewing vulnerabilites",
+    "Root cause analysis",
+    "Definition - \"Task of evaluating underlying issues that create vulnerabilities in code, and allows development teams to move beyond just fixing individual vulnerabilities as they arise\""
+   ],
+   "implementationSuggestions": []
+  },
+  "16.4": {
+   "pdfPage": 156,
+   "governanceElements": [
+    "Establish",
+    "Manage",
+    "Updated",
+    "Evaluate list at least monthly",
+    "Identify",
+    "Validate Support"
+   ],
+   "coreRequirements": [
+    "Inventory of Third-Party Software Components \"Aka\" (SBOM)",
+    "Third-Party Software Components Slated for future use"
+   ],
+   "subTaxonomicalElements": [
+    "any risks that each third-party component could pose",
+    "Any changes or updates to the components and are supported"
+   ],
+   "implementationSuggestions": []
+  },
+  "16.5": {
+   "pdfPage": 157,
+   "governanceElements": [
+    "Use"
+   ],
+   "coreRequirements": [
+    "Up to Date",
+    "Trusted",
+    "Third-Party Software Components"
+   ],
+   "subTaxonomicalElements": [
+    "acquire these components from trusted sources",
+    "evaluate the software for vulnerabilities before use"
+   ],
+   "implementationSuggestions": [
+    "Choose established and proven frameworks and libraries",
+    "Who provide Adequate Security"
+   ]
+  },
+  "16.6": {
+   "pdfPage": 158,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "review and update the system and process annually"
+   ],
+   "coreRequirements": [
+    "severity rating system",
+    "process for application vulnerabilities"
+   ],
+   "subTaxonomicalElements": [
+    "systematic way of triaging vulnerabilities",
+    "facilitates prioritizing the order in which discovered vulnerabilities are fixed",
+    "setting a minimum level of security acceptability for releasing code or applications",
+    "helps ensure the most severe bugs are fixed first"
+   ],
+   "implementationSuggestions": []
+  },
+  "16.7": {
+   "pdfPage": 159,
+   "governanceElements": [
+    "Use",
+    "do not allow in-house developed software to weaken configuration hardening"
+   ],
+   "coreRequirements": [
+    "Standard Hardening Configuration Templates for Application Infrastructure"
+   ],
+   "subTaxonomicalElements": [
+    "underlying servers",
+    "databases",
+    "web servers",
+    "cloud containers",
+    "PaaS",
+    "SaaS"
+   ],
+   "implementationSuggestions": []
+  },
+  "16.8": {
+   "pdfPage": 160,
+   "governanceElements": [
+    "Maintain"
+   ],
+   "coreRequirements": [
+    "production systems",
+    "Separate Environments For",
+    "non-production systems"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": []
+  },
+  "16.9": {
+   "pdfPage": 161,
+   "governanceElements": [
+    "Ensure",
+    "conduct training at least annually"
+   ],
+   "coreRequirements": [
+    "All software development personnel recieve training"
+   ],
+   "subTaxonomicalElements": [
+    "Writing secure code",
+    "design in a way to promote security within the development team",
+    "build a culture of security among the developers",
+    "Specific development environment",
+    "Specific development responsibilities"
+   ],
+   "implementationSuggestions": [
+    "general security principles",
+    "application security standard practices"
+   ]
+  },
+  "16.10": {
+   "pdfPage": 162,
+   "governanceElements": [
+    "Apply"
+   ],
+   "coreRequirements": [
+    "Secure design principles in application architectures"
+   ],
+   "subTaxonomicalElements": [
+    "secure design principles",
+    "concept of least privilege",
+    "enforcing mediation",
+    "minimizing the application infrastructure attack surface",
+    "Concept of “never trust user input",
+    "validate every operation that the user makes"
+   ],
+   "implementationSuggestions": [
+    "Ensuring that explicit error checking is performed for all input",
+    "Explicit error checking is documented for all input",
+    "Size",
+    "Data type",
+    "Acceptable Ranges",
+    "Acceptable Formats",
+    "turning off unprotected ports and services",
+    "removing unnecessary programs and files",
+    "renaming or removing default accounts"
+   ]
+  },
+  "16.11": {
+   "pdfPage": 163,
+   "governanceElements": [
+    "Leverage",
+    "Use Only"
+   ],
+   "coreRequirements": [
+    "Vetted Services",
+    "Vetted Modules",
+    "application security components"
+   ],
+   "subTaxonomicalElements": [
+    "Encryption Algorithms",
+    "Standardized",
+    "Currently accepted",
+    "Extensively reviewed"
+   ],
+   "implementationSuggestions": [
+    "Modern operating systems provide effective mechanisms for identification, authentication, and authorization and make those mechanisms available to applications",
+    "Using platform features in critical security functions will reduce developers’ workload and minimize the likelihood of design or implementation errors",
+    "operating systems also provide mechanisms to create and maintain secure audit logs",
+    "identity management",
+    "encryption",
+    "Auditing",
+    "Logging"
+   ]
+  },
+  "16.12": {
+   "pdfPage": 164,
+   "governanceElements": [
+    "Apply",
+    "Verify",
+    "Practices are being followed"
+   ],
+   "coreRequirements": [
+    "Static Dynamic analysis analysis tools tools",
+    "Code Level Security Checks"
+   ],
+   "subTaxonomicalElements": [
+    "application life cycle",
+    "Secure coding practices"
+   ],
+   "implementationSuggestions": []
+  },
+  "16.13": {
+   "pdfPage": 165,
+   "governanceElements": [
+    "Conduct"
+   ],
+   "coreRequirements": [
+    "application penetration testing"
+   ],
+   "subTaxonomicalElements": [
+    "Critical applications",
+    "Non-Critical Applications",
+    "Authenticated penetration testing",
+    "Code scanning",
+    "Automated security testing",
+    "business logic vulnerabilities",
+    "Penetration testing relies on the skill of the tester to MANUALLY manipulate an application",
+    "Authenticated user",
+    "Unauthenticated user"
+   ],
+   "implementationSuggestions": [
+    "Better Suited to finding"
+   ]
+  },
+  "16.14": {
+   "pdfPage": 166,
+   "governanceElements": [
+    "Conduct"
+   ],
+   "coreRequirements": [
+    "threat modeling"
+   ],
+   "subTaxonomicalElements": [
+    "before code is created",
+    "Conducted Through",
+    "Map out the application to understand its weakness in a structured way",
+    "specially trained individuals",
+    "Architecture",
+    "Infrastructure",
+    "Identifying",
+    "Addressing",
+    "Evaluate Application Design For Each:",
+    "Application security design flaws within an design",
+    "Entry point",
+    "Access level"
+   ],
+   "implementationSuggestions": []
+  },
+  "17.1": {
+   "pdfPage": 168,
+   "governanceElements": [
+    "Designate",
+    "Review",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "One Key Person",
+    "at least one backup person",
+    "Personnel to Manage Incident Handling"
+   ],
+   "subTaxonomicalElements": [
+    "Responsible for",
+    "Coordination",
+    "Documentation",
+    "Incident Response",
+    "Recovery efforts"
+   ],
+   "implementationSuggestions": [
+    "Employees internal to the enterprise",
+    "Service Provider",
+    "Hybrid Approach",
+    "Designate one person internal to the enterprise to oversee any third-party work"
+   ]
+  },
+  "17.2": {
+   "pdfPage": null,
+   "governanceElements": [
+    "establish and maintain contact information for parties that need to be informed of security incidents",
+    "verify contacts annually to ensure information is up-to-date"
+   ],
+   "coreRequirements": [
+    "contact information for parties to notify about security incidents",
+    "internal and external notification contacts",
+    "annual verification of contact information"
+   ],
+   "subTaxonomicalElements": [
+    "contacts may include internal staff",
+    "service providers",
+    "law enforcement",
+    "cyber insurance providers",
+    "relevant government agencies",
+    "Information Sharing and Analysis Center (ISAC) partners",
+    "or other stakeholders",
+    "verify contacts annually"
+   ],
+   "implementationSuggestions": [
+    "incident notification contact directory",
+    "emergency contact lists",
+    "stakeholder contact registers",
+    "annual contact verification process"
+   ]
+  },
+  "17.3": {
+   "pdfPage": 169,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard",
+    "Ensure"
+   ],
+   "coreRequirements": [
+    "documented enterprise process for reporting incidents"
+   ],
+   "subTaxonomicalElements": [
+    "The Process Includes",
+    "Publicly available to all of the workforce",
+    "reporting timeframe",
+    "personnel to report to",
+    "mechanism for reporting",
+    "minimum information to be reported"
+   ],
+   "implementationSuggestions": []
+  },
+  "17.4": {
+   "pdfPage": 170,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Review",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "documented incident response process"
+   ],
+   "subTaxonomicalElements": [
+    "That Addresses",
+    "Roles",
+    "Responsibilites",
+    "compliance requirements",
+    "communication plan"
+   ],
+   "implementationSuggestions": []
+  },
+  "17.5": {
+   "pdfPage": 171,
+   "governanceElements": [
+    "Assign",
+    "Review",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "Incident Response"
+   ],
+   "subTaxonomicalElements": [
+    "Including Staff from",
+    "Legal",
+    "IT",
+    "information security",
+    "Facilities",
+    "Public relations",
+    "Human resources",
+    "incident responders",
+    "analysts"
+   ],
+   "implementationSuggestions": []
+  },
+  "17.6": {
+   "pdfPage": 172,
+   "governanceElements": [
+    "Determine",
+    "Review",
+    "Annually",
+    "When significant enterprise changes occur that could impact this Safeguard"
+   ],
+   "coreRequirements": [
+    "Mechanisms for Communicating During Incident Response",
+    "Primary",
+    "Secondary",
+    "Communicate",
+    "Report"
+   ],
+   "subTaxonomicalElements": [],
+   "implementationSuggestions": [
+    "Phone calls",
+    "Emails",
+    "Secure Chat",
+    "Notification Letters"
+   ]
+  },
+  "17.7": {
+   "pdfPage": 173,
+   "governanceElements": [
+    "Plan",
+    "Conduct",
+    "At a minimum",
+    "Conduct testing on an annual basis"
+   ],
+   "coreRequirements": [
+    "routine incident response exercises",
+    "Routine Scenarios"
+   ],
+   "subTaxonomicalElements": [
+    "key personnel involved in the incident response process",
+    "prepare for responding to real-world incidents",
+    "Exercises Need to",
+    "test communication channels",
+    "test decision-making",
+    "test workflows"
+   ],
+   "implementationSuggestions": []
+  },
+  "17.8": {
+   "pdfPage": 174,
+   "governanceElements": [
+    "Conduct",
+    "Help prevent incident recurrence"
+   ],
+   "coreRequirements": [
+    "post-incident reviews"
+   ],
+   "subTaxonomicalElements": [
+    "identifying lessons learned",
+    "follow-up action"
+   ],
+   "implementationSuggestions": []
+  },
+  "17.9": {
+   "pdfPage": 175,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Ensure",
+    "Review",
+    "At a minimum",
+    "When significant enterprise changes occur that could impact this Safeguard",
+    "Annually"
+   ],
+   "coreRequirements": [
+    "security incident thresholds"
+   ],
+   "subTaxonomicalElements": [
+    "Differentiating between",
+    "Incident",
+    "Event"
+   ],
+   "implementationSuggestions": [
+    "Abnormal Activity",
+    "Security vulnerability",
+    "Data breach",
+    "Security weakness",
+    "Privacy incident"
+   ]
+  },
+  "18.1": {
+   "pdfPage": 177,
+   "governanceElements": [
+    "Establish",
+    "Maintain",
+    "Appropriate",
+    "Complexity",
+    "Size",
+    "industry",
+    "Maturity",
+    "Of the Enterprise"
+   ],
+   "coreRequirements": [
+    "penetration testing program"
+   ],
+   "subTaxonomicalElements": [
+    "Characteristics include",
+    "Scope",
+    "Frequency",
+    "Limitations",
+    "POC info",
+    "Remediation"
+   ],
+   "implementationSuggestions": [
+    "Network",
+    "Hosted Services",
+    "Web Applications",
+    "API",
+    "Acceptable hours",
+    "excluded attack types",
+    "How findings will be routed internally",
+    "retrospective requirements"
+   ]
+  },
+  "18.2": {
+   "pdfPage": 178,
+   "governanceElements": [
+    "Perform periodic",
+    "based on program requirements",
+    "Must be conducted through a qualified party",
+    "no less than annually",
+    "Must Include"
+   ],
+   "coreRequirements": [
+    "External Penetration Tests"
+   ],
+   "subTaxonomicalElements": [
+    "Clear box",
+    "Opaque box",
+    "enterprise reconnaissance",
+    "environmental reconnaissance",
+    "to detect exploitable information"
+   ],
+   "implementationSuggestions": []
+  },
+  "18.3": {
+   "pdfPage": 179,
+   "governanceElements": [
+    "Remediate",
+    "Based on enterprise's policy"
+   ],
+   "coreRequirements": [
+    "Penetration Test Findings"
+   ],
+   "subTaxonomicalElements": [
+    "Impact",
+    "Prioritization",
+    "Timeline",
+    "Level of effort"
+   ],
+   "implementationSuggestions": []
+  },
+  "18.4": {
+   "pdfPage": 180,
+   "governanceElements": [
+    "Validate",
+    "if deemed necessary"
+   ],
+   "coreRequirements": [
+    "Security measures after each penetration test"
+   ],
+   "subTaxonomicalElements": [
+    "Modify",
+    "Rulesets",
+    "Capabilities",
+    "to detect the techniques used during testing"
+   ],
+   "implementationSuggestions": []
+  },
+  "18.5": {
+   "pdfPage": 181,
+   "governanceElements": [
+    "Perform Periodic",
+    "based on program requirements",
+    "no less than annually"
+   ],
+   "coreRequirements": [
+    "Internal Penetration Tests"
+   ],
+   "subTaxonomicalElements": [
+    "Clear box",
+    "Opaque box"
+   ],
+   "implementationSuggestions": []
+  }
+ }
+}

@@ -202,36 +202,39 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
+      "Review and update the inventory of all enterprise assets",
       "Establish",
-      "Maintain", 
-      "Review and update the inventory of all enterprise assets bi-annually, or more frequently"
+      "Up-to-date",
+      "more frequently",
+      "bi-annually",
+      "Maintain",
+      "Ensure"
     ],
-    coreRequirements: [ // Green - The "what" 
-      "Asset inventory of all enterprise assets with the potential to store or process data"
+    coreRequirements: [ // Green - The "what"
+      "Asset Inventory"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Network Address (IF STATIC)",
-      "Hardware Address",
-      "Machine Name",
-      "Enterprise asset owner",
-      "Department for each asset",
-      "Asset has been approved to connect to the network",
-      "End-User Devices",
-      "Mobile",
-      "Portable",
-      "Network Devices",
-      "IOT Devices", 
-      "Servers",
       "Connected to Infrastructure",
-      "Physically",
-      "Virtually", 
+      "Potential to store or process data",
       "Remotely",
-      "Those within cloud environments",
-      "Regularly Connected Devices - NOT Under Control of Enterprise",
+      "Virtually",
+      "Physically",
+      "End-User Devices",
+      "IOT Devices",
+      "Network Devices",
+      "Servers",
       "Detailed",
       "Accurate",
-      "Up-to-date",
-      "Potential to store or process data"
+      "Mobile",
+      "Portable",
+      "Those within cloud environments",
+      "Regularly Connected Devices - NOT Under Control of Enterprise",
+      "Machine Name",
+      "Network Address (IF STATIC)",
+      "Hardware Address",
+      "Enterprise asset owner",
+      "Department for each asset",
+      "Asset has been approved to connect to the network"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "For mobile end-user devices, MDM type tools can support this process, where appropriate"
@@ -245,16 +248,17 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "Ensure that a process exists to address unauthorized assets on a weekly basis"
+      "Ensure",
+      "On a weekly basis"
     ],
     coreRequirements: [ // Green - The "what"
-      "Address Unauthorized Assets"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Address Unauthorized Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "The enterprise may choose to remove the asset from the network, deny the asset from connecting remotely to the network, or quarantine the asset"
+      "Remove the asset from the network",
+      "Deny the Asset from connecting remotely to the network",
+      "Quarantine the asset"
     ],
     relatedSafeguards: ["1.1", "1.3"]  },
   "1.3": {
@@ -265,16 +269,16 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "Utilize an active discovery tool",
-      "Configure the active discovery tool to execute daily, or more frequently"
+      "Utilize",
+      "Configure",
+      "Execute daily",
+      "Execute daily, or more frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "Active discovery tool"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Utilize",
-      "Configure",
-      "Execute daily, or more frequently"
+      "Identify Assets Connected To Network"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -287,17 +291,18 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Use DHCP logging on all DHCP servers or Internet Protocol (IP) address management tools to update the enterprise's asset inventory",
-      "Review and use logs to update the enterprise's asset inventory weekly, or more frequently"
+      "Use",
+      "Review and Use Logs",
+      "Update asset inventory",
+      "Weekly",
+      "More Frequently"
     ],
     coreRequirements: [ // Green - The "what"
+      "IPAM Tool",
       "DHCP Logging on all DHCP servers",
-      "Or IPAM",
-      "This is an OR of the two above, but can be in conjunction"
+      "IPAM"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Review and Use Logs",
-      "Update asset inventory"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -310,15 +315,17 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "Use a passive discovery tool to identify assets connected to the enterprise's network",
-      "Review and use scans to update the enterprise's asset inventory at least weekly, or more frequently"
+      "Use",
+      "Review and Use scans",
+      "Update asset inventory",
+      "Weekly",
+      "More Frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "Passive Discovery Tool"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Review and Use scans",
-      "Update asset inventory"
+      "Identify Assets Connected To Network"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -331,23 +338,28 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Establish a Software Inventory",
-      "The software inventory must document the sub-taxonomical elements, where appropriate",
-      "Review and update the software inventory bi-annually, or more frequently - AKA Maintain"
+      "Establish",
+      "Maintain",
+      "Review and update software inventory",
+      "bi-annually",
+      "More Frequently",
+      "Must Document",
+      "Where appropriate"
     ],
     coreRequirements: [ // Green - The "what"
       "Detailed inventory of all licensed software"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Installed* on enterprise Assets",
+      "Business Purpose",
       "Title",
       "Publisher",
       "Initial Install / Use Date",
-      "Business Purpose",
+      "Decomm. Date",
+      "Deployment mechanism",
       "URL",
       "App Store(s)",
-      "App Version(s)",
-      "Deployment mechanism",
-      "Decomm. Date"
+      "App Version(s)"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -360,17 +372,21 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Ensure that only currently supported software is designated as authorized in the software inventory for enterprise assets. If software is unsupported, yet necessary for the fulfillment of the enterprise's mission, document an exception detailing mitigating controls and residual risk acceptance. For any unsupported software without an exception documentation, designate as unauthorized. Review the software list to verify software support at least monthly, or more frequently."
+      "Ensure",
+      "Review the software list",
+      "Monthly",
+      "More frequently",
+      "Unsupported"
     ],
     coreRequirements: [ // Green - The "what"
       "Currently supported software",
       "Authorized in the software inventory"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Document Exception detailing mitigating controls",
       "Determine if Authorized Software Is Currently Supported",
       "Determine Necessity for Business",
-      "Document Exception detailing mitigating controls IF Unsupported",
-      "Document Residual risk acceptance IF Unsupported"
+      "Document Residual risk acceptance"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -384,15 +400,15 @@ export class SafeguardManager {
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
       "Ensure",
-      "Review monthly, or more frequently"
+      "Review",
+      "Monthly",
+      "More Frequently"
     ],
     coreRequirements: [ // Green - The "what"
-      "unauthorized software is either removed from use on enterprise assets or receives a documented exception"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Address Unauthorized Software",
-      "Remove from use",
-      "Document Exception"
+      "Document Exception",
+      "Remove from use"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -429,16 +445,16 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Use",
       "Ensure",
-      "Reassess bi-annually, or more frequently"
+      "Reassess",
+      "Bi-Annually",
+      "More Frequently"
     ],
     coreRequirements: [ // Green - The "what"
-      "technical controls",
-      "only authorized software can execute or be accessed"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Technical Controls",
-      "Allow software to Execute",
-      "Allow software to be Accessed"
+      "technical controls",
+      "Accessed",
+      "Execute"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Application Allowlisting"
@@ -454,7 +470,9 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Use",
       "Ensure",
-      "Reassess bi-annually, or more frequently"
+      "Reassess",
+      "Bi-Annually",
+      "More Frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "only authorized software libraries",
@@ -465,9 +483,9 @@ export class SafeguardManager {
       "Block unauthorized libraries from loading into a system process"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
+      "Specific .so files",
       "Specific .dll files",
-      "Specific .ocx files",
-      "Specific .so files"
+      "Specific .ocx files"
     ],
     relatedSafeguards: ["2.1", "2.2", "2.3", "2.4", "2.5", "2.7"]  },
   "2.7": {
@@ -480,20 +498,22 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Use",
       "Ensure",
-      "Reassess bi-annually, or more frequently"
+      "Reassess",
+      "Bi-Annually",
+      "More Frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "only authorized files are allowed to execute"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Technical Controls",
-      "Block unauthorized scripts from executing",
+      "Block unauthorized scripts from executing"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Digital signatures",
-      "Version control",
       "Specific .ps1 files",
-      "Specific .py files"
+      "Specific .py files",
+      "Digital signatures",
+      "Version control"
     ],
     relatedSafeguards: ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6"]  },
   "3.1": {
@@ -506,7 +526,9 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Maintain",
-      "Review and update documentation annually, or when significant enterprise changes occur that could impact this Safeguard"
+      "Review and update documentation",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
       "documented data management process"
@@ -514,10 +536,10 @@ export class SafeguardManager {
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Data Sensitivity",
       "Data Owner",
-      "Data Handling",
+      "Retention Standards",
       "Data Retention Limits",
       "Disposal Requirements",
-      "Retention Standards"
+      "Data Handling"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -532,7 +554,9 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Maintain",
-      "Review and update inventory annually, at a minimum, with a priority on sensitive data"
+      "Annually, at a minimum",
+      "Review and update inventory",
+      "Priority on sensitive data"
     ],
     coreRequirements: [ // Green - The "what"
       "data inventory"
@@ -558,12 +582,11 @@ export class SafeguardManager {
       "data access control lists"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Data Access control lists",
-      "Based on \"Need to Know\"",
       "ACLS - \"aka\" Access Permissions",
+      "Based on \"Need to Know\"",
       "Local",
       "Remote File Systems",
-      "Software",
+      "Applications",
       "Databases"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
@@ -579,14 +602,12 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Retain",
       "Enforce",
-      "must include both minimum and maximum timelines"
+      "Must Include"
     ],
     coreRequirements: [ // Green - The "what"
-      "data according to the enterprise's documented data management process",
       "Data retention"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Data Retention",
       "Minimum Timelines",
       "Maximum timelines"
     ],
@@ -601,14 +622,12 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Disposal process and method are commensurate with the data sensitivity",
-      "Ensure"
+      "Ensure",
+      "Disposal process and method are commensurate with the data sensitivity"
     ],
     coreRequirements: [ // Green - The "what"
-      "Securely Dispose of Data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Securely dispose of Data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -627,8 +646,7 @@ export class SafeguardManager {
       "data on end-user devices"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Data on end-user devices",
-      "that contain Sensitive data"
+      "Sensitive data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Windows Bitlocker",
@@ -646,7 +664,9 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Maintain",
-      "Review and update the classification scheme annually, or when significant enterprise changes occur that could impact this Safeguard"
+      "Review and update classification scheme",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
       "data classification scheme"
@@ -656,7 +676,7 @@ export class SafeguardManager {
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Sensitive",
-      "Confidential", 
+      "Confidential",
       "Public"
     ],
     relatedSafeguards: ["3.1", "3.2", "3.3", "3.8", "3.9", "3.10", "3.11", "3.12"]  },
@@ -668,10 +688,11 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Document data flows"
+      "Review and update documentation",
+      "When significant enterprise changes occur that could impact this Safeguard",
+      "Annually"
     ],
     coreRequirements: [ // Green - The "what"
-      "Document Data Flows"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Enterprise Data Flows",
@@ -688,13 +709,12 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Encrypt"
+      "Maintain"
     ],
     coreRequirements: [ // Green - The "what"
-      "Encrypt Data on Removable Media"
+      "Data on Removable Media"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Data on Removable Media",
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -710,10 +730,9 @@ export class SafeguardManager {
       "Encrypt"
     ],
     coreRequirements: [ // Green - The "what"
-      "Encrypt sensitive data in transit"
+      "Sensitive data in transit"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Sensitive data in transit"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "TLS",
@@ -732,12 +751,10 @@ export class SafeguardManager {
       "Minimum Requirement"
     ],
     coreRequirements: [ // Green - The "what"
-      "Encrypt sensitive data at rest"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Sensitive Data At Rest",
       "Servers",
-      "Applications", 
+      "Applications",
       "Databases",
       "Storage Layer (server side) encryption"
     ],
@@ -757,9 +774,9 @@ export class SafeguardManager {
       "Do not process sensitive data on enterprise assets intended for lower sensitivity data"
     ],
     coreRequirements: [ // Green - The "what"
-      "Segment Data Processing",
-      "Segment Data Storage",
-      "Based on Sensitivity"
+      "Based on the sensitivity of data",
+      "Segment data processing (compute)",
+      "Segment Storage"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
     ],
@@ -777,16 +794,16 @@ export class SafeguardManager {
       "Implement"
     ],
     coreRequirements: [ // Green - The "what"
-      "automated tool to identify all sensitive data"
+      "Automated DLP Tool",
+      "Identify all sensitive Data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Identify all sensitive Data",
       "Stored",
       "Processed",
-      "Transmitted",
-      "Onsite Data",
+      "Transmitte d",
+      "Update Data Inventory",
       "Remote Service Provider",
-      "Update Data Inventory"
+      "Onsite Data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Host-based Data loss Prevention (DLP) tool"
@@ -803,7 +820,10 @@ export class SafeguardManager {
       "Log"
     ],
     coreRequirements: [ // Green - The "what"
-      "Log sensitive data access, including modification and disposal"
+      "Sensitive Data access",
+      "Access",
+      "Modification",
+      "Disposal"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
     ],
@@ -820,7 +840,7 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Maintain",
-      "Review and update documentation",
+      "Review and update documentati on",
       "Annually",
       "When significant enterprise changes occur that could impact this Safeguard"
     ],
@@ -830,12 +850,13 @@ export class SafeguardManager {
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Enterprise assets",
       "Software",
+      "OS",
+      "Applications",
       "End-user devices",
-      "Mobile",
-      "Portable",
-      "Non-computing/IoT devices",
+      "Non-computing/I oT devices",
       "Servers",
-      "OS"
+      "Mobile",
+      "Portable"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -851,11 +872,11 @@ export class SafeguardManager {
       "Establish",
       "Maintain",
       "Review and update documentation",
-      "Annually",
-      "When significant enterprise changes occur that could impact this Safeguard"
+      "When significant enterprise changes occur that could impact this Safeguard",
+      "Annually"
     ],
     coreRequirements: [ // Green - The "what"
-      "documented secure configuration process"
+      "Documented Secure Network Configuration Process"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Network devices"
@@ -876,11 +897,11 @@ export class SafeguardManager {
       "Period must not exceed for 2 Minutes"
     ],
     coreRequirements: [ // Green - The "what"
-      "automatic session locking on enterprise assets"
+      "Automatic Session Locking"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Period of inactivity",
-      "General Purpose OSs",
+      "General Purpose OS's",
       "Mobile end-user devices"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
@@ -899,15 +920,14 @@ export class SafeguardManager {
       "Where Supported"
     ],
     coreRequirements: [ // Green - The "what"
-      "firewall on servers"
+      "Server Firewall"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Server Firewall"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Virtual Firewall",
-      "OS Firewall", 
-      "Third Party Firewall",
+      "OS Firewall",
+      "Third Party Firewall"
     ],
     relatedSafeguards: ["4.1"]  },
   "4.5": {
@@ -922,7 +942,8 @@ export class SafeguardManager {
       "Manage"
     ],
     coreRequirements: [ // Green - The "what"
-      "host-based firewall or port-filtering tool on end-user devices"
+      "Port Host-Filtering based Tool Firewall",
+      "End User Devices"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Default Deny Rule that drops all traffic",
@@ -931,8 +952,6 @@ export class SafeguardManager {
       "Ports"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Firewall",
-      "Configuration Management Tool"
     ],
     relatedSafeguards: ["4.1"]  },
   "4.6": {
@@ -943,21 +962,20 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "Do not use insecure management protocols",
-      "Unless operationally essential"
+      "Do not use insecure management protocols"
     ],
     coreRequirements: [ // Green - The "what"
-      "Securely manage enterprise assets and software"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Securely manage enterprise assets and software",
-      "Do not use insecure management protocols unless operationally essential"
+      "Unless operationally essential"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Manage configuration through version-controlled Infrastructure-as-Code (IaC)",
       "Accessing administrative interfaces over secure network protocols",
-      "SSH instead of TELNET",
-      "HTTPS instead of HTTP",
+      "Telnet (Teletype Network)",
+      "HTTP",
+      "SSH",
+      "HTTPS"
     ],
     relatedSafeguards: ["4.1", "12.3"]  },
   "4.7": {
@@ -978,9 +996,11 @@ export class SafeguardManager {
       "Software"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Disabling them",
-      "making them Unusable",
-      "Root, Administrator, or other pre-configured vendor accounts"
+      "Disabling",
+      "Unusable",
+      "Root",
+      "Administrator",
+      "Other pre-configured vendor accounts"
     ],
     relatedSafeguards: ["4.1"]  },
   "4.8": {
@@ -1002,7 +1022,7 @@ export class SafeguardManager {
       "Software"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Unused File Sharing Services",
+      "Unused file sharing service",
       "Web Application Module",
       "Service Function"
     ],
@@ -1045,15 +1065,14 @@ export class SafeguardManager {
       "automatic device lockout"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "After a Predetermined threshold of local failed authentication attempts",
-      "On Portable end-user devices",
-      "Such as Laptops",
-      "Such as Tablets and smartphones"
+      "Predetermined threshold of local failed authentication attempts",
+      "Portable end-user devices",
+      "Laptops",
+      "Tablets and smartphones"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Microsoft® InTune Device Lock",
-      "Apple® Configuration Profile maxFailedAttempts",
-      "Configuration Management Tool"
+      "Apple® Configuration Profile maxFailedAttempts"
     ],
     relatedSafeguards: ["4.1"]  },
   "4.11": {
@@ -1090,11 +1109,15 @@ export class SafeguardManager {
       "Where Supported"
     ],
     coreRequirements: [ // Green - The "what"
-      "separate enterprise workspaces are used on mobile end-user devices"
+      "Separate enterprise workspaces",
+      "On Mobile Devices",
+      "Separate"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Enterprise Applications and Enterprise Data",
-      "Seperate from Personal Applications and Personal Data"
+      "Enterprise Data",
+      "Enterprise Applications",
+      "Personal Data",
+      "Personal Applications"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Apple® Configuration Profile",
@@ -1109,9 +1132,13 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Establish and maintain",
+      "Establish",
+      "Maintain",
+      "Validate that all active accounts are authorized",
+      "Recurring schedule",
       "Must include",
-      "Validate that all active accounts are authorized, on a recurring schedule at a minimum quarterly, or more frequently"
+      "Minimum Quarterly",
+      "More Frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "Inventory of Accounts"
@@ -1119,7 +1146,6 @@ export class SafeguardManager {
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "User Accounts",
       "Administrator Accounts",
-      "Service Accounts",
       "Name",
       "Username",
       "Start Stop Dates",
@@ -1137,7 +1163,9 @@ export class SafeguardManager {
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
       "Use",
-      "At a minimum, an 8-character password for accounts using Multi-Factor Authentication (MFA) and a 14-character password for accounts not using MFA"
+      "At a minimum",
+      "8-character password for accounts using MFA",
+      "14-character password for accounts not using MFA"
     ],
     coreRequirements: [ // Green - The "what"
       "Unique Passwords"
@@ -1156,14 +1184,15 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "after a period of 45 days of inactivity", 
+      "Disable",
+      "Delete",
+      "Period of 45 days of inactivity",
       "where supported"
     ],
     coreRequirements: [ // Green - The "what"
       "Dormant Accounts"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "Dormant Accounts"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1188,7 +1217,6 @@ export class SafeguardManager {
       "General Computing Activities"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Such as",
       "Internet browsing",
       "Email",
       "Productivity suite use"
@@ -1202,10 +1230,13 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "Establish and maintain",
-      "at a minimum, must contain",
+      "Establish",
+      "Maintain",
       "Perform service account reviews to validate that all active accounts are authorized",
-      "recurring schedule at a minimum quarterly, or more frequently"
+      "at a minimum, must contain",
+      "On a recurring schedule",
+      "At a minimum quarterly",
+      "More frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "Inventory of Service Accounts"
@@ -1250,15 +1281,15 @@ export class SafeguardManager {
       "Follow"
     ],
     coreRequirements: [ // Green - The "what"
-      "documented process",
-      "granting access to enterprise assets"
+      "Documented Access Granting Process"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "upon new hire",
-      "role change of a user",
+      "New Hire",
+      "Role Change",
       "Enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
+      "Preferably automated"
     ],
     relatedSafeguards: ["5.1", "6.7", "6.8"]  },
   "6.2": {
@@ -1279,8 +1310,8 @@ export class SafeguardManager {
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Role Change",
       "Termination",
-      "Rights revocation",
       "Enterprise assets",
+      "Rights revocation",
       "Disabling accounts immediately"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
@@ -1300,14 +1331,15 @@ export class SafeguardManager {
       "Where Supported"
     ],
     coreRequirements: [ // Green - The "what"
-      "all externally-exposed enterprise or third-party applications to enforce MFA",
-      "MFA - Multi Factor Authentication"
+      "MFA",
+      "ALL Externally Exposed Applications"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "MFA for all externally exposed enterprise or third-party applications"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Enforcing MFA through a directory service or SSO provider is a satisfactory implementation of this Safeguard"
+      "Enforcing MFA Through",
+      "Directory service",
+      "SSO Provider"
     ],
     relatedSafeguards: ["2.1", "4.1"]  },
   "6.4": {
@@ -1321,10 +1353,10 @@ export class SafeguardManager {
       "Require"
     ],
     coreRequirements: [ // Green - The "what"
-      "MFA for remote network access"
+      "MFA",
+      "Remote Network Access"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "MFA for Remote Network Access"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1341,12 +1373,13 @@ export class SafeguardManager {
       "Where Supported"
     ],
     coreRequirements: [ // Green - The "what"
-      "MFA on all administrative access accounts"
+      "All Admin Access Accounts",
+      "MFA"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "All Admin Access Accounts",
-      "All enterprise assets",
-      "Onsite Management accounts or Service Provider Admin Accounts"
+      "Onsite Management",
+      "Service Provider",
+      "All enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1362,14 +1395,15 @@ export class SafeguardManager {
       "Establish",
       "maintain",
       "Review and update inventory",
-      "At a minimum, monthly or more frequenlty"
+      "At a minimum Annually",
+      "More frequently"
     ],
     coreRequirements: [ // Green - The "what"
       "inventory of the enterprise's authentication and authorization systems"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "hosted on-site",
-      "hosted at a remote service provider"
+      "Remote Service Provider"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
     ],
@@ -1389,8 +1423,8 @@ export class SafeguardManager {
       "access control"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "through a directory service or SSO provider",
-      "Directory Service or SSO Provider",
+      "Directory Service",
+      "SSO Provider",
       "All enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
@@ -1406,21 +1440,23 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Define",
       "maintain",
-      "Necessary",
       "Perform access control reviews of enterprise assets to validate that all privileges are authorized, on a recurring schedule",
-      "At a mimimum Annually, or more Frequently"
+      "At a minimum Annually",
+      "More frequently",
+      "Necessary"
     ],
     coreRequirements: [ // Green - The "what"
       "role-based access control"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Determining",
+      "Documenting",
       "Access rights",
       "Each Role",
-      "Neccesary to Successfully carry out its assigned duties",
-      "Determining",
-      "Documenting"
+      "carry out its assigned duties"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
+      "Identity and Access management Tool"
     ],
     relatedSafeguards: ["3.3", "4.1", "6.1"]  },
   "7.1": {
@@ -1433,12 +1469,13 @@ export class SafeguardManager {
     governanceElements: [ // Orange - MUST be met
       "Establish",
       "Maintain",
-      "review and update documentation annually",
-      "update when significant enterprise changes occur"
+      "Review and update documentation",
+      "When significant enterprise changes occur that could impact this Safeguard",
+      "Annually"
     ],
     coreRequirements: [ // Green - The "what"
       "vulnerability management process",
-      "documented",
+      "documented"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "Enterprise Assets"
@@ -1454,32 +1491,20 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "establish remediation process",
-      "maintain remediation process",
-      "SLA for security vulnerabilities",
-      "vulnerability remediation governance"
+      "Establish",
+      "Maintain",
+      "Reviews",
+      "Monthly",
+      "More frequent"
     ],
     coreRequirements: [ // Green - The "what"
       "remediation process",
-      "service level agreement",
-      "security vulnerability handling",
-      "remediation timeline management"
+      "Documented",
+      "Risk based Remediation strategy"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "vulnerability prioritization",
-      "remediation timelines",
-      "escalation procedures",
-      "patch management integration",
-      "risk-based remediation",
-      "remediation tracking",
-      "verification procedures"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "vulnerability management platforms",
-      "patch management systems",
-      "remediation workflow tools",
-      "SLA tracking systems",
-      "risk scoring frameworks"
     ],
     relatedSafeguards: ["7.1", "7.3", "7.4", "7.5", "7.6", "7.7"]  },
   "7.3": {
@@ -1490,32 +1515,19 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "perform automated OS patch management",
-      "enterprise assets coverage",
-      "automated patching requirement",
-      "patch management governance"
+      "Perform",
+      "Monthly",
+      "More frequent"
     ],
     coreRequirements: [ // Green - The "what"
-      "automated operating system patching",
-      "enterprise asset coverage",
-      "patch deployment automation",
-      "OS security updates"
+      "Patch Management",
+      "Automated"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "patch deployment scheduling",
-      "patch testing procedures",
-      "rollback capabilities",
-      "patch compliance monitoring",
-      "emergency patching procedures",
-      "patch approval workflows",
-      "system restart management"
+      "Enterprise Assets",
+      "Operating System Updates"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "Windows Update Services",
-      "patch management platforms",
-      "configuration management tools",
-      "automated patching solutions",
-      "system center tools"
     ],
     relatedSafeguards: ["1.1", "4.1", "7.1", "7.2", "7.4", "7.5"]  },
   "7.4": {
@@ -1526,32 +1538,19 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "perform automated application patching",
-      "enterprise assets coverage",
-      "automated application updates",
-      "application patch governance"
+      "Perform",
+      "Monthly",
+      "More frequent"
     ],
     coreRequirements: [ // Green - The "what"
-      "automated application patching",
-      "enterprise asset coverage",
-      "application security updates",
-      "patch deployment automation"
+      "Patch Management",
+      "Automated"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "application update management",
-      "third-party software updates",
-      "browser plugin updates",
-      "security patch prioritization",
-      "application compatibility testing",
-      "update rollback procedures",
-      "vendor patch notifications"
+      "Application Updates",
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "application update managers",
-      "third-party patch solutions",
-      "automated deployment tools",
-      "software inventory integration",
-      "patch compliance scanners"
     ],
     relatedSafeguards: ["2.1", "2.2", "7.1", "7.2", "7.3", "7.5"]  },
   "7.5": {
@@ -1562,32 +1561,21 @@ export class SafeguardManager {
     assetType: ["Devices", "Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "perform automated vulnerability scans",
-      "internal enterprise assets",
-      "quarterly or more frequent basis",
-      "vulnerability scanning governance"
+      "Perform",
+      "Quarterly",
+      "More frequent"
     ],
     coreRequirements: [ // Green - The "what"
-      "automated vulnerability scanning",
-      "internal asset coverage",
-      "quarterly scan frequency",
-      "vulnerability detection"
+      "Vulnerability Scans",
+      "Automated",
+      "Internal Assets"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "network vulnerability scanning",
-      "host-based vulnerability scanning",
-      "application vulnerability scanning",
-      "database vulnerability scanning",
-      "scan scheduling",
-      "scan result analysis",
-      "false positive management"
+      "Authenticated",
+      "Unauthenticated",
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "vulnerability scanners",
-      "network security scanners",
-      "application security scanners",
-      "automated scanning platforms",
-      "vulnerability management systems"
     ],
     relatedSafeguards: ["1.1", "2.1", "7.1", "7.2", "7.3", "7.4", "7.6", "7.7"]  },
   "7.6": {
@@ -1598,32 +1586,20 @@ export class SafeguardManager {
     assetType: ["Devices", "Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "perform automated vulnerability scans",
-      "externally-exposed enterprise assets",
-      "internal or external scanning service",
-      "external asset scanning governance"
+      "Perform",
+      "Perform scans",
+      "Monthly",
+      "More frequent"
     ],
     coreRequirements: [ // Green - The "what"
-      "automated vulnerability scanning",
-      "externally-exposed assets",
-      "external vulnerability detection",
-      "internet-facing asset scanning"
+      "Vulnerability Scans",
+      "Automated",
+      "Externally Exposed"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "external network scanning",
-      "web application scanning",
-      "exposed service scanning",
-      "cloud asset scanning",
-      "external IP monitoring",
-      "internet exposure assessment",
-      "attack surface analysis"
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "external vulnerability scanners",
-      "cloud security scanning",
-      "web application scanners",
-      "internet asset discovery",
-      "third-party scanning services"
     ],
     relatedSafeguards: ["1.1", "2.1", "7.1", "7.2", "7.5", "7.7"]  },
   "7.7": {
@@ -1634,32 +1610,20 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "remediate detected vulnerabilities",
-      "software vulnerability remediation",
-      "monthly or more frequent basis",
-      "vulnerability remediation governance"
+      "Remediate",
+      "Monthly",
+      "More frequent",
+      "Through"
     ],
     coreRequirements: [ // Green - The "what"
-      "vulnerability remediation",
-      "detected vulnerability handling",
-      "monthly remediation cycles",
-      "software security updates"
+      "Vulnerability Remediation Process"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "vulnerability assessment",
-      "risk-based prioritization",
-      "patch deployment",
-      "compensating controls",
-      "remediation verification",
-      "remediation tracking",
-      "exception management"
+      "Software",
+      "Processes",
+      "Tooling"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "vulnerability management platforms",
-      "automated remediation tools",
-      "patch management integration",
-      "remediation workflow systems",
-      "risk assessment tools"
     ],
     relatedSafeguards: ["7.1", "7.2", "7.3", "7.4", "7.5", "7.6"]  },
   "8.1": {
@@ -1669,27 +1633,26 @@ export class SafeguardManager {
     implementationGroup: "IG1",
     assetType: ["Documentation"],
     securityFunction: ["Govern"],
-    governanceElements: [
-      "establish and maintain",
-      "documented audit log management process", 
-      "review and update documentation annually",
-      "when significant enterprise changes occur that could impact this Safeguard"
-    ],
-    coreRequirements: [
-      "enterprise's logging requirements",
-      "collection, review, and retention of audit logs",
-      "enterprise assets"
-    ],
-    subTaxonomicalElements: [
-      "collection",
-      "review", 
-      "retention",
+    governanceElements: [ // Orange - MUST be met
+      "Establish",
+      "Maintain",
+      "Review and update documentation",
+      "when significant enterprise changes occur that could impact this Safeguard",
       "annually",
       "minimum"
     ],
-    implementationSuggestions: [
-      "log management policy/process",
-      "documentation"
+    coreRequirements: [ // Green - The "what"
+      "documented audit log management process"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "enterprise assets",
+      "Audit logs",
+      "enterprise's logging requirements",
+      "collection",
+      "review",
+      "retention"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["8.2", "8.3", "8.5", "8.6", "8.7", "8.8", "8.9", "8.10", "8.11", "8.12"]  },
   "8.2": {
@@ -1699,20 +1662,19 @@ export class SafeguardManager {
     implementationGroup: "IG1",
     assetType: ["Data"],
     securityFunction: ["Detect"],
-    governanceElements: [
+    governanceElements: [ // Orange - MUST be met
+      "Collect",
       "per the enterprise's audit log management process"
     ],
-    coreRequirements: [
-      "collect audit logs",
-      "logging enabled", 
+    coreRequirements: [ // Green - The "what"
+      "Audit Logs"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Logging",
+      "enabled",
       "enterprise assets"
     ],
-    subTaxonomicalElements: [
-      "enabled"
-    ],
-    implementationSuggestions: [
-      "log management tool",
-      "OS dependent"
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["8.1"]  },
   "8.3": {
@@ -1722,21 +1684,19 @@ export class SafeguardManager {
     implementationGroup: "IG1",
     assetType: ["Data"],
     securityFunction: ["Protect"],
-    governanceElements: [
-      "comply with the enterprise's audit log management process"
-    ],
-    coreRequirements: [
-      "logging destinations maintain adequate storage"
-    ],
-    subTaxonomicalElements: [
-      "adequate storage",
+    governanceElements: [ // Orange - MUST be met
+      "Ensure",
       "maintain",
       "comply",
+      "The Enterprise's audit log management process"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "Adequate Storage (for Logs)"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "logging destinations"
     ],
-    implementationSuggestions: [
-      "log management tool", 
-      "potentially OS dependent"
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["8.1", "8.9", "8.10"]  },
   "8.4": {
@@ -1746,23 +1706,21 @@ export class SafeguardManager {
     implementationGroup: "IG2", 
     assetType: ["enterprise assets", "Data"],
     securityFunction: ["Protect"],
-    governanceElements: [
-      "standardize time synchronization"
-    ],
-    coreRequirements: [
-      "configure at least two synchronized time sources",
-      "enterprise assets", 
-      "where supported"
-    ],
-    subTaxonomicalElements: [
+    governanceElements: [ // Orange - MUST be met
+      "Standardize",
+      "Configure",
       "at least two",
-      "synchronized",
-      "time sources",
       "where supported"
     ],
-    implementationSuggestions: [
-      "secure configuration policy/process",
-      "potentially OS dependent"
+    coreRequirements: [ // Green - The "what"
+      "Time Syncronization"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "enterprise assets",
+      "time sources",
+      "synchronized"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["4.1"]  },
   "8.5": {
@@ -1772,26 +1730,24 @@ export class SafeguardManager {
     implementationGroup: "IG2",
     assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"], 
-    governanceElements: [
-      "configure detailed audit logging"
+    governanceElements: [ // Orange - MUST be met
+      "Configure"
     ],
-    coreRequirements: [
-      "enterprise assets containing sensitive data",
-      "forensic investigation"
+    coreRequirements: [ // Green - The "what"
+      "Detailed Audit Logs",
+      "enterprise assets containing sensitive data"
     ],
-    subTaxonomicalElements: [
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Could Assist in a Forensic Investigation",
       "event source",
-      "date", 
+      "date",
       "username",
       "timestamp",
       "source addresses",
-      "destination addresses", 
+      "destination addresses",
       "other useful elements"
     ],
-    implementationSuggestions: [
-      "log management tool",
-      "log management policy/process",
-      "potentially OS dependent"
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["8.1", "1.1", "3.2"]  },
   "8.6": {
@@ -1801,22 +1757,18 @@ export class SafeguardManager {
     implementationGroup: "IG2",
     assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"],
-    governanceElements: [
-      "where appropriate and supported"
-    ],
-    coreRequirements: [
-      "collect DNS query audit logs",
-      "enterprise assets"
-    ],
-    subTaxonomicalElements: [
-      "DNS query logs",
+    governanceElements: [ // Orange - MUST be met
       "where appropriate",
+      "Collect",
       "where supported"
     ],
-    implementationSuggestions: [
-      "log management tool",
-      "secure configuration policy/process", 
-      "potentially OS dependent"
+    coreRequirements: [ // Green - The "what"
+      "DNS query logs"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "enterprise assets"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["8.1", "4.9"]  },
   "8.7": {
@@ -1826,22 +1778,18 @@ export class SafeguardManager {
     implementationGroup: "IG2",
     assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"],
-    governanceElements: [
-      "where appropriate and supported"
-    ],
-    coreRequirements: [
-      "collect URL request audit logs", 
-      "enterprise assets"
-    ],
-    subTaxonomicalElements: [
-      "URL request audit logs",
-      "where appropriate", 
+    governanceElements: [ // Orange - MUST be met
+      "where appropriate",
+      "Collect",
       "where supported"
     ],
-    implementationSuggestions: [
-      "log management tool",
-      "secure configuration policy/process",
-      "potentially OS dependent"
+    coreRequirements: [ // Green - The "what"
+      "URL request audit logs"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "enterprise assets"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["8.1"]  },
   "8.8": {
@@ -1851,21 +1799,19 @@ export class SafeguardManager {
     implementationGroup: "IG2",
     assetType: ["Data"],
     securityFunction: ["Detect"],
-    governanceElements: [
-      "collect command-line audit logs"
+    governanceElements: [ // Orange - MUST be met
+      "Collect"
     ],
-    coreRequirements: [
+    coreRequirements: [ // Green - The "what"
       "command-line audit logs"
     ],
-    subTaxonomicalElements: [
-      "PowerShell",
-      "BASH", 
-      "remote administrative terminals"
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
     ],
-    implementationSuggestions: [
-      "log management tool",
-      "secure configuration policy/process",
-      "OS dependent"
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Collecting Audit Logs From:",
+      "PowerShell",
+      "BASHTM",
+      "remote administrative terminals"
     ],
     relatedSafeguards: ["8.1"]  },
   "8.9": {
@@ -1875,23 +1821,20 @@ export class SafeguardManager {
     implementationGroup: "IG2",
     assetType: ["enterprise assets", "Data"],
     securityFunction: ["Detect"], 
-    governanceElements: [
-      "in accordance with documented audit log management process",
+    governanceElements: [ // Orange - MUST be met
+      "Centralize",
       "to the extent possible"
     ],
-    coreRequirements: [
-      "centralize audit log collection and retention",
-      "enterprise assets"
-    ],
-    subTaxonomicalElements: [
+    coreRequirements: [ // Green - The "what"
       "audit log collection",
-      "audit log retention",
-      "to the extent possible"
+      "audit log retention"
     ],
-    implementationSuggestions: [
-      "SIEM tool",
-      "log analytics and centralization tool", 
-      "OS dependent"
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "enterprise assets",
+      "in accordance with documented audit log management process"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Leveraging a SIEM tool to centralize multiple log sources"
     ],
     relatedSafeguards: ["8.1", "8.3", "12.5", "13.1"]  },
   "8.10": {
@@ -1901,18 +1844,17 @@ export class SafeguardManager {
     implementationGroup: "IG2",
     assetType: ["enterprise assets", "Data"],
     securityFunction: ["Protect"],
-    governanceElements: [
+    governanceElements: [ // Orange - MUST be met
+      "Retain",
       "minimum of 90 days"
     ],
-    coreRequirements: [
-      "retain audit logs",
+    coreRequirements: [ // Green - The "what"
+      "Audit Logs"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "enterprise assets"
     ],
-    subTaxonomicalElements: [
-      "minimum of 90 days"
-    ],
-    implementationSuggestions: [
-      "log analytics and centralization tool"
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["8.1", "8.3"]  },
   "8.11": {
@@ -1922,21 +1864,20 @@ export class SafeguardManager {
     implementationGroup: "IG2",
     assetType: ["Data"],
     securityFunction: ["Detect"],
-    governanceElements: [
-      "conduct reviews on a weekly, or more frequent, basis"
+    governanceElements: [ // Orange - MUST be met
+      "Conduct Reviews",
+      "weekly",
+      "more frequent"
     ],
-    coreRequirements: [
-      "detect anomalies or abnormal events",
-      "potential threat"
+    coreRequirements: [ // Green - The "what"
+      "Review Audit Logs"
     ],
-    subTaxonomicalElements: [
-      "weekly", 
-      "more frequent",
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Could Indicate a potential threat",
       "anomalies",
       "abnormal events"
     ],
-    implementationSuggestions: [
-      "log analytics and centralization tool"
+    implementationSuggestions: [ // Gray - Implementation suggestions
     ],
     relatedSafeguards: ["8.1", "8.12"]  },
   "8.12": {
@@ -1946,22 +1887,21 @@ export class SafeguardManager {
     implementationGroup: "IG3",
     assetType: ["Data"], 
     securityFunction: ["Detect"],
-    governanceElements: [
+    governanceElements: [ // Orange - MUST be met
+      "Collect",
       "where supported"
     ],
-    coreRequirements: [
-      "collect service provider logs"
+    coreRequirements: [ // Green - The "what"
+      "Service provider logs"
     ],
-    subTaxonomicalElements: [
-      "authentication events",
-      "authorization events",
-      "data creation events", 
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Collecting authentication events",
+      "Collecting authorization events",
+      "data creation events",
       "disposal events",
       "user management events"
-    ],
-    implementationSuggestions: [
-      "log analytics and centralization tool",
-      "secure configuration policy/process"
     ],
     relatedSafeguards: ["8.1", "8.11", "15.1"]  },
   "9.1": {
@@ -1972,28 +1912,18 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "ensure only fully supported browsers and email clients are allowed to execute",
+      "Ensure",
       "only using the latest version provided through the vendor"
     ],
     coreRequirements: [ // Green - The "what"
-      "fully supported browsers only",
-      "fully supported email clients only", 
-      "latest vendor versions only",
-      "execution restriction enforcement"
+      "Only Fully Supported",
+      "Browsers",
+      "Email Clients"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "ensure only fully supported",
-      "browsers and email clients",
-      "are allowed to execute",
-      "in the enterprise",
-      "only using the latest version",
-      "provided through the vendor"
+      "Allowed to execute"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "enterprise and software asset management tools",
-      "application allowlisting",
-      "software inventory systems",
-      "automated patch management"
     ],
     relatedSafeguards: ["2.1", "4.1", "7.4"]  },
   "9.2": {
@@ -2004,29 +1934,18 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "use DNS filtering services on all end-user devices",
-      "including remote and on-premise assets",
-      "to block access to known malicious domains"
+      "Use"
     ],
     coreRequirements: [ // Green - The "what"
-      "DNS filtering services deployment",
-      "all end-user device coverage",
-      "malicious domain blocking",
-      "remote and on-premise asset inclusion"
+      "DNS Filtering Service"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "use DNS filtering services",
-      "on all end-user devices", 
-      "including remote assets",
-      "including on-premise assets",
-      "to block access",
-      "to known malicious domains"
+      "All End-user devices",
+      "Remote assets",
+      "On-premise assets",
+      "Block Access to Known Malicious Domains"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "DNS filtering services",
-      "secure DNS servers",
-      "DNS security platforms",
-      "cloud-based DNS filtering"
     ],
     relatedSafeguards: ["4.1", "4.9"]  },
   "9.3": {
@@ -2037,30 +1956,22 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "enforce and update network-based URL filters",
-      "to limit enterprise asset from connecting to potentially malicious or unapproved websites",
-      "enforce filters for all enterprise assets"
+      "Enforce",
+      "Update",
+      "Enforce Filters"
     ],
     coreRequirements: [ // Green - The "what"
-      "network-based URL filters",
-      "enterprise asset connection limiting",
-      "malicious website blocking",
-      "unapproved website blocking"
+      "network-based URL filters"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "enforce network-based URL filters",
-      "update network-based URL filters",
-      "limit enterprise asset from connecting",
-      "to potentially malicious websites",
-      "to unapproved websites",
-      "enforce filters for all enterprise assets"
+      "Limit enterprise Asset from connecting to",
+      "Unapproved Websites",
+      "Potentially Malicious Websites"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "URL filtering tools",
-      "category-based filtering",
-      "reputation-based filtering", 
       "block lists",
-      "web content filtering"
+      "reputation-based filtering",
+      "Category based methods"
     ],
     relatedSafeguards: ["4.1"]  },
   "9.4": {
@@ -2071,31 +1982,21 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "restrict unauthorized or unnecessary browser or email client plugins, extensions, and add-on applications",
-      "either through uninstalling or disabling"
+      "Restrict"
     ],
     coreRequirements: [ // Green - The "what"
-      "browser plugin restrictions",
-      "email client plugin restrictions",
-      "browser extension restrictions",
-      "add-on application restrictions"
+      "Uninstalling",
+      "Disabling",
+      "Unauthorized",
+      "Unnecessary"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "restrict through uninstalling or disabling",
-      "unauthorized browser plugins",
-      "unnecessary browser plugins",
-      "unauthorized email client plugins",
-      "unnecessary email client plugins",
-      "unauthorized browser extensions",
-      "unnecessary browser extensions",
-      "unauthorized add-on applications",
-      "unnecessary add-on applications"
+      "Browser Client Plugins",
+      "Email Client Plugins",
+      "Browser Extensions",
+      "Browser / Email Client Add-on applications"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "configuration management tools",
-      "browser management systems",
-      "application control policies",
-      "extension management platforms"
     ],
     relatedSafeguards: ["4.1"]  },
   "9.5": {
@@ -2106,32 +2007,19 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "implement DMARC policy and verification",
-      "to lower the chance of spoofed or modified emails from valid domains",
-      "starting with implementing SPF and DKIM standards"
+      "Implement",
+      "Implement Verification",
+      "Standards"
     ],
     coreRequirements: [ // Green - The "what"
-      "DMARC policy implementation",
-      "DMARC verification implementation",
-      "SPF standard implementation",
-      "DKIM standard implementation"
+      "DMARC policy"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "implement DMARC policy",
-      "implement DMARC verification",
-      "to lower the chance of spoofed emails",
-      "to lower the chance of modified emails",
-      "from valid domains",
-      "starting with implementing SPF",
-      "starting with implementing DKIM",
-      "Sender Policy Framework standards",
-      "DomainKeys Identified Mail standards"
+      "Sender Policy Framework (SPF)",
+      "DomainKeys Identified Mail (DKIM)",
+      "to lower the chance of spoofed or modified emails from valid domains"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "DMARC management tools",
-      "email authentication services",
-      "SPF record management",
-      "DKIM signature management"
     ],
     relatedSafeguards: ["4.1"]  },
   "9.6": {
@@ -2142,23 +2030,15 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "block unnecessary file types attempting to enter the enterprise's email gateway"
+      "Block"
     ],
     coreRequirements: [ // Green - The "what"
-      "unnecessary file type blocking",
-      "email gateway protection",
-      "file type filtering"
+      "Unnecessary file types",
+      "At the Email Gateway"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "block unnecessary file types",
-      "attempting to enter",
-      "the enterprise's email gateway"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "email security tools",
-      "email gateway filtering",
-      "file type blocking systems",
-      "email content filtering"
     ],
     relatedSafeguards: ["4.1"]  },
   "9.7": {
@@ -2169,27 +2049,17 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "deploy and maintain email server anti-malware protections",
-      "such as attachment scanning and/or sandboxing"
+      "Deploy",
+      "Maintain"
     ],
     coreRequirements: [ // Green - The "what"
-      "email server anti-malware protections",
-      "attachment scanning capabilities",
-      "sandboxing capabilities",
-      "deployment and maintenance"
+      "email server anti-malware protections"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "deploy email server anti-malware protections",
-      "maintain email server anti-malware protections",
-      "such as attachment scanning",
-      "such as sandboxing",
-      "attachment scanning and/or sandboxing"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "email security tools",
-      "anti-malware platforms",
-      "attachment scanning systems",
-      "email sandboxing solutions"
+      "Attachment Scanning",
+      "Sandboxing"
     ],
     relatedSafeguards: ["4.1", "10.1"]  },
   "10.1": {
@@ -2200,29 +2070,16 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "deploy anti-malware software",
-      "maintain anti-malware software",
-      "all enterprise assets coverage",
-      "anti-malware software management"
+      "deploy",
+      "maintain"
     ],
     coreRequirements: [ // Green - The "what"
-      "anti-malware software deployment",
-      "anti-malware software maintenance",
-      "enterprise assets protection",
-      "malware detection capabilities"
+      "anti-malware software"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "deploy",
-      "maintain", 
-      "anti-malware software",
       "all enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "endpoint protection platforms",
-      "anti-virus solutions",
-      "endpoint detection and response",
-      "malware protection tools",
-      "security software management"
     ],
     relatedSafeguards: ["4.1", "10.2", "10.4", "10.6", "10.7", "13.5"]  },
   "10.2": {
@@ -2233,24 +2090,16 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "configure automatic updates",
-      "anti-malware signature files",
-      "all enterprise assets coverage",
-      "signature update management"
+      "configure"
     ],
     coreRequirements: [ // Green - The "what"
-      "automatic updates configuration",
-      "anti-malware signature files",
-      "enterprise assets coverage"
+      "automatic updates",
+      "anti-malware signature files"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "configure",
-      "automatic updates",
-      "anti-malware signature files",
       "all enterprise assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "anti-malware software can auto update potentially"
     ],
     relatedSafeguards: ["10.1"]  },
   "10.3": {
@@ -2261,29 +2110,17 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "disable autorun functionality",
-      "disable autoplay functionality", 
-      "auto-execute prevention",
-      "removable media security"
+      "disable"
     ],
     coreRequirements: [ // Green - The "what"
-      "autorun disabling",
-      "autoplay disabling", 
-      "auto-execute prevention",
-      "removable media protection"
+      "Auto Run",
+      "autoplay",
+      "Auto-execute"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "disable",
-      "autorun",
-      "autoplay",
-      "auto-execute functionality",
       "removable media"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "group policy settings",
-      "registry modifications",
-      "configuration management tools",
-      "secure configuration policy/process"
     ],
     relatedSafeguards: ["4.1"]  },
   "10.4": {
@@ -2294,28 +2131,16 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "configure anti-malware software",
-      "automatic scanning configuration",
-      "removable media scanning",
-      "scanning policy management"
+      "configure"
     ],
     coreRequirements: [ // Green - The "what"
-      "anti-malware software configuration",
-      "automatic scanning",
-      "removable media protection",
-      "malware detection on media"
+      "anti-malware software",
+      "automatically scan"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "configure",
-      "anti-malware software",
-      "automatically scan",
       "removable media"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "anti-malware software configuration policy/process",
-      "endpoint scanning policies",
-      "media scanning tools",
-      "automated threat detection"
     ],
     relatedSafeguards: ["10.1"]  },
   "10.5": {
@@ -2326,30 +2151,21 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "enable anti-exploitation features",
-      "enterprise assets coverage", 
-      "software protection",
-      "where possible implementation"
+      "enable",
+      "where possible"
     ],
     coreRequirements: [ // Green - The "what"
-      "anti-exploitation features",
-      "enterprise assets protection",
-      "software security",
-      "exploit prevention"
+      "anti-exploitation features"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "enable",
-      "anti-exploitation features",
       "enterprise assets",
-      "software", 
-      "where possible"
+      "software"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "Microsoft® Data Execution Prevention (DEP)",
-      "Windows® Defender Exploit Guard (WDEG)", 
+      "Windows® Defender Exploit Guard (WDEG)",
       "Apple® System Integrity Protection (SIP)",
-      "Gatekeeper™",
-      "configuration management tool"
+      "GatekeeperTM"
     ],
     relatedSafeguards: ["4.1"]  },
   "10.6": {
@@ -2360,26 +2176,14 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "centrally manage anti-malware",
-      "centralized management process",
-      "anti-malware software governance", 
-      "management infrastructure"
+      "centrally manage"
     ],
     coreRequirements: [ // Green - The "what"
-      "centralized management",
-      "anti-malware software",
-      "management capabilities",
-      "centralized control"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "centrally manage",
       "anti-malware software"
     ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "anti-malware software configuration policy/process",
-      "centralized management platforms",
-      "security management consoles",
-      "enterprise security tools"
     ],
     relatedSafeguards: ["10.1"]  },
   "10.7": {
@@ -2390,27 +2194,15 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "use behavior-based anti-malware",
-      "behavioral analysis implementation",
-      "advanced threat detection",
-      "behavior-based protection"
+      "use"
     ],
     coreRequirements: [ // Green - The "what"
-      "behavior-based anti-malware software",
-      "behavioral analysis",
-      "advanced malware detection",
-      "dynamic threat identification"
+      "anti-malware software",
+      "behavior-based"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "use",
-      "behavior-based",
-      "anti-malware software"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "anti-malware software configuration policy/process", 
-      "behavioral analysis tools",
-      "advanced endpoint detection",
-      "machine learning security"
     ],
     relatedSafeguards: ["10.1"]  },
   "11.1": {
@@ -2421,33 +2213,21 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish documented data recovery process",
-      "maintain documented data recovery process",
-      "review and update documentation annually",
-      "when significant enterprise changes occur that could impact this Safeguard"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "documented data recovery process",
-      "scope of data recovery activities",
-      "recovery prioritization", 
-      "security of backup data"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "establish",
       "maintain",
-      "documented data recovery process",
+      "review and update documentation",
+      "when significant enterprise changes occur that could impact this Safeguard",
+      "annually"
+    ],
+    coreRequirements: [ // Green - The "what"
+      "documented data recovery process"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "scope of data recovery activities",
       "recovery prioritization",
-      "security of backup data",
-      "review and update documentation",
-      "annually",
-      "when significant enterprise changes occur"
+      "security of backup data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "data recovery policy/process",
-      "business continuity documentation",
-      "recovery procedures manual",
-      "backup and recovery strategy"
     ],
     relatedSafeguards: ["3.2", "3.4", "3.5", "3.8", "11.2", "11.3", "11.4", "11.5"]  },
   "11.2": {
@@ -2458,31 +2238,19 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
-      "perform automated backups",
-      "in-scope enterprise assets",
-      "run backups weekly or more frequently",
-      "based on sensitivity of data"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "automated backups",
-      "in-scope enterprise assets",
-      "backup frequency requirements",
-      "data sensitivity considerations"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "perform",
-      "automated backups",
-      "in-scope enterprise assets",
       "run backups",
       "weekly",
-      "more frequently", 
-      "based on sensitivity of the data"
+      "more frequently",
+      "Based on Sensitivity"
+    ],
+    coreRequirements: [ // Green - The "what"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Scope",
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "data backup and recovery tool",
-      "automated backup systems",
-      "backup scheduling software",
-      "enterprise backup solutions"
     ],
     relatedSafeguards: ["1.1", "2.1", "11.1"]  },
   "11.3": {
@@ -2493,30 +2261,18 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "protect recovery data",
-      "equivalent controls to original data",
-      "reference encryption or data separation", 
-      "based on requirements"
+      "protect",
+      "based on requirements",
+      "reference encryption",
+      "data separation"
     ],
     coreRequirements: [ // Green - The "what"
-      "recovery data protection",
-      "equivalent controls",
-      "original data protection parity",
-      "requirements-based implementation"
+      "recovery data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "protect",
-      "recovery data", 
-      "equivalent controls to the original data",
-      "reference encryption",
-      "data separation",
-      "based on requirements"
+      "equivalent controls to original data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "data backup and recovery tool",
-      "backup encryption systems",
-      "secure backup storage",
-      "data separation technologies"
     ],
     relatedSafeguards: ["3.3", "3.10", "3.11", "11.1"]  },
   "11.4": {
@@ -2527,33 +2283,20 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
-      "establish isolated instance of recovery data",
-      "maintain isolated instance of recovery data",
-      "version controlling backup destinations",
-      "example implementations include offline, cloud, or off-site systems or services"
+      "establish",
+      "maintain"
     ],
     coreRequirements: [ // Green - The "what"
-      "isolated instance of recovery data",
-      "backup destination control",
-      "recovery data isolation",
-      "implementation flexibility"
+      "isolated instance of recovery data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "establish",
-      "maintain",
-      "isolated instance of recovery data",
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
       "version controlling backup destinations",
-      "offline", 
+      "offline",
       "cloud",
       "off-site systems",
       "services"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "data backup and recovery tool",
-      "offline backup systems",
-      "cloud backup services", 
-      "off-site storage solutions",
-      "version controlling backup destinations"
     ],
     relatedSafeguards: ["11.1"]  },
   "11.5": {
@@ -2564,29 +2307,18 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
-      "test backup recovery quarterly or more frequently",
-      "sampling of in-scope enterprise assets",
-      "recovery testing requirements",
-      "testing frequency management"
+      "quarterly",
+      "more frequently"
     ],
     coreRequirements: [ // Green - The "what"
-      "backup recovery testing", 
-      "quarterly testing frequency",
-      "in-scope enterprise assets sampling",
-      "recovery validation"
+      "test backup recovery"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "test backup recovery",
-      "quarterly",
-      "more frequently",
       "sampling",
-      "in-scope enterprise assets"
+      "In-Scope",
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "data recovery policy/process",
-      "data backup and recovery tool",
-      "recovery testing procedures",
-      "backup validation systems"
     ],
     relatedSafeguards: ["11.1"]  },
   "12.1": {
@@ -2597,32 +2329,19 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "ensure network infrastructure is kept up-to-date",
-      "review software versions monthly or more frequently",
-      "verify software support",
-      "network infrastructure maintenance"
+      "ensure",
+      "Review software versions to verify software support",
+      "monthly",
+      "more frequently"
     ],
     coreRequirements: [ // Green - The "what"
-      "network infrastructure up-to-date",
-      "latest stable release of software",
-      "currently supported network-as-a-service offerings",
-      "software version review"
+      "network infrastructure is kept up-to-date"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "ensure",
-      "network infrastructure is kept up-to-date",
-      "running the latest stable release of software",
-      "using currently supported network-as-a-service (NaaS) offerings",
-      "review software versions",
-      "monthly",
-      "more frequently",
-      "verify software support"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "enterprise and software asset management tool",
-      "network management systems",
-      "automated patching tools",
-      "network-as-a-service platforms"
+      "running the latest stable release of software",
+      "using currently supported network-as-a-service (NaaS) offerings"
     ],
     relatedSafeguards: ["4.2", "7.3"]  },
   "12.2": {
@@ -2633,33 +2352,23 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "design secure network architecture",
-      "maintain secure network architecture",
-      "must address segmentation, least privilege, and availability at minimum",
-      "secure network architecture requirements"
+      "design",
+      "maintain",
+      "must address",
+      "Minimum"
     ],
     coreRequirements: [ // Green - The "what"
-      "secure network architecture",
-      "segmentation",
-      "least privilege (POLP)",
-      "availability"
+      "secure network architecture"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "design",
-      "maintain", 
-      "secure network architecture",
-      "must address",
       "segmentation",
-      "least privilege",
-      "availability",
-      "at a minimum"
+      "POLP - Least Privilege",
+      "availability"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure network management and design policy/process",
       "documentation",
-      "policy", 
-      "design components",
-      "network architecture tools"
+      "policy",
+      "design components"
     ],
     relatedSafeguards: ["3.3", "3.10", "4.2", "12.4", "13.3", "13.4", "13.6", "13.8", "13.9", "13.10"]  },
   "12.3": {
@@ -2670,30 +2379,18 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "securely manage network infrastructure",
-      "secure network protocols usage",
-      "infrastructure security management",
-      "secure management practices"
     ],
     coreRequirements: [ // Green - The "what"
-      "secure network management",
-      "version-controlled infrastructure-as-code", 
-      "secure network protocols",
-      "infrastructure security"
+      "secure network management"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "securely manage",
-      "network infrastructure",
-      "version-controlled infrastructure-as-code",
-      "use of secure network protocols",
-      "SSH",
-      "HTTPS"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure network management and design policy/process",
       "network management and monitoring tool",
-      "infrastructure-as-code platforms",
-      "secure protocol implementations"
+      "version-controlled infrastructure-as-code",
+      "Use of Secure Protocols",
+      "SSH",
+      "HTTPS"
     ],
     relatedSafeguards: ["4.2", "12.6"]  },
   "12.4": {
@@ -2704,31 +2401,20 @@ export class SafeguardManager {
     assetType: ["documentation"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish architecture diagrams",
-      "maintain architecture diagrams", 
-      "review and update documentation annually",
+      "establish",
+      "maintain",
+      "review and update documentation",
+      "annually",
       "when significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "architecture diagrams",
-      "network system documentation",
-      "documentation review and updates",
-      "enterprise change management"
+      "Architecture Diagram(s)",
+      "network system documentation"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "establish",
-      "maintain",
-      "architecture diagrams",
-      "other network system documentation",
-      "review and update documentation",
-      "annually",
-      "when significant enterprise changes occur"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure network management and design policy/process",
-      "network architecture diagramming tool",
-      "documentation management systems",
-      "architecture visualization tools"
+      "network architecture diagramming tool"
     ],
     relatedSafeguards: ["3.8", "4.2", "12.2"]  },
   "12.5": {
@@ -2739,29 +2425,17 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "centralize network AAA",
-      "network authentication centralization",
-      "network authorization centralization", 
-      "network auditing centralization"
+      "centralize"
     ],
     coreRequirements: [ // Green - The "what"
-      "network AAA centralization",
+      "network AAA"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "authentication",
       "authorization",
       "auditing"
     ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "centralize",
-      "network AAA",
-      "authentication",
-      "authorization", 
-      "auditing"
-    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure network management and design policy/process",
-      "identity and access management tool",
-      "AAA servers",
-      "centralized authentication systems"
     ],
     relatedSafeguards: ["4.2", "5.6", "6.7", "8.9", "12.6", "12.7"]  },
   "12.6": {
@@ -2772,30 +2446,18 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "use secure network management protocols",
-      "use secure communication protocols",
-      "secure protocol implementation",
-      "enterprise-grade security protocols"
+      "use",
+      "greater"
     ],
     coreRequirements: [ // Green - The "what"
       "secure network management",
-      "secure communication protocols",
-      "802.1X implementation",
-      "WPA2 Enterprise or greater"
+      "secure communication protocols"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "use",
-      "secure network management",
-      "communication protocols",
-      "802.1X", 
-      "Wi-Fi Protected Access 2 (WPA2) Enterprise",
-      "greater"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure network management and design policy/process",
-      "802.1X authentication systems",
-      "enterprise wireless controllers",
-      "secure protocol implementations"
+      "802.1X",
+      "WPA2 Enterprise"
     ],
     relatedSafeguards: ["12.3", "12.5"]  },
   "12.7": {
@@ -2806,30 +2468,17 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "require users to authenticate to enterprise-managed VPN",
-      "authenticate to authentication services",
-      "prior to accessing enterprise resources on end-user devices",
-      "VPN and AAA integration requirements"
+      "require",
+      "prior to accessing enterprise resources on end-user devices"
     ],
     coreRequirements: [ // Green - The "what"
       "enterprise-managed VPN",
       "authentication services",
-      "user authentication requirements",
-      "enterprise resource access control"
+      "Users Required to Authenticate"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "require",
-      "users to authenticate",
-      "enterprise-managed VPN",
-      "authentication services",
-      "prior to accessing enterprise resources",
-      "end-user devices"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure network management and design policy/process",
-      "VPN/encryption tool",
-      "enterprise VPN solutions",
-      "AAA integration systems"
     ],
     relatedSafeguards: ["6.4", "12.5"]  },
   "12.8": {
@@ -2840,32 +2489,21 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "establish dedicated computing resources for administrative work",
-      "maintain dedicated computing resources",
-      "segmented from enterprise's primary network",
-      "not allowed internet access"
+      "establish",
+      "maintain"
     ],
     coreRequirements: [ // Green - The "what"
       "dedicated computing resources (SAW)",
-      "administrative tasks isolation", 
-      "administrative access separation",
-      "network segmentation from primary network"
+      "For all administrative tasks",
+      "tasks requiring administrative access"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "establish",
-      "maintain",
-      "dedicated computing resources",
-      "physically or logically separated",
-      "all administrative tasks",
-      "tasks requiring administrative access",
       "segmented from primary network",
-      "no internet access"
+      "No Internet",
+      "Physically",
+      "Logically"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure network management and design policy/process",
-      "secure admin workstations (SAW)",
-      "network segmentation tools",
-      "administrative isolation systems"
     ],
     relatedSafeguards: ["1.1", "5.1"]  },
   "13.1": {
@@ -2876,29 +2514,21 @@ export class SafeguardManager {
     assetType: ["network", "Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "centralize security event alerting across enterprise assets",
-      "log correlation and analysis",
-      "active exploitation attempts monitoring"
+      "Centralize"
     ],
     coreRequirements: [ // Green - The "what"
-      "centralized security event alerting",
-      "log correlation capabilities", 
-      "analysis of security events",
-      "active exploitation attempt detection"
+      "Security Event Alerting"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "centralize security event alerting",
-      "across enterprise assets",
-      "for log correlation",
-      "for analysis",
-      "active exploitation attempts",
-      "of enterprise assets"
+      "Log Correlation",
+      "Analysis",
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security information and event management (SIEM)",
-      "security orchestration, automation and response (SOAR)",
-      "log aggregation platforms",
-      "event correlation engines"
+      "SIEM",
+      "Log Analytics Platform",
+      "Vendor-defined Event Correlation Alerts",
+      "Security-relevant correlation alerts"
     ],
     relatedSafeguards: ["8.1", "8.2", "8.11", "13.2", "13.3", "13.11"]  },
   "13.2": {
@@ -2909,26 +2539,17 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "deploy host-based intrusion detection solution",
-      "on enterprise assets",
-      "where technically feasible"
+      "deploy",
+      "Where appropriate",
+      "Where supported"
     ],
     coreRequirements: [ // Green - The "what"
-      "host-based intrusion detection solution",
-      "deployment on enterprise assets",
-      "technical feasibility assessment"
+      "host-based intrusion detection solution"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "deploy",
-      "host-based intrusion detection solution",
-      "on enterprise assets", 
-      "where technically feasible"
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "host-based intrusion detection systems (HIDS)",
-      "endpoint detection and response (EDR)",
-      "host-based security monitoring",
-      "behavioral analysis tools"
     ],
     relatedSafeguards: ["1.1", "13.1", "13.3", "13.7"]  },
   "13.3": {
@@ -2939,26 +2560,18 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "deploy network intrusion detection solution",
-      "ruleset tuned for threats facing enterprise's industry sector"
+      "deploy",
+      "Where Appropriate"
     ],
     coreRequirements: [ // Green - The "what"
-      "network intrusion detection solution",
-      "threat-tuned rulesets",
-      "industry-specific threat focus"
+      "network intrusion detection solution"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "deploy",
-      "network intrusion detection solution", 
-      "with ruleset tuned",
-      "for threats facing",
-      "the enterprise's industry sector"
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "network intrusion detection systems (NIDS)",
-      "network security monitoring",
-      "threat intelligence integration",
-      "industry-specific threat feeds"
+      "Network Intrusion Detection System (NIDS)",
+      "Equivalent CSP Service"
     ],
     relatedSafeguards: ["13.1", "13.2", "13.8"]  },
   "13.4": {
@@ -2969,24 +2582,15 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "perform traffic filtering between network segments",
-      "where technically feasible"
+      "Perform",
+      "Where Appropriate"
     ],
     coreRequirements: [ // Green - The "what"
-      "traffic filtering between network segments",
-      "network segmentation controls",
-      "technical feasibility assessment"
+      "traffic filtering between network segments"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "perform traffic filtering",
-      "between network segments",
-      "where technically feasible"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "network firewalls",
-      "micro-segmentation",
-      "network access control",
-      "software-defined perimeter"
     ],
     relatedSafeguards: ["12.2", "12.3", "13.9"]  },
   "13.5": {
@@ -2997,28 +2601,22 @@ export class SafeguardManager {
     assetType: ["Devices", "network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "manage access control for assets remotely connecting to enterprise resources",
-      "determine amount of access based on security posture"
+      "Manage"
     ],
     coreRequirements: [ // Green - The "what"
-      "access control for remote assets",
-      "remote connection management",
-      "security posture-based access"
+      "Access Control",
+      "Remote Assets"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "manage access control",
-      "for assets remotely connecting",
-      "to enterprise resources",
-      "determine amount of access",
-      "up-to-date anti-malware software installed",
-      "configuration compliance with the enterprise's secure configuration process",
-      "operating system and applications are up-to-date"
+      "Connecting to Enterprise Resources",
+      "Determine Amount of access Based on:",
+      "Anti Malware Software Installed",
+      "Up to date Anti Malware Signatures / Version",
+      "Up to Date OS",
+      "Up to date Applications",
+      "Compliant with Configuration Process"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "network access control (NAC)",
-      "zero trust network access",
-      "device compliance checking",
-      "posture assessment tools"
     ],
     relatedSafeguards: ["6.1", "10.1", "10.7", "12.1", "13.2"]  },
   "13.6": {
@@ -3029,25 +2627,18 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "collect network traffic flow logs and/or network traffic",
-      "to review and alert upon"
+      "Collect"
     ],
     coreRequirements: [ // Green - The "what"
-      "network traffic flow log collection",
-      "network traffic monitoring",
-      "review and alerting capabilities"
+      "Network Traffic Flow logs",
+      "Network Traffic"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "collect network traffic flow logs",
-      "collect network traffic",
-      "to review",
-      "to alert upon"
+      "Network Devices",
+      "Review",
+      "Alert"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "network flow analyzers",
-      "packet capture systems",
-      "network monitoring tools",
-      "traffic analysis platforms"
     ],
     relatedSafeguards: ["8.5", "13.1", "13.3"]  },
   "13.7": {
@@ -3058,26 +2649,19 @@ export class SafeguardManager {
     assetType: ["Devices"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "deploy host-based intrusion prevention solution",
-      "on enterprise assets",
-      "where technically feasible"
+      "deploy",
+      "Where appropriate",
+      "Where supported"
     ],
     coreRequirements: [ // Green - The "what"
-      "host-based intrusion prevention solution",
-      "deployment on enterprise assets",
-      "technical feasibility assessment"
+      "Host-based Intrusion Prevention Solution (IPS)"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "deploy",
-      "host-based intrusion prevention solution",
-      "on enterprise assets",
-      "where technically feasible"
+      "Enterprise Assets"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "host-based intrusion prevention systems (HIPS)",
-      "endpoint protection platforms",
-      "behavioral blocking systems",
-      "automated threat response"
+      "EDR",
+      "Host Based IPS Agent"
     ],
     relatedSafeguards: ["13.2", "13.8"]  },
   "13.8": {
@@ -3088,25 +2672,15 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "deploy network intrusion prevention solution",
-      "to block malicious network traffic in real-time"
+      "deploy",
+      "Where Appropriate"
     ],
     coreRequirements: [ // Green - The "what"
-      "network intrusion prevention solution",
-      "malicious traffic blocking",
-      "real-time response capabilities"
+      "network intrusion prevention solution"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "deploy",
-      "network intrusion prevention solution",
-      "to block malicious network traffic",
-      "in real-time"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "network intrusion prevention systems (NIPS)",
-      "inline security appliances",
-      "automated blocking systems",
-      "real-time threat mitigation"
     ],
     relatedSafeguards: ["13.3", "13.7"]  },
   "13.9": {
@@ -3117,25 +2691,19 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "deploy port-level access control",
-      "utilizes 802.1x or similar network access control protocols"
+      "Deploy"
     ],
     coreRequirements: [ // Green - The "what"
-      "port-level access control",
-      "802.1x implementation",
-      "network access control protocols"
+      "port-level access control"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "deploy port-level access control",
-      "utilizes 802.1x",
+      "802.1x",
       "similar network access control protocols",
-      "such as certificates"
+      "User Authentication",
+      "Device Authentication"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "802.1x authentication",
-      "network access control systems",
-      "certificate-based authentication",
-      "port-based network access control"
+      "Certificate Based"
     ],
     relatedSafeguards: ["12.7", "13.4"]  },
   "13.10": {
@@ -3146,25 +2714,17 @@ export class SafeguardManager {
     assetType: ["network", "Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "perform application layer filtering",
-      "to protect against enterprise's most common network-based attacks"
+      "Perform"
     ],
     coreRequirements: [ // Green - The "what"
-      "application layer filtering",
-      "protection against common network-based attacks",
-      "enterprise-specific threat focus"
+      "application layer filtering"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "perform application layer filtering",
-      "to protect against",
-      "the enterprise's most common",
-      "network-based attacks"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "web application firewalls",
-      "application layer gateways",
-      "deep packet inspection",
-      "application-aware filtering"
+      "Filtering Proxy",
+      "Application Layer Firewall",
+      "Gateway"
     ],
     relatedSafeguards: ["13.4", "16.11"]  },
   "13.11": {
@@ -3175,24 +2735,15 @@ export class SafeguardManager {
     assetType: ["network", "Devices"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "tune security event alerting thresholds",
-      "monthly or more frequently"
+      "Tune Alerts",
+      "monthly",
+      "More Frequently"
     ],
     coreRequirements: [ // Green - The "what"
-      "security event alerting threshold tuning",
-      "monthly tuning frequency",
-      "threshold optimization"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "tune security event alerting thresholds",
-      "monthly",
-      "or more frequently"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "SIEM tuning processes",
-      "threshold optimization tools",
-      "alert management platforms",
-      "false positive reduction"
     ],
     relatedSafeguards: ["13.1", "8.11"]  },
   "14.1": {
@@ -3203,32 +2754,23 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain a security awareness program",
-      "conduct training at hire and at a minimum annually",
-      "review and update content annually or when significant enterprise changes occur"
+      "Establish",
+      "Maintain",
+      "conduct training at hire",
+      "Minimum, annually",
+      "Review and update Content",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "security awareness program establishment",
-      "workforce education on secure interaction",
-      "enterprise assets and data security training",
-      "training frequency requirements"
+      "Security Awareness program",
+      "Educate the enterprise’s workforce on how to interact in a secure manner"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "establish security awareness program",
-      "maintain security awareness program",
-      "educate enterprise workforce",
-      "how to interact with enterprise assets",
-      "how to interact with data in secure manner",
-      "conduct training at hire",
-      "conduct training minimum annually",
-      "review and update content annually",
-      "when significant enterprise changes occur"
+      "Enterprise Assets",
+      "Data"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "security training and awareness policy/process",
-      "training documentation systems",
-      "learning management systems"
     ],
     relatedSafeguards: ["14.2", "14.3", "14.4", "14.5", "14.6", "14.7", "14.8", "14.9"]  },
   "14.2": {
@@ -3239,29 +2781,15 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "train workforce members to recognize social engineering attacks",
-      "such as phishing, business email compromise, pretexting, and tailgating"
     ],
     coreRequirements: [ // Green - The "what"
-      "workforce training on social engineering recognition",
-      "phishing attack awareness",
-      "business email compromise awareness",
-      "pretexting attack awareness",
-      "tailgating attack awareness"
+      "Train workforce to recognize Social Engineering Attacks"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "train workforce members",
-      "to recognize social engineering attacks",
-      "such as phishing",
-      "such as business email compromise (BEC)",
-      "such as pretexting",
-      "such as tailgating"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "phishing simulation platforms",
-      "social engineering awareness training",
-      "security awareness modules"
+      "Phishing",
+      "Business Email Compromise (BEC)"
     ],
     relatedSafeguards: ["14.1"]  },
   "14.3": {
@@ -3272,27 +2800,16 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "train workforce members on authentication best practices",
-      "example topics include MFA, password composition, and credential management"
     ],
     coreRequirements: [ // Green - The "what"
-      "authentication best practices training",
-      "MFA training",
-      "password composition training",
-      "credential management training"
+      "Train workforce on Authentication Best Practices"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "train workforce members",
-      "on authentication best practices",
-      "example topics include MFA",
-      "example topics include password composition",
-      "example topics include credential management"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "authentication training modules",
-      "password security training",
-      "MFA awareness programs"
+      "MFA",
+      "Password Composition",
+      "Credential Management"
     ],
     relatedSafeguards: ["14.1", "6.2", "6.3"]  },
   "14.4": {
@@ -3303,35 +2820,26 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "train workforce members on how to identify and properly store, transfer, archive, and destroy sensitive data",
-      "training on clear screen and desk best practices",
-      "such as locking screen when stepping away, erasing whiteboards, storing data securely"
     ],
     coreRequirements: [ // Green - The "what"
-      "data handling best practices training",
-      "sensitive data identification training",
-      "secure data storage, transfer, archive, destroy procedures",
-      "clear screen and desk policies"
+      "train workforce members on how to",
+      "Identify",
+      "Transfer",
+      "Archive",
+      "Destroy",
+      "Properly Store",
+      "Sensitive Data"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "train workforce members on how to",
-      "identify sensitive data",
-      "properly store sensitive data",
-      "properly transfer sensitive data",
-      "properly archive sensitive data",
-      "properly destroy sensitive data",
-      "clear screen best practices",
-      "clear desk best practices",
-      "locking screen when stepping away",
-      "erasing physical whiteboards at end of meetings",
-      "erasing virtual whiteboards at end of meetings",
-      "storing data and assets securely"
+      "Clear Screen",
+      "Clear Desk"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "data handling training modules",
-      "clean desk policy training",
-      "data classification training"
+      "Locking their screen when they step away from their enterprise asset",
+      "Erase physical Whiteboards after meetings",
+      "Erase virtual Whiteboards after meetings",
+      "Storing Data Securely",
+      "Storing Assets Securely"
     ],
     relatedSafeguards: ["14.1", "3.1", "3.2"]  },
   "14.5": {
@@ -3342,27 +2850,16 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "train workforce members to be aware of causes for unintentional data exposure",
-      "example topics include mis-delivery, losing portable devices, publishing to unintended audiences"
     ],
     coreRequirements: [ // Green - The "what"
-      "unintentional data exposure awareness training",
-      "mis-delivery prevention training",
-      "portable device security awareness",
-      "data publication controls training"
+      "train workforce members to be aware of causes for unintentional data exposure"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "train workforce members",
-      "to be aware of causes for unintentional data exposure",
-      "example topics include mis-delivery of sensitive data",
-      "example topics include losing a portable end-user device",
-      "example topics include publishing data to unintended audiences"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "data loss prevention training",
-      "device security awareness training",
-      "data sharing awareness programs"
+      "Mis-Delivery of Sensitive Data",
+      "Losing a Portable End user Device",
+      "Publishing data to unintended Audiences"
     ],
     relatedSafeguards: ["14.1", "3.3"]  },
   "14.6": {
@@ -3373,25 +2870,16 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "train workforce members to be able to recognize a potential incident",
-      "train workforce members to be able to report such an incident"
+      "Be able to"
     ],
     coreRequirements: [ // Green - The "what"
-      "security incident recognition training",
-      "incident reporting training",
-      "potential incident identification",
-      "incident reporting procedures"
+      "train workforce members",
+      "Recognize a potential Security Incident",
+      "Report such an incident"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "train workforce members",
-      "to be able to recognize a potential incident",
-      "to be able to report such an incident"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "incident response training",
-      "security incident awareness programs",
-      "incident reporting tools"
     ],
     relatedSafeguards: ["14.1", "17.3"]  },
   "14.7": {
@@ -3402,31 +2890,21 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "train workforce to understand how to verify and report out-of-date software patches",
-      "train on reporting failures in automated processes and tools",
-      "include notifying IT personnel of any failures in automated processes and tools"
     ],
     coreRequirements: [ // Green - The "what"
-      "security update verification training",
-      "out-of-date software patch identification",
-      "automated process failure reporting",
-      "IT personnel notification procedures"
+      "Train Workforce members on how to",
+      "Verify",
+      "Report",
+      "out-of-date software patches",
+      "Any failures in automated processes",
+      "Any failures in automated tools"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "train workforce to understand how to",
-      "verify out-of-date software patches",
-      "report out-of-date software patches",
-      "report any failures in automated processes",
-      "report any failures in automated tools",
-      "training should include notifying IT personnel",
-      "of any failures in automated processes",
-      "of any failures in automated tools"
+      "Training Should Include",
+      "Notifying IT personnel of any failures in automated processes",
+      "Notifying IT personnel of any failures in automated tools"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "patch management awareness training",
-      "IT support reporting procedures",
-      "automated system monitoring training"
     ],
     relatedSafeguards: ["14.1", "7.3", "7.4"]  },
   "14.8": {
@@ -3437,30 +2915,20 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "train workforce members on dangers of connecting to and transmitting data over insecure networks",
-      "if enterprise has remote workers, training must include guidance for secure home network configuration"
+      "Must Include"
     ],
     coreRequirements: [ // Green - The "what"
-      "insecure network dangers training",
-      "secure connection practices",
-      "enterprise data transmission security",
-      "remote worker home network security"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "train workforce members on the dangers of",
+      "Train workforce members on",
+      "The dangers of",
       "connecting to insecure networks",
       "transmitting data over insecure networks",
-      "for enterprise activities",
-      "if enterprise has remote workers",
-      "training must include guidance",
-      "to ensure all users securely configure",
-      "their home network infrastructure"
+      "Guidance to ensure that all users securely configure their home network infrastructure"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Remote Workers",
+      "Enterprise Activities"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "network security awareness training",
-      "remote work security training",
-      "home network configuration guides"
     ],
     relatedSafeguards: ["14.1", "12.1"]  },
   "14.9": {
@@ -3471,28 +2939,19 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "conduct role-specific security awareness and skills training",
-      "example implementations include secure system administration courses, OWASP Top 10 training, and advanced social engineering training"
+      "Conduct"
     ],
     coreRequirements: [ // Green - The "what"
-      "role-specific security awareness training",
-      "role-specific skills training",
-      "IT professional system administration courses",
-      "developer OWASP Top 10 training",
-      "high-profile role advanced social engineering training"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "conduct role-specific security awareness training",
-      "conduct role-specific skills training",
-      "secure system administration courses for IT professionals",
-      "OWASP Top 10 vulnerability awareness and prevention training for web application developers",
-      "advanced social engineering awareness training for high-profile roles"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "role-based training programs",
-      "specialized security courses",
-      "professional development programs"
+      "IT Professionals",
+      "Web Developers",
+      "High-profile roles",
+      "Secure system administration courses",
+      "OWASP® Top 10 vulnerability awareness and prevention training",
+      "advanced social engineering awareness training for high-profile roles"
     ],
     relatedSafeguards: ["14.1", "16.9"]  },
   "15.1": {
@@ -3503,30 +2962,21 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain an inventory of service providers",
-      "list all known service providers, include classifications, designate enterprise contact",
-      "review and update inventory annually or when significant enterprise changes occur"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "service provider inventory establishment",
-      "comprehensive service provider listing",
-      "classification system implementation",
-      "enterprise contact designation"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "establish inventory of service providers",
-      "maintain inventory of service providers",
-      "list all known service providers",
-      "include classifications",
-      "designate an enterprise contact for each service provider",
-      "review and update the inventory annually",
+      "Establish",
+      "Maintain",
+      "Review and update Content",
+      "Annually",
       "when significant enterprise changes occur that could impact this safeguard"
     ],
+    coreRequirements: [ // Green - The "what"
+      "Inventory of Service Providers"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "list all known service providers",
+      "Classification(s)",
+      "designate an enterprise contact for each service provider"
+    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "third-party risk management tools",
-      "service provider management platforms",
-      "vendor inventory systems",
-      "supplier relationship management tools"
     ],
     relatedSafeguards: ["2.1", "8.12", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7"]  },
   "15.2": {
@@ -3537,35 +2987,24 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain a service provider management policy",
-      "ensure policy addresses classification, inventory, assessment, monitoring, and decommissioning",
-      "review and update policy annually or when significant enterprise changes occur"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "service provider management policy establishment",
-      "comprehensive policy coverage",
-      "classification processes",
-      "inventory management processes",
-      "assessment processes",
-      "monitoring processes",
-      "decommissioning processes"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "establish service provider management policy",
-      "maintain service provider management policy",
-      "ensure policy addresses classification",
-      "ensure policy addresses inventory", 
-      "ensure policy addresses assessment",
-      "ensure policy addresses monitoring",
-      "ensure policy addresses decommissioning of service providers",
-      "review and update policy annually",
+      "Establish",
+      "Maintain",
+      "Ensure the policy addresses",
+      "Review and update Content",
+      "Annually",
       "when significant enterprise changes occur that could impact this safeguard"
     ],
+    coreRequirements: [ // Green - The "what"
+      "Service Provider Management Policy"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Classification(s)",
+      "Inventory",
+      "Assessment",
+      "Monitoring",
+      "Decommissioning of service providers"
+    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "service provider management policy documentation",
-      "third-party risk management frameworks",
-      "vendor management policy templates",
-      "supplier governance documentation"
     ],
     relatedSafeguards: ["15.1", "15.3", "15.4", "15.5", "15.6", "15.7"]  },
   "15.3": {
@@ -3576,33 +3015,26 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "classify service providers",
-      "classification may include data sensitivity, data volume, availability requirements, applicable regulations, inherent risk, mitigated risk",
-      "update and review classifications annually or when significant enterprise changes occur"
-    ],
-    coreRequirements: [ // Green - The "what"
-      "service provider classification system",
-      "risk-based classification criteria",
-      "data sensitivity classification",
-      "regulatory compliance classification"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "classify service providers",
-      "classification consideration may include one or more characteristics",
-      "such as data sensitivity",
-      "such as data volume",
-      "such as availability requirements",
-      "such as applicable regulations",
-      "such as inherent risk",
-      "such as mitigated risk",
-      "update and review classifications annually",
+      "Update and Review Classifications",
+      "Classify",
+      "Annually",
       "when significant enterprise changes occur that could impact this safeguard"
     ],
+    coreRequirements: [ // Green - The "what"
+      "Service Providers"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "service provider management policy",
-      "risk classification frameworks",
-      "data sensitivity classification schemes",
-      "regulatory compliance matrices"
+      "May Include",
+      "One Characteristic",
+      "More Characteristics",
+      "Data Sensitivity",
+      "Data volume",
+      "Availability requirements",
+      "Applicable regulations",
+      "Inherent Risk",
+      "Mitigated Risk"
     ],
     relatedSafeguards: ["15.1", "15.2"]  },
   "15.4": {
@@ -3613,32 +3045,22 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "ensure service provider contracts include security requirements",
-      "security requirements must be consistent with enterprise's service provider management policy",
+      "Ensure",
+      "Must",
       "review service provider contracts annually to ensure contracts are not missing security requirements"
     ],
     coreRequirements: [ // Green - The "what"
-      "contract security requirements inclusion",
-      "minimum security program requirements",
-      "security incident and data breach notification requirements",
-      "data encryption requirements",
-      "data disposal commitments"
+      "Service provider contracts include security requirements"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "ensure service provider contracts include security requirements",
-      "example requirements may include minimum security program requirements",
-      "security incident and/or data breach notification and response",
-      "data encryption requirements",
-      "data disposal commitments",
-      "security requirements must be consistent with enterprise's service provider management policy",
-      "review service provider contracts annually",
-      "to ensure contracts are not missing security requirements"
+      "Include Security requirements Consistent with the enterprise's service provider management policy"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "contract management systems",
-      "service provider management policy",
-      "legal contract templates",
-      "security requirement checklists"
+      "Contract Management",
+      "minimum security program requirements",
+      "security incident and/or data breach notification and response",
+      "data encryption requirements",
+      "data disposal commitments"
     ],
     relatedSafeguards: ["15.1", "15.2"]  },
   "15.5": {
@@ -3649,32 +3071,22 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "assess service providers consistent with enterprise's service provider management policy",
-      "assessment scope may vary based on classifications and may include SOC 2, PCI AoC, customized questionnaires, or other rigorous processes",
-      "reassess service providers annually at minimum or with new and renewed contracts"
+      "Consistent with the enterprise's service provider management policy",
+      "Reassess service Providers",
+      "At a Minimum Annually",
+      "With new renewed contracts"
     ],
     coreRequirements: [ // Green - The "what"
-      "service provider assessment processes",
-      "standardized assessment report reviews",
-      "customized questionnaire assessments",
-      "rigorous assessment methodologies"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "assess service providers consistent with enterprise's service provider management policy",
-      "assessment scope may vary based on classifications",
-      "may include review of standardized assessment reports",
-      "such as Service Organization Control 2 (SOC 2)",
-      "Payment Card Industry (PCI) Attestation of Compliance (AoC)",
-      "customized questionnaires",
-      "other appropriately rigorous processes",
-      "reassess service providers annually at a minimum",
-      "or with new and renewed contracts"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "third-party risk management tools",
-      "service provider management policy",
-      "assessment questionnaire platforms",
-      "compliance monitoring systems"
+      "Third-Party Risk Management Tool",
+      "Review of Standardized Assesments",
+      "other appropriately rigorous processes",
+      "PCI-DSS (AoC)",
+      "SOC2",
+      "Customized questionnaire"
     ],
     relatedSafeguards: ["15.1", "15.2"]  },
   "15.6": {
@@ -3685,27 +3097,17 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "monitor service providers consistent with enterprise's service provider management policy",
-      "monitoring may include periodic reassessment, release notes monitoring, and dark web monitoring"
+      "consistent with enterprise's service provider management policy"
     ],
     coreRequirements: [ // Green - The "what"
-      "service provider monitoring processes",
-      "periodic compliance reassessment",
-      "service provider release notes monitoring",
-      "dark web monitoring"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "monitor service providers",
-      "consistent with enterprise's service provider management policy",
-      "monitoring may include periodic reassessment of service provider compliance",
-      "monitoring service provider release notes",
-      "dark web monitoring"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "third-party risk management tools",
-      "service provider management policy",
-      "dark web monitoring services",
-      "compliance monitoring platforms"
+      "Third-Party Risk Management Tool",
+      "Periodic reassessment of service provider compliance",
+      "Monitoring service provider notes",
+      "dark web monitoring"
     ],
     relatedSafeguards: ["15.1", "15.2"]  },
   "15.7": {
@@ -3716,26 +3118,15 @@ export class SafeguardManager {
     assetType: ["Data"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "securely decommission service providers",
-      "example considerations include user and service account deactivation, termination of data flows, secure disposal of enterprise data"
     ],
     coreRequirements: [ // Green - The "what"
-      "secure service provider decommissioning",
-      "user and service account deactivation",
-      "data flow termination",
-      "secure enterprise data disposal"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "securely decommission service providers",
-      "example considerations include user and service account deactivation",
-      "termination of data flows",
-      "secure disposal of enterprise data within service provider systems"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "service provider management policy",
-      "data destruction procedures",
-      "account deactivation processes",
-      "secure decommissioning checklists"
+      "user and service account deactivation",
+      "termination of data flows",
+      "secure disposal of enterprise data within service provider systems"
     ],
     relatedSafeguards: ["15.1", "15.2"]  },
   "16.1": {
@@ -3746,33 +3137,24 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain a secure application development process",
-      "review and update documentation annually or when significant enterprise changes occur that could impact this safeguard"
+      "Establish",
+      "Maintain",
+      "Review and update documentation",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "secure application development process",
+      "secure application development process"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
       "secure application design standards",
       "secure coding practices",
       "developer training",
       "vulnerability management",
       "security of third-party code",
-      "application security testing procedures"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "address such items as secure application design standards",
-      "address such items as secure coding practices",
-      "address such items as developer training",
-      "address such items as vulnerability management",
-      "address such items as security of third-party code",
-      "address such items as application security testing procedures",
-      "review and update documentation annually",
-      "when significant enterprise changes occur"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure development lifecycle (SDLC) frameworks",
-      "application security policies",
-      "development process documentation",
-      "security training programs for developers"
+      "Application security testing procedure"
     ],
     relatedSafeguards: ["16.2", "16.3", "16.4", "16.5", "16.6", "16.7", "16.8", "16.9", "16.10", "16.11", "16.12", "16.13", "16.14"]  },
   "16.2": {
@@ -3783,37 +3165,33 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain a process to accept and address reports of software vulnerabilities",
-      "provide a means for external entities to report vulnerabilities",
-      "review and update documentation annually or when significant enterprise changes occur that could impact this safeguard"
+      "Review and update documentation",
+      "Establish",
+      "Maintain",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "process to accept and address software vulnerabilities",
-      "vulnerability handling policy",
-      "reporting process",
-      "responsible party for handling vulnerability reports",
-      "process for intake, assignment, remediation, and remediation testing",
-      "vulnerability tracking system",
-      "severity ratings",
-      "metrics for measuring timing"
+      "process to accept and address software vulnerabilities"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "vulnerability handling policy that identifies reporting process",
-      "process for intake",
-      "process for assignment",
-      "process for remediation",
-      "process for remediation testing",
-      "vulnerability tracking system that includes severity ratings",
-      "metrics for measuring timing for identification of vulnerabilities",
-      "metrics for measuring timing for analysis of vulnerabilities",
-      "metrics for measuring timing for remediation of vulnerabilities",
-      "externally-facing policy that helps to set expectations for outside stakeholders"
+      "Third Party Application Developer",
+      "Need to consider this an externally-facing policy that helps to set expectations for outside stakeholders",
+      "provide a means for external entities to report vulnerabilities",
+      "Vulnerability tracking system that includes",
+      "severity ratings",
+      "Metrics for measuring timing for",
+      "Identification of Vulnerabilities",
+      "Analysis of Vulnerabilities",
+      "Remediation of Vulnerabilites",
+      "Remediation",
+      "Assignment",
+      "Remediation testing"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "vulnerability disclosure platforms",
-      "bug bounty programs",
-      "vulnerability management systems",
-      "incident response tools"
+      "vulnerability handling policy that identifies reporting process",
+      "responsible party for handling vulnerability reports",
+      "process for intake"
     ],
     relatedSafeguards: ["16.1", "16.3", "16.6"]  },
   "16.3": {
@@ -3824,22 +3202,17 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "perform root cause analysis on security vulnerabilities"
+      "Perform"
     ],
     coreRequirements: [ // Green - The "what"
-      "root cause analysis on security vulnerabilities",
-      "evaluating underlying issues that create vulnerabilities in code"
+      "Root Cause Analysis on Vulnerabilities"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "when reviewing vulnerabilities",
-      "root cause analysis is the task of evaluating underlying issues",
-      "allows development teams to move beyond just fixing individual vulnerabilities as they arise"
+      "Reviewing vulnerabilites",
+      "Root cause analysis",
+      "Definition - \"Task of evaluating underlying issues that create vulnerabilities in code, and allows development teams to move beyond just fixing individual vulnerabilities as they arise\""
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "code analysis tools",
-      "vulnerability assessment platforms",
-      "development team training on root cause analysis",
-      "systematic vulnerability review processes"
     ],
     relatedSafeguards: ["16.1", "16.2"]  },
   "16.4": {
@@ -3850,30 +3223,22 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "establish and manage an updated inventory of third-party components used in development",
-      "evaluate the list at least monthly to identify any changes or updates to these components and validate that the component is still supported"
+      "Establish",
+      "Manage",
+      "Updated",
+      "Evaluate list at least monthly",
+      "Identify",
+      "Validate Support"
     ],
     coreRequirements: [ // Green - The "what"
-      "updated inventory of third-party components",
-      "bill of materials",
-      "components slated for future use",
-      "risks that each third-party component could pose",
-      "monthly evaluation",
-      "component support validation"
+      "Inventory of Third-Party Software Components \"Aka\" (SBOM)",
+      "Third-Party Software Components Slated for future use"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "third-party components used in development",
-      "often referred to as bill of materials",
-      "components slated for future use",
       "any risks that each third-party component could pose",
-      "identify any changes or updates to these components",
-      "validate that the component is still supported"
+      "Any changes or updates to the components and are supported"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "software composition analysis (SCA) tools",
-      "dependency management systems",
-      "component vulnerability databases",
-      "automated inventory tracking tools"
     ],
     relatedSafeguards: ["16.1", "16.5"]  },
   "16.5": {
@@ -3884,27 +3249,20 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "use up-to-date and trusted third-party software components"
+      "Use"
     ],
     coreRequirements: [ // Green - The "what"
-      "up-to-date third-party software components",
-      "trusted third-party software components",
-      "established and proven frameworks and libraries",
-      "adequate security",
-      "trusted sources",
-      "vulnerability evaluation before use"
+      "Up to Date",
+      "Trusted",
+      "Third-Party Software Components"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "when possible choose established and proven frameworks and libraries",
-      "that provide adequate security",
       "acquire these components from trusted sources",
       "evaluate the software for vulnerabilities before use"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "software composition analysis (SCA) tools",
-      "trusted software repositories",
-      "vulnerability scanning tools",
-      "component security assessment processes"
+      "Choose established and proven frameworks and libraries",
+      "Who provide Adequate Security"
     ],
     relatedSafeguards: ["16.1", "16.4", "16.11", "7.1"]  },
   "16.6": {
@@ -3915,28 +3273,21 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain a severity rating system and process for application vulnerabilities",
+      "Establish",
+      "Maintain",
       "review and update the system and process annually"
     ],
     coreRequirements: [ // Green - The "what"
       "severity rating system",
-      "process for application vulnerabilities",
-      "prioritizing the order in which discovered vulnerabilities are fixed",
-      "minimum level of security acceptability for releasing code or applications",
-      "systematic way of triaging vulnerabilities"
+      "process for application vulnerabilities"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "systematic way of triaging vulnerabilities",
       "facilitates prioritizing the order in which discovered vulnerabilities are fixed",
       "setting a minimum level of security acceptability for releasing code or applications",
-      "severity ratings bring a systematic way of triaging vulnerabilities",
-      "improves risk management",
       "helps ensure the most severe bugs are fixed first"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "CVSS scoring systems",
-      "vulnerability management platforms",
-      "risk assessment frameworks",
-      "prioritization workflows"
     ],
     relatedSafeguards: ["16.1", "16.2"]  },
   "16.7": {
@@ -3947,31 +3298,21 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "use standard, industry-recommended hardening configuration templates for application infrastructure components",
+      "Use",
       "do not allow in-house developed software to weaken configuration hardening"
     ],
     coreRequirements: [ // Green - The "what"
-      "standard hardening configuration templates",
-      "application infrastructure components",
+      "Standard Hardening Configuration Templates for Application Infrastructure"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "underlying servers",
       "databases",
       "web servers",
       "cloud containers",
-      "Platform as a Service (PaaS) components",
-      "SaaS components"
-    ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "industry-recommended hardening configuration templates",
-      "includes underlying servers, databases, and web servers",
-      "applies to cloud containers",
-      "applies to Platform as a Service (PaaS) components",
-      "applies to SaaS components"
+      "PaaS",
+      "SaaS"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "configuration baseline tools",
-      "infrastructure as code (IaC) templates",
-      "security hardening guides",
-      "automated configuration management"
     ],
     relatedSafeguards: ["16.1"]  },
   "16.8": {
@@ -3982,22 +3323,16 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "maintain separate environments for production and non-production systems"
+      "Maintain"
     ],
     coreRequirements: [ // Green - The "what"
-      "separate environments",
       "production systems",
+      "Separate Environments For",
       "non-production systems"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "separate environments for production systems",
-      "separate environments for non-production systems"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "network segmentation tools",
-      "environment isolation technologies",
-      "access control systems",
-      "deployment pipeline controls"
     ],
     relatedSafeguards: ["16.1"]  },
   "16.9": {
@@ -4008,30 +3343,22 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "ensure that all software development personnel receive training in writing secure code",
+      "Ensure",
       "conduct training at least annually"
     ],
     coreRequirements: [ // Green - The "what"
-      "training in writing secure code",
-      "specific development environment and responsibilities",
-      "general security principles",
-      "application security standard practices",
-      "promote security within the development team",
-      "build a culture of security among the developers"
+      "All software development personnel recieve training"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "all software development personnel receive training",
-      "for their specific development environment and responsibilities",
-      "training can include general security principles",
-      "training can include application security standard practices",
+      "Writing secure code",
       "design in a way to promote security within the development team",
-      "build a culture of security among the developers"
+      "build a culture of security among the developers",
+      "Specific development environment",
+      "Specific development responsibilities"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security training and awareness tools",
-      "secure coding training programs",
-      "developer security certifications",
-      "hands-on security workshops"
+      "general security principles",
+      "application security standard practices"
     ],
     relatedSafeguards: ["16.1", "14.1", "14.9"]  },
   "16.10": {
@@ -4042,32 +3369,29 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "apply secure design principles in application architectures"
+      "Apply"
     ],
     coreRequirements: [ // Green - The "what"
-      "secure design principles",
-      "concept of least privilege",
-      "enforcing mediation to validate every operation",
-      "never trust user input",
-      "explicit error checking for all input",
-      "minimizing the application infrastructure attack surface"
+      "Secure design principles in application architectures"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "secure design principles",
       "concept of least privilege",
       "enforcing mediation",
-      "validate every operation that the user makes",
-      "promoting the concept of never trust user input",
-      "ensuring that explicit error checking is performed and documented for all input",
-      "including for size, data type, and acceptable ranges or formats",
+      "minimizing the application infrastructure attack surface",
+      "Concept of “never trust user input",
+      "validate every operation that the user makes"
+    ],
+    implementationSuggestions: [ // Gray - Implementation suggestions
+      "Ensuring that explicit error checking is performed for all input",
+      "Explicit error checking is documented for all input",
+      "Size",
+      "Data type",
+      "Acceptable Ranges",
+      "Acceptable Formats",
       "turning off unprotected ports and services",
       "removing unnecessary programs and files",
       "renaming or removing default accounts"
-    ],
-    implementationSuggestions: [ // Gray - Implementation suggestions
-      "secure architecture frameworks",
-      "input validation libraries",
-      "access control systems",
-      "security design patterns"
     ],
     relatedSafeguards: ["16.1"]  },
   "16.11": {
@@ -4078,32 +3402,28 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Identify"],
     governanceElements: [ // Orange - MUST be met
-      "leverage vetted modules or services for application security components",
-      "use only standardized, currently accepted, and extensively reviewed encryption algorithms"
+      "Leverage",
+      "Use Only"
     ],
     coreRequirements: [ // Green - The "what"
-      "vetted modules or services",
-      "application security components",
-      "identity management",
-      "encryption",
-      "auditing and logging",
-      "platform features in critical security functions",
-      "identification, authentication, and authorization mechanisms",
-      "secure audit logs"
+      "Vetted Services",
+      "Vetted Modules",
+      "application security components"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "such as identity management, encryption, and auditing and logging",
-      "using platform features in critical security functions will reduce developers' workload",
-      "minimize the likelihood of design or implementation errors",
-      "modern operating systems provide effective mechanisms for identification, authentication, and authorization",
-      "make those mechanisms available to applications",
-      "operating systems also provide mechanisms to create and maintain secure audit logs"
+      "Encryption Algorithms",
+      "Standardized",
+      "Currently accepted",
+      "Extensively reviewed"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "established security libraries",
-      "platform security services",
-      "cryptographic modules",
-      "operating system security features"
+      "Modern operating systems provide effective mechanisms for identification, authentication, and authorization and make those mechanisms available to applications",
+      "Using platform features in critical security functions will reduce developers’ workload and minimize the likelihood of design or implementation errors",
+      "operating systems also provide mechanisms to create and maintain secure audit logs",
+      "identity management",
+      "encryption",
+      "Auditing",
+      "Logging"
     ],
     relatedSafeguards: ["16.1", "16.5"]  },
   "16.12": {
@@ -4114,24 +3434,19 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "apply static and dynamic analysis tools within the application life cycle to verify that secure coding practices are being followed"
+      "Apply",
+      "Verify",
+      "Practices are being followed"
     ],
     coreRequirements: [ // Green - The "what"
-      "static analysis tools",
-      "dynamic analysis tools",
-      "application life cycle",
-      "secure coding practices verification"
+      "Static Dynamic analysis analysis tools tools",
+      "Code Level Security Checks"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "apply static analysis tools within the application life cycle",
-      "apply dynamic analysis tools within the application life cycle",
-      "verify that secure coding practices are being followed"
+      "application life cycle",
+      "Secure coding practices"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "code analysis tools",
-      "static application security testing (SAST)",
-      "dynamic application security testing (DAST)",
-      "interactive application security testing (IAST)"
     ],
     relatedSafeguards: ["16.1"]  },
   "16.13": {
@@ -4142,27 +3457,24 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "conduct application penetration testing"
+      "Conduct"
     ],
     coreRequirements: [ // Green - The "what"
-      "application penetration testing",
-      "authenticated penetration testing for critical applications",
-      "business logic vulnerabilities",
-      "manual manipulation of application",
-      "authenticated and unauthenticated user testing"
+      "application penetration testing"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "for critical applications",
-      "authenticated penetration testing is better suited to finding business logic vulnerabilities",
-      "than code scanning and automated security testing",
-      "penetration testing relies on the skill of the tester",
-      "to manually manipulate an application as an authenticated and unauthenticated user"
+      "Critical applications",
+      "Non-Critical Applications",
+      "Authenticated penetration testing",
+      "Code scanning",
+      "Automated security testing",
+      "business logic vulnerabilities",
+      "Penetration testing relies on the skill of the tester to MANUALLY manipulate an application",
+      "Authenticated user",
+      "Unauthenticated user"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "application security testing tools",
-      "penetration testing frameworks",
-      "security testing methodologies",
-      "skilled penetration testers"
+      "Better Suited to finding"
     ],
     relatedSafeguards: ["16.1"]  },
   "16.14": {
@@ -4173,31 +3485,26 @@ export class SafeguardManager {
     assetType: ["Software"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "conduct threat modeling"
+      "Conduct"
     ],
     coreRequirements: [ // Green - The "what"
-      "threat modeling",
-      "identifying and addressing application security design flaws",
-      "before code is created",
-      "specially trained individuals",
-      "evaluate application design",
-      "gauge security risks for each entry point and access level",
-      "map out the application, architecture, and infrastructure"
+      "threat modeling"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "threat modeling is the process of identifying and addressing application security design flaws within a design",
       "before code is created",
-      "conducted through specially trained individuals",
-      "who evaluate the application design and gauge security risks",
-      "for each entry point and access level",
-      "the goal is to map out the application, architecture, and infrastructure in a structured way",
-      "to understand its weaknesses"
+      "Conducted Through",
+      "Map out the application to understand its weakness in a structured way",
+      "specially trained individuals",
+      "Architecture",
+      "Infrastructure",
+      "Identifying",
+      "Addressing",
+      "Evaluate Application Design For Each:",
+      "Application security design flaws within an design",
+      "Entry point",
+      "Access level"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "threat modeling frameworks",
-      "security design review processes",
-      "threat modeling tools",
-      "security architecture documentation"
     ],
     relatedSafeguards: ["16.1"]  },
   "17.1": {
@@ -4208,28 +3515,28 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "designate one key person and at least one backup who will manage the enterprise's incident handling process",
-      "review annually or when significant enterprise changes occur that could impact this safeguard"
+      "Designate",
+      "Review",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "one key person to manage incident handling",
+      "One Key Person",
       "at least one backup person",
-      "coordination of incident response and recovery efforts",
-      "documentation of incident response and recovery efforts",
-      "management personnel for incident handling process"
+      "Personnel to Manage Incident Handling"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "management personnel are responsible for coordination and documentation",
-      "can consist of employees internal to the enterprise",
-      "can consist of service providers",
-      "can consist of a hybrid approach",
-      "if using a service provider, designate at least one person internal to the enterprise to oversee any third-party work"
+      "Responsible for",
+      "Coordination",
+      "Documentation",
+      "Incident Response",
+      "Recovery efforts"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "incident response team structures",
-      "incident management roles and responsibilities",
-      "coordination tools and processes",
-      "documentation templates"
+      "Employees internal to the enterprise",
+      "Service Provider",
+      "Hybrid Approach",
+      "Designate one person internal to the enterprise to oversee any third-party work"
     ],
     relatedSafeguards: ["17.4"]  },
   "17.2": {
@@ -4273,28 +3580,25 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain a documented enterprise process for the workforce to report security incidents",
-      "ensure the process is publicly available to all of the workforce",
-      "review annually or when significant enterprise changes occur that could impact this safeguard"
+      "Establish",
+      "Maintain",
+      "Review",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard",
+      "Ensure"
     ],
     coreRequirements: [ // Green - The "what"
-      "documented enterprise process for reporting incidents",
+      "documented enterprise process for reporting incidents"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "The Process Includes",
+      "Publicly available to all of the workforce",
       "reporting timeframe",
       "personnel to report to",
       "mechanism for reporting",
       "minimum information to be reported"
     ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "the process includes reporting timeframe",
-      "the process includes personnel to report to",
-      "the process includes mechanism for reporting",
-      "the process includes the minimum information to be reported"
-    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "incident reporting procedures",
-      "reporting forms and templates",
-      "workforce training materials",
-      "process communication methods"
     ],
     relatedSafeguards: ["17.2", "17.4", "14.6"]  },
   "17.4": {
@@ -4305,25 +3609,23 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain a documented incident response process",
-      "review annually or when significant enterprise changes occur that could impact this safeguard"
+      "Establish",
+      "Maintain",
+      "Review",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "documented incident response process",
-      "roles and responsibilities",
+      "documented incident response process"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "That Addresses",
+      "Roles",
+      "Responsibilites",
       "compliance requirements",
       "communication plan"
     ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "that addresses roles and responsibilities",
-      "that addresses compliance requirements",
-      "that addresses a communication plan"
-    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "incident response playbooks",
-      "process documentation templates",
-      "compliance frameworks",
-      "communication protocols"
     ],
     relatedSafeguards: ["17.1", "17.3", "17.5", "17.6", "17.7", "17.8", "17.9"]  },
   "17.5": {
@@ -4334,28 +3636,26 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "assign key roles and responsibilities for incident response",
-      "review annually or when significant enterprise changes occur that could impact this safeguard"
+      "Assign",
+      "Review",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "key roles and responsibilities for incident response",
-      "staff from legal",
-      "staff from IT",
-      "staff from information security",
-      "staff from facilities",
-      "staff from public relations",
-      "staff from human resources",
+      "Incident Response"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "Including Staff from",
+      "Legal",
+      "IT",
+      "information security",
+      "Facilities",
+      "Public relations",
+      "Human resources",
       "incident responders",
       "analysts"
     ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "including staff from legal, IT, information security, facilities, public relations, human resources, incident responders, and analysts"
-    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "incident response team structures",
-      "role definition templates",
-      "responsibility matrices",
-      "cross-functional team coordination"
     ],
     relatedSafeguards: ["17.4"]  },
   "17.6": {
@@ -4366,27 +3666,25 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "determine which primary and secondary mechanisms will be used to communicate and report during a security incident",
-      "review annually or when significant enterprise changes occur that could impact this safeguard"
+      "Determine",
+      "Review",
+      "Annually",
+      "When significant enterprise changes occur that could impact this Safeguard"
     ],
     coreRequirements: [ // Green - The "what"
-      "primary mechanisms for communicating during incident response",
-      "secondary mechanisms for communicating during incident response",
-      "mechanisms to communicate during security incident",
-      "mechanisms to report during security incident"
+      "Mechanisms for Communicating During Incident Response",
+      "Primary",
+      "Secondary",
+      "Communicate",
+      "Report"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "mechanisms can include phone calls",
-      "mechanisms can include emails",
-      "mechanisms can include secure chat",
-      "mechanisms can include notification letters",
-      "keep in mind that certain mechanisms, such as emails, can be affected during a security incident"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "communication platforms",
-      "backup communication methods",
-      "secure messaging systems",
-      "notification systems"
+      "Phone calls",
+      "Emails",
+      "Secure Chat",
+      "Notification Letters"
     ],
     relatedSafeguards: ["17.4"]  },
   "17.7": {
@@ -4397,27 +3695,24 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
-      "plan and conduct routine incident response exercises and scenarios for key personnel involved in the incident response process",
-      "conduct testing on an annual basis, at a minimum"
+      "Plan",
+      "Conduct",
+      "At a minimum",
+      "Conduct testing on an annual basis"
     ],
     coreRequirements: [ // Green - The "what"
       "routine incident response exercises",
-      "scenarios for key personnel",
+      "Routine Scenarios"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
+      "key personnel involved in the incident response process",
       "prepare for responding to real-world incidents",
+      "Exercises Need to",
       "test communication channels",
       "test decision-making",
       "test workflows"
     ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "key personnel involved in the incident response process",
-      "to prepare for responding to real-world incidents",
-      "exercises need to test communication channels, decision-making, and workflows"
-    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "tabletop exercises",
-      "simulation scenarios",
-      "exercise planning frameworks",
-      "testing schedules and protocols"
     ],
     relatedSafeguards: ["17.4"]  },
   "17.8": {
@@ -4428,23 +3723,17 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
-      "conduct post-incident reviews"
+      "Conduct",
+      "Help prevent incident recurrence"
     ],
     coreRequirements: [ // Green - The "what"
-      "post-incident reviews",
-      "prevent incident recurrence",
+      "post-incident reviews"
+    ],
+    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "identifying lessons learned",
       "follow-up action"
     ],
-    subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "post-incident reviews help prevent incident recurrence",
-      "through identifying lessons learned and follow-up action"
-    ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "post-incident review templates",
-      "lessons learned documentation",
-      "improvement action plans",
-      "review meeting processes"
     ],
     relatedSafeguards: ["17.4"]  },
   "17.9": {
@@ -4455,27 +3744,28 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Recover"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain security incident thresholds",
-      "review annually or when significant enterprise changes occur that could impact this safeguard"
+      "Establish",
+      "Maintain",
+      "Ensure",
+      "Review",
+      "At a minimum",
+      "When significant enterprise changes occur that could impact this Safeguard",
+      "Annually"
     ],
     coreRequirements: [ // Green - The "what"
-      "security incident thresholds",
-      "differentiating between an incident and an event",
-      "incident classification criteria"
+      "security incident thresholds"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "including, at a minimum, differentiating between an incident and an event",
-      "examples can include abnormal activity",
-      "examples can include security vulnerability",
-      "examples can include security weakness",
-      "examples can include data breach",
-      "examples can include privacy incident"
+      "Differentiating between",
+      "Incident",
+      "Event"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "incident classification frameworks",
-      "threshold definition templates",
-      "severity rating systems",
-      "incident categorization tools"
+      "Abnormal Activity",
+      "Security vulnerability",
+      "Data breach",
+      "Security weakness",
+      "Privacy incident"
     ],
     relatedSafeguards: ["17.4"]  },
   "18.1": {
@@ -4486,32 +3776,35 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Govern"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain a penetration testing program appropriate to the size, complexity, industry, and maturity of the enterprise"
+      "Establish",
+      "Maintain",
+      "Appropriate",
+      "Complexity",
+      "Size",
+      "industry",
+      "Maturity",
+      "Of the Enterprise"
     ],
     coreRequirements: [ // Green - The "what"
-      "penetration testing program",
-      "scope including network, web application, API, hosted services, and physical premise controls",
-      "frequency requirements",
-      "limitations including acceptable hours and excluded attack types",
-      "point of contact information",
-      "remediation procedures for routing findings internally",
-      "retrospective requirements"
+      "penetration testing program"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "appropriate to the size, complexity, industry, and maturity of the enterprise",
-      "penetration testing program characteristics include scope",
-      "such as network, web application, Application Programming Interface (API), hosted services, and physical premise controls",
-      "characteristics include frequency",
-      "characteristics include limitations, such as acceptable hours, and excluded attack types",
-      "characteristics include point of contact information",
-      "characteristics include remediation, such as how findings will be routed internally",
-      "characteristics include retrospective requirements"
+      "Characteristics include",
+      "Scope",
+      "Frequency",
+      "Limitations",
+      "POC info",
+      "Remediation"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "penetration testing frameworks",
-      "program documentation templates",
-      "scope definition guidelines",
-      "testing frequency schedules"
+      "Network",
+      "Hosted Services",
+      "Web Applications",
+      "API",
+      "Acceptable hours",
+      "excluded attack types",
+      "How findings will be routed internally",
+      "retrospective requirements"
     ],
     relatedSafeguards: ["18.2", "18.3", "18.4", "18.5"]  },
   "18.2": {
@@ -4522,29 +3815,23 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "perform periodic external penetration tests based on program requirements, no less than annually",
-      "external penetration testing must include enterprise and environmental reconnaissance to detect exploitable information",
-      "penetration testing requires specialized skills and experience and must be conducted through a qualified party"
+      "Perform periodic",
+      "based on program requirements",
+      "Must be conducted through a qualified party",
+      "no less than annually",
+      "Must Include"
     ],
     coreRequirements: [ // Green - The "what"
-      "periodic external penetration tests",
-      "enterprise reconnaissance",
-      "environmental reconnaissance",
-      "detect exploitable information",
-      "specialized skills and experience",
-      "qualified party to conduct testing"
+      "External Penetration Tests"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "based on program requirements",
-      "no less than annually",
-      "to detect exploitable information",
-      "the testing may be clear box or opaque box"
+      "Clear box",
+      "Opaque box",
+      "enterprise reconnaissance",
+      "environmental reconnaissance",
+      "to detect exploitable information"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "external penetration testing services",
-      "reconnaissance tools and techniques",
-      "qualified penetration testing vendors",
-      "clear box and opaque box methodologies"
     ],
     relatedSafeguards: ["18.1", "18.3", "18.4"]  },
   "18.3": {
@@ -4555,25 +3842,19 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "remediate penetration test findings based on the enterprise's documented vulnerability remediation process"
+      "Remediate",
+      "Based on enterprise's policy"
     ],
     coreRequirements: [ // Green - The "what"
-      "remediate penetration test findings",
-      "documented vulnerability remediation process",
-      "timeline for remediation",
-      "level of effort determination",
-      "impact assessment",
-      "prioritization of findings"
+      "Penetration Test Findings"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "this should include determining a timeline and level of effort",
-      "based on the impact and prioritization of each identified finding"
+      "Impact",
+      "Prioritization",
+      "Timeline",
+      "Level of effort"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "vulnerability remediation workflows",
-      "finding prioritization frameworks",
-      "remediation tracking systems",
-      "impact assessment methodologies"
     ],
     relatedSafeguards: ["18.1", "18.2", "18.5"]  },
   "18.4": {
@@ -4584,24 +3865,19 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "validate security measures after each penetration test"
+      "Validate",
+      "if deemed necessary"
     ],
     coreRequirements: [ // Green - The "what"
-      "validate security measures",
-      "modify rulesets if necessary",
-      "modify capabilities if necessary",
-      "detect techniques used during testing"
+      "Security measures after each penetration test"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "after each penetration test",
-      "if deemed necessary",
+      "Modify",
+      "Rulesets",
+      "Capabilities",
       "to detect the techniques used during testing"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "security control validation frameworks",
-      "detection rule tuning processes",
-      "capability enhancement procedures",
-      "technique analysis methodologies"
     ],
     relatedSafeguards: ["18.1", "18.2", "18.5"]  },
   "18.5": {
@@ -4612,23 +3888,18 @@ export class SafeguardManager {
     assetType: ["network"],
     securityFunction: ["Detect"],
     governanceElements: [ // Orange - MUST be met
-      "perform periodic internal penetration tests based on program requirements, no less than annually"
+      "Perform Periodic",
+      "based on program requirements",
+      "no less than annually"
     ],
     coreRequirements: [ // Green - The "what"
-      "periodic internal penetration tests",
-      "program requirements compliance",
-      "annual testing frequency minimum"
+      "Internal Penetration Tests"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "based on program requirements",
-      "no less than annually",
-      "the testing may be clear box or opaque box"
+      "Clear box",
+      "Opaque box"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "internal penetration testing tools",
-      "internal testing methodologies",
-      "clear box and opaque box approaches",
-      "internal security assessment frameworks"
     ],
     relatedSafeguards: ["18.1", "18.3", "18.4"]  }
 };
