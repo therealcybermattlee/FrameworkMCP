@@ -2997,7 +2997,7 @@ export class SafeguardManager {
     assetType: ["Devices", "network"],
     securityFunction: ["Protect"],
     governanceElements: [ // Orange - MUST be met
-      "manage access control for assets remotely connecting to enterprise networks",
+      "manage access control for assets remotely connecting to enterprise resources",
       "determine amount of access based on security posture"
     ],
     coreRequirements: [ // Green - The "what"
@@ -3007,13 +3007,12 @@ export class SafeguardManager {
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
       "manage access control",
-      "for assets remotely connecting", 
-      "to enterprise networks",
+      "for assets remotely connecting",
+      "to enterprise resources",
       "determine amount of access",
-      "up-to-date anti-malware software",
-      "up-to-date system patches",
-      "up-to-date host-based firewall", 
-      "up-to-date host-based intrusion detection or prevention"
+      "up-to-date anti-malware software installed",
+      "configuration compliance with the enterprise's secure configuration process",
+      "operating system and applications are up-to-date"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
       "network access control (NAC)",
@@ -4241,26 +4240,29 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain contact information for reporting security incidents",
-      "information must be available to all workforce members"
+      "establish and maintain contact information for parties that need to be informed of security incidents",
+      "verify contacts annually to ensure information is up-to-date"
     ],
     coreRequirements: [ // Green - The "what"
-      "contact information for reporting security incidents",
-      "available to all workforce members",
-      "various contact methods",
-      "regularly updated contact information"
+      "contact information for parties to notify about security incidents",
+      "internal and external notification contacts",
+      "annual verification of contact information"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "should include various contact methods (e.g., phone, email)",
-      "be regularly updated",
-      "consider the availability of these contact methods in different circumstances",
-      "such as when primary communication systems are compromised"
+      "contacts may include internal staff",
+      "service providers",
+      "law enforcement",
+      "cyber insurance providers",
+      "relevant government agencies",
+      "Information Sharing and Analysis Center (ISAC) partners",
+      "or other stakeholders",
+      "verify contacts annually"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "incident reporting hotlines",
+      "incident notification contact directory",
       "emergency contact lists",
-      "multiple communication channels",
-      "contact information distribution methods"
+      "stakeholder contact registers",
+      "annual contact verification process"
     ],
     relatedSafeguards: ["17.3", "17.4"]  },
   "17.3": {
