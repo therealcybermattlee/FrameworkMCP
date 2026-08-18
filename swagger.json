@@ -6,7 +6,7 @@
     "version": "2.7.1",
     "contact": {
       "name": "Framework MCP Support",
-      "url": "https://github.com/therealcybermattlee/FrameworkMCP"
+      "url": "https://github.com/Cyber-RISE/FrameworkMCP"
     },
     "license": {
       "name": "CC-BY-4.0",
@@ -317,6 +317,6 @@
   ],
   "externalDocs": {
     "description": "Framework MCP GitHub Repository",
-    "url": "https://github.com/therealcybermattlee/FrameworkMCP"
+    "url": "https://github.com/Cyber-RISE/FrameworkMCP"
   }
 }

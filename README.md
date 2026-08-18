@@ -14,7 +14,7 @@ npm install -g framework-mcp
 
 ### Install from source
 ```bash
-git clone https://github.com/therealcybermattlee/FrameworkMCP.git
+git clone https://github.com/Cyber-RISE/FrameworkMCP.git
 cd FrameworkMCP
 npm install && npm run build
 ```
@@ -186,5 +186,5 @@ Creative Commons Attribution 4.0 International License - [Cyber RISE, Inc](https
 
 ## Support
 
-- [GitHub Issues](https://github.com/therealcybermattlee/FrameworkMCP/issues)
-- [GitHub Discussions](https://github.com/therealcybermattlee/FrameworkMCP/discussions)
+- [GitHub Issues](https://github.com/Cyber-RISE/FrameworkMCP/issues)
+- [GitHub Discussions](https://github.com/Cyber-RISE/FrameworkMCP/discussions)

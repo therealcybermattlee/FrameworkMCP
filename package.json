@@ -65,11 +65,11 @@
   "license": "CC-BY-4.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/therealcybermattlee/FrameworkMCP.git"
+    "url": "https://github.com/Cyber-RISE/FrameworkMCP.git"
   },
   "bugs": {
-    "url": "https://github.com/therealcybermattlee/FrameworkMCP/issues"
+    "url": "https://github.com/Cyber-RISE/FrameworkMCP/issues"
   },
-  "homepage": "https://github.com/therealcybermattlee/FrameworkMCP#readme",
+  "homepage": "https://github.com/Cyber-RISE/FrameworkMCP#readme",
   "copyright": "Copyright (c) 2025 Cyber RISE, Inc"
 }
