@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.1.0 — 2026-08-18
+
+### BREAKING for 17.2 only: elements reconciled to the separately issued 17.2 visualisation page
+
+17.2 has no page in the main PDF (noted in 3.0.0). Its single-page visualisation (`CIS v8.1 - Control 17-2.pdf`, image-only) was supplied afterwards and read visually; 17.2's buckets now match it under the same rules as 3.0.0. **Only 17.2 changed** — re-draft 17.2 alone. Every other safeguard is byte-for-byte identical to 3.0.0.
+
+#### 17.2 Establish and Maintain Contact Information for Reporting Security Incidents (page: CIS v8.1 - Control 17-2.pdf) — **corrected**
+
+- Removed: `establish and maintain contact information for parties that need to be informed of security incidents` (G); `verify contacts annually to ensure information is up-to-date` (G); `contact information for parties to notify about security incidents` (C); `internal and external notification contacts` (C); `annual verification of contact information` (C); `contacts may include internal staff` (S); `cyber insurance providers` (S); `Information Sharing and Analysis Center (ISAC) partners` (S); `or other stakeholders` (S); `incident notification contact directory` (I); `emergency contact lists` (I); `stakeholder contact registers` (I); `annual contact verification process` (I)
+
+- Moved: `verify contacts annually` S→G; `service providers` S→I; `law enforcement` S→I; `relevant government agencies` S→I
+
+- Added: `Establish` (G); `Maintain` (G); `Ensure information is up-to-date` (G); `Contact Information for Reporting Security Incidents` (C); `Internal staff` (I); `Cyber insurance provider` (I); `ISAC` (I); `Other Stakeholders` (I)
+
 ## 3.0.0 — 2026-08-18
 
 ### BREAKING: safeguard element strings reconciled to the governing CIS v8.1 visualisation PDF

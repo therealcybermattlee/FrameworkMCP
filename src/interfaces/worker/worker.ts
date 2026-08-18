@@ -8,7 +8,7 @@
 
 import { SafeguardManager } from '../../core/safeguard-manager.js';
 
-const VERSION = '3.0.0';
+const VERSION = '3.1.0';
 
 /** Cloudflare rate-limiting binding (optional; configured in wrangler.jsonc). */
 interface RateLimiter {

@@ -18,7 +18,7 @@ export class FrameworkMcpServer {
     this.server = new Server(
       {
         name: 'framework-analyzer',
-        version: '3.0.0',
+        version: '3.1.0',
       }
     );
 
@@ -129,7 +129,7 @@ export class FrameworkMcpServer {
             safeguards,
             total: safeguards.length,
             framework: 'CIS Controls v8.1',
-            version: '3.0.0'
+            version: '3.1.0'
           }, null, 2),
         },
       ],
@@ -153,7 +153,7 @@ export class FrameworkMcpServer {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
     
-    console.error('🤖 Framework MCP Server v3.0.0 running via stdio');
+    console.error('🤖 Framework MCP Server v3.1.0 running via stdio');
     console.error('📊 Pure Data Provider for CIS Controls v8.1');
   }
 }

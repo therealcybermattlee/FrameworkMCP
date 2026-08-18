@@ -7,7 +7,7 @@
   "Excluded as informational, not elements: title oval, highlighted description banner, related-safeguard circles, conditional diamonds (Or/And/If), pink OS-dependent stars, and the top-right IG / security-function / asset-type / Cost-of-Cyber-Defense boxes.",
   "Where an existing element already matched a PDF shape (case/punctuation-insensitive), the existing string was kept verbatim to avoid downstream churn.",
   "PDF typos corrected: 'Enteprise Assets' (7.3) -> 'Enterprise Assets'; '\"Seperate\" enterprise workspaces' (4.12) -> 'Separate enterprise workspaces'; a stray 'impact this Safeguard' tail was trimmed from the 15.4 review hexagon.",
-  "17.2 has no page in the PDF; its elements are reconciled against the official CIS v8.1.2 text only."
+  "17.2 has no page in the main PDF; its elements are transcribed from the separately issued single-page 'CIS v8.1 - Control 17-2.pdf' (image-only, read visually)."
  ],
  "safeguards": {
   "1.1": {
@@ -2515,31 +2515,25 @@
    ]
   },
   "17.2": {
-   "pdfPage": null,
+   "pdfPage": "CIS v8.1 - Control 17-2.pdf",
    "governanceElements": [
-    "establish and maintain contact information for parties that need to be informed of security incidents",
-    "verify contacts annually to ensure information is up-to-date"
+    "Establish",
+    "Maintain",
+    "verify contacts annually",
+    "Ensure information is up-to-date"
    ],
    "coreRequirements": [
-    "contact information for parties to notify about security incidents",
-    "internal and external notification contacts",
-    "annual verification of contact information"
+    "Contact Information for Reporting Security Incidents"
    ],
-   "subTaxonomicalElements": [
-    "contacts may include internal staff",
-    "service providers",
-    "law enforcement",
-    "cyber insurance providers",
-    "relevant government agencies",
-    "Information Sharing and Analysis Center (ISAC) partners",
-    "or other stakeholders",
-    "verify contacts annually"
-   ],
+   "subTaxonomicalElements": [],
    "implementationSuggestions": [
-    "incident notification contact directory",
-    "emergency contact lists",
-    "stakeholder contact registers",
-    "annual contact verification process"
+    "Internal staff",
+    "service providers",
+    "Cyber insurance provider",
+    "law enforcement",
+    "ISAC",
+    "relevant government agencies",
+    "Other Stakeholders"
    ]
   },
   "17.3": {

@@ -3547,29 +3547,24 @@ export class SafeguardManager {
     assetType: ["Users"],
     securityFunction: ["Respond"],
     governanceElements: [ // Orange - MUST be met
-      "establish and maintain contact information for parties that need to be informed of security incidents",
-      "verify contacts annually to ensure information is up-to-date"
+      "Establish",
+      "Maintain",
+      "verify contacts annually",
+      "Ensure information is up-to-date"
     ],
     coreRequirements: [ // Green - The "what"
-      "contact information for parties to notify about security incidents",
-      "internal and external notification contacts",
-      "annual verification of contact information"
+      "Contact Information for Reporting Security Incidents"
     ],
     subTaxonomicalElements: [ // Yellow - Sub-taxonomical elements
-      "contacts may include internal staff",
-      "service providers",
-      "law enforcement",
-      "cyber insurance providers",
-      "relevant government agencies",
-      "Information Sharing and Analysis Center (ISAC) partners",
-      "or other stakeholders",
-      "verify contacts annually"
     ],
     implementationSuggestions: [ // Gray - Implementation suggestions
-      "incident notification contact directory",
-      "emergency contact lists",
-      "stakeholder contact registers",
-      "annual contact verification process"
+      "Internal staff",
+      "service providers",
+      "Cyber insurance provider",
+      "law enforcement",
+      "ISAC",
+      "relevant government agencies",
+      "Other Stakeholders"
     ],
     relatedSafeguards: ["17.3", "17.4"]  },
   "17.3": {
