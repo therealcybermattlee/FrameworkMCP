@@ -57,6 +57,21 @@ npm run start:http
 # Server runs on http://localhost:8080
 ```
 
+### HTTP API (Cloudflare Workers)
+
+The HTTP API is hosted on Cloudflare Workers. The Worker entry point
+(`src/interfaces/worker/worker.ts`) serves the same routes as the Express
+server from the same in-memory `SafeguardManager`.
+
+```bash
+npm run dev:worker   # local Worker via wrangler dev
+npm run deploy       # wrangler deploy (needs `npx wrangler login`)
+```
+
+Pushes to `main` deploy automatically via `.github/workflows/deploy.yml`
+(requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets).
+CORS origins and rate limits are configured in `wrangler.jsonc`.
+
 ## API Reference
 
 ### MCP Tools

@@ -138,9 +138,9 @@ echo
 echo "📦 Checking npm tarball contents..."
 PACK_FILES=$(npm pack --dry-run --json 2>/dev/null | jq -r '.[0].files[].path')
 
-if echo "$PACK_FILES" | grep -qE '^\.|specify|claude|github|^\.do/'; then
+if echo "$PACK_FILES" | grep -qE '^\.|specify|claude|github|wrangler'; then
     fail "Dev config would be published to npm (check the \"files\" field in package.json):"
-    echo "$PACK_FILES" | grep -E '^\.|specify|claude|github|^\.do/' | sed 's/^/     /'
+    echo "$PACK_FILES" | grep -E '^\.|specify|claude|github|wrangler' | sed 's/^/     /'
 else
     pass "npm tarball contains no dev config ($(echo "$PACK_FILES" | wc -l | tr -d ' ') files)"
 fi

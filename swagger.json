@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "https://your-deployment.example.com",
+      "url": "https://framework-mcp-api.workers.dev",
       "description": "Production deployment"
     },
     {
